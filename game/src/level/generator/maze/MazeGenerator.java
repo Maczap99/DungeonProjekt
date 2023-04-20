@@ -21,35 +21,14 @@ public class MazeGenerator implements IGenerator {
     private static int PATH_HEIGHT = 3;
     private static int PATH_CELL_AMOUNT_X = 6;
     private static int PATH_CELL_AMOUNT_Y = 6;
-
-    private int mazeWidth;
-    private int mazeHeight;
-
     private final boolean generateSurroundingWall;
     private final boolean placeChestInDeadEnds;
+    private int mazeWidth;
+    private int mazeHeight;
 
     public MazeGenerator(boolean generateWall, boolean placeChestsInDeadEnds) {
         this.generateSurroundingWall = generateWall;
         this.placeChestInDeadEnds = placeChestsInDeadEnds;
-    }
-
-    @Override
-    public ILevel getLevel(DesignLabel designLabel, LevelSize size) {
-        return new TileLevel(getLayout(size), designLabel);
-    }
-
-    /**
-     * Generates the floor layout to a specified level size
-     *
-     * @param size size of the level to be generated
-     * @return layout of the level
-     */
-    public LevelElement[][] getLayout(LevelSize size) {
-        return switch (size) {
-            case SMALL -> generateSmall();
-            case MEDIUM -> generateMedium();
-            case LARGE -> generateLarge();
-        };
     }
 
     private static void setArea(Area area, LevelElement[][] layout, LevelElement element) {
@@ -85,6 +64,39 @@ public class MazeGenerator implements IGenerator {
         };
     }
 
+    public static boolean getBooleanWithPercentage(int percentage) {
+        if (percentage < 0 || percentage > 100) {
+            throw new IllegalArgumentException("Percentage must be between 0 and 100");
+        }
+        int randomNumber = RANDOM.nextInt(100) + 1;
+        return randomNumber <= percentage;
+    }
+
+    private static Point calculateCellCenter(Coordinate coord) {
+        float centerX = coord.x + PATH_WIDTH / 2;
+        float centerY = coord.y + PATH_HEIGHT / 2;
+        return new Point(centerX, centerY + 0.1f);
+    }
+
+    @Override
+    public ILevel getLevel(DesignLabel designLabel, LevelSize size) {
+        return new TileLevel(getLayout(size), designLabel);
+    }
+
+    /**
+     * Generates the floor layout to a specified level size
+     *
+     * @param size size of the level to be generated
+     * @return layout of the level
+     */
+    public LevelElement[][] getLayout(LevelSize size) {
+        return switch (size) {
+            case SMALL -> generateSmall();
+            case MEDIUM -> generateMedium();
+            case LARGE -> generateLarge();
+        };
+    }
+
     private boolean isOnTheEdge(Coordinate position) {
         return isOnTheEdge(position.x, position.y);
     }
@@ -108,7 +120,7 @@ public class MazeGenerator implements IGenerator {
     }
 
     private LevelElement[][] generateSmall() {
-        OBSTACLE_THICKNESS = RANDOM.nextInt(2,4);
+        OBSTACLE_THICKNESS = RANDOM.nextInt(2, 4);
         PATH_WIDTH = RANDOM.nextInt(2, 4);
         PATH_HEIGHT = RANDOM.nextInt(2, 4);
         PATH_CELL_AMOUNT_X = RANDOM.nextInt(2, 7);
@@ -117,18 +129,16 @@ public class MazeGenerator implements IGenerator {
     }
 
     private LevelElement[][] generateMedium() {
-        /*
-        OBSTACLE_THICKNESS = RANDOM.nextInt(3,5);
+        OBSTACLE_THICKNESS = RANDOM.nextInt(3, 5);
         PATH_WIDTH = RANDOM.nextInt(3, 5);
         PATH_HEIGHT = RANDOM.nextInt(3, 5);
         PATH_CELL_AMOUNT_X = RANDOM.nextInt(3, 8);
         PATH_CELL_AMOUNT_Y = RANDOM.nextInt(3, 8);
-         */
         return generateMaze();
     }
 
     private LevelElement[][] generateLarge() {
-        OBSTACLE_THICKNESS = RANDOM.nextInt(3,5);
+        OBSTACLE_THICKNESS = RANDOM.nextInt(3, 5);
         PATH_WIDTH = RANDOM.nextInt(4, 6);
         PATH_HEIGHT = RANDOM.nextInt(4, 6);
         PATH_CELL_AMOUNT_X = RANDOM.nextInt(4, 9);
@@ -163,11 +173,14 @@ public class MazeGenerator implements IGenerator {
                 isBacktracking = false;
             } else {
                 /*
-                * Places a chest in a dead and.
-                * Start and end of the maze is excluded.
-                * */
+                 * Places a chest in a dead end.
+                 * Start and end of the maze are excluded.
+                 * */
                 if (!isBacktracking) {
-                    new Chest(new ArrayList<>(), calculateCellCenter(currentPosition));
+                    if (placeChestInDeadEnds
+                        && getBooleanWithPercentage(70)) {
+                        new Chest(new ArrayList<>(), calculateCellCenter(currentPosition));
+                    }
                     isBacktracking = true;
                 }
 
@@ -177,12 +190,6 @@ public class MazeGenerator implements IGenerator {
         }
 
         return layout;
-    }
-
-    private static Point calculateCellCenter(Coordinate coord) {
-        float centerX = coord.x + PATH_WIDTH / 2;
-        float centerY = coord.y + PATH_HEIGHT / 2;
-        return new Point(centerX, centerY + 0.1f);
     }
 
     private Coordinate RemoveAndGetNextPosition
