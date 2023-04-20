@@ -1,8 +1,5 @@
 package starter;
 
-import static com.badlogic.gdx.graphics.GL20.GL_COLOR_BUFFER_BIT;
-import static logging.LoggerConfig.initBaseLogger;
-
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.ScreenAdapter;
@@ -20,24 +17,27 @@ import ecs.systems.*;
 import graphic.DungeonCamera;
 import graphic.Painter;
 import graphic.hud.PauseMenu;
-import java.io.IOException;
-import java.util.*;
-import java.util.logging.Logger;
 import level.IOnLevelLoader;
 import level.LevelAPI;
 import level.elements.ILevel;
 import level.elements.tile.Tile;
 import level.generator.IGenerator;
-import level.generator.postGeneration.WallGenerator;
-import level.generator.randomwalk.RandomWalkGenerator;
+import level.generator.maze.MazeGenerator;
 import level.tools.LevelSize;
 import tools.Constants;
 import tools.Point;
 
+import java.io.IOException;
+import java.util.*;
+import java.util.logging.Logger;
+
+import static com.badlogic.gdx.graphics.GL20.GL_COLOR_BUFFER_BIT;
+import static logging.LoggerConfig.initBaseLogger;
+
 /** The heart of the framework. From here all strings are pulled. */
 public class Game extends ScreenAdapter implements IOnLevelLoader {
 
-    private final LevelSize LEVELSIZE = LevelSize.SMALL;
+    private final LevelSize LEVELSIZE = LevelSize.MEDIUM;
 
     /**
      * The batch is necessary to draw ALL the stuff. Every object that uses draw need to know the
@@ -107,8 +107,6 @@ public class Game extends ScreenAdapter implements IOnLevelLoader {
         controller = new ArrayList<>();
         setupCameras();
         painter = new Painter(batch, camera);
-        generator = new RandomWalkGenerator();
-        levelAPI = new LevelAPI(batch, painter, generator, this);
         initBaseLogger();
         gameLogger = Logger.getLogger(this.getClass().getName());
         systems = new SystemController();
@@ -116,7 +114,8 @@ public class Game extends ScreenAdapter implements IOnLevelLoader {
         pauseMenu = new PauseMenu<>();
         controller.add(pauseMenu);
         hero = new Hero();
-        levelAPI = new LevelAPI(batch, painter, new WallGenerator(new RandomWalkGenerator()), this);
+        //levelAPI = new LevelAPI(batch, painter, new WallGenerator(new RandomWalkGenerator()), this);
+        levelAPI = new LevelAPI(batch, painter, new MazeGenerator(true), this);
         levelAPI.loadLevel(LEVELSIZE);
         createSystems();
     }
@@ -152,14 +151,14 @@ public class Game extends ScreenAdapter implements IOnLevelLoader {
     private void setCameraFocus() {
         if (getHero().isPresent()) {
             PositionComponent pc =
-                    (PositionComponent)
-                            getHero()
-                                    .get()
-                                    .getComponent(PositionComponent.class)
-                                    .orElseThrow(
-                                            () ->
-                                                    new MissingComponentException(
-                                                            "PositionComponent"));
+                (PositionComponent)
+                    getHero()
+                        .get()
+                        .getComponent(PositionComponent.class)
+                        .orElseThrow(
+                            () ->
+                                new MissingComponentException(
+                                    "PositionComponent"));
             camera.setFocusPoint(pc.getPosition());
 
         } else camera.setFocusPoint(new Point(0, 0));
@@ -171,10 +170,10 @@ public class Game extends ScreenAdapter implements IOnLevelLoader {
 
     private boolean isOnEndTile(Entity entity) {
         PositionComponent pc =
-                (PositionComponent)
-                        entity.getComponent(PositionComponent.class)
-                                .orElseThrow(
-                                        () -> new MissingComponentException("PositionComponent"));
+            (PositionComponent)
+                entity.getComponent(PositionComponent.class)
+                    .orElseThrow(
+                        () -> new MissingComponentException("PositionComponent"));
         Tile currentTile = currentLevel.getTileAt(pc.getPosition().toCoordinate());
         return currentTile.equals(currentLevel.getEndTile());
     }
@@ -182,10 +181,10 @@ public class Game extends ScreenAdapter implements IOnLevelLoader {
     private void placeOnLevelStart(Entity hero) {
         entities.add(hero);
         PositionComponent pc =
-                (PositionComponent)
-                        hero.getComponent(PositionComponent.class)
-                                .orElseThrow(
-                                        () -> new MissingComponentException("PositionComponent"));
+            (PositionComponent)
+                hero.getComponent(PositionComponent.class)
+                    .orElseThrow(
+                        () -> new MissingComponentException("PositionComponent"));
         pc.setPosition(currentLevel.getStartTile().getCoordinate().toPoint());
     }
 
