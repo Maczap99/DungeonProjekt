@@ -1,5 +1,7 @@
 package level.tools;
 
+import tools.Point;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
@@ -53,6 +55,12 @@ public class Area {
         }
 
         return positions;
+    }
+
+    public Point getCenterPoint() {
+        float centerX = x + ((float) width / 2);
+        float centerY = y + ((float) height / 2);
+        return new Point(centerX, centerY);
     }
 
     @Override
