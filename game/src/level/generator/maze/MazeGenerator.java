@@ -1,30 +1,36 @@
 package level.generator.maze;
 
+import ecs.entities.Chest;
+import ecs.items.ItemData;
 import level.elements.ILevel;
 import level.elements.TileLevel;
 import level.generator.IGenerator;
 import level.tools.*;
+import tools.Point;
 
 import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Random;
 
 public class MazeGenerator implements IGenerator {
     private static final Random RANDOM = new Random();
 
-    private static int OBSTACLE_THICKNESS = 2;
-    private static int PATH_WIDTH = 2;
-    private static int PATH_HEIGHT = 2;
-    private static int PATH_CELL_AMOUNT_X = 2;
-    private static int PATH_CELL_AMOUNT_Y = 2;
+    private static int OBSTACLE_THICKNESS = 3;
+    private static int PATH_WIDTH = 3;
+    private static int PATH_HEIGHT = 3;
+    private static int PATH_CELL_AMOUNT_X = 6;
+    private static int PATH_CELL_AMOUNT_Y = 6;
 
     private int mazeWidth;
     private int mazeHeight;
 
-    private final boolean generateWall;
+    private final boolean generateSurroundingWall;
+    private final boolean placeChestInDeadEnds;
 
-    public MazeGenerator(boolean generateWall) {
-        this.generateWall = generateWall;
+    public MazeGenerator(boolean generateWall, boolean placeChestsInDeadEnds) {
+        this.generateSurroundingWall = generateWall;
+        this.placeChestInDeadEnds = placeChestsInDeadEnds;
     }
 
     @Override
@@ -111,11 +117,13 @@ public class MazeGenerator implements IGenerator {
     }
 
     private LevelElement[][] generateMedium() {
+        /*
         OBSTACLE_THICKNESS = RANDOM.nextInt(3,5);
         PATH_WIDTH = RANDOM.nextInt(3, 5);
         PATH_HEIGHT = RANDOM.nextInt(3, 5);
         PATH_CELL_AMOUNT_X = RANDOM.nextInt(3, 8);
         PATH_CELL_AMOUNT_Y = RANDOM.nextInt(3, 8);
+         */
         return generateMaze();
     }
 
@@ -134,15 +142,17 @@ public class MazeGenerator implements IGenerator {
 
         LevelElement[][] layout = new LevelElement[mazeHeight][mazeWidth];
 
-        var floorAreaPositions = new ArrayList<Coordinate>();
+        var floorAreas = new ArrayList<Area>();
         var obstacleAreas = new ArrayList<Area>();
-        generateLayoutBase(floorAreaPositions, obstacleAreas, layout);
+        generateLayoutBase(floorAreas, obstacleAreas, layout);
 
         var walkedPositions = new ArrayList<Coordinate>();
         var pathPositions = new ArrayList<Coordinate>();
-        var currentPosition = floorAreaPositions.get(RANDOM.nextInt(0, floorAreaPositions.size()));
+        var currentArea = floorAreas.get(RANDOM.nextInt(0, floorAreas.size()));
+        var currentPosition = new Coordinate(currentArea.x, currentArea.y);
         walkedPositions.add(currentPosition);
 
+        var isBacktracking = true;
         while (walkedPositions.size() < PATH_CELL_AMOUNT_X * PATH_CELL_AMOUNT_Y) {
             var nextPosition = RemoveAndGetNextPosition
                 (currentPosition, walkedPositions, obstacleAreas, layout);
@@ -150,7 +160,17 @@ public class MazeGenerator implements IGenerator {
                 currentPosition = nextPosition;
                 walkedPositions.add(nextPosition);
                 pathPositions.add(nextPosition);
+                isBacktracking = false;
             } else {
+                /*
+                * Places a chest in a dead and.
+                * Start and end of the maze is excluded.
+                * */
+                if (!isBacktracking) {
+                    new Chest(new ArrayList<>(), calculateCellCenter(currentPosition));
+                    isBacktracking = true;
+                }
+
                 pathPositions.remove(pathPositions.size() - 1);
                 currentPosition = pathPositions.get(pathPositions.size() - 1);
             }
@@ -159,9 +179,15 @@ public class MazeGenerator implements IGenerator {
         return layout;
     }
 
+    private static Point calculateCellCenter(Coordinate coord) {
+        float centerX = coord.x + PATH_WIDTH / 2;
+        float centerY = coord.y + PATH_HEIGHT / 2;
+        return new Point(centerX, centerY + 0.1f);
+    }
+
     private Coordinate RemoveAndGetNextPosition
         (
-            Coordinate currentPosition,
+            Coordinate currentAreaPosition,
             ArrayList<Coordinate> walkedPositions,
             ArrayList<Area> obstacleAreas,
             LevelElement[][] layout
@@ -169,8 +195,8 @@ public class MazeGenerator implements IGenerator {
         var checkedDirections = new HashSet<Integer>();
         while (checkedDirections.size() < 4) {
             var direction = RANDOM.nextInt(0, 4);
-            var obstaclePositionTest = calculateObstaclePosition(direction, currentPosition);
-            var nextPositionTest = calculateNextPosition(direction, currentPosition);
+            var obstaclePositionTest = calculateObstaclePosition(direction, currentAreaPosition);
+            var nextPositionTest = calculateNextPosition(direction, currentAreaPosition);
 
             Area obstacleArea = null;
             for (var area : obstacleAreas) {
@@ -200,7 +226,7 @@ public class MazeGenerator implements IGenerator {
 
     private void generateLayoutBase
         (
-            ArrayList<Coordinate> pathAreaPositions,
+            ArrayList<Area> floorAreas,
             ArrayList<Area> obstacleAreas,
             LevelElement[][] layout
         ) {
@@ -213,7 +239,7 @@ public class MazeGenerator implements IGenerator {
             for (var y = 0; y < mazeHeight; y++) {
                 var currentCoord = new Coordinate(x, y);
                 if (isOnTheEdge(currentCoord)) {
-                    if (generateWall && isOnTheInnerEdge(currentCoord)) {
+                    if (generateSurroundingWall && isOnTheInnerEdge(currentCoord)) {
                         layout[y][x] = LevelElement.WALL;
                     } else {
                         layout[y][x] = LevelElement.SKIP;
@@ -221,7 +247,7 @@ public class MazeGenerator implements IGenerator {
                 } else if (currentCoord.equals(pathSpawnPosition)) {
                     setArea(x, y, PATH_WIDTH + x, PATH_HEIGHT + y, layout, LevelElement.FLOOR);
                     pathSpawnPosition.y += PATH_HEIGHT + OBSTACLE_THICKNESS;
-                    pathAreaPositions.add(currentCoord);
+                    floorAreas.add(new Area(currentCoord.x, currentCoord.y, PATH_WIDTH, PATH_HEIGHT));
                 } else if (currentCoord.equals(horizontalObstacleSpawnPosition)) {
                     var horizontalObstacleArea = new Area(x, y, PATH_WIDTH, OBSTACLE_THICKNESS);
                     setArea(horizontalObstacleArea, layout, LevelElement.HOLE);
