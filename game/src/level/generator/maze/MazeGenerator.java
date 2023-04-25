@@ -1,6 +1,7 @@
 package level.generator.maze;
 
 import ecs.entities.Chest;
+import ecs.entities.TrapChest;
 import ecs.items.ItemData;
 import level.elements.ILevel;
 import level.elements.TileLevel;
@@ -179,7 +180,8 @@ public class MazeGenerator implements IGenerator {
                 if (!isBacktracking) {
                     if (placeChestInDeadEnds
                         && getBooleanWithPercentage(70)) {
-                        new Chest(new ArrayList<>(), calculateCellCenter(currentPosition));
+                        //new Chest(new ArrayList<>(), calculateCellCenter(currentPosition));
+                        new TrapChest(calculateCellCenter(currentPosition));
                     }
                     isBacktracking = true;
                 }
