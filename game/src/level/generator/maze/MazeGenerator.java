@@ -75,7 +75,7 @@ public class MazeGenerator implements IGenerator {
     private static Point calculateCellCenter(Coordinate coord) {
         float centerX = coord.x + PATH_WIDTH / 2;
         float centerY = coord.y + PATH_HEIGHT / 2;
-        return new Point(centerX, centerY + 0.1f);
+        return new Point(centerX, centerY);
     }
 
     @Override

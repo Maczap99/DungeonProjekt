@@ -4,11 +4,13 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import graphic.Painter;
 import graphic.PainterConfig;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.logging.Logger;
 import level.elements.ILevel;
 import level.elements.tile.Tile;
 import level.generator.IGenerator;
+import level.generator.IGeneratorStrategy;
 import level.tools.DesignLabel;
 import level.tools.LevelElement;
 import level.tools.LevelSize;
@@ -18,22 +20,25 @@ public class LevelAPI {
     private final SpriteBatch batch;
     private final Painter painter;
     private final IOnLevelLoader onLevelLoader;
-    private IGenerator gen;
+    private IGeneratorStrategy genStrategy;
+    private List<IGenerator> gens;
     private ILevel currentLevel;
     private final Logger levelAPI_logger = Logger.getLogger(this.getClass().getName());
 
     /**
      * @param batch Batch on which to draw.
      * @param painter Who draws?
-     * @param generator Level generator
+     * @param gens Level generators
      * @param onLevelLoader Object that implements the onLevelLoad method.
      */
     public LevelAPI(
             SpriteBatch batch,
             Painter painter,
-            IGenerator generator,
+            IGeneratorStrategy genStrategy,
+            List<IGenerator> gens,
             IOnLevelLoader onLevelLoader) {
-        this.gen = generator;
+        this.genStrategy = genStrategy;
+        this.gens = gens;
         this.batch = batch;
         this.painter = painter;
         this.onLevelLoader = onLevelLoader;
@@ -46,7 +51,7 @@ public class LevelAPI {
      * @param label The design that the level should have
      */
     public void loadLevel(LevelSize size, DesignLabel label) {
-        currentLevel = gen.getLevel(label, size);
+        currentLevel = genStrategy.generateLevel(label, size, gens);
         onLevelLoader.onLevelLoad();
         levelAPI_logger.info("A new level was loaded.");
     }
@@ -106,19 +111,19 @@ public class LevelAPI {
     }
 
     /**
-     * @return The currently used Level-Generator
+     * @return The currently used Level-Generators
      */
-    public IGenerator getGenerator() {
-        return gen;
+    public List<IGenerator> getGenerator() {
+        return gens;
     }
 
     /**
      * Set the level generator
      *
-     * @param generator new level generator
+     * @param generators new level generators
      */
-    public void setGenerator(IGenerator generator) {
-        gen = generator;
+    public void setGenerator(List<IGenerator> generators) {
+        gens = generators;
     }
 
     /**

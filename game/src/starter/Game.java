@@ -21,8 +21,11 @@ import level.IOnLevelLoader;
 import level.LevelAPI;
 import level.elements.ILevel;
 import level.elements.tile.Tile;
+import level.generator.AlternatingGeneratorStrategy;
 import level.generator.IGenerator;
 import level.generator.maze.MazeGenerator;
+import level.generator.postGeneration.WallGenerator;
+import level.generator.randomwalk.RandomWalkGenerator;
 import level.tools.LevelSize;
 import tools.Constants;
 import tools.Point;
@@ -114,9 +117,10 @@ public class Game extends ScreenAdapter implements IOnLevelLoader {
         pauseMenu = new PauseMenu<>();
         controller.add(pauseMenu);
         hero = new Hero();
-        //levelAPI = new LevelAPI(batch, painter, new WallGenerator(new RandomWalkGenerator()), this);
-        levelAPI = new LevelAPI(batch, painter, new MazeGenerator(true, true), this);
-        //levelAPI = new LevelAPI(batch, painter, new PerlinNoiseGenerator(), this);
+        var generators = new ArrayList<IGenerator>();
+        generators.add(new WallGenerator(new RandomWalkGenerator()));
+        generators.add(new MazeGenerator(true, true));
+        levelAPI = new LevelAPI(batch, painter, new AlternatingGeneratorStrategy(), generators, this);
         levelAPI.loadLevel(LEVELSIZE);
         createSystems();
     }
