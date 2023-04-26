@@ -41,7 +41,7 @@ public class TrapChest extends Trap {
                 this,
                 new Animation(DEFAULT_CLOSED_ANIMATION_FRAMES, 100, false),
 
-                new Animation(DEFAULT_OPENING_ANIMATION_FRAMES, 15, false));
+                new Animation(DEFAULT_OPENING_ANIMATION_FRAMES, 20, false));
 
     }
 

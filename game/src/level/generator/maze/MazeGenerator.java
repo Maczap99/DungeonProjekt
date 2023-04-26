@@ -445,9 +445,9 @@ public class MazeGenerator implements IGenerator {
 
             int divide = 0;
             switch (levelSize) {
-                case SMALL -> divide = 500;
-                case MEDIUM -> divide = 600;
-                case LARGE -> divide = 700;
+                case SMALL -> divide = 800;
+                case MEDIUM -> divide = 900;
+                case LARGE -> divide = 1000;
             }
             ;
             int size = (mazeWidth * mazeHeight) / divide;
