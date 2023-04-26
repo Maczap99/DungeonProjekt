@@ -444,13 +444,15 @@ public class MazeGenerator implements IGenerator {
             verticalObstacleSpawnPosition.y = OBSTACLE_THICKNESS;
 
             int divide = 0;
+
             switch (levelSize) {
-                case SMALL -> divide = 800;
-                case MEDIUM -> divide = 900;
-                case LARGE -> divide = 1000;
+                case SMALL -> divide = 1000;
+                case MEDIUM -> divide = 1200;
+                case LARGE -> divide = 1300;
             }
-            ;
+            System.out.println("Level size: "+levelSize);
             int size = (mazeWidth * mazeHeight) / divide;
+
             for (int i = 0; i < size; i++) {
                 Coordinate trapC = getRandomFloor(layout);
                 layout[trapC.y][trapC.x] = LevelElement.TRAP;
