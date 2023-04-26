@@ -20,13 +20,14 @@ public class TrapChest extends Trap {
 
     //Benutzt die Standard Chest sprites (sind die Sprites für die TrapChest schon im Projekt oder bin ich blind?
     public static final List<String> DEFAULT_CLOSED_ANIMATION_FRAMES =
-        List.of("objects/treasurechest/chest_full_open_anim_f0.png");
+        List.of("traps/trapchest/trap_chest_close_anim_f0.png");
     public static final List<String> DEFAULT_OPENING_ANIMATION_FRAMES =
         List.of(
-            "objects/treasurechest/chest_full_open_anim_f0.png",
-            "objects/treasurechest/chest_full_open_anim_f1.png",
-            "objects/treasurechest/chest_full_open_anim_f2.png",
-            "objects/treasurechest/chest_empty_open_anim_f2.png");
+            "traps/trapchest/trap_chest_close_anim_f0.png",
+            "traps/trapchest/trap_chest_open_anim_f0.png",
+            "traps/trapchest/trap_chest_open_anim_f1.png",
+            "traps/trapchest/trap_chest_open_anim_f2.png",
+            "traps/trapchest/trap_chest_open_anim_f1.png");
     AnimationComponent ac;
 
 
@@ -48,7 +49,7 @@ public class TrapChest extends Trap {
         hc.setMaximalHealthpoints(200);
         hc.setCurrentHealthpoints(200);
     }
-    
+
 
     //Aus der Chest Klasse übernommen
     private static MissingComponentException createMissingComponentException(
