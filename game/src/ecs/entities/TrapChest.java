@@ -68,15 +68,14 @@ public class TrapChest extends Trap {
         Entity hero;
         if(h.isPresent()){
             hero = h.get();
-            HealthComponent hc =
-                hero.getComponent(HealthComponent.class)
-                    .map(HealthComponent.class::cast)
-                    .orElseThrow(
-                        () ->
-                            createMissingComponentException(
-                                HealthComponent.class.getName(), entity));
-            hc.receiveHit(new Damage(damage, DamageType.PHYSICAL, this));
-
+            Optional<Component> he = hero.getComponent(HealthComponent.class);
+            if(he.isPresent()){
+                HealthComponent hc = (HealthComponent) he.get();
+                hc.receiveHit(new Damage(damage, DamageType.PHYSICAL, this));
+            }
+            else{
+                throw new MissingComponentException("Player has no HealthComponent!");
+            }
             System.out.println(hero.id + " bekommt " + damage + " Schaden!");
         }
     }
