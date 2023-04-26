@@ -149,7 +149,6 @@ public class Game extends ScreenAdapter implements IOnLevelLoader {
 
         if (Gdx.input.isKeyJustPressed(Input.Keys.P)) togglePauseMenu();
         if (Gdx.input.isKeyJustPressed(Input.Keys.ESCAPE)) toggleMainMenu();
-
     }
 
     @Override
