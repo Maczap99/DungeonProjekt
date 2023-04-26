@@ -27,6 +27,7 @@ public class TileLevel implements ILevel {
     protected ArrayList<HoleTile> holeTiles = new ArrayList<>();
     protected ArrayList<DoorTile> doorTiles = new ArrayList<>();
     protected ArrayList<ExitTile> exitTiles = new ArrayList<>();
+    protected ArrayList<TrapTile> trapTiles = new ArrayList<>();
     protected ArrayList<SkipTile> skipTiles = new ArrayList<>();
 
     private static final Coordinate CONNECTION_OFFSETS[] = {
@@ -138,6 +139,11 @@ public class TileLevel implements ILevel {
     }
 
     @Override
+    public void addTrapTile(TrapTile tile) {
+        trapTiles.add(tile);
+    }
+
+    @Override
     public void addExitTile(ExitTile tile) {
         if (getEndTile() != null) {
             changeTileElementType(getEndTile(), LevelElement.FLOOR);
@@ -174,6 +180,10 @@ public class TileLevel implements ILevel {
     public List<ExitTile> getExitTiles() {
         return exitTiles;
     }
+    @Override
+    public List<TrapTile> getTrapTiles() {
+        return trapTiles;
+    }
 
     @Override
     public List<SkipTile> getSkipTiles() {
@@ -189,6 +199,7 @@ public class TileLevel implements ILevel {
             case HOLE -> holeTiles.remove(tile);
             case DOOR -> doorTiles.remove(tile);
             case EXIT -> exitTiles.remove(tile);
+            case TRAP -> trapTiles.remove(tile);
         }
 
         tile.getConnections()
@@ -217,6 +228,7 @@ public class TileLevel implements ILevel {
             case HOLE -> addHoleTile((HoleTile) tile);
             case EXIT -> addExitTile((ExitTile) tile);
             case DOOR -> addDoorTile((DoorTile) tile);
+            case TRAP -> addTrapTile((TrapTile) tile);
         }
         if (tile.isAccessible()) {
             this.addConnectionsToNeighbours(tile);

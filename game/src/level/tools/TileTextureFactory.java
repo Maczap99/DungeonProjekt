@@ -97,6 +97,8 @@ public class TileTextureFactory {
             return "floor/floor_1";
         } else if (levelPart.element() == LevelElement.EXIT) {
             return "floor/floor_ladder";
+        }else if (levelPart.element() == LevelElement.TRAP) {
+            return "floor/trap_floor_1";
         } else if (levelPart.element() == LevelElement.HOLE) {
             if (aboveIsHole(levelPart.position, levelPart.layout)) {
                 return "floor/floor_hole1";

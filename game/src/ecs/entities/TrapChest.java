@@ -22,14 +22,14 @@ public class TrapChest extends Trap {
 
     //Benutzt die Standard Chest sprites (sind die Sprites für die TrapChest schon im Projekt oder bin ich blind?
     public static final List<String> DEFAULT_CLOSED_ANIMATION_FRAMES =
-        List.of("traps/trapchest/trap_chest_close_anim_f0.png");
+        List.of("objects/trapchest/trap_chest_close_anim_f0.png");
     public static final List<String> DEFAULT_OPENING_ANIMATION_FRAMES =
         List.of(
-            "traps/trapchest/trap_chest_close_anim_f0.png",
-            "traps/trapchest/trap_chest_open_anim_f0.png",
-            "traps/trapchest/trap_chest_open_anim_f1.png",
-            "traps/trapchest/trap_chest_open_anim_f2.png",
-            "traps/trapchest/trap_chest_open_anim_f1.png");
+            "objects/trapchest/trap_chest_close_anim_f0.png",
+            "objects/trapchest/trap_chest_open_anim_f0.png",
+            "objects/trapchest/trap_chest_open_anim_f1.png",
+            "objects/trapchest/trap_chest_open_anim_f2.png",
+            "objects/trapchest/trap_chest_open_anim_f1.png");
     AnimationComponent ac;
 
     //Erstellt eine TrapChest an position
@@ -40,8 +40,11 @@ public class TrapChest extends Trap {
             new AnimationComponent(
                 this,
                 new Animation(DEFAULT_CLOSED_ANIMATION_FRAMES, 100, false),
-                new Animation(DEFAULT_OPENING_ANIMATION_FRAMES, 30, false));
+
+                new Animation(DEFAULT_OPENING_ANIMATION_FRAMES, 15, false));
+
     }
+
 
     @Override
     public void onInteraction(Entity entity) {
