@@ -14,30 +14,85 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Random;
 
+/**
+ * A maze generator that generates floor layouts for levels with a specified size.
+ */
 public class MazeGenerator implements IGenerator {
-    private static final Random RANDOM = new Random();
 
+    /**
+     * The random number generator used to generate the maze.
+     */
+    private static final Random RANDOM = new Random();
+    /**
+     * The thickness of the walls between paths.
+     */
     private static int OBSTACLE_THICKNESS = 3;
+    /**
+     * The width of each path in the maze.
+     */
     private static int PATH_WIDTH = 3;
+    /**
+     * The height of each path in the maze.
+     */
     private static int PATH_HEIGHT = 3;
+    /**
+     * The number of cells in the x direction of the maze.
+     */
     private static int PATH_CELL_AMOUNT_X = 6;
+    /**
+     * The number of cells in the y direction of the maze.
+     */
     private static int PATH_CELL_AMOUNT_Y = 6;
+    /**
+     * Whether to generate a surrounding wall around the maze.
+     */
     private final boolean generateSurroundingWall;
+    /**
+     * Whether to place chests in dead ends of the maze.
+     */
     private final boolean placeChestInDeadEnds;
+    /**
+     * The width of the maze.
+     */
     private int mazeWidth;
+    /**
+     * The height of the maze.
+     */
     private int mazeHeight;
 
+    /**
+     * Creates a new MazeGenerator.
+     *
+     * @param generateWall          Whether to generate a surrounding wall around the maze.
+     * @param placeChestsInDeadEnds Whether to place chests in dead ends of the maze.
+     */
     public MazeGenerator(boolean generateWall, boolean placeChestsInDeadEnds) {
         this.generateSurroundingWall = generateWall;
         this.placeChestInDeadEnds = placeChestsInDeadEnds;
     }
 
+    /**
+     * Sets the given element at every point within the given area of the layout.
+     *
+     * @param area    The area to set the element in.
+     * @param layout  The layout to set the element in.
+     * @param element The element to set.
+     */
     private static void setArea(Area area, LevelElement[][] layout, LevelElement element) {
         setArea(area.x, area.y, area.width + area.x, area.height + area.y, layout, element);
     }
 
-    private static void setArea
-        (int xStart, int yStart, int xEnd, int yEnd, LevelElement[][] layout, LevelElement value) {
+    /**
+     * Sets the given element at every point within the given rectangular area of the layout.
+     *
+     * @param xStart The starting x coordinate of the area to set the element in.
+     * @param yStart The starting y coordinate of the area to set the element in.
+     * @param xEnd   The ending x coordinate of the area to set the element in.
+     * @param yEnd   The ending y coordinate of the area to set the element in.
+     * @param layout The layout to set the element in.
+     * @param value  The element to set.
+     */
+    private static void setArea(int xStart, int yStart, int xEnd, int yEnd, LevelElement[][] layout, LevelElement value) {
         for (int x = xStart; x < xEnd; x++) {
             for (int y = yStart; y < yEnd; y++) {
                 layout[y][x] = value;
@@ -45,6 +100,13 @@ public class MazeGenerator implements IGenerator {
         }
     }
 
+    /**
+     * Calculates the position of the next cell in the maze.
+     *
+     * @param direction The direction of the next cell.
+     * @param position  The position of the current cell.
+     * @return The position of the next cell.
+     */
     private static Coordinate calculateNextPosition(int direction, Coordinate position) {
         return switch (direction) {
             case 0 -> new Coordinate(position.x, position.y + PATH_HEIGHT + OBSTACLE_THICKNESS);
@@ -55,6 +117,13 @@ public class MazeGenerator implements IGenerator {
         };
     }
 
+    /**
+     * Calculates the position of the obstacle in a given direction from the given position
+     *
+     * @param direction direction in which to calculate the obstacle position (0 = north, 1 = east, 2 = south, 3 = west)
+     * @param position  starting position for the obstacle
+     * @return position of the obstacle
+     */
     private static Coordinate calculateObstaclePosition(int direction, Coordinate position) {
         return switch (direction) {
             case 0 -> new Coordinate(position.x, position.y + PATH_HEIGHT);
@@ -65,6 +134,13 @@ public class MazeGenerator implements IGenerator {
         };
     }
 
+    /**
+     * Generates a boolean value based on the given percentage. Returns true if a random number is less than or equal to the percentage, false otherwise.
+     *
+     * @param percentage percentage chance to return true
+     * @return randomly generated boolean value
+     * @throws IllegalArgumentException if percentage is not between 0 and 100 (inclusive)
+     */
     public static boolean getBooleanWithPercentage(int percentage) {
         if (percentage < 0 || percentage > 100) {
             throw new IllegalArgumentException("Percentage must be between 0 and 100");
@@ -73,12 +149,25 @@ public class MazeGenerator implements IGenerator {
         return randomNumber <= percentage;
     }
 
+    /**
+     * Calculates the center point of a cell based on its top-left corner position
+     *
+     * @param coord position of the top-left corner of the cell
+     * @return center point of the cell
+     */
     private static Point calculateCellCenter(Coordinate coord) {
         float centerX = coord.x + PATH_WIDTH / 2;
         float centerY = coord.y + PATH_HEIGHT / 2;
         return new Point(centerX, centerY);
     }
 
+    /**
+     * Generates a level of a specified size based on the given design label
+     *
+     * @param designLabel design label for the level
+     * @param size        size of the level to be generated
+     * @return generated level
+     */
     @Override
     public ILevel getLevel(DesignLabel designLabel, LevelSize size) {
         return new TileLevel(getLayout(size), designLabel);
@@ -98,10 +187,23 @@ public class MazeGenerator implements IGenerator {
         };
     }
 
+    /**
+     * Determines if a position is on the edge of the maze
+     *
+     * @param position position to check
+     * @return true if position is on the edge, false otherwise
+     */
     private boolean isOnTheEdge(Coordinate position) {
         return isOnTheEdge(position.x, position.y);
     }
 
+    /**
+     * Determines if a given position is on the edge of the maze
+     *
+     * @param x x-coordinate of the position
+     * @param y y-coordinate of the position
+     * @return true if position is on the edge, false otherwise
+     */
     private boolean isOnTheEdge(int x, int y) {
         return (0 <= x && x <= OBSTACLE_THICKNESS - 1)
             || (0 <= y && y <= OBSTACLE_THICKNESS - 1)
@@ -109,10 +211,23 @@ public class MazeGenerator implements IGenerator {
             || (mazeHeight - 1 - (OBSTACLE_THICKNESS - 1) <= y && y <= mazeHeight - 1);
     }
 
+    /**
+     * Determines if a position is on the inner edge of the maze
+     *
+     * @param position position to check
+     * @return true if position is on the inner edge, false otherwise
+     */
     private boolean isOnTheInnerEdge(Coordinate position) {
         return isOnTheInnerEdge(position.x, position.y);
     }
 
+    /**
+     * Determines if a given position is on the inner edge of the maze
+     *
+     * @param x x-coordinate of the position
+     * @param y y-coordinate of the position
+     * @return true if position is on the inner edge, false otherwise
+     */
     private boolean isOnTheInnerEdge(int x, int y) {
         return (x == OBSTACLE_THICKNESS - 1
             || y == OBSTACLE_THICKNESS - 1
@@ -120,6 +235,11 @@ public class MazeGenerator implements IGenerator {
             || mazeHeight - 1 - (OBSTACLE_THICKNESS - 1) == y);
     }
 
+    /**
+     * Generates a floor layout for a small level
+     *
+     * @return generated floor layout
+     */
     private LevelElement[][] generateSmall() {
         OBSTACLE_THICKNESS = RANDOM.nextInt(2, 4);
         PATH_WIDTH = RANDOM.nextInt(2, 4);
@@ -129,24 +249,39 @@ public class MazeGenerator implements IGenerator {
         return generateMaze();
     }
 
+    /**
+     * Generates a floor layout for a medium level
+     *
+     * @return generated floor layout
+     */
     private LevelElement[][] generateMedium() {
         OBSTACLE_THICKNESS = RANDOM.nextInt(3, 5);
         PATH_WIDTH = RANDOM.nextInt(3, 5);
         PATH_HEIGHT = RANDOM.nextInt(3, 5);
-        PATH_CELL_AMOUNT_X = RANDOM.nextInt(3, 8);
-        PATH_CELL_AMOUNT_Y = RANDOM.nextInt(3, 8);
+        PATH_CELL_AMOUNT_X = RANDOM.nextInt(6, 10);
+        PATH_CELL_AMOUNT_Y = RANDOM.nextInt(6, 10);
         return generateMaze();
     }
 
+    /**
+     * Generates a floor layout for a large level
+     *
+     * @return generated floor layout
+     */
     private LevelElement[][] generateLarge() {
         OBSTACLE_THICKNESS = RANDOM.nextInt(3, 5);
         PATH_WIDTH = RANDOM.nextInt(4, 6);
         PATH_HEIGHT = RANDOM.nextInt(4, 6);
-        PATH_CELL_AMOUNT_X = RANDOM.nextInt(4, 9);
-        PATH_CELL_AMOUNT_Y = RANDOM.nextInt(4, 9);
+        PATH_CELL_AMOUNT_X = RANDOM.nextInt(8, 12);
+        PATH_CELL_AMOUNT_Y = RANDOM.nextInt(8, 12);
         return generateMaze();
     }
 
+    /**
+     * Generates a floor layout for a level
+     *
+     * @return generated floor layout
+     */
     private LevelElement[][] generateMaze() {
         mazeWidth = PATH_CELL_AMOUNT_X * (PATH_WIDTH + OBSTACLE_THICKNESS) + OBSTACLE_THICKNESS;
         mazeHeight = PATH_CELL_AMOUNT_Y * (PATH_HEIGHT + OBSTACLE_THICKNESS) + OBSTACLE_THICKNESS;
@@ -194,6 +329,19 @@ public class MazeGenerator implements IGenerator {
         return layout;
     }
 
+    /**
+     * Removes an obstacle area from the list of obstacle areas if the next position
+     * calculated in a randomly chosen direction is valid and within an obstacle area.
+     * The positions within the obstacle area are also set to LevelElement.FLOOR in the
+     * level layout. Returns the next valid position, or null if all directions have
+     * been checked and none are valid.
+     *
+     * @param currentAreaPosition The current position within an area.
+     * @param walkedPositions A list of positions already walked.
+     * @param obstacleAreas A list of obstacle areas.
+     * @param layout The level layout.
+     * @return The next valid position or null if there are no valid directions.
+     */
     private Coordinate RemoveAndGetNextPosition
         (
             Coordinate currentAreaPosition,
@@ -233,6 +381,16 @@ public class MazeGenerator implements IGenerator {
         return null;
     }
 
+    /**
+     * Generates the base layout of the level. The layout consists of floor tiles,
+     * holes (obstacle tiles), and walls. The positions of the floor and obstacle areas
+     * are saved in separate lists. The layout is generated by looping through every
+     * position in the layout and setting the appropriate LevelElement for that position.
+     *
+     * @param floorAreas A list to store the positions of the floor areas.
+     * @param obstacleAreas A list to store the positions of the obstacle areas.
+     * @param layout The level layout.
+     */
     private void generateLayoutBase
         (
             ArrayList<Area> floorAreas,
