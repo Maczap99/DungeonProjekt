@@ -1,20 +1,12 @@
 package ecs.entities;
 
-import dslToGame.AnimationBuilder;
 import ecs.components.HitboxComponent;
 import ecs.components.PositionComponent;
-import ecs.components.VelocityComponent;
 import ecs.components.collision.ICollide;
-import graphic.Animation;
 import level.elements.tile.Tile;
 import starter.Game;
 import tools.Point;
-
-import java.util.Date;
 import java.util.Random;
-import java.util.Timer;
-import java.util.TimerTask;
-
 
 public class TrapFloor extends Trap implements ICollide {
 
@@ -29,10 +21,6 @@ public class TrapFloor extends Trap implements ICollide {
             this, offset, new Point(1, 1), this::onCollision, null);
     }
 
-    public TrapFloor() {
-
-    }
-
     @Override
     public void onInteraction(Entity entity) {
     }
@@ -41,18 +29,21 @@ public class TrapFloor extends Trap implements ICollide {
     public void onCollision(Entity a, Entity b, Tile.Direction from) {
 
         if (b.getClass().getName().equals("ecs.entities.Hero")) {
-            System.out.println("ja");
 
+            // get hero
             Hero hero = (Hero) Game.getHero().get();
+
+            // slow hero down
             hero.setySpeed(0.1f);
             hero.setxSpeed(0.1f);
 
             hero.setupVelocityComponent();
 
-            // wait
+            // get random number
             Random rand = new Random();
             int time = rand.nextInt(10) + 6;
 
+            // wait random secounds
             System.out.println(time + " Sekunden verlangsamt");
             hero.startTrapTimer(time * 1000);
 
