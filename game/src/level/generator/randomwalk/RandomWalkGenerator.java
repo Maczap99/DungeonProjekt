@@ -1,6 +1,9 @@
 package level.generator.randomwalk;
 
 import java.util.Random;
+
+import ecs.entities.TrapChest;
+import ecs.entities.TrapFloor;
 import level.elements.ILevel;
 import level.elements.TileLevel;
 import level.generator.IGenerator;
@@ -84,6 +87,15 @@ public class RandomWalkGenerator implements IGenerator {
                 }
             }
         }
+
+        int size = (xSize*ySize) / 300;
+        for (int i = 0; i < size; i++) {
+            Coordinate trapC = getRandomFloor(layout);
+            layout[trapC.y][trapC.x] = LevelElement.TRAP;
+            new TrapFloor(new Coordinate(trapC.x+2,trapC.y+2).toPoint());
+        }
+
+
 
         // pick random floor tile as exit
         Coordinate c = getRandomFloor(layout);

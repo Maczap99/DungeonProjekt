@@ -19,6 +19,7 @@ public class TileFactory {
             case HOLE -> new HoleTile(texturePath, coordinate, designLabel, level);
             case DOOR -> new DoorTile(texturePath, coordinate, designLabel, level);
             case EXIT -> new ExitTile(texturePath, coordinate, designLabel, level);
+            case TRAP -> new TrapTile(texturePath, coordinate, designLabel, level);
             case SKIP -> new SkipTile(texturePath, coordinate, designLabel, level);
         };
     }

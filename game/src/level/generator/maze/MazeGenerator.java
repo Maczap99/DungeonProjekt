@@ -2,6 +2,7 @@ package level.generator.maze;
 
 import ecs.entities.Chest;
 import ecs.entities.TrapChest;
+import ecs.entities.TrapFloor;
 import ecs.items.ItemData;
 import level.elements.ILevel;
 import level.elements.TileLevel;
@@ -26,6 +27,7 @@ public class MazeGenerator implements IGenerator {
     private final boolean placeChestInDeadEnds;
     private int mazeWidth;
     private int mazeHeight;
+    private LevelSize levelSize;
 
     public MazeGenerator(boolean generateWall, boolean placeChestsInDeadEnds) {
         this.generateSurroundingWall = generateWall;
@@ -91,6 +93,7 @@ public class MazeGenerator implements IGenerator {
      * @return layout of the level
      */
     public LevelElement[][] getLayout(LevelSize size) {
+        levelSize = size;
         return switch (size) {
             case SMALL -> generateSmall();
             case MEDIUM -> generateMedium();
@@ -281,6 +284,31 @@ public class MazeGenerator implements IGenerator {
             horizontalObstacleSpawnPosition.y = OBSTACLE_THICKNESS + PATH_HEIGHT;
             verticalObstacleSpawnPosition.x = horizontalStepPosition - OBSTACLE_THICKNESS;
             verticalObstacleSpawnPosition.y = OBSTACLE_THICKNESS;
+
+            int divide = 0;
+            switch (levelSize) {
+                case SMALL -> divide = 500;
+                case MEDIUM -> divide = 600;
+                case LARGE -> divide = 700;
+            }
+            ;
+            int size = (mazeWidth * mazeHeight) / divide;
+            for (int i = 0; i < size; i++) {
+                Coordinate trapC = getRandomFloor(layout);
+                layout[trapC.y][trapC.x] = LevelElement.TRAP;
+                new TrapFloor(new Coordinate(trapC.x, trapC.y).toPoint());
+            }
+        }
+    }
+
+    private Coordinate getRandomFloor(LevelElement[][] layout) {
+        Coordinate coordinate =
+            new Coordinate(RANDOM.nextInt(layout[0].length), RANDOM.nextInt(layout.length));
+        LevelElement randomTile = layout[coordinate.y][coordinate.x];
+        if (randomTile == LevelElement.FLOOR) {
+            return coordinate;
+        } else {
+            return getRandomFloor(layout);
         }
     }
 }

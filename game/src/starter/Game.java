@@ -131,6 +131,12 @@ public class Game extends ScreenAdapter implements IOnLevelLoader {
         manageEntitiesSets();
         getHero().ifPresent(this::loadNextLevelIfEntityIsOnEndTile);
         if (Gdx.input.isKeyJustPressed(Input.Keys.P)) togglePause();
+
+        Hero h = (Hero) hero;
+        if (h.getTrapTimer().isFinished()) {
+            h.resetSpeed();
+            systems.update();
+        }
     }
 
     @Override
