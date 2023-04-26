@@ -4,9 +4,11 @@ import ecs.components.*;
 import ecs.damage.Damage;
 import ecs.damage.DamageType;
 import graphic.Animation;
+import starter.Game;
 import tools.Point;
 
 import java.util.List;
+import java.util.Optional;
 
 
 public class TrapChest extends Trap {
@@ -43,11 +45,6 @@ public class TrapChest extends Trap {
                 this,
                 new Animation(DEFAULT_CLOSED_ANIMATION_FRAMES, 100, false),
                 new Animation(DEFAULT_OPENING_ANIMATION_FRAMES, 30, false));
-
-        //Test wegen dem getComponent bei onInteraction
-        HealthComponent hc = new HealthComponent(this);
-        hc.setMaximalHealthpoints(200);
-        hc.setCurrentHealthpoints(200);
     }
 
 
@@ -64,22 +61,23 @@ public class TrapChest extends Trap {
 
     @Override
     public void onInteraction(Entity entity) {
-        System.out.println(entity.id + " bekommt Schaden!");
         ac.setCurrentAnimation(ac.getIdleRight());
+        Optional<Entity> h = Game.getHero();
 
-        /*
-         * Sucht nach der HealthComponent der TrapChest. Witzig.
-         * TODO: An die HealthComponent des Spielers kommen.
-        HealthComponent hc =
-            entity.getComponent(HealthComponent.class)
-                .map(HealthComponent.class::cast)
-                .orElseThrow(
-                    () ->
-                        createMissingComponentException(
-                            HealthComponent.class.getName(), entity));
+        //Holt den Spieler um dann seine HealthComponent zu holen um ihm Schaden hinzuzufügen.
+        Entity hero;
+        if(h.isPresent()){
+            hero = h.get();
+            HealthComponent hc =
+                hero.getComponent(HealthComponent.class)
+                    .map(HealthComponent.class::cast)
+                    .orElseThrow(
+                        () ->
+                            createMissingComponentException(
+                                HealthComponent.class.getName(), entity));
+            hc.receiveHit(new Damage(damage, DamageType.PHYSICAL, this));
 
-        hc.receiveHit(new Damage(damage, DamageType.PHYSICAL, this));
-
-         */
+            System.out.println(hero.id + " bekommt " + damage + " Schaden!");
+        }
     }
 }
