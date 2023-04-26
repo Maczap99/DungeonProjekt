@@ -17,6 +17,7 @@ import graphic.textures.TextureMap;
 import level.elements.ILevel;
 import level.elements.TileLevel;
 import level.elements.tile.Tile;
+import level.generator.AlternatingGeneratorStrategy;
 import level.generator.IGenerator;
 import level.tools.Coordinate;
 import level.tools.DesignLabel;
@@ -30,6 +31,8 @@ import org.powermock.api.mockito.PowerMockito;
 import org.powermock.core.classloader.annotations.PrepareForTest;
 import org.powermock.modules.junit4.PowerMockRunner;
 import tools.Point;
+
+import java.util.ArrayList;
 
 @RunWith(PowerMockRunner.class)
 @PrepareForTest({TextureMap.class})
@@ -55,10 +58,11 @@ public class TileLevelAPITest {
         when(textureMap.getTexture(anyString())).thenReturn(texture);
 
         painter = Mockito.mock(Painter.class);
-        generator = Mockito.mock(IGenerator.class);
+        var generators = new ArrayList<IGenerator>();
+        generators.add(Mockito.mock(IGenerator.class));
         onLevelLoader = Mockito.mock(IOnLevelLoader.class);
         level = Mockito.mock(TileLevel.class);
-        api = new LevelAPI(batch, painter, generator, onLevelLoader);
+        api = new LevelAPI(batch, painter, new AlternatingGeneratorStrategy(), generators, onLevelLoader);
     }
 
     @Test

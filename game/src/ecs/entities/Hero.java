@@ -12,7 +12,7 @@ import graphic.Animation;
  * The Hero is the player character. It's entity in the ECS. This class helps to setup the hero with
  * all its components and attributes .
  */
-public class Hero extends Entity {
+public class Hero extends Entity{
 
     private final int fireballCoolDown = 1;
     private final float xSpeed = 0.2f;
@@ -24,6 +24,8 @@ public class Hero extends Entity {
     private final String pathToRunRight = "knight/runRight";
     private Skill firstSkill;
 
+
+
     /** Entity with Components */
     public Hero() {
         super();
@@ -34,6 +36,10 @@ public class Hero extends Entity {
         PlayableComponent pc = new PlayableComponent(this);
         setupFireballSkill();
         pc.setSkillSlot1(firstSkill);
+
+        HealthComponent hc = new HealthComponent(this);
+        hc.setMaximalHealthpoints(200);
+        hc.setCurrentHealthpoints(200);
     }
 
     private void setupVelocityComponent() {
