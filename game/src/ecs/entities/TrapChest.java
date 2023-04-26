@@ -4,9 +4,11 @@ import ecs.components.*;
 import ecs.damage.Damage;
 import ecs.damage.DamageType;
 import graphic.Animation;
+import starter.Game;
 import tools.Point;
 
 import java.util.List;
+import java.util.Optional;
 
 
 public class TrapChest extends Trap {
@@ -30,11 +32,7 @@ public class TrapChest extends Trap {
             "objects/trapchest/trap_chest_open_anim_f1.png");
     AnimationComponent ac;
 
-
-
-    /*
-     * Erstellt eine TrapChest an position
-     */
+    //Erstellt eine TrapChest an position
     public TrapChest(Point position){
         new PositionComponent(this, position);
         new InteractionComponent(this, defaultInteractionRadius, false, this::onInteraction);
@@ -42,44 +40,30 @@ public class TrapChest extends Trap {
             new AnimationComponent(
                 this,
                 new Animation(DEFAULT_CLOSED_ANIMATION_FRAMES, 100, false),
+
                 new Animation(DEFAULT_OPENING_ANIMATION_FRAMES, 15, false));
 
-        //Test wegen dem getComponent bei onInteraction
-        HealthComponent hc = new HealthComponent(this);
-        hc.setMaximalHealthpoints(200);
-        hc.setCurrentHealthpoints(200);
     }
 
-
-    //Aus der Chest Klasse übernommen
-    private static MissingComponentException createMissingComponentException(
-        String Component, Entity e) {
-        return new MissingComponentException(
-            Component
-                + " missing in "
-                + TrapChest.class.getName()
-                + " in Entity "
-                + e.getClass().getName());
-    }
 
     @Override
     public void onInteraction(Entity entity) {
-        System.out.println(entity.id + " bekommt Schaden!");
         ac.setCurrentAnimation(ac.getIdleRight());
+        Optional<Entity> h = Game.getHero();
 
-        /*
-         * Sucht nach der HealthComponent der TrapChest. Witzig.
-         * TODO: An die HealthComponent des Spielers kommen.
-        HealthComponent hc =
-            entity.getComponent(HealthComponent.class)
-                .map(HealthComponent.class::cast)
-                .orElseThrow(
-                    () ->
-                        createMissingComponentException(
-                            HealthComponent.class.getName(), entity));
-
-        hc.receiveHit(new Damage(damage, DamageType.PHYSICAL, this));
-
-         */
+        //Holt den Spieler um dann seine HealthComponent zu holen um ihm Schaden hinzuzufügen.
+        Entity hero;
+        if(h.isPresent()){
+            hero = h.get();
+            Optional<Component> he = hero.getComponent(HealthComponent.class);
+            if(he.isPresent()){
+                HealthComponent hc = (HealthComponent) he.get();
+                hc.receiveHit(new Damage(damage, DamageType.PHYSICAL, this));
+            }
+            else{
+                throw new MissingComponentException("Player has no HealthComponent!");
+            }
+            System.out.println(hero.id + " bekommt " + damage + " Schaden!");
+        }
     }
 }

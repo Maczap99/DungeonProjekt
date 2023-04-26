@@ -16,6 +16,7 @@ import ecs.entities.Hero;
 import ecs.systems.*;
 import graphic.DungeonCamera;
 import graphic.Painter;
+import graphic.hud.MainMenu;
 import graphic.hud.PauseMenu;
 import level.IOnLevelLoader;
 import level.LevelAPI;
@@ -60,7 +61,8 @@ public class Game extends ScreenAdapter implements IOnLevelLoader {
     protected IGenerator generator;
 
     private boolean doSetup = true;
-    private static boolean paused = false;
+    private static boolean showPauseMenu = false;
+    private static boolean showMainMenu = false;
 
     /** All entities that are currently active in the dungeon */
     private static final Set<Entity> entities = new HashSet<>();
@@ -74,6 +76,7 @@ public class Game extends ScreenAdapter implements IOnLevelLoader {
 
     public static ILevel currentLevel;
     private static PauseMenu<Actor> pauseMenu;
+    private static MainMenu<Actor> mainMenu;
     private static Entity hero;
     private Logger gameLogger;
 
@@ -107,21 +110,28 @@ public class Game extends ScreenAdapter implements IOnLevelLoader {
     /** Called once at the beginning of the game. */
     protected void setup() {
         doSetup = false;
-        controller = new ArrayList<>();
         setupCameras();
         painter = new Painter(batch, camera);
         initBaseLogger();
         gameLogger = Logger.getLogger(this.getClass().getName());
         systems = new SystemController();
+
+        controller = new ArrayList<>();
         controller.add(systems);
         pauseMenu = new PauseMenu<>();
         controller.add(pauseMenu);
+        mainMenu = new MainMenu<>();
+        controller.add(mainMenu);
+
         hero = new Hero();
+
         var generators = new ArrayList<IGenerator>();
         generators.add(new WallGenerator(new RandomWalkGenerator()));
         generators.add(new MazeGenerator(true, true));
+
         levelAPI = new LevelAPI(batch, painter, new AlternatingGeneratorStrategy(), generators, this);
         levelAPI.loadLevel(LEVELSIZE);
+
         createSystems();
     }
 
@@ -130,13 +140,17 @@ public class Game extends ScreenAdapter implements IOnLevelLoader {
         setCameraFocus();
         manageEntitiesSets();
         getHero().ifPresent(this::loadNextLevelIfEntityIsOnEndTile);
-        if (Gdx.input.isKeyJustPressed(Input.Keys.P)) togglePause();
 
         Hero h = (Hero) hero;
         if (h.getTrapTimer().isFinished()) {
             h.resetSpeed();
             systems.update();
         }
+        
+        if (Gdx.input.isKeyJustPressed(Input.Keys.P)) togglePause();
+        if (Gdx.input.isKeyJustPressed(Input.Keys.P)) togglePauseMenu();
+        if (Gdx.input.isKeyJustPressed(Input.Keys.ESCAPE)) toggleMainMenu();
+
     }
 
     @Override
@@ -200,14 +214,26 @@ public class Game extends ScreenAdapter implements IOnLevelLoader {
     }
 
     /** Toggle between pause and run */
-    public static void togglePause() {
-        paused = !paused;
+    public static void togglePauseMenu() {
+        showPauseMenu = !showPauseMenu;
         if (systems != null) {
             systems.forEach(ECS_System::toggleRun);
         }
         if (pauseMenu != null) {
-            if (paused) pauseMenu.showMenu();
+            if (showPauseMenu) pauseMenu.showMenu();
             else pauseMenu.hideMenu();
+        }
+    }
+
+    /** Switch between main menu and game mode */
+    public static void toggleMainMenu() {
+        showMainMenu = !showMainMenu;
+        if (systems != null) {
+            systems.forEach(ECS_System::toggleRun);
+        }
+        if (mainMenu != null) {
+            if (showMainMenu) mainMenu.showMenu();
+            else mainMenu.hideMenu();
         }
     }
 
