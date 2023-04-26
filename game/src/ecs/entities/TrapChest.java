@@ -32,11 +32,7 @@ public class TrapChest extends Trap {
             "traps/trapchest/trap_chest_open_anim_f1.png");
     AnimationComponent ac;
 
-
-
-    /*
-     * Erstellt eine TrapChest an position
-     */
+    //Erstellt eine TrapChest an position
     public TrapChest(Point position){
         new PositionComponent(this, position);
         new InteractionComponent(this, defaultInteractionRadius, false, this::onInteraction);
@@ -45,18 +41,6 @@ public class TrapChest extends Trap {
                 this,
                 new Animation(DEFAULT_CLOSED_ANIMATION_FRAMES, 100, false),
                 new Animation(DEFAULT_OPENING_ANIMATION_FRAMES, 30, false));
-    }
-
-
-    //Aus der Chest Klasse übernommen
-    private static MissingComponentException createMissingComponentException(
-        String Component, Entity e) {
-        return new MissingComponentException(
-            Component
-                + " missing in "
-                + TrapChest.class.getName()
-                + " in Entity "
-                + e.getClass().getName());
     }
 
     @Override
