@@ -6,10 +6,10 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.scenes.scene2d.utils.Drawable;
 
-public class ColorDrawable implements Drawable {
+public class ColorBackground implements Drawable {
     private Color color;
 
-    public ColorDrawable(Color color) {
+    public ColorBackground(Color color) {
         this.color = color;
     }
 

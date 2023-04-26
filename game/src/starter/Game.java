@@ -146,11 +146,9 @@ public class Game extends ScreenAdapter implements IOnLevelLoader {
             h.resetSpeed();
             systems.update();
         }
-        
-        if (Gdx.input.isKeyJustPressed(Input.Keys.P)) togglePause();
+
         if (Gdx.input.isKeyJustPressed(Input.Keys.P)) togglePauseMenu();
         if (Gdx.input.isKeyJustPressed(Input.Keys.ESCAPE)) toggleMainMenu();
-
     }
 
     @Override

@@ -2,35 +2,24 @@ package graphic.hud;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
-import com.badlogic.gdx.graphics.Pixmap;
-import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
-import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.graphics.g2d.freetype.FreeTypeFontGenerator;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
-import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
-import com.badlogic.gdx.scenes.scene2d.utils.Drawable;
-import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
 import com.badlogic.gdx.utils.Align;
 import controller.ScreenController;
-import tools.Constants;
-import tools.Point;
 
 public class MainMenu<T extends Actor> extends ScreenController<T> {
 
-    /** Creates a new PauseMenu with a new Spritebatch */
     public MainMenu() {
         this(new SpriteBatch());
     }
 
-    /** Creates a new PauseMenu with a given Spritebatch */
     public MainMenu(SpriteBatch batch) {
         super(batch);
 
@@ -57,18 +46,19 @@ public class MainMenu<T extends Actor> extends ScreenController<T> {
         buttonStyle.fontColor = Color.GREEN;
         buttonStyle.downFontColor = Color.YELLOW;
         buttonStyle.overFontColor = Color.RED;
+        buttonStyle.disabledFontColor = Color.GRAY;
 
         Table table = new Table();
 
         var backgroundColor = new Color(0f, 0f, 0f, 0.8f);
 
-        var colorDrawable = new ColorDrawable(backgroundColor);
+        var backgroundDrawable = new ColorBackground(backgroundColor);
 
-        table.setBackground(colorDrawable);
+        table.setBackground(backgroundDrawable);
 
         table.setFillParent(true);
 
-        var newButton = new TextButton("New Game", buttonStyle);
+        var newButton = new TextButton("New", buttonStyle);
         newButton.addListener(new ClickListener() {
             @Override
             public void clicked(InputEvent event, float x, float y) {
@@ -76,7 +66,7 @@ public class MainMenu<T extends Actor> extends ScreenController<T> {
             }
         });
 
-        var saveButton = new TextButton("Save Game", buttonStyle);
+        var saveButton = new TextButton("Save", buttonStyle);
         saveButton.addListener(new ClickListener() {
             @Override
             public void clicked(InputEvent event, float x, float y) {
@@ -84,7 +74,7 @@ public class MainMenu<T extends Actor> extends ScreenController<T> {
             }
         });
 
-        var loadButton = new TextButton("Load Game", buttonStyle);
+        var loadButton = new TextButton("Load", buttonStyle);
         loadButton.addListener(new ClickListener() {
             @Override
             public void clicked(InputEvent event, float x, float y) {
@@ -92,25 +82,33 @@ public class MainMenu<T extends Actor> extends ScreenController<T> {
             }
         });
 
+        var exitButton = new TextButton("Exit", buttonStyle);
+        exitButton.addListener(new ClickListener() {
+            @Override
+            public void clicked(InputEvent event, float x, float y) {
+                System.out.println("exit button clicked");
+            }
+        });
+
+        newButton.setDisabled(true);
+        exitButton.setDisabled(true);
+
         table.add(newButton).width(Gdx.graphics.getWidth()).row();
         table.add(saveButton).width(Gdx.graphics.getWidth()).row();
         table.add(loadButton).width(Gdx.graphics.getWidth()).row();
+        table.add(exitButton).width(Gdx.graphics.getWidth()).row();
 
         table.align(Align.center);
-
-        //table.add().expandY();
 
         add((T) table);
 
         hideMenu();
     }
 
-    /** shows the Menu */
     public void showMenu() {
         this.forEach((Actor s) -> s.setVisible(true));
     }
 
-    /** hides the Menu */
     public void hideMenu() {
         this.forEach((Actor s) -> s.setVisible(false));
     }

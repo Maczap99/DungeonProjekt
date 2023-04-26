@@ -247,8 +247,8 @@ public class MazeGenerator implements IGenerator {
         OBSTACLE_THICKNESS = RANDOM.nextInt(2, 4);
         PATH_WIDTH = RANDOM.nextInt(2, 4);
         PATH_HEIGHT = RANDOM.nextInt(2, 4);
-        PATH_CELL_AMOUNT_X = RANDOM.nextInt(2, 7);
-        PATH_CELL_AMOUNT_Y = RANDOM.nextInt(2, 7);
+        PATH_CELL_AMOUNT_X = RANDOM.nextInt(2, 6);
+        PATH_CELL_AMOUNT_Y = RANDOM.nextInt(2, 6);
         return generateMaze();
     }
 
@@ -259,10 +259,10 @@ public class MazeGenerator implements IGenerator {
      */
     private LevelElement[][] generateMedium() {
         OBSTACLE_THICKNESS = RANDOM.nextInt(3, 5);
-        PATH_WIDTH = RANDOM.nextInt(3, 5);
-        PATH_HEIGHT = RANDOM.nextInt(3, 5);
-        PATH_CELL_AMOUNT_X = RANDOM.nextInt(6, 10);
-        PATH_CELL_AMOUNT_Y = RANDOM.nextInt(6, 10);
+        PATH_WIDTH = RANDOM.nextInt(3, 4);
+        PATH_HEIGHT = RANDOM.nextInt(3, 4);
+        PATH_CELL_AMOUNT_X = RANDOM.nextInt(4, 8);
+        PATH_CELL_AMOUNT_Y = RANDOM.nextInt(4, 8);
         return generateMaze();
     }
 
@@ -273,10 +273,10 @@ public class MazeGenerator implements IGenerator {
      */
     private LevelElement[][] generateLarge() {
         OBSTACLE_THICKNESS = RANDOM.nextInt(3, 5);
-        PATH_WIDTH = RANDOM.nextInt(4, 6);
-        PATH_HEIGHT = RANDOM.nextInt(4, 6);
-        PATH_CELL_AMOUNT_X = RANDOM.nextInt(8, 12);
-        PATH_CELL_AMOUNT_Y = RANDOM.nextInt(8, 12);
+        PATH_WIDTH = RANDOM.nextInt(4, 5);
+        PATH_HEIGHT = RANDOM.nextInt(4, 5);
+        PATH_CELL_AMOUNT_X = RANDOM.nextInt(6, 10);
+        PATH_CELL_AMOUNT_Y = RANDOM.nextInt(6, 10);
         return generateMaze();
     }
 
@@ -445,11 +445,11 @@ public class MazeGenerator implements IGenerator {
 
             int divide = 0;
             switch (levelSize) {
-                case SMALL -> divide = 500;
-                case MEDIUM -> divide = 600;
-                case LARGE -> divide = 700;
+                case SMALL -> divide = 700;
+                case MEDIUM -> divide = 800;
+                case LARGE -> divide = 900;
             }
-            ;
+
             int size = (mazeWidth * mazeHeight) / divide;
             for (int i = 0; i < size; i++) {
                 Coordinate trapC = getRandomFloor(layout);
@@ -460,8 +460,7 @@ public class MazeGenerator implements IGenerator {
     }
 
     private Coordinate getRandomFloor(LevelElement[][] layout) {
-        Coordinate coordinate =
-            new Coordinate(RANDOM.nextInt(layout[0].length), RANDOM.nextInt(layout.length));
+        var coordinate = new Coordinate(RANDOM.nextInt(layout[0].length), RANDOM.nextInt(layout.length));
         LevelElement randomTile = layout[coordinate.y][coordinate.x];
         if (randomTile == LevelElement.FLOOR) {
             return coordinate;
