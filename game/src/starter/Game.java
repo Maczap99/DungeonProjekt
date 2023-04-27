@@ -142,7 +142,8 @@ public class Game extends ScreenAdapter implements IOnLevelLoader {
         getHero().ifPresent(this::loadNextLevelIfEntityIsOnEndTile);
 
         Hero h = (Hero) hero;
-        if (h.getTrapTimer().isFinished()) {
+        if (h.getTrapTimer() != null
+            && h.getTrapTimer().isFinished()) {
             h.resetSpeed();
             systems.update();
         }
