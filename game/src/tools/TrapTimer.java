@@ -1,5 +1,9 @@
 package tools;
 
+/**
+ * This is a class who start a thread to count some action while the game ist still running
+ *
+ */
 public class TrapTimer implements Runnable {
     private int timeInMs;
     private boolean isRunning;

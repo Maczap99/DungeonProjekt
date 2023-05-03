@@ -79,6 +79,7 @@ public class Game extends ScreenAdapter implements IOnLevelLoader {
     private static MainMenu<Actor> mainMenu;
     private static Entity hero;
     private Logger gameLogger;
+    private int levelStage = 1;
 
     public static void main(String[] args) {
         // start the game
@@ -141,6 +142,7 @@ public class Game extends ScreenAdapter implements IOnLevelLoader {
         manageEntitiesSets();
         getHero().ifPresent(this::loadNextLevelIfEntityIsOnEndTile);
 
+        // if the time for the slow trap is zero, reset speed
         Hero h = (Hero) hero;
         if (h.getTrapTimer() != null
             && h.getTrapTimer().isFinished()) {
@@ -189,7 +191,13 @@ public class Game extends ScreenAdapter implements IOnLevelLoader {
     }
 
     private void loadNextLevelIfEntityIsOnEndTile(Entity hero) {
-        if (isOnEndTile(hero)) levelAPI.loadLevel(LEVELSIZE);
+        if (isOnEndTile(hero)){
+            levelStage++;
+            System.out.println("Ebene: "+levelStage);
+
+            levelAPI.loadLevel(LEVELSIZE);
+
+        }
     }
 
     private boolean isOnEndTile(Entity entity) {
@@ -319,5 +327,15 @@ public class Game extends ScreenAdapter implements IOnLevelLoader {
         new XPSystem();
         new SkillSystem();
         new ProjectileSystem();
+    }
+
+    /** Getter & Setter ************************/
+
+    public int getLevelStage() {
+        return levelStage;
+    }
+
+    public void setLevelStage(int levelStage) {
+        this.levelStage = levelStage;
     }
 }
