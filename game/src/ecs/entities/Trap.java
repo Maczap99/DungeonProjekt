@@ -1,3 +1,6 @@
+/**
+
+
 package ecs.entities;
 
 import ecs.components.IInteraction;
@@ -9,3 +12,4 @@ public abstract class Trap extends Entity implements IInteraction {
 
     public abstract void onInteraction(Entity entity);
 }
+ */

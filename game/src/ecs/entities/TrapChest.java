@@ -10,8 +10,13 @@ import tools.Point;
 import java.util.List;
 import java.util.Optional;
 
+/**
+ * This ist a Class for the entity TrapChest
+ * If the Player try to open the chest, he will get damage
+ *
+ */
 
-public class TrapChest extends Trap {
+public class TrapChest extends Entity implements IInteraction {
 
     //Wie viel Schaden die Truhe beim öffnen macht
     private int damage = 5;

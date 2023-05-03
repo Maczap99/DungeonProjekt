@@ -1,9 +1,15 @@
 package tools;
 
+/**
+ * This is a class who start a thread to count some action while the game ist still running
+ *
+ */
 public class TrapTimer implements Runnable {
     private int timeInMs;
     private boolean isRunning;
     private boolean isFinished;
+    private long start;
+    private long ende;
 
     public TrapTimer(int timeInMs) {
         this.timeInMs = timeInMs;
@@ -24,10 +30,24 @@ public class TrapTimer implements Runnable {
         return isFinished;
     }
 
+    public int getCurrentTimeInSec(){
+        ende = System.currentTimeMillis();
+        int time = (int) ((int) (ende - start));
+        time = (timeInMs / 1000) - (time / 1000);
+
+        if(time <= 0){
+            return 0;
+        }else{
+            return time;
+        }
+    }
+
     @Override
     public void run() {
         isRunning = true;
         isFinished = false;
+
+        start = System.currentTimeMillis();
 
         try {
             Thread.sleep(timeInMs);

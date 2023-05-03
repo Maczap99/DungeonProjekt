@@ -18,6 +18,7 @@ public class Hero extends Entity{
     private final int fireballCoolDown = 1;
     private float xSpeed = 0.2f;
     private float ySpeed = 0.2f;
+    private int mana = 1000;
     private TrapTimer trapTimer;
     private final String pathToIdleLeft = "knight/idleLeft";
     private final String pathToIdleRight = "knight/idleRight";
