@@ -6,6 +6,8 @@ import ecs.components.collision.ICollide;
 import level.elements.tile.Tile;
 import starter.Game;
 import tools.Point;
+import tools.TrapTimer;
+
 import java.util.Random;
 
 public class TrapFloor extends Trap implements ICollide {
@@ -43,9 +45,21 @@ public class TrapFloor extends Trap implements ICollide {
             Random rand = new Random();
             int time = rand.nextInt(10) + 6;
 
-            // wait random secounds
-            System.out.println(time + " Sekunden verlangsamt");
-            hero.startTrapTimer(time * 1000);
+            if(hero.getTrapTimer() != null && !hero.getTrapTimer().isFinished()){
+                TrapTimer t = hero.getTrapTimer();
+
+                // wait random secounds
+                System.out.println((time+t.getCurrentTimeInSec()) + " Sekunden verlangsamt");
+
+                hero.startTrapTimer((time+t.getCurrentTimeInSec()) * 1000);
+            }else{
+                // wait random secounds
+                System.out.println(time + " Sekunden verlangsamt");
+
+                hero.startTrapTimer(time * 1000);
+            }
+
+
 
             Game.setHero(hero);
             Game.systems.update();
