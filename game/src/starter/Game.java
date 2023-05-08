@@ -79,7 +79,7 @@ public class Game extends ScreenAdapter implements IOnLevelLoader {
     private static MainMenu<Actor> mainMenu;
     private static Entity hero;
     private Logger gameLogger;
-    private int levelStage = 1;
+    private static int levelStage = 1;
 
     public static void main(String[] args) {
         // start the game
@@ -331,7 +331,7 @@ public class Game extends ScreenAdapter implements IOnLevelLoader {
 
     /** Getter & Setter ************************/
 
-    public int getLevelStage() {
+    public static int getLevelStage() {
         return levelStage;
     }
 

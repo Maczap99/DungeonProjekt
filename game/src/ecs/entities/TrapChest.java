@@ -58,17 +58,29 @@ public class TrapChest extends Entity implements IInteraction {
 
         //Holt den Spieler um dann seine HealthComponent zu holen um ihm Schaden hinzuzufügen.
         Entity hero;
+        Hero held = (Hero) Game.getHero().get();
+
         if(h.isPresent()){
             hero = h.get();
             Optional<Component> he = hero.getComponent(HealthComponent.class);
             if(he.isPresent()){
                 HealthComponent hc = (HealthComponent) he.get();
                 hc.receiveHit(new Damage(damage, DamageType.PHYSICAL, this));
+
+                // test von jan
+
+                int d = held.getCurrentHealth() - damage;
+                if(d <= 0){
+                    held.setCurrentHealth(0);
+                }else{
+                    held.setCurrentHealth(d);
+                }
             }
             else{
                 throw new MissingComponentException("Player has no HealthComponent!");
             }
-            System.out.println(hero.id + " bekommt " + damage + " Schaden!");
+            System.out.println("Held id "+ hero.id + " bekommt " + damage + " Schaden!");
+            System.out.println("Leben: "+held.getCurrentHealth() + " von "+held.getHealth());
         }
     }
 }
