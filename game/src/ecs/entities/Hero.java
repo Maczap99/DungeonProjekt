@@ -13,22 +13,26 @@ import tools.TrapTimer;
  * The Hero is the player character. It's entity in the ECS. This class helps to setup the hero with
  * all its components and attributes .
  */
-public class Hero extends Entity{
+public class Hero extends Entity {
 
     private final int fireballCoolDown = 1;
     private float xSpeed = 0.2f;
     private float ySpeed = 0.2f;
     private int mana = 1000;
+    private int health = 10;
+    private int currentHealth = 10;
     private TrapTimer trapTimer;
     private final String pathToIdleLeft = "knight/idleLeft";
     private final String pathToIdleRight = "knight/idleRight";
     private final String pathToRunLeft = "knight/runLeft";
     private final String pathToRunRight = "knight/runRight";
     private Skill firstSkill;
+    private Skill healSkill;
 
 
-
-    /** Entity with Components */
+    /**
+     * Entity with Components
+     */
     public Hero() {
         super();
         new PositionComponent(this);
@@ -40,8 +44,8 @@ public class Hero extends Entity{
         pc.setSkillSlot1(firstSkill);
 
         HealthComponent hc = new HealthComponent(this);
-        hc.setMaximalHealthpoints(200);
-        hc.setCurrentHealthpoints(200);
+        hc.setMaximalHealthpoints(health);
+        hc.setCurrentHealthpoints(currentHealth);
     }
 
     public void setupVelocityComponent() {
@@ -58,30 +62,41 @@ public class Hero extends Entity{
 
     private void setupFireballSkill() {
         firstSkill =
-                new Skill(
-                        new FireballSkill(SkillTools::getCursorPositionAsPoint), fireballCoolDown);
+            new Skill(
+                new FireballSkill(SkillTools::getCursorPositionAsPoint), fireballCoolDown);
     }
+
+    /**
+     * private void setupHealSkill(){
+     * healSkill =
+     * new Skill(
+     * new HealSkill();
+     * )
+     * }
+     **/
 
     private void setupHitboxComponent() {
         new HitboxComponent(
-                this,
-                (you, other, direction) -> System.out.println("heroCollisionEnter"),
-                (you, other, direction) -> System.out.println("heroCollisionLeave"));
+            this,
+            (you, other, direction) -> System.out.println("heroCollisionEnter"),
+            (you, other, direction) -> System.out.println("heroCollisionLeave"));
     }
 
-    public void resetSpeed(){
+    public void resetSpeed() {
         setySpeed(0.2f);
         setxSpeed(0.2f);
     }
 
-    public void startTrapTimer(int time){
+    public void startTrapTimer(int time) {
         trapTimer = new TrapTimer(time);
 
         Thread thread = new Thread(trapTimer);
         thread.start();
     }
 
-    /** Getter & Setter ********************/
+    /**
+     * Getter & Setter
+     ********************/
 
     public float getxSpeed() {
         return xSpeed;
@@ -98,11 +113,28 @@ public class Hero extends Entity{
     public void setySpeed(float ySpeed) {
         this.ySpeed = ySpeed;
     }
+
     public TrapTimer getTrapTimer() {
         return trapTimer;
     }
 
     public void setTrapTimer(TrapTimer trapTimer) {
         this.trapTimer = trapTimer;
+    }
+
+    public int getCurrentHealth() {
+        return currentHealth;
+    }
+
+    public void setCurrentHealth(int currentHealth) {
+        this.currentHealth = currentHealth;
+    }
+
+    public int getHealth() {
+        return health;
+    }
+
+    public void setHealth(int health) {
+        this.health = health;
     }
 }
