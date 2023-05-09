@@ -41,14 +41,18 @@ public class Skill {
             XPComponent x = (XPComponent) xp.get();
 
             // check for enough mana and if the skill is unlocked
-            if (!isOnCoolDown() && manaCost <= hero.getCurrentMana() && x.getCurrentLevel() >= levelNeed) {
+            if (!isOnCoolDown() && x.getCurrentLevel() >= levelNeed) {
+                if(manaCost <= hero.getCurrentMana()) {
 
-                // reduce mana
-                hero.setCurrentMana(hero.getCurrentMana() - manaCost);
-                System.out.println("Mana: " + (int) hero.getCurrentMana());
+                    // reduce mana
+                    hero.setCurrentMana(hero.getCurrentMana() - manaCost);
+                    System.out.println("Mana: " + (int) hero.getCurrentMana());
 
-                skillFunction.execute(entity);
-                activateCoolDown();
+                    skillFunction.execute(entity);
+                    activateCoolDown();
+                }else{
+                    System.out.println("Nicht genug Mana!");
+                }
             }
         }
     }
