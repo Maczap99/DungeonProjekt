@@ -9,8 +9,11 @@ import configuration.Configuration;
 import configuration.KeyboardConfig;
 import controller.AbstractController;
 import controller.SystemController;
+import ecs.components.Component;
 import ecs.components.MissingComponentException;
 import ecs.components.PositionComponent;
+import ecs.components.VelocityComponent;
+import ecs.components.xp.XPComponent;
 import ecs.entities.Entity;
 import ecs.entities.Hero;
 import ecs.systems.*;
@@ -28,6 +31,7 @@ import level.generator.maze.MazeGenerator;
 import level.generator.postGeneration.WallGenerator;
 import level.generator.randomwalk.RandomWalkGenerator;
 import level.tools.LevelSize;
+import org.glassfish.json.JsonUtil;
 import tools.Constants;
 import tools.Point;
 
@@ -150,6 +154,10 @@ public class Game extends ScreenAdapter implements IOnLevelLoader {
             systems.update();
         }
 
+        if(h.getCurrentMana() < h.getMana()){
+            h.setCurrentMana(Math.min(h.getCurrentMana() + (0.5f / Constants.FRAME_RATE), 100));
+        }
+
         if (Gdx.input.isKeyJustPressed(Input.Keys.P)) togglePauseMenu();
         if (Gdx.input.isKeyJustPressed(Input.Keys.ESCAPE)) toggleMainMenu();
     }
@@ -195,8 +203,26 @@ public class Game extends ScreenAdapter implements IOnLevelLoader {
             levelStage++;
             System.out.println("Ebene: "+levelStage);
 
-            levelAPI.loadLevel(LEVELSIZE);
+            if(levelStage % 2 == 0){
+                Optional<Component> xp = hero.getComponent(XPComponent.class);
 
+                if(xp.isPresent()){
+                    XPComponent x = (XPComponent) xp.get();
+                    x.setCurrentLevel(x.getCurrentLevel() + 1);
+                    System.out.println("Level up! Level: " + x.getCurrentLevel());
+
+                    if(x.getCurrentLevel() == 2){
+                        System.out.println("Skill Speed Up Freigeschaltet! (Aktivierung: F)");
+                    } else if (x.getCurrentLevel() == 3) {
+                        System.out.println("Skill Cure Freigeschaltet! (Aktivierung: G)");
+                    } else if (x.getCurrentLevel() == 4) {
+                        System.out.println("Skill Healing Freigeschaltet! (Aktivierung: H)");
+                    }
+
+                }
+            }
+
+            levelAPI.loadLevel(LEVELSIZE);
         }
     }
 

@@ -45,12 +45,12 @@ public class TrapFloor extends Entity implements ICollide {
             if(hero.getTrapTimer() != null && !hero.getTrapTimer().isFinished()){
                 TrapTimer t = hero.getTrapTimer();
 
-                // wait random secounds
+                // wait random seconds
                 System.out.println((time+t.getCurrentTimeInSec()) + " Sekunden verlangsamt");
 
                 hero.startTrapTimer((time+t.getCurrentTimeInSec()) * 1000);
             }else{
-                // wait random secounds
+                // wait random seconds
                 System.out.println(time + " Sekunden verlangsamt");
 
                 hero.startTrapTimer(time * 1000);
