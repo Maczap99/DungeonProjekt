@@ -19,7 +19,7 @@ import java.util.Optional;
 public class TrapChest extends Entity implements IInteraction {
 
     //Wie viel Schaden die Truhe beim öffnen macht
-    private int damage = 5;
+    private int damage = 50;
 
     //Die Standardreichweite, von der aus mit der Chest interagieren kann
     public static final float defaultInteractionRadius = 1f;
@@ -67,8 +67,7 @@ public class TrapChest extends Entity implements IInteraction {
                 HealthComponent hc = (HealthComponent) he.get();
                 hc.receiveHit(new Damage(damage, DamageType.PHYSICAL, this));
 
-                // test von jan
-
+                // console output for current health
                 int d = held.getCurrentHealth() - damage;
                 if(d <= 0){
                     held.setCurrentHealth(0);
@@ -80,7 +79,7 @@ public class TrapChest extends Entity implements IInteraction {
                 throw new MissingComponentException("Player has no HealthComponent!");
             }
             System.out.println("Held id "+ hero.id + " bekommt " + damage + " Schaden!");
-            System.out.println("Leben: "+held.getCurrentHealth() + " von "+held.getHealth());
+            System.out.println("Leben: " + held.getCurrentHealth() + " von "+held.getHealth());
         }
     }
 }

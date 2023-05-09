@@ -88,7 +88,7 @@ public class RandomWalkGenerator implements IGenerator {
             }
         }
 
-        int size = (xSize*ySize) / 300;
+        int size = (xSize*ySize) / 500;
         for (int i = 0; i < size; i++) {
             Coordinate trapC = getRandomFloor(layout);
             layout[trapC.y][trapC.x] = LevelElement.TRAP;

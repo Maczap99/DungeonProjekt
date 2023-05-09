@@ -27,7 +27,7 @@ public class SkillTest {
     public void execute() {
         // setup
         entity = new Entity();
-        skill = new Skill(skillFunction, baseCoolDownInSeconds);
+        skill = new Skill(skillFunction, baseCoolDownInSeconds, 10, 0);
 
         // test first execution
         assertFalse(skill.isOnCoolDown());
