@@ -12,7 +12,6 @@ import controller.SystemController;
 import ecs.components.Component;
 import ecs.components.MissingComponentException;
 import ecs.components.PositionComponent;
-import ecs.components.VelocityComponent;
 import ecs.components.xp.XPComponent;
 import ecs.entities.Entity;
 import ecs.entities.Hero;
@@ -31,7 +30,6 @@ import level.generator.maze.MazeGenerator;
 import level.generator.postGeneration.WallGenerator;
 import level.generator.randomwalk.RandomWalkGenerator;
 import level.tools.LevelSize;
-import org.glassfish.json.JsonUtil;
 import tools.Constants;
 import tools.Point;
 
@@ -84,6 +82,7 @@ public class Game extends ScreenAdapter implements IOnLevelLoader {
     private static Entity hero;
     private Logger gameLogger;
     private static int levelStage = 1;
+    public static boolean gameLoaded;
 
     public static void main(String[] args) {
         // start the game
@@ -121,15 +120,6 @@ public class Game extends ScreenAdapter implements IOnLevelLoader {
         gameLogger = Logger.getLogger(this.getClass().getName());
         systems = new SystemController();
 
-        controller = new ArrayList<>();
-        controller.add(systems);
-        pauseMenu = new PauseMenu<>();
-        controller.add(pauseMenu);
-        mainMenu = new MainMenu<>();
-        controller.add(mainMenu);
-
-        hero = new Hero();
-
         var generators = new ArrayList<IGenerator>();
         generators.add(new WallGenerator(new RandomWalkGenerator()));
         generators.add(new MazeGenerator(true, true));
@@ -137,7 +127,21 @@ public class Game extends ScreenAdapter implements IOnLevelLoader {
         levelAPI = new LevelAPI(batch, painter, new AlternatingGeneratorStrategy(), generators, this);
         levelAPI.loadLevel(LEVELSIZE);
 
+        controller = new ArrayList<>();
+        controller.add(systems);
+        pauseMenu = new PauseMenu<>();
+        controller.add(pauseMenu);
+        mainMenu = new MainMenu<>(this, levelAPI);
+        controller.add(mainMenu);
+
+        hero = new Hero();
+
         createSystems();
+
+        /*
+        * Open main menu on start.
+        * */
+        toggleMainMenu();
     }
 
     /** Called at the beginning of each frame. Before the controllers call <code>update</code>. */
@@ -159,7 +163,7 @@ public class Game extends ScreenAdapter implements IOnLevelLoader {
         }
 
         //if (Gdx.input.isKeyJustPressed(Input.Keys.P)) togglePauseMenu();
-        if (Gdx.input.isKeyJustPressed(Input.Keys.ESCAPE)) toggleMainMenu();
+        if (Gdx.input.isKeyJustPressed(Input.Keys.ESCAPE) && !MainMenu.isInitialState()) toggleMainMenu();
     }
 
     @Override
@@ -198,7 +202,7 @@ public class Game extends ScreenAdapter implements IOnLevelLoader {
         } else camera.setFocusPoint(new Point(0, 0));
     }
 
-    private void loadNextLevelIfEntityIsOnEndTile(Entity hero) {
+    public void loadNextLevelIfEntityIsOnEndTile(Entity hero) {
         if (isOnEndTile(hero)){
             levelStage++;
             System.out.println("Ebene: "+levelStage);

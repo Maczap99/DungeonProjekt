@@ -20,21 +20,21 @@ import java.util.Optional;
  */
 public class Hero extends Entity implements ILevelUp {
 
-    private transient final int fireballCoolDown = 1;
-    private transient final int healCoolDown = 5;
-    private transient final int cureCoolDown = 1;
-    private transient final int speedCoolDown = 5;
-    private transient float xSpeed = 0.2f;
-    private transient float ySpeed = 0.2f;
-    private transient float mana = 100f;
-    private transient float currentMana = 100f;
-    private transient int health = 100;
-    private transient int currentHealth = 100;
-    private transient TrapTimer trapTimer;
-    private transient final String pathToIdleLeft = "knight/idleLeft";
-    private transient final String pathToIdleRight = "knight/idleRight";
-    private transient final String pathToRunLeft = "knight/runLeft";
-    private transient final String pathToRunRight = "knight/runRight";
+    private final int fireballCoolDown = 1;
+    private final int healCoolDown = 5;
+    private final int cureCoolDown = 1;
+    private final int speedCoolDown = 5;
+    private float xSpeed = 0.2f;
+    private float ySpeed = 0.2f;
+    private float mana = 100f;
+    private float currentMana = 100f;
+    private int health = 100;
+    private int currentHealth = 100;
+    private TrapTimer trapTimer;
+    private final String pathToIdleLeft = "knight/idleLeft";
+    private final String pathToIdleRight = "knight/idleRight";
+    private final String pathToRunLeft = "knight/runLeft";
+    private final String pathToRunRight = "knight/runRight";
     private transient Skill firstSkill;
     private transient Skill healSkill;
     private transient Skill cureSkill;
@@ -46,6 +46,12 @@ public class Hero extends Entity implements ILevelUp {
      */
     public Hero() {
         super();
+
+        setup();
+    }
+
+    public void setup() {
+
         new PositionComponent(this);
         setupVelocityComponent();
         setupAnimationComponent();

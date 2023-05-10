@@ -19,6 +19,11 @@ public class TrapFloor extends Entity implements ICollide {
 
     public TrapFloor(Point position) {
         super();
+
+        setup(position);
+    }
+
+    public void setup(Point position) {
         new PositionComponent(this, position);
         Point offset = new Point(0, 0);
         new HitboxComponent(

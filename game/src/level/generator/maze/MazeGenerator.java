@@ -1,11 +1,13 @@
 package level.generator.maze;
 
+import ecs.entities.Entity;
 import ecs.entities.TrapChest;
 import ecs.entities.TrapFloor;
 import level.elements.ILevel;
 import level.elements.TileLevel;
 import level.generator.IGenerator;
 import level.tools.*;
+import starter.Game;
 import tools.Point;
 
 import java.util.ArrayList;
@@ -312,6 +314,7 @@ public class MazeGenerator implements IGenerator {
                  * Places a chest in a dead end.
                  * Start and end of the maze are excluded.
                  * */
+
                 if (!isBacktracking) {
                     if (placeChestInDeadEnds
                         && getBooleanWithPercentage(70)) {

@@ -16,7 +16,7 @@ import starter.Game;
 public class Entity implements Serializable {
     private static int nextId = 0;
     public final int id = nextId++;
-    private transient HashMap<Class, Component> components;
+    public transient HashMap<Class, Component> components;
     private transient final Logger entityLogger;
 
     public Entity() {
@@ -51,6 +51,9 @@ public class Entity implements Serializable {
      * @return Optional that can contain the requested component
      */
     public Optional<Component> getComponent(Class klass) {
-        return Optional.ofNullable(components.get(klass));
+        if(klass != null && components != null) {
+            return Optional.ofNullable(components.get(klass));
+        }
+        return Optional.ofNullable(null);
     }
 }

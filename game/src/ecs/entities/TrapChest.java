@@ -19,7 +19,7 @@ import java.util.Optional;
 public class TrapChest extends Entity implements IInteraction {
 
     //Wie viel Schaden die Truhe beim öffnen macht
-    private int damage = 50;
+    private static final int damage = 50;
 
     //Die Standardreichweite, von der aus mit der Chest interagieren kann
     public static final float defaultInteractionRadius = 1f;
@@ -41,6 +41,11 @@ public class TrapChest extends Entity implements IInteraction {
     //Erstellt eine TrapChest an position
     public TrapChest(Point position){
         super();
+
+        setup(position);
+    }
+
+    public void setup(Point position) {
         new PositionComponent(this, position);
         new InteractionComponent(this, defaultInteractionRadius, false, this::onInteraction);
         ac =
@@ -51,7 +56,6 @@ public class TrapChest extends Entity implements IInteraction {
                 new Animation(DEFAULT_OPENING_ANIMATION_FRAMES, 20, false));
 
     }
-
 
     @Override
     public void onInteraction(Entity entity) {
