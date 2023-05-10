@@ -1,6 +1,8 @@
 package ecs.components;
 
 import ecs.entities.Entity;
+
+import java.io.Serializable;
 import java.util.logging.Logger;
 import logging.CustomLogLevel;
 import semanticAnalysis.types.DSLContextMember;
@@ -12,7 +14,7 @@ import tools.Point;
 @DSLType(name = "position_component")
 public class PositionComponent extends Component {
 
-    private final Logger positionCompLogger = Logger.getLogger(this.getClass().getName());
+    private transient final Logger positionCompLogger = Logger.getLogger(this.getClass().getName());
     private /*@DSLTypeMember(name="position")*/ Point position;
 
     /**

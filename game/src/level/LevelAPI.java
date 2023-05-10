@@ -23,7 +23,7 @@ public class LevelAPI {
     private IGeneratorStrategy genStrategy;
     private List<IGenerator> gens;
     private ILevel currentLevel;
-    private final Logger levelAPI_logger = Logger.getLogger(this.getClass().getName());
+    private final transient Logger levelAPI_logger = Logger.getLogger(this.getClass().getName());
 
     /**
      * @param batch Batch on which to draw.

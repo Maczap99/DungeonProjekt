@@ -21,5 +21,9 @@ public class KeyboardConfig {
     public static final ConfigKey<Integer> FIRST_SKILL =
             new ConfigKey<>(new String[] {"skill", "first"}, new ConfigIntValue(Input.Keys.Q));
     public static final ConfigKey<Integer> SECOND_SKILL =
-            new ConfigKey<>(new String[] {"skill", "second"}, new ConfigIntValue(Input.Keys.R));
+            new ConfigKey<>(new String[] {"skill", "second"}, new ConfigIntValue(Input.Keys.H));
+    public static final ConfigKey<Integer> THIRD_SKILL =
+        new ConfigKey<>(new String[] {"skill", "third"}, new ConfigIntValue(Input.Keys.G));
+    public static final ConfigKey<Integer> FOURTH_SKILL =
+        new ConfigKey<>(new String[] {"skill", "fourth"}, new ConfigIntValue(Input.Keys.F));
 }
