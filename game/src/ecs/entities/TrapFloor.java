@@ -18,6 +18,7 @@ import java.util.Random;
 public class TrapFloor extends Entity implements ICollide {
 
     public TrapFloor(Point position) {
+        super();
         new PositionComponent(this, position);
         Point offset = new Point(0, 0);
         new HitboxComponent(

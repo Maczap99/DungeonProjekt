@@ -4,12 +4,14 @@ import ecs.entities.Entity;
 import ecs.entities.Hero;
 import starter.Game;
 
+import java.io.Serializable;
+
 
 /**
  * This class is for the cure skill
  * if you use this skill, it set the timer of a slow trap on zero
  */
-public class CureSkill extends BuffSkill{
+public class CureSkill extends BuffSkill implements Serializable {
     public CureSkill(){
         super();
     }

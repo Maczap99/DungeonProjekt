@@ -1,6 +1,8 @@
 package ecs.components;
 
 import ecs.entities.Entity;
+
+import java.io.Serializable;
 import java.util.logging.Logger;
 import logging.CustomLogLevel;
 import semanticAnalysis.types.DSLContextMember;

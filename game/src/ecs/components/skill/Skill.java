@@ -7,9 +7,10 @@ import ecs.entities.Hero;
 import starter.Game;
 import tools.Constants;
 
+import java.io.Serializable;
 import java.util.Optional;
 
-public class Skill {
+public class Skill implements Serializable {
 
     private ISkillFunction skillFunction;
     private int coolDownInFrames;

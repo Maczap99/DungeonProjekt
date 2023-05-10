@@ -1,9 +1,7 @@
 package level.generator.maze;
 
-import ecs.entities.Chest;
 import ecs.entities.TrapChest;
 import ecs.entities.TrapFloor;
-import ecs.items.ItemData;
 import level.elements.ILevel;
 import level.elements.TileLevel;
 import level.generator.IGenerator;
@@ -12,7 +10,6 @@ import tools.Point;
 
 import java.util.ArrayList;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Random;
 
 /**
@@ -318,7 +315,6 @@ public class MazeGenerator implements IGenerator {
                 if (!isBacktracking) {
                     if (placeChestInDeadEnds
                         && getBooleanWithPercentage(70)) {
-                        //new Chest(new ArrayList<>(), calculateCellCenter(currentPosition));
                         new TrapChest(calculateCellCenter(currentPosition));
                     }
                     isBacktracking = true;
@@ -451,8 +447,6 @@ public class MazeGenerator implements IGenerator {
                 case LARGE -> divide = 1300;
             }
 
-            System.out.println("Level size: "+levelSize);
-			
             int size = (mazeWidth * mazeHeight) / divide;
 
             for (int i = 0; i < size; i++) {
