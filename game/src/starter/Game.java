@@ -3,6 +3,7 @@ package starter;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.ScreenAdapter;
+import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import configuration.Configuration;
@@ -83,6 +84,7 @@ public class Game extends ScreenAdapter implements IOnLevelLoader {
     private Logger gameLogger;
     private static int levelStage = 1;
     public static boolean gameLoaded;
+    private Sound sound;
 
     public static void main(String[] args) {
         // start the game
@@ -206,6 +208,15 @@ public class Game extends ScreenAdapter implements IOnLevelLoader {
         if (isOnEndTile(hero)){
             levelStage++;
             System.out.println("Ebene: "+levelStage);
+
+            try{
+                // start menu soundtrack
+                sound = Gdx.audio.newSound(Gdx.files.internal("game/sounds/door.mp3"));
+                sound.play(0.3f);
+
+            }catch (Exception e){
+                System.out.println("Sounddatei konnte nicht gefunden werden");
+            }
 
             if(levelStage % 2 == 0){
                 Optional<Component> xp = hero.getComponent(XPComponent.class);

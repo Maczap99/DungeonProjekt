@@ -107,24 +107,24 @@ public class Hero extends Entity implements ILevelUp {
     private void setupFireballSkill() {
         firstSkill =
             new Skill(
-                new FireballSkill(SkillTools::getCursorPositionAsPoint), fireballCoolDown, 10f, 0);
+                new FireballSkill(SkillTools::getCursorPositionAsPoint), fireballCoolDown, 0);
     }
     private void setupHealSkill() {
         healSkill =
             new Skill(
-                new HealSkill(), healCoolDown, 100f, 4);
+                new HealSkill(), healCoolDown,  4);
     }
 
     private void setupCureSkill() {
         cureSkill =
             new Skill(
-                new CureSkill(), cureCoolDown, 10f, 3);
+                new CureSkill(), cureCoolDown,  0);
     }
 
     private void setupSpeedSkill() {
         speedSkill =
             new Skill(
-                new SpeedSkill(), speedCoolDown, 10f, 2);
+                new SpeedSkill(), speedCoolDown, 2);
     }
     private void setupHitboxComponent() {
         new HitboxComponent(
