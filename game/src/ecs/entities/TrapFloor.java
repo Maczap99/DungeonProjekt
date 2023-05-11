@@ -68,7 +68,7 @@ public class TrapFloor extends Entity implements ICollide {
             try{
                 // start menu soundtrack
                 sound = Gdx.audio.newSound(Gdx.files.internal("game/sounds/trap/trapFloor1.mp3"));
-                sound.play(0.2f);
+                sound.play(0.5f);
 
             }catch (Exception e){
                 System.out.println("Sounddatei 'trapFloor1.mp3' konnte nicht gefunden werden");

@@ -30,7 +30,7 @@ public class CureSkill extends BuffSkill implements Serializable {
         try{
             // start menu soundtrack
             sound = Gdx.audio.newSound(Gdx.files.internal("game/sounds/skill/cure1.mp3"));
-            sound.play(0.3f);
+            sound.play(0.7f);
 
         }catch (Exception e){
             System.out.println("Sounddatei 'cure1.mp3' konnte nicht gefunden werden");

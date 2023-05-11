@@ -23,6 +23,7 @@ import level.LevelAPI;
 import level.tools.LevelSize;
 import starter.Game;
 import tools.EntityFileSystem;
+import java.util.Random;
 
 import java.util.HashMap;
 
@@ -90,10 +91,20 @@ public class MainMenu<T extends Actor> extends ScreenController<T> {
 
         table.setFillParent(true);
 
+        int secretSound = getSoundNubmer(0,29);
+        System.out.println(secretSound);
+
         try{
-            // start menu soundtrack
-            sound = Gdx.audio.newSound(Gdx.files.internal("game/sounds/menu/menu1.mp3"));
-            sound.loop(0.2f);
+            if(secretSound != 7){
+                // start menu soundtrack
+                sound = Gdx.audio.newSound(Gdx.files.internal("game/sounds/menu/menu1.mp3"));
+                sound.loop(0.2f);
+            }else{
+                // start menu soundtrack
+                sound = Gdx.audio.newSound(Gdx.files.internal("game/sounds/menu/menu2.mp3"));
+                sound.loop(0.2f);
+            }
+
 
         }catch (Exception e){
             System.out.println("Sounddatei konnte nicht gefunden werden");
@@ -108,6 +119,15 @@ public class MainMenu<T extends Actor> extends ScreenController<T> {
                     EntityFileSystem.deleteSaveGame();
 
                     sound.stop();
+
+                    try{
+                        // start menu soundtrack
+                        sound = Gdx.audio.newSound(Gdx.files.internal("game/sounds/dungeon/dungeon"+ getSoundNubmer(0,4)+".wav"));
+                        sound.loop(0.2f);
+
+                    }catch (Exception e){
+                        System.out.println("Sounddatei konnte nicht gefunden werden");
+                    }
 
                     Game.setHero(new Hero());
                     levelAPI.loadLevel(LevelSize.MEDIUM);
@@ -146,6 +166,16 @@ public class MainMenu<T extends Actor> extends ScreenController<T> {
                     var entities = EntityFileSystem.loadEntities();
 
                     sound.stop();
+
+                    try{
+                        // start menu soundtrack
+                        sound = Gdx.audio.newSound(Gdx.files.internal("game/sounds/dungeon/dungeon"+ getSoundNubmer(0,4)+".wav"));
+                        sound.loop(0.2f);
+
+                    }catch (Exception e){
+                        System.out.println("Sounddatei konnte nicht gefunden werden");
+                    }
+
                     Game.getEntities().clear();
 
                     for (Entity entity : entities) {
@@ -194,6 +224,13 @@ public class MainMenu<T extends Actor> extends ScreenController<T> {
         table.setBackground(backgroundDrawable);
 
         initialState = false;
+    }
+
+    public int getSoundNubmer(int first, int last){
+        Random random = new Random();
+        int value = random.nextInt(last + first) + 1;
+
+        return value;
     }
 
     public void showMenu() {

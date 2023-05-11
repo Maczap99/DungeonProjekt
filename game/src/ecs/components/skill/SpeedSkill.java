@@ -54,7 +54,7 @@ public class SpeedSkill extends BuffSkill {
                 try{
                     // start menu soundtrack
                     sound = Gdx.audio.newSound(Gdx.files.internal("game/sounds/skill/speedUpIn.mp3"));
-                    sound.play(0.2f);
+                    sound.play(0.3f);
 
                 }catch (Exception e){
                     System.out.println("Sounddatei 'speedUpIn.mp3' konnte nicht gefunden werden");
