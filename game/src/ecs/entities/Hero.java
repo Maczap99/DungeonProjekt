@@ -30,7 +30,7 @@ public class Hero extends Entity implements ILevelUp {
     private float currentMana = 100f;
     private int health = 100;
     private int currentHealth = 100;
-    private TrapTimer trapTimer;
+    private transient TrapTimer trapTimer;
     private final String pathToIdleLeft = "knight/idleLeft";
     private final String pathToIdleRight = "knight/idleRight";
     private final String pathToRunLeft = "knight/runLeft";

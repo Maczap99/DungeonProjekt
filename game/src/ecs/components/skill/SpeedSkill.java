@@ -36,7 +36,7 @@ public class SpeedSkill extends BuffSkill {
                 v.setYVelocity(0.4f);
                 v.setXVelocity(0.4f);
 
-                // set secounds for timer
+                // set seconds for timer
                 int startTime = 3;
                 int ebene = Game.getLevelStage();
                 int time = startTime + (ebene / 2);
@@ -50,7 +50,8 @@ public class SpeedSkill extends BuffSkill {
 
                 hero.startTrapTimer(time * 1000);
             } else {
-                System.out.println("SpeedUp nicht möglich, da eine Falle aktiviert ist");
+                System.out.println("SpeedUp nicht nutzbar, da eine Falle aktiviert ist");
+                hero.setCurrentMana(hero.getCurrentMana() + 10);
             }
         } else {
             throw new MissingComponentException("Player has no HealthComponent!");
