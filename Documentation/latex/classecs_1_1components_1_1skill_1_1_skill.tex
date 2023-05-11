@@ -1,0 +1,77 @@
+\hypertarget{classecs_1_1components_1_1skill_1_1_skill}{}\doxysection{ecs.\+components.\+skill.\+Skill Class Reference}
+\label{classecs_1_1components_1_1skill_1_1_skill}\index{ecs.components.skill.Skill@{ecs.components.skill.Skill}}
+Inheritance diagram for ecs.\+components.\+skill.\+Skill\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classecs_1_1components_1_1skill_1_1_skill}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classecs_1_1components_1_1skill_1_1_skill_a6f48d8c1685bb7ab6e5050ecc9982340}{Skill}} (\mbox{\hyperlink{interfaceecs_1_1components_1_1skill_1_1_i_skill_function}{ISkill\+Function}} skill\+Function, float cool\+Down\+In\+Seconds, float mana\+Cost, int level\+Need)
+\item 
+void \mbox{\hyperlink{classecs_1_1components_1_1skill_1_1_skill_ad264c10713f3872ee8656643e858ca42}{execute}} (\mbox{\hyperlink{classecs_1_1entities_1_1_entity}{Entity}} entity)
+\item 
+boolean \mbox{\hyperlink{classecs_1_1components_1_1skill_1_1_skill_afbe9915bed35ee1ee8a40f4ff9fb252a}{is\+On\+Cool\+Down}} ()
+\item 
+void \mbox{\hyperlink{classecs_1_1components_1_1skill_1_1_skill_a822e398bc006d05eafc3a38d7847a96c}{activate\+Cool\+Down}} ()
+\item 
+void \mbox{\hyperlink{classecs_1_1components_1_1skill_1_1_skill_a335094876a783274e9296d718c36c6fc}{reduce\+Cool\+Down}} ()
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classecs_1_1components_1_1skill_1_1_skill_a6f48d8c1685bb7ab6e5050ecc9982340}\label{classecs_1_1components_1_1skill_1_1_skill_a6f48d8c1685bb7ab6e5050ecc9982340}} 
+\index{ecs.components.skill.Skill@{ecs.components.skill.Skill}!Skill@{Skill}}
+\index{Skill@{Skill}!ecs.components.skill.Skill@{ecs.components.skill.Skill}}
+\doxysubsubsection{\texorpdfstring{Skill()}{Skill()}}
+{\footnotesize\ttfamily ecs.\+components.\+skill.\+Skill.\+Skill (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{interfaceecs_1_1components_1_1skill_1_1_i_skill_function}{ISkill\+Function}}}]{skill\+Function,  }\item[{float}]{cool\+Down\+In\+Seconds,  }\item[{float}]{mana\+Cost,  }\item[{int}]{level\+Need }\end{DoxyParamCaption})}
+
+
+\begin{DoxyParams}{Parameters}
+{\em skill\+Function} & Function of this skill \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classecs_1_1components_1_1skill_1_1_skill_a822e398bc006d05eafc3a38d7847a96c}\label{classecs_1_1components_1_1skill_1_1_skill_a822e398bc006d05eafc3a38d7847a96c}} 
+\index{ecs.components.skill.Skill@{ecs.components.skill.Skill}!activateCoolDown@{activateCoolDown}}
+\index{activateCoolDown@{activateCoolDown}!ecs.components.skill.Skill@{ecs.components.skill.Skill}}
+\doxysubsubsection{\texorpdfstring{activateCoolDown()}{activateCoolDown()}}
+{\footnotesize\ttfamily void ecs.\+components.\+skill.\+Skill.\+activate\+Cool\+Down (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+activate cool down \mbox{\Hypertarget{classecs_1_1components_1_1skill_1_1_skill_ad264c10713f3872ee8656643e858ca42}\label{classecs_1_1components_1_1skill_1_1_skill_ad264c10713f3872ee8656643e858ca42}} 
+\index{ecs.components.skill.Skill@{ecs.components.skill.Skill}!execute@{execute}}
+\index{execute@{execute}!ecs.components.skill.Skill@{ecs.components.skill.Skill}}
+\doxysubsubsection{\texorpdfstring{execute()}{execute()}}
+{\footnotesize\ttfamily void ecs.\+components.\+skill.\+Skill.\+execute (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classecs_1_1entities_1_1_entity}{Entity}}}]{entity }\end{DoxyParamCaption})}
+
+Execute the method of this skill
+
+
+\begin{DoxyParams}{Parameters}
+{\em entity} & entity which uses the skill \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classecs_1_1components_1_1skill_1_1_skill_afbe9915bed35ee1ee8a40f4ff9fb252a}\label{classecs_1_1components_1_1skill_1_1_skill_afbe9915bed35ee1ee8a40f4ff9fb252a}} 
+\index{ecs.components.skill.Skill@{ecs.components.skill.Skill}!isOnCoolDown@{isOnCoolDown}}
+\index{isOnCoolDown@{isOnCoolDown}!ecs.components.skill.Skill@{ecs.components.skill.Skill}}
+\doxysubsubsection{\texorpdfstring{isOnCoolDown()}{isOnCoolDown()}}
+{\footnotesize\ttfamily boolean ecs.\+components.\+skill.\+Skill.\+is\+On\+Cool\+Down (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\begin{DoxyReturn}{Returns}
+true if cool down is not 0, else false 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classecs_1_1components_1_1skill_1_1_skill_a335094876a783274e9296d718c36c6fc}\label{classecs_1_1components_1_1skill_1_1_skill_a335094876a783274e9296d718c36c6fc}} 
+\index{ecs.components.skill.Skill@{ecs.components.skill.Skill}!reduceCoolDown@{reduceCoolDown}}
+\index{reduceCoolDown@{reduceCoolDown}!ecs.components.skill.Skill@{ecs.components.skill.Skill}}
+\doxysubsubsection{\texorpdfstring{reduceCoolDown()}{reduceCoolDown()}}
+{\footnotesize\ttfamily void ecs.\+components.\+skill.\+Skill.\+reduce\+Cool\+Down (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+reduces the current cool down by frame 
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/schli/\+Desktop/\+Projects/\+Intelli\+J/pm-\/dungeon-\/jan/game/src/ecs/components/skill/Skill.\+java\end{DoxyCompactItemize}

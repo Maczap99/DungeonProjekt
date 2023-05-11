@@ -1,0 +1,287 @@
+\hypertarget{classlevel_1_1elements_1_1tile_1_1_tile}{}\doxysection{level.\+elements.\+tile.\+Tile Class Reference}
+\label{classlevel_1_1elements_1_1tile_1_1_tile}\index{level.elements.tile.Tile@{level.elements.tile.Tile}}
+Inheritance diagram for level.\+elements.\+tile.\+Tile\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=0.919540cm]{classlevel_1_1elements_1_1tile_1_1_tile}
+\end{center}
+\end{figure}
+\doxysubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+enum \mbox{\hyperlink{enumlevel_1_1elements_1_1tile_1_1_tile_1_1_direction}{Direction}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classlevel_1_1elements_1_1tile_1_1_tile_abe41d8a0a68078e8005a2cee30951f14}{Tile}} (String texture\+Path, \mbox{\hyperlink{classlevel_1_1tools_1_1_coordinate}{Coordinate}} global\+Position, \mbox{\hyperlink{enumlevel_1_1tools_1_1_design_label}{Design\+Label}} design\+Label, \mbox{\hyperlink{interfacelevel_1_1elements_1_1_i_level}{ILevel}} level)
+\item 
+abstract void \mbox{\hyperlink{classlevel_1_1elements_1_1tile_1_1_tile_a5b7b0ef668200ae927eacc1ee029a1a2}{on\+Entering}} (\mbox{\hyperlink{classecs_1_1entities_1_1_entity}{Entity}} element)
+\item 
+String \mbox{\hyperlink{classlevel_1_1elements_1_1tile_1_1_tile_ac7d77a01bafbfa92316af77b430bac10}{get\+Texture\+Path}} ()
+\item 
+void \mbox{\hyperlink{classlevel_1_1elements_1_1tile_1_1_tile_afb4ad3780522a12eb755db3ac578c233}{set\+Texture\+Path}} (String texture)
+\item 
+\mbox{\hyperlink{classlevel_1_1tools_1_1_coordinate}{Coordinate}} \mbox{\hyperlink{classlevel_1_1elements_1_1tile_1_1_tile_ab4f17a32de83279445d96fedf62ea518}{get\+Coordinate}} ()
+\item 
+\mbox{\hyperlink{classtools_1_1_point}{Point}} \mbox{\hyperlink{classlevel_1_1elements_1_1tile_1_1_tile_a14612ac8276a1c9433b4ec5bf55f79d4}{get\+Coordinate\+As\+Point}} ()
+\item 
+\mbox{\hyperlink{enumlevel_1_1tools_1_1_design_label}{Design\+Label}} \mbox{\hyperlink{classlevel_1_1elements_1_1tile_1_1_tile_ace88ab8fd35ae5626e724bfe43a1342b}{get\+Design\+Label}} ()
+\item 
+\mbox{\hyperlink{enumlevel_1_1tools_1_1_level_element}{Level\+Element}} \mbox{\hyperlink{classlevel_1_1elements_1_1tile_1_1_tile_abbd27699e91f0d67b5cd8c84d7e7918b}{get\+Level\+Element}} ()
+\item 
+void \mbox{\hyperlink{classlevel_1_1elements_1_1tile_1_1_tile_ab9d5df2080156cda8955f0a28278407f}{set\+Level\+Element}} (\mbox{\hyperlink{enumlevel_1_1tools_1_1_level_element}{Level\+Element}} new\+Level\+Element)
+\item 
+\mbox{\hyperlink{interfacelevel_1_1elements_1_1_i_level}{ILevel}} \mbox{\hyperlink{classlevel_1_1elements_1_1tile_1_1_tile_a4ea6b5161d9d1106f25c2acc3b4b2726}{get\+Level}} ()
+\item 
+void \mbox{\hyperlink{classlevel_1_1elements_1_1tile_1_1_tile_a587203cb20c48e683f379baff4f61841}{set\+Level}} (\mbox{\hyperlink{classlevel_1_1elements_1_1_tile_level}{Tile\+Level}} tile\+Level)
+\item 
+int \mbox{\hyperlink{classlevel_1_1elements_1_1tile_1_1_tile_a95227e87745fa582a19612eb59c6912d}{get\+Index}} ()
+\item 
+void \mbox{\hyperlink{classlevel_1_1elements_1_1tile_1_1_tile_ab38376bae1d8b2a26bce68ded6925282}{set\+Index}} (int index)
+\item 
+void \mbox{\hyperlink{classlevel_1_1elements_1_1tile_1_1_tile_af0cf7f7922cd01f3776aa76cf8098a5b}{add\+Connection}} (\mbox{\hyperlink{classlevel_1_1elements_1_1tile_1_1_tile}{Tile}} to)
+\item 
+Array$<$ Connection$<$ \mbox{\hyperlink{classlevel_1_1elements_1_1tile_1_1_tile}{Tile}} $>$ $>$ \mbox{\hyperlink{classlevel_1_1elements_1_1tile_1_1_tile_a7ea61fe6649909dadfd595a855f0a19a}{get\+Connections}} ()
+\item 
+\mbox{\hyperlink{enumlevel_1_1elements_1_1tile_1_1_tile_1_1_direction}{Direction}}\mbox{[}$\,$\mbox{]} \mbox{\hyperlink{classlevel_1_1elements_1_1tile_1_1_tile_af8ae3d9c8dde38aba87cd45606e28a57}{direction\+To}} (\mbox{\hyperlink{classlevel_1_1elements_1_1tile_1_1_tile}{Tile}} goal)
+\item 
+\mbox{\Hypertarget{classlevel_1_1elements_1_1tile_1_1_tile_a8e2936c7867e1cba937701fec8c0677b}\label{classlevel_1_1elements_1_1tile_1_1_tile_a8e2936c7867e1cba937701fec8c0677b}} 
+abstract boolean {\bfseries is\+Accessible} ()
+\end{DoxyCompactItemize}
+\doxysubsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classlevel_1_1elements_1_1tile_1_1_tile_a4490bdc852d93ec66cc04ceaf7203726}\label{classlevel_1_1elements_1_1tile_1_1_tile_a4490bdc852d93ec66cc04ceaf7203726}} 
+final \mbox{\hyperlink{classlevel_1_1tools_1_1_coordinate}{Coordinate}} {\bfseries global\+Position}
+\item 
+\mbox{\Hypertarget{classlevel_1_1elements_1_1tile_1_1_tile_a54789c13ca3f639cf4277de3f342d78c}\label{classlevel_1_1elements_1_1tile_1_1_tile_a54789c13ca3f639cf4277de3f342d78c}} 
+\mbox{\hyperlink{enumlevel_1_1tools_1_1_design_label}{Design\+Label}} {\bfseries design\+Label}
+\item 
+\mbox{\Hypertarget{classlevel_1_1elements_1_1tile_1_1_tile_ae175de91ff5d0586dd91fa489489cb38}\label{classlevel_1_1elements_1_1tile_1_1_tile_ae175de91ff5d0586dd91fa489489cb38}} 
+String {\bfseries texture\+Path}
+\item 
+\mbox{\Hypertarget{classlevel_1_1elements_1_1tile_1_1_tile_ab4a4e8c159b0e8f7fb77831f2cc010a9}\label{classlevel_1_1elements_1_1tile_1_1_tile_ab4a4e8c159b0e8f7fb77831f2cc010a9}} 
+\mbox{\hyperlink{interfacelevel_1_1elements_1_1_i_level}{ILevel}} {\bfseries level}
+\item 
+\mbox{\Hypertarget{classlevel_1_1elements_1_1tile_1_1_tile_ac7123cf8f31f9dff453073dcdc34c756}\label{classlevel_1_1elements_1_1tile_1_1_tile_ac7123cf8f31f9dff453073dcdc34c756}} 
+\mbox{\hyperlink{enumlevel_1_1tools_1_1_level_element}{Level\+Element}} {\bfseries level\+Element}
+\item 
+\mbox{\Hypertarget{classlevel_1_1elements_1_1tile_1_1_tile_a6d5b1536622db96c9efa458c1570a435}\label{classlevel_1_1elements_1_1tile_1_1_tile_a6d5b1536622db96c9efa458c1570a435}} 
+transient Array$<$ Connection$<$ \mbox{\hyperlink{classlevel_1_1elements_1_1tile_1_1_tile}{Tile}} $>$ $>$ {\bfseries connections} = new Array$<$$>$()
+\item 
+\mbox{\Hypertarget{classlevel_1_1elements_1_1tile_1_1_tile_a9688c92743cb84782d86f11d5033d2fe}\label{classlevel_1_1elements_1_1tile_1_1_tile_a9688c92743cb84782d86f11d5033d2fe}} 
+int {\bfseries index}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+A Tile is a field of the level.
+
+\begin{DoxyAuthor}{Author}
+Andre Matutat 
+\end{DoxyAuthor}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classlevel_1_1elements_1_1tile_1_1_tile_abe41d8a0a68078e8005a2cee30951f14}\label{classlevel_1_1elements_1_1tile_1_1_tile_abe41d8a0a68078e8005a2cee30951f14}} 
+\index{level.elements.tile.Tile@{level.elements.tile.Tile}!Tile@{Tile}}
+\index{Tile@{Tile}!level.elements.tile.Tile@{level.elements.tile.Tile}}
+\doxysubsubsection{\texorpdfstring{Tile()}{Tile()}}
+{\footnotesize\ttfamily level.\+elements.\+tile.\+Tile.\+Tile (\begin{DoxyParamCaption}\item[{String}]{texture\+Path,  }\item[{\mbox{\hyperlink{classlevel_1_1tools_1_1_coordinate}{Coordinate}}}]{global\+Position,  }\item[{\mbox{\hyperlink{enumlevel_1_1tools_1_1_design_label}{Design\+Label}}}]{design\+Label,  }\item[{\mbox{\hyperlink{interfacelevel_1_1elements_1_1_i_level}{ILevel}}}]{level }\end{DoxyParamCaption})}
+
+Creates a new Tile.
+
+
+\begin{DoxyParams}{Parameters}
+{\em texture\+Path} & Path to the texture of the tile. \\
+\hline
+{\em global\+Position} & Position of the tile in the global system. \\
+\hline
+{\em design\+Label} & Design of the Tile \\
+\hline
+{\em level} & The level this Tile belongs to \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classlevel_1_1elements_1_1tile_1_1_tile_af0cf7f7922cd01f3776aa76cf8098a5b}\label{classlevel_1_1elements_1_1tile_1_1_tile_af0cf7f7922cd01f3776aa76cf8098a5b}} 
+\index{level.elements.tile.Tile@{level.elements.tile.Tile}!addConnection@{addConnection}}
+\index{addConnection@{addConnection}!level.elements.tile.Tile@{level.elements.tile.Tile}}
+\doxysubsubsection{\texorpdfstring{addConnection()}{addConnection()}}
+{\footnotesize\ttfamily void level.\+elements.\+tile.\+Tile.\+add\+Connection (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classlevel_1_1elements_1_1tile_1_1_tile}{Tile}}}]{to }\end{DoxyParamCaption})}
+
+connects to tile together. this mean you can go from one tile to another. Connections are needed to calculate a path through the dungeon.
+
+
+\begin{DoxyParams}{Parameters}
+{\em to} & Tile to connect with. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classlevel_1_1elements_1_1tile_1_1_tile_af8ae3d9c8dde38aba87cd45606e28a57}\label{classlevel_1_1elements_1_1tile_1_1_tile_af8ae3d9c8dde38aba87cd45606e28a57}} 
+\index{level.elements.tile.Tile@{level.elements.tile.Tile}!directionTo@{directionTo}}
+\index{directionTo@{directionTo}!level.elements.tile.Tile@{level.elements.tile.Tile}}
+\doxysubsubsection{\texorpdfstring{directionTo()}{directionTo()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{enumlevel_1_1elements_1_1tile_1_1_tile_1_1_direction}{Direction}}\mbox{[}$\,$\mbox{]} level.\+elements.\+tile.\+Tile.\+direction\+To (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classlevel_1_1elements_1_1tile_1_1_tile}{Tile}}}]{goal }\end{DoxyParamCaption})}
+
+Returns the direction to a given tile.
+
+
+\begin{DoxyParams}{Parameters}
+{\em goal} & To which tile is the direction. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Can either be north, east, south, west or a combination of two. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classlevel_1_1elements_1_1tile_1_1_tile_a7ea61fe6649909dadfd595a855f0a19a}\label{classlevel_1_1elements_1_1tile_1_1_tile_a7ea61fe6649909dadfd595a855f0a19a}} 
+\index{level.elements.tile.Tile@{level.elements.tile.Tile}!getConnections@{getConnections}}
+\index{getConnections@{getConnections}!level.elements.tile.Tile@{level.elements.tile.Tile}}
+\doxysubsubsection{\texorpdfstring{getConnections()}{getConnections()}}
+{\footnotesize\ttfamily Array$<$ Connection$<$ \mbox{\hyperlink{classlevel_1_1elements_1_1tile_1_1_tile}{Tile}} $>$ $>$ level.\+elements.\+tile.\+Tile.\+get\+Connections (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Used by lib\+GDX pathfinding
+
+\begin{DoxyReturn}{Returns}
+all connections to other tiles 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classlevel_1_1elements_1_1tile_1_1_tile_ab4f17a32de83279445d96fedf62ea518}\label{classlevel_1_1elements_1_1tile_1_1_tile_ab4f17a32de83279445d96fedf62ea518}} 
+\index{level.elements.tile.Tile@{level.elements.tile.Tile}!getCoordinate@{getCoordinate}}
+\index{getCoordinate@{getCoordinate}!level.elements.tile.Tile@{level.elements.tile.Tile}}
+\doxysubsubsection{\texorpdfstring{getCoordinate()}{getCoordinate()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classlevel_1_1tools_1_1_coordinate}{Coordinate}} level.\+elements.\+tile.\+Tile.\+get\+Coordinate (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\begin{DoxyReturn}{Returns}
+The global coordinate of the tile. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classlevel_1_1elements_1_1tile_1_1_tile_a14612ac8276a1c9433b4ec5bf55f79d4}\label{classlevel_1_1elements_1_1tile_1_1_tile_a14612ac8276a1c9433b4ec5bf55f79d4}} 
+\index{level.elements.tile.Tile@{level.elements.tile.Tile}!getCoordinateAsPoint@{getCoordinateAsPoint}}
+\index{getCoordinateAsPoint@{getCoordinateAsPoint}!level.elements.tile.Tile@{level.elements.tile.Tile}}
+\doxysubsubsection{\texorpdfstring{getCoordinateAsPoint()}{getCoordinateAsPoint()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classtools_1_1_point}{Point}} level.\+elements.\+tile.\+Tile.\+get\+Coordinate\+As\+Point (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\begin{DoxyReturn}{Returns}
+The global coordinate of the tile as point. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classlevel_1_1elements_1_1tile_1_1_tile_ace88ab8fd35ae5626e724bfe43a1342b}\label{classlevel_1_1elements_1_1tile_1_1_tile_ace88ab8fd35ae5626e724bfe43a1342b}} 
+\index{level.elements.tile.Tile@{level.elements.tile.Tile}!getDesignLabel@{getDesignLabel}}
+\index{getDesignLabel@{getDesignLabel}!level.elements.tile.Tile@{level.elements.tile.Tile}}
+\doxysubsubsection{\texorpdfstring{getDesignLabel()}{getDesignLabel()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{enumlevel_1_1tools_1_1_design_label}{Design\+Label}} level.\+elements.\+tile.\+Tile.\+get\+Design\+Label (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\begin{DoxyReturn}{Returns}
+the Design\+Label of this tile 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classlevel_1_1elements_1_1tile_1_1_tile_a95227e87745fa582a19612eb59c6912d}\label{classlevel_1_1elements_1_1tile_1_1_tile_a95227e87745fa582a19612eb59c6912d}} 
+\index{level.elements.tile.Tile@{level.elements.tile.Tile}!getIndex@{getIndex}}
+\index{getIndex@{getIndex}!level.elements.tile.Tile@{level.elements.tile.Tile}}
+\doxysubsubsection{\texorpdfstring{getIndex()}{getIndex()}}
+{\footnotesize\ttfamily int level.\+elements.\+tile.\+Tile.\+get\+Index (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Used by lib\+GDX pathfinding
+
+\begin{DoxyReturn}{Returns}
+the index of this tile 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classlevel_1_1elements_1_1tile_1_1_tile_a4ea6b5161d9d1106f25c2acc3b4b2726}\label{classlevel_1_1elements_1_1tile_1_1_tile_a4ea6b5161d9d1106f25c2acc3b4b2726}} 
+\index{level.elements.tile.Tile@{level.elements.tile.Tile}!getLevel@{getLevel}}
+\index{getLevel@{getLevel}!level.elements.tile.Tile@{level.elements.tile.Tile}}
+\doxysubsubsection{\texorpdfstring{getLevel()}{getLevel()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{interfacelevel_1_1elements_1_1_i_level}{ILevel}} level.\+elements.\+tile.\+Tile.\+get\+Level (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\begin{DoxyReturn}{Returns}
+the Level this tile is in 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classlevel_1_1elements_1_1tile_1_1_tile_abbd27699e91f0d67b5cd8c84d7e7918b}\label{classlevel_1_1elements_1_1tile_1_1_tile_abbd27699e91f0d67b5cd8c84d7e7918b}} 
+\index{level.elements.tile.Tile@{level.elements.tile.Tile}!getLevelElement@{getLevelElement}}
+\index{getLevelElement@{getLevelElement}!level.elements.tile.Tile@{level.elements.tile.Tile}}
+\doxysubsubsection{\texorpdfstring{getLevelElement()}{getLevelElement()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{enumlevel_1_1tools_1_1_level_element}{Level\+Element}} level.\+elements.\+tile.\+Tile.\+get\+Level\+Element (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\begin{DoxyReturn}{Returns}
+the Level\+Element of this tile 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classlevel_1_1elements_1_1tile_1_1_tile_ac7d77a01bafbfa92316af77b430bac10}\label{classlevel_1_1elements_1_1tile_1_1_tile_ac7d77a01bafbfa92316af77b430bac10}} 
+\index{level.elements.tile.Tile@{level.elements.tile.Tile}!getTexturePath@{getTexturePath}}
+\index{getTexturePath@{getTexturePath}!level.elements.tile.Tile@{level.elements.tile.Tile}}
+\doxysubsubsection{\texorpdfstring{getTexturePath()}{getTexturePath()}}
+{\footnotesize\ttfamily String level.\+elements.\+tile.\+Tile.\+get\+Texture\+Path (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\begin{DoxyReturn}{Returns}
+path to the texture of this tile 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classlevel_1_1elements_1_1tile_1_1_tile_a5b7b0ef668200ae927eacc1ee029a1a2}\label{classlevel_1_1elements_1_1tile_1_1_tile_a5b7b0ef668200ae927eacc1ee029a1a2}} 
+\index{level.elements.tile.Tile@{level.elements.tile.Tile}!onEntering@{onEntering}}
+\index{onEntering@{onEntering}!level.elements.tile.Tile@{level.elements.tile.Tile}}
+\doxysubsubsection{\texorpdfstring{onEntering()}{onEntering()}}
+{\footnotesize\ttfamily abstract void level.\+elements.\+tile.\+Tile.\+on\+Entering (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classecs_1_1entities_1_1_entity}{Entity}}}]{element }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [abstract]}}
+
+What happens, if someone moves on this Tile?
+
+
+\begin{DoxyParams}{Parameters}
+{\em element} & Who entered this Tile? \\
+\hline
+\end{DoxyParams}
+
+
+Reimplemented in \mbox{\hyperlink{classlevel_1_1elements_1_1tile_1_1_door_tile_ae7950e9baf4af868f32409a5ff40236f}{level.\+elements.\+tile.\+Door\+Tile}}, \mbox{\hyperlink{classlevel_1_1elements_1_1tile_1_1_exit_tile_acb375ce434abefee2aadc59918a90acf}{level.\+elements.\+tile.\+Exit\+Tile}}, \mbox{\hyperlink{classlevel_1_1elements_1_1tile_1_1_floor_tile_ac1475b6175919d08c6994df94b27ad18}{level.\+elements.\+tile.\+Floor\+Tile}}, \mbox{\hyperlink{classlevel_1_1elements_1_1tile_1_1_hole_tile_a82249c2147a5a4cb897b0949d19b3311}{level.\+elements.\+tile.\+Hole\+Tile}}, \mbox{\hyperlink{classlevel_1_1elements_1_1tile_1_1_skip_tile_a31e106434ee84d73e4aa81ac5a8e8cb8}{level.\+elements.\+tile.\+Skip\+Tile}}, \mbox{\hyperlink{classlevel_1_1elements_1_1tile_1_1_trap_tile_a61cf918b5309c1efa9b62e40e51f3341}{level.\+elements.\+tile.\+Trap\+Tile}}, and \mbox{\hyperlink{classlevel_1_1elements_1_1tile_1_1_wall_tile_ac269fae3e259210c99eab07966f8f92e}{level.\+elements.\+tile.\+Wall\+Tile}}.
+
+\mbox{\Hypertarget{classlevel_1_1elements_1_1tile_1_1_tile_ab38376bae1d8b2a26bce68ded6925282}\label{classlevel_1_1elements_1_1tile_1_1_tile_ab38376bae1d8b2a26bce68ded6925282}} 
+\index{level.elements.tile.Tile@{level.elements.tile.Tile}!setIndex@{setIndex}}
+\index{setIndex@{setIndex}!level.elements.tile.Tile@{level.elements.tile.Tile}}
+\doxysubsubsection{\texorpdfstring{setIndex()}{setIndex()}}
+{\footnotesize\ttfamily void level.\+elements.\+tile.\+Tile.\+set\+Index (\begin{DoxyParamCaption}\item[{int}]{index }\end{DoxyParamCaption})}
+
+Used by lib\+GDX pathfinding
+
+
+\begin{DoxyParams}{Parameters}
+{\em index} & value of the index \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classlevel_1_1elements_1_1tile_1_1_tile_a587203cb20c48e683f379baff4f61841}\label{classlevel_1_1elements_1_1tile_1_1_tile_a587203cb20c48e683f379baff4f61841}} 
+\index{level.elements.tile.Tile@{level.elements.tile.Tile}!setLevel@{setLevel}}
+\index{setLevel@{setLevel}!level.elements.tile.Tile@{level.elements.tile.Tile}}
+\doxysubsubsection{\texorpdfstring{setLevel()}{setLevel()}}
+{\footnotesize\ttfamily void level.\+elements.\+tile.\+Tile.\+set\+Level (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classlevel_1_1elements_1_1_tile_level}{Tile\+Level}}}]{tile\+Level }\end{DoxyParamCaption})}
+
+Sets the corresponding level for this tile.
+
+
+\begin{DoxyParams}{Parameters}
+{\em tile\+Level} & The level this tile is in \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classlevel_1_1elements_1_1tile_1_1_tile_ab9d5df2080156cda8955f0a28278407f}\label{classlevel_1_1elements_1_1tile_1_1_tile_ab9d5df2080156cda8955f0a28278407f}} 
+\index{level.elements.tile.Tile@{level.elements.tile.Tile}!setLevelElement@{setLevelElement}}
+\index{setLevelElement@{setLevelElement}!level.elements.tile.Tile@{level.elements.tile.Tile}}
+\doxysubsubsection{\texorpdfstring{setLevelElement()}{setLevelElement()}}
+{\footnotesize\ttfamily void level.\+elements.\+tile.\+Tile.\+set\+Level\+Element (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{enumlevel_1_1tools_1_1_level_element}{Level\+Element}}}]{new\+Level\+Element }\end{DoxyParamCaption})}
+
+Change the type of the tile.
+
+
+\begin{DoxyParams}{Parameters}
+{\em new\+Level\+Element} & New type of the tile. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classlevel_1_1elements_1_1tile_1_1_tile_afb4ad3780522a12eb755db3ac578c233}\label{classlevel_1_1elements_1_1tile_1_1_tile_afb4ad3780522a12eb755db3ac578c233}} 
+\index{level.elements.tile.Tile@{level.elements.tile.Tile}!setTexturePath@{setTexturePath}}
+\index{setTexturePath@{setTexturePath}!level.elements.tile.Tile@{level.elements.tile.Tile}}
+\doxysubsubsection{\texorpdfstring{setTexturePath()}{setTexturePath()}}
+{\footnotesize\ttfamily void level.\+elements.\+tile.\+Tile.\+set\+Texture\+Path (\begin{DoxyParamCaption}\item[{String}]{texture }\end{DoxyParamCaption})}
+
+Change texture of the tile.
+
+
+\begin{DoxyParams}{Parameters}
+{\em texture} & New texture of the tile. \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/schli/\+Desktop/\+Projects/\+Intelli\+J/pm-\/dungeon-\/jan/game/src/level/elements/tile/Tile.\+java\end{DoxyCompactItemize}

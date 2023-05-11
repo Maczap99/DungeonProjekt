@@ -1,0 +1,127 @@
+\hypertarget{classlevel_1_1generator_1_1maze_1_1_maze_generator}{}\doxysection{level.\+generator.\+maze.\+Maze\+Generator Class Reference}
+\label{classlevel_1_1generator_1_1maze_1_1_maze_generator}\index{level.generator.maze.MazeGenerator@{level.generator.maze.MazeGenerator}}
+Inheritance diagram for level.\+generator.\+maze.\+Maze\+Generator\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classlevel_1_1generator_1_1maze_1_1_maze_generator}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classlevel_1_1generator_1_1maze_1_1_maze_generator_ae95f33626aa55f93b4f98cff4aa221d5}{Maze\+Generator}} (boolean generate\+Wall, boolean place\+Chests\+In\+Dead\+Ends)
+\item 
+\mbox{\hyperlink{interfacelevel_1_1elements_1_1_i_level}{ILevel}} \mbox{\hyperlink{classlevel_1_1generator_1_1maze_1_1_maze_generator_abeb711716db929ecd98b3f8dec4c23ed}{get\+Level}} (\mbox{\hyperlink{enumlevel_1_1tools_1_1_design_label}{Design\+Label}} design\+Label, \mbox{\hyperlink{enumlevel_1_1tools_1_1_level_size}{Level\+Size}} size)
+\item 
+\mbox{\hyperlink{enumlevel_1_1tools_1_1_level_element}{Level\+Element}}\mbox{[}$\,$\mbox{]}\mbox{[}$\,$\mbox{]} \mbox{\hyperlink{classlevel_1_1generator_1_1maze_1_1_maze_generator_aeb7b5ac87ba5c8188ad185a2563ed2f2}{get\+Layout}} (\mbox{\hyperlink{enumlevel_1_1tools_1_1_level_size}{Level\+Size}} size)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Member Functions inherited from \mbox{\hyperlink{interfacelevel_1_1generator_1_1_i_generator}{level.\+generator.\+IGenerator}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{interfacelevel_1_1elements_1_1_i_level}{ILevel}} \mbox{\hyperlink{interfacelevel_1_1generator_1_1_i_generator_ab9b972e48029cff83b1d09b7b1403ec6}{get\+Level}} (\mbox{\hyperlink{enumlevel_1_1tools_1_1_design_label}{Design\+Label}} design\+Label, \mbox{\hyperlink{enumlevel_1_1tools_1_1_level_size}{Level\+Size}} size)
+\item 
+default \mbox{\hyperlink{interfacelevel_1_1elements_1_1_i_level}{ILevel}} \mbox{\hyperlink{interfacelevel_1_1generator_1_1_i_generator_a3df5eb83fba27d0d104d4f5b11bea3ad}{get\+Level}} ()
+\item 
+default \mbox{\hyperlink{interfacelevel_1_1elements_1_1_i_level}{ILevel}} \mbox{\hyperlink{interfacelevel_1_1generator_1_1_i_generator_ac28d442110614ab943c636614d3115b6}{get\+Level}} (\mbox{\hyperlink{enumlevel_1_1tools_1_1_design_label}{Design\+Label}} design\+Label)
+\item 
+default \mbox{\hyperlink{interfacelevel_1_1elements_1_1_i_level}{ILevel}} \mbox{\hyperlink{interfacelevel_1_1generator_1_1_i_generator_abae3bfa6eb1e4c1f7a4b39e9d3a40a69}{get\+Level}} (\mbox{\hyperlink{enumlevel_1_1tools_1_1_level_size}{Level\+Size}} size)
+\item 
+\mbox{\hyperlink{enumlevel_1_1tools_1_1_level_element}{Level\+Element}}\mbox{[}$\,$\mbox{]}\mbox{[}$\,$\mbox{]} \mbox{\hyperlink{interfacelevel_1_1generator_1_1_i_generator_ae5d22191e707510b5485f4df4608cc8b}{get\+Layout}} (\mbox{\hyperlink{enumlevel_1_1tools_1_1_level_size}{Level\+Size}} size)
+\end{DoxyCompactItemize}
+\doxysubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static boolean \mbox{\hyperlink{classlevel_1_1generator_1_1maze_1_1_maze_generator_a3e3622c0913285304a21d9e78186040e}{get\+Boolean\+With\+Percentage}} (int percentage)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+A maze generator that generates floor layouts for levels with a specified size. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classlevel_1_1generator_1_1maze_1_1_maze_generator_ae95f33626aa55f93b4f98cff4aa221d5}\label{classlevel_1_1generator_1_1maze_1_1_maze_generator_ae95f33626aa55f93b4f98cff4aa221d5}} 
+\index{level.generator.maze.MazeGenerator@{level.generator.maze.MazeGenerator}!MazeGenerator@{MazeGenerator}}
+\index{MazeGenerator@{MazeGenerator}!level.generator.maze.MazeGenerator@{level.generator.maze.MazeGenerator}}
+\doxysubsubsection{\texorpdfstring{MazeGenerator()}{MazeGenerator()}}
+{\footnotesize\ttfamily level.\+generator.\+maze.\+Maze\+Generator.\+Maze\+Generator (\begin{DoxyParamCaption}\item[{boolean}]{generate\+Wall,  }\item[{boolean}]{place\+Chests\+In\+Dead\+Ends }\end{DoxyParamCaption})}
+
+Creates a new Maze\+Generator.
+
+
+\begin{DoxyParams}{Parameters}
+{\em generate\+Wall} & Whether to generate a surrounding wall around the maze. \\
+\hline
+{\em place\+Chests\+In\+Dead\+Ends} & Whether to place chests in dead ends of the maze. \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classlevel_1_1generator_1_1maze_1_1_maze_generator_a3e3622c0913285304a21d9e78186040e}\label{classlevel_1_1generator_1_1maze_1_1_maze_generator_a3e3622c0913285304a21d9e78186040e}} 
+\index{level.generator.maze.MazeGenerator@{level.generator.maze.MazeGenerator}!getBooleanWithPercentage@{getBooleanWithPercentage}}
+\index{getBooleanWithPercentage@{getBooleanWithPercentage}!level.generator.maze.MazeGenerator@{level.generator.maze.MazeGenerator}}
+\doxysubsubsection{\texorpdfstring{getBooleanWithPercentage()}{getBooleanWithPercentage()}}
+{\footnotesize\ttfamily static boolean level.\+generator.\+maze.\+Maze\+Generator.\+get\+Boolean\+With\+Percentage (\begin{DoxyParamCaption}\item[{int}]{percentage }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Generates a boolean value based on the given percentage. Returns true if a random number is less than or equal to the percentage, false otherwise.
+
+
+\begin{DoxyParams}{Parameters}
+{\em percentage} & percentage chance to return true \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+randomly generated boolean value 
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em Illegal\+Argument\+Exception} & if percentage is not between 0 and 100 (inclusive) \\
+\hline
+\end{DoxyExceptions}
+\mbox{\Hypertarget{classlevel_1_1generator_1_1maze_1_1_maze_generator_aeb7b5ac87ba5c8188ad185a2563ed2f2}\label{classlevel_1_1generator_1_1maze_1_1_maze_generator_aeb7b5ac87ba5c8188ad185a2563ed2f2}} 
+\index{level.generator.maze.MazeGenerator@{level.generator.maze.MazeGenerator}!getLayout@{getLayout}}
+\index{getLayout@{getLayout}!level.generator.maze.MazeGenerator@{level.generator.maze.MazeGenerator}}
+\doxysubsubsection{\texorpdfstring{getLayout()}{getLayout()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{enumlevel_1_1tools_1_1_level_element}{Level\+Element}}\mbox{[}$\,$\mbox{]}\mbox{[}$\,$\mbox{]} level.\+generator.\+maze.\+Maze\+Generator.\+get\+Layout (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{enumlevel_1_1tools_1_1_level_size}{Level\+Size}}}]{size }\end{DoxyParamCaption})}
+
+Generates the floor layout to a specified level size
+
+
+\begin{DoxyParams}{Parameters}
+{\em size} & size of the level to be generated \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+layout of the level 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{interfacelevel_1_1generator_1_1_i_generator_ae5d22191e707510b5485f4df4608cc8b}{level.\+generator.\+IGenerator}}.
+
+\mbox{\Hypertarget{classlevel_1_1generator_1_1maze_1_1_maze_generator_abeb711716db929ecd98b3f8dec4c23ed}\label{classlevel_1_1generator_1_1maze_1_1_maze_generator_abeb711716db929ecd98b3f8dec4c23ed}} 
+\index{level.generator.maze.MazeGenerator@{level.generator.maze.MazeGenerator}!getLevel@{getLevel}}
+\index{getLevel@{getLevel}!level.generator.maze.MazeGenerator@{level.generator.maze.MazeGenerator}}
+\doxysubsubsection{\texorpdfstring{getLevel()}{getLevel()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{interfacelevel_1_1elements_1_1_i_level}{ILevel}} level.\+generator.\+maze.\+Maze\+Generator.\+get\+Level (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{enumlevel_1_1tools_1_1_design_label}{Design\+Label}}}]{design\+Label,  }\item[{\mbox{\hyperlink{enumlevel_1_1tools_1_1_level_size}{Level\+Size}}}]{size }\end{DoxyParamCaption})}
+
+Generates a level of a specified size based on the given design label
+
+
+\begin{DoxyParams}{Parameters}
+{\em design\+Label} & design label for the level \\
+\hline
+{\em size} & size of the level to be generated \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+generated level 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{interfacelevel_1_1generator_1_1_i_generator_ab9b972e48029cff83b1d09b7b1403ec6}{level.\+generator.\+IGenerator}}.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/schli/\+Desktop/\+Projects/\+Intelli\+J/pm-\/dungeon-\/jan/game/src/level/generator/maze/Maze\+Generator.\+java\end{DoxyCompactItemize}

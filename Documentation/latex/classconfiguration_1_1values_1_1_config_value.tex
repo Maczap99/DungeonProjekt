@@ -1,0 +1,96 @@
+\hypertarget{classconfiguration_1_1values_1_1_config_value}{}\doxysection{configuration.\+values.\+Config\+Value\texorpdfstring{$<$}{<} T \texorpdfstring{$>$}{>} Class Template Reference}
+\label{classconfiguration_1_1values_1_1_config_value}\index{configuration.values.ConfigValue$<$ T $>$@{configuration.values.ConfigValue$<$ T $>$}}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+abstract String \mbox{\hyperlink{classconfiguration_1_1values_1_1_config_value_a10085fca012c11d530535a9ec72cb770}{serialize}} ()
+\item 
+abstract T \mbox{\hyperlink{classconfiguration_1_1values_1_1_config_value_a327cd4b08dd807362c3088eae610adb0}{deserialize}} (String value)
+\item 
+\mbox{\hyperlink{classconfiguration_1_1values_1_1_config_value_a61a25d69a740026d2bf636605c53b484}{Config\+Value}} (T value)
+\item 
+T \mbox{\hyperlink{classconfiguration_1_1values_1_1_config_value_a68a7407023571f364d9edce2fbdd43cc}{get}} ()
+\item 
+void \mbox{\hyperlink{classconfiguration_1_1values_1_1_config_value_aef3d7d2575b7813b56afce91f5a86481}{set}} (T value)
+\end{DoxyCompactItemize}
+\doxysubsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classconfiguration_1_1values_1_1_config_value_afcf5ffc9d5c2cfc8785e2f0f2e532814}\label{classconfiguration_1_1values_1_1_config_value_afcf5ffc9d5c2cfc8785e2f0f2e532814}} 
+T {\bfseries value}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classconfiguration_1_1values_1_1_config_value_a61a25d69a740026d2bf636605c53b484}\label{classconfiguration_1_1values_1_1_config_value_a61a25d69a740026d2bf636605c53b484}} 
+\index{configuration.values.ConfigValue$<$ T $>$@{configuration.values.ConfigValue$<$ T $>$}!ConfigValue@{ConfigValue}}
+\index{ConfigValue@{ConfigValue}!configuration.values.ConfigValue$<$ T $>$@{configuration.values.ConfigValue$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{ConfigValue()}{ConfigValue()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classconfiguration_1_1values_1_1_config_value}{configuration.\+values.\+Config\+Value}}$<$ T $>$.\mbox{\hyperlink{classconfiguration_1_1values_1_1_config_value}{Config\+Value}} (\begin{DoxyParamCaption}\item[{T}]{value }\end{DoxyParamCaption})}
+
+Creates a new Config\+Value.
+
+
+\begin{DoxyParams}{Parameters}
+{\em value} & Value. \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classconfiguration_1_1values_1_1_config_value_a327cd4b08dd807362c3088eae610adb0}\label{classconfiguration_1_1values_1_1_config_value_a327cd4b08dd807362c3088eae610adb0}} 
+\index{configuration.values.ConfigValue$<$ T $>$@{configuration.values.ConfigValue$<$ T $>$}!deserialize@{deserialize}}
+\index{deserialize@{deserialize}!configuration.values.ConfigValue$<$ T $>$@{configuration.values.ConfigValue$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{deserialize()}{deserialize()}}
+{\footnotesize\ttfamily abstract T \mbox{\hyperlink{classconfiguration_1_1values_1_1_config_value}{configuration.\+values.\+Config\+Value}}$<$ T $>$.deserialize (\begin{DoxyParamCaption}\item[{String}]{value }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [abstract]}}
+
+Deserialize the value from a string.
+
+
+\begin{DoxyParams}{Parameters}
+{\em value} & The string to deserialize. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The deserialized value. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classconfiguration_1_1values_1_1_config_value_a68a7407023571f364d9edce2fbdd43cc}\label{classconfiguration_1_1values_1_1_config_value_a68a7407023571f364d9edce2fbdd43cc}} 
+\index{configuration.values.ConfigValue$<$ T $>$@{configuration.values.ConfigValue$<$ T $>$}!get@{get}}
+\index{get@{get}!configuration.values.ConfigValue$<$ T $>$@{configuration.values.ConfigValue$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{get()}{get()}}
+{\footnotesize\ttfamily T \mbox{\hyperlink{classconfiguration_1_1values_1_1_config_value}{configuration.\+values.\+Config\+Value}}$<$ T $>$.get (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Get the current value.
+
+\begin{DoxyReturn}{Returns}
+The current value. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classconfiguration_1_1values_1_1_config_value_a10085fca012c11d530535a9ec72cb770}\label{classconfiguration_1_1values_1_1_config_value_a10085fca012c11d530535a9ec72cb770}} 
+\index{configuration.values.ConfigValue$<$ T $>$@{configuration.values.ConfigValue$<$ T $>$}!serialize@{serialize}}
+\index{serialize@{serialize}!configuration.values.ConfigValue$<$ T $>$@{configuration.values.ConfigValue$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{serialize()}{serialize()}}
+{\footnotesize\ttfamily abstract String \mbox{\hyperlink{classconfiguration_1_1values_1_1_config_value}{configuration.\+values.\+Config\+Value}}$<$ T $>$.serialize (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [abstract]}}
+
+Serialize the value to a string.
+
+\begin{DoxyReturn}{Returns}
+The serialized value. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classconfiguration_1_1values_1_1_config_value_aef3d7d2575b7813b56afce91f5a86481}\label{classconfiguration_1_1values_1_1_config_value_aef3d7d2575b7813b56afce91f5a86481}} 
+\index{configuration.values.ConfigValue$<$ T $>$@{configuration.values.ConfigValue$<$ T $>$}!set@{set}}
+\index{set@{set}!configuration.values.ConfigValue$<$ T $>$@{configuration.values.ConfigValue$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{set()}{set()}}
+{\footnotesize\ttfamily void \mbox{\hyperlink{classconfiguration_1_1values_1_1_config_value}{configuration.\+values.\+Config\+Value}}$<$ T $>$.set (\begin{DoxyParamCaption}\item[{T}]{value }\end{DoxyParamCaption})}
+
+Set the value.
+
+
+\begin{DoxyParams}{Parameters}
+{\em value} & The new value. \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/schli/\+Desktop/\+Projects/\+Intelli\+J/pm-\/dungeon-\/jan/game/src/configuration/values/Config\+Value.\+java\end{DoxyCompactItemize}

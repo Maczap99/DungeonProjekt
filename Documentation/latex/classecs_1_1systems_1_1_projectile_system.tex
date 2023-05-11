@@ -1,0 +1,75 @@
+\hypertarget{classecs_1_1systems_1_1_projectile_system}{}\doxysection{ecs.\+systems.\+Projectile\+System Class Reference}
+\label{classecs_1_1systems_1_1_projectile_system}\index{ecs.systems.ProjectileSystem@{ecs.systems.ProjectileSystem}}
+Inheritance diagram for ecs.\+systems.\+Projectile\+System\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classecs_1_1systems_1_1_projectile_system}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{classecs_1_1systems_1_1_projectile_system_a52737c682db382abe25214dad31182eb}{update}} ()
+\item 
+boolean \mbox{\hyperlink{classecs_1_1systems_1_1_projectile_system_a6cc9c7b1c94c4b8189fac139a51a23b1}{has\+Reached\+Endpoint}} (\mbox{\hyperlink{classtools_1_1_point}{Point}} start, \mbox{\hyperlink{classtools_1_1_point}{Point}} end, \mbox{\hyperlink{classtools_1_1_point}{Point}} current)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Member Functions inherited from \mbox{\hyperlink{classecs_1_1systems_1_1_e_c_s___system}{ecs.\+systems.\+ECS\+\_\+\+System}}}
+\begin{DoxyCompactItemize}
+\item 
+abstract void \mbox{\hyperlink{classecs_1_1systems_1_1_e_c_s___system_aadb0e27b4a261cba71140c73e4acc699}{update}} ()
+\item 
+boolean \mbox{\hyperlink{classecs_1_1systems_1_1_e_c_s___system_aa294a7dc60acbd3343b48e700173d299}{is\+Running}} ()
+\item 
+void \mbox{\hyperlink{classecs_1_1systems_1_1_e_c_s___system_af486a1dfce859a2d0384edb9b57081bd}{toggle\+Run}} ()
+\end{DoxyCompactItemize}
+\doxysubsection*{Additional Inherited Members}
+\doxysubsubsection*{Public Attributes inherited from \mbox{\hyperlink{classecs_1_1systems_1_1_e_c_s___system}{ecs.\+systems.\+ECS\+\_\+\+System}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classecs_1_1systems_1_1_e_c_s___system_a93f579e2c6f4c151fb721517ea41cb64}\label{classecs_1_1systems_1_1_e_c_s___system_a93f579e2c6f4c151fb721517ea41cb64}} 
+Logger {\bfseries system\+Logger} = Logger.\+get\+Logger(this.\+get\+Class().get\+Name())
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Protected Attributes inherited from \mbox{\hyperlink{classecs_1_1systems_1_1_e_c_s___system}{ecs.\+systems.\+ECS\+\_\+\+System}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classecs_1_1systems_1_1_e_c_s___system_ae18b974e133268bb03dc6234bd210823}\label{classecs_1_1systems_1_1_e_c_s___system_ae18b974e133268bb03dc6234bd210823}} 
+boolean {\bfseries run}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classecs_1_1systems_1_1_projectile_system_a6cc9c7b1c94c4b8189fac139a51a23b1}\label{classecs_1_1systems_1_1_projectile_system_a6cc9c7b1c94c4b8189fac139a51a23b1}} 
+\index{ecs.systems.ProjectileSystem@{ecs.systems.ProjectileSystem}!hasReachedEndpoint@{hasReachedEndpoint}}
+\index{hasReachedEndpoint@{hasReachedEndpoint}!ecs.systems.ProjectileSystem@{ecs.systems.ProjectileSystem}}
+\doxysubsubsection{\texorpdfstring{hasReachedEndpoint()}{hasReachedEndpoint()}}
+{\footnotesize\ttfamily boolean ecs.\+systems.\+Projectile\+System.\+has\+Reached\+Endpoint (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classtools_1_1_point}{Point}}}]{start,  }\item[{\mbox{\hyperlink{classtools_1_1_point}{Point}}}]{end,  }\item[{\mbox{\hyperlink{classtools_1_1_point}{Point}}}]{current }\end{DoxyParamCaption})}
+
+checks if the endpoint is reached
+
+
+\begin{DoxyParams}{Parameters}
+{\em start} & position to start the calculation \\
+\hline
+{\em end} & point to check if projectile has reached its goal \\
+\hline
+{\em current} & current position \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if the endpoint was reached or passed, else false 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classecs_1_1systems_1_1_projectile_system_a52737c682db382abe25214dad31182eb}\label{classecs_1_1systems_1_1_projectile_system_a52737c682db382abe25214dad31182eb}} 
+\index{ecs.systems.ProjectileSystem@{ecs.systems.ProjectileSystem}!update@{update}}
+\index{update@{update}!ecs.systems.ProjectileSystem@{ecs.systems.ProjectileSystem}}
+\doxysubsubsection{\texorpdfstring{update()}{update()}}
+{\footnotesize\ttfamily void ecs.\+systems.\+Projectile\+System.\+update (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+sets the velocity and removes entities that reached their endpoint 
+
+Reimplemented from \mbox{\hyperlink{classecs_1_1systems_1_1_e_c_s___system_aadb0e27b4a261cba71140c73e4acc699}{ecs.\+systems.\+ECS\+\_\+\+System}}.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/schli/\+Desktop/\+Projects/\+Intelli\+J/pm-\/dungeon-\/jan/game/src/ecs/systems/Projectile\+System.\+java\end{DoxyCompactItemize}

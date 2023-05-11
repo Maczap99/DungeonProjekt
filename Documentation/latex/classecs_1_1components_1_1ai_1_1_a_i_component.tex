@@ -1,0 +1,169 @@
+\hypertarget{classecs_1_1components_1_1ai_1_1_a_i_component}{}\doxysection{ecs.\+components.\+ai.\+AIComponent Class Reference}
+\label{classecs_1_1components_1_1ai_1_1_a_i_component}\index{ecs.components.ai.AIComponent@{ecs.components.ai.AIComponent}}
+Inheritance diagram for ecs.\+components.\+ai.\+AIComponent\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=3.000000cm]{classecs_1_1components_1_1ai_1_1_a_i_component}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classecs_1_1components_1_1ai_1_1_a_i_component_a6024d3a8f27312335371b53ebd89cf5b}{AIComponent}} (\mbox{\hyperlink{classecs_1_1entities_1_1_entity}{Entity}} entity, \mbox{\hyperlink{interfaceecs_1_1components_1_1ai_1_1fight_1_1_i_fight_a_i}{IFight\+AI}} fight\+AI, \mbox{\hyperlink{interfaceecs_1_1components_1_1ai_1_1idle_1_1_i_idle_a_i}{IIdle\+AI}} idle\+AI, \mbox{\hyperlink{interfaceecs_1_1components_1_1ai_1_1transition_1_1_i_transition}{ITransition}} transition)
+\item 
+\mbox{\hyperlink{classecs_1_1components_1_1ai_1_1_a_i_component_abce5b091dd98c7e09d44eca299f2ceb4}{AIComponent}} (@DSLContext\+Member(name=\char`\"{}entity\char`\"{}) \mbox{\hyperlink{classecs_1_1entities_1_1_entity}{Entity}} entity)
+\item 
+void \mbox{\hyperlink{classecs_1_1components_1_1ai_1_1_a_i_component_ad963fa3e5ef18704c1534c3a7b9650fe}{execute}} ()
+\item 
+void \mbox{\hyperlink{classecs_1_1components_1_1ai_1_1_a_i_component_a9183d60cb116623be99846dd8c19d708}{set\+Fight\+AI}} (\mbox{\hyperlink{interfaceecs_1_1components_1_1ai_1_1fight_1_1_i_fight_a_i}{IFight\+AI}} ai)
+\item 
+void \mbox{\hyperlink{classecs_1_1components_1_1ai_1_1_a_i_component_a94629d985f86479a26c185c82d2937eb}{set\+Idle\+AI}} (\mbox{\hyperlink{interfaceecs_1_1components_1_1ai_1_1idle_1_1_i_idle_a_i}{IIdle\+AI}} ai)
+\item 
+void \mbox{\hyperlink{classecs_1_1components_1_1ai_1_1_a_i_component_a3b3a74381f665a09f32fae26895ade7b}{set\+Transition\+AI}} (\mbox{\hyperlink{interfaceecs_1_1components_1_1ai_1_1transition_1_1_i_transition}{ITransition}} ai)
+\item 
+\mbox{\hyperlink{interfaceecs_1_1components_1_1ai_1_1idle_1_1_i_idle_a_i}{IIdle\+AI}} \mbox{\hyperlink{classecs_1_1components_1_1ai_1_1_a_i_component_ab51872d1d87e19d8788b8010ab3e4ae7}{get\+Idle\+AI}} ()
+\item 
+\mbox{\hyperlink{interfaceecs_1_1components_1_1ai_1_1transition_1_1_i_transition}{ITransition}} \mbox{\hyperlink{classecs_1_1components_1_1ai_1_1_a_i_component_aa2d6aa20e6d15b0bd77fe7d73f529611}{get\+Transition\+AI}} ()
+\item 
+\mbox{\hyperlink{interfaceecs_1_1components_1_1ai_1_1fight_1_1_i_fight_a_i}{IFight\+AI}} \mbox{\hyperlink{classecs_1_1components_1_1ai_1_1_a_i_component_ad1361e758e249c05244025d0fca04b00}{get\+Fight\+AI}} ()
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Member Functions inherited from \mbox{\hyperlink{classecs_1_1components_1_1_component}{ecs.\+components.\+Component}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classecs_1_1components_1_1_component_a1c4a399b019dcc3630c7614d631554ef}{Component}} (\mbox{\hyperlink{classecs_1_1entities_1_1_entity}{Entity}} entity)
+\item 
+\mbox{\hyperlink{classecs_1_1entities_1_1_entity}{Entity}} \mbox{\hyperlink{classecs_1_1components_1_1_component_a1db3804bc32e6724c76e0555d6720c2f}{get\+Entity}} ()
+\end{DoxyCompactItemize}
+\doxysubsection*{Static Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classecs_1_1components_1_1ai_1_1_a_i_component_a7db5b42626e484975522142b0fc1fe87}\label{classecs_1_1components_1_1ai_1_1_a_i_component_a7db5b42626e484975522142b0fc1fe87}} 
+static String {\bfseries name} = \char`\"{}AIComponent\char`\"{}
+\end{DoxyCompactItemize}
+\doxysubsection*{Additional Inherited Members}
+\doxysubsubsection*{Protected Attributes inherited from \mbox{\hyperlink{classecs_1_1components_1_1_component}{ecs.\+components.\+Component}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classecs_1_1components_1_1_component_aa33a53c73a06c5000d7ba4cc005acedc}\label{classecs_1_1components_1_1_component_aa33a53c73a06c5000d7ba4cc005acedc}} 
+\mbox{\hyperlink{classecs_1_1entities_1_1_entity}{Entity}} {\bfseries entity}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+AIComponent is a component that stores the idle and combat behavior of AI controlled entities 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classecs_1_1components_1_1ai_1_1_a_i_component_a6024d3a8f27312335371b53ebd89cf5b}\label{classecs_1_1components_1_1ai_1_1_a_i_component_a6024d3a8f27312335371b53ebd89cf5b}} 
+\index{ecs.components.ai.AIComponent@{ecs.components.ai.AIComponent}!AIComponent@{AIComponent}}
+\index{AIComponent@{AIComponent}!ecs.components.ai.AIComponent@{ecs.components.ai.AIComponent}}
+\doxysubsubsection{\texorpdfstring{AIComponent()}{AIComponent()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily ecs.\+components.\+ai.\+AIComponent.\+AIComponent (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classecs_1_1entities_1_1_entity}{Entity}}}]{entity,  }\item[{\mbox{\hyperlink{interfaceecs_1_1components_1_1ai_1_1fight_1_1_i_fight_a_i}{IFight\+AI}}}]{fight\+AI,  }\item[{\mbox{\hyperlink{interfaceecs_1_1components_1_1ai_1_1idle_1_1_i_idle_a_i}{IIdle\+AI}}}]{idle\+AI,  }\item[{\mbox{\hyperlink{interfaceecs_1_1components_1_1ai_1_1transition_1_1_i_transition}{ITransition}}}]{transition }\end{DoxyParamCaption})}
+
+
+\begin{DoxyParams}{Parameters}
+{\em entity} & associated entity \\
+\hline
+{\em fight\+AI} & combat behavior \\
+\hline
+{\em idle\+AI} & idle behavior \\
+\hline
+{\em transition} & Determines when to fight \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classecs_1_1components_1_1ai_1_1_a_i_component_abce5b091dd98c7e09d44eca299f2ceb4}\label{classecs_1_1components_1_1ai_1_1_a_i_component_abce5b091dd98c7e09d44eca299f2ceb4}} 
+\index{ecs.components.ai.AIComponent@{ecs.components.ai.AIComponent}!AIComponent@{AIComponent}}
+\index{AIComponent@{AIComponent}!ecs.components.ai.AIComponent@{ecs.components.ai.AIComponent}}
+\doxysubsubsection{\texorpdfstring{AIComponent()}{AIComponent()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily ecs.\+components.\+ai.\+AIComponent.\+AIComponent (\begin{DoxyParamCaption}\item[{@DSLContext\+Member(name=\char`\"{}entity\char`\"{}) \mbox{\hyperlink{classecs_1_1entities_1_1_entity}{Entity}}}]{entity }\end{DoxyParamCaption})}
+
+
+\begin{DoxyParams}{Parameters}
+{\em entity} & associated entity \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classecs_1_1components_1_1ai_1_1_a_i_component_ad963fa3e5ef18704c1534c3a7b9650fe}\label{classecs_1_1components_1_1ai_1_1_a_i_component_ad963fa3e5ef18704c1534c3a7b9650fe}} 
+\index{ecs.components.ai.AIComponent@{ecs.components.ai.AIComponent}!execute@{execute}}
+\index{execute@{execute}!ecs.components.ai.AIComponent@{ecs.components.ai.AIComponent}}
+\doxysubsubsection{\texorpdfstring{execute()}{execute()}}
+{\footnotesize\ttfamily void ecs.\+components.\+ai.\+AIComponent.\+execute (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Excecute the ai behavior \mbox{\Hypertarget{classecs_1_1components_1_1ai_1_1_a_i_component_ad1361e758e249c05244025d0fca04b00}\label{classecs_1_1components_1_1ai_1_1_a_i_component_ad1361e758e249c05244025d0fca04b00}} 
+\index{ecs.components.ai.AIComponent@{ecs.components.ai.AIComponent}!getFightAI@{getFightAI}}
+\index{getFightAI@{getFightAI}!ecs.components.ai.AIComponent@{ecs.components.ai.AIComponent}}
+\doxysubsubsection{\texorpdfstring{getFightAI()}{getFightAI()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{interfaceecs_1_1components_1_1ai_1_1fight_1_1_i_fight_a_i}{IFight\+AI}} ecs.\+components.\+ai.\+AIComponent.\+get\+Fight\+AI (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Returns the fight AI of the AIComponent
+
+\begin{DoxyReturn}{Returns}
+IFigth\+AI object representing the fight AI 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classecs_1_1components_1_1ai_1_1_a_i_component_ab51872d1d87e19d8788b8010ab3e4ae7}\label{classecs_1_1components_1_1ai_1_1_a_i_component_ab51872d1d87e19d8788b8010ab3e4ae7}} 
+\index{ecs.components.ai.AIComponent@{ecs.components.ai.AIComponent}!getIdleAI@{getIdleAI}}
+\index{getIdleAI@{getIdleAI}!ecs.components.ai.AIComponent@{ecs.components.ai.AIComponent}}
+\doxysubsubsection{\texorpdfstring{getIdleAI()}{getIdleAI()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{interfaceecs_1_1components_1_1ai_1_1idle_1_1_i_idle_a_i}{IIdle\+AI}} ecs.\+components.\+ai.\+AIComponent.\+get\+Idle\+AI (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Returns the idle AI of the AIComponent
+
+\begin{DoxyReturn}{Returns}
+IIdle\+AI object representing the idle AI 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classecs_1_1components_1_1ai_1_1_a_i_component_aa2d6aa20e6d15b0bd77fe7d73f529611}\label{classecs_1_1components_1_1ai_1_1_a_i_component_aa2d6aa20e6d15b0bd77fe7d73f529611}} 
+\index{ecs.components.ai.AIComponent@{ecs.components.ai.AIComponent}!getTransitionAI@{getTransitionAI}}
+\index{getTransitionAI@{getTransitionAI}!ecs.components.ai.AIComponent@{ecs.components.ai.AIComponent}}
+\doxysubsubsection{\texorpdfstring{getTransitionAI()}{getTransitionAI()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{interfaceecs_1_1components_1_1ai_1_1transition_1_1_i_transition}{ITransition}} ecs.\+components.\+ai.\+AIComponent.\+get\+Transition\+AI (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Returns the transition AI of the AIComponent
+
+\begin{DoxyReturn}{Returns}
+ITransition object representing the transition AI 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classecs_1_1components_1_1ai_1_1_a_i_component_a9183d60cb116623be99846dd8c19d708}\label{classecs_1_1components_1_1ai_1_1_a_i_component_a9183d60cb116623be99846dd8c19d708}} 
+\index{ecs.components.ai.AIComponent@{ecs.components.ai.AIComponent}!setFightAI@{setFightAI}}
+\index{setFightAI@{setFightAI}!ecs.components.ai.AIComponent@{ecs.components.ai.AIComponent}}
+\doxysubsubsection{\texorpdfstring{setFightAI()}{setFightAI()}}
+{\footnotesize\ttfamily void ecs.\+components.\+ai.\+AIComponent.\+set\+Fight\+AI (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{interfaceecs_1_1components_1_1ai_1_1fight_1_1_i_fight_a_i}{IFight\+AI}}}]{ai }\end{DoxyParamCaption})}
+
+Set a new fight ai
+
+
+\begin{DoxyParams}{Parameters}
+{\em ai} & new fight ai \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classecs_1_1components_1_1ai_1_1_a_i_component_a94629d985f86479a26c185c82d2937eb}\label{classecs_1_1components_1_1ai_1_1_a_i_component_a94629d985f86479a26c185c82d2937eb}} 
+\index{ecs.components.ai.AIComponent@{ecs.components.ai.AIComponent}!setIdleAI@{setIdleAI}}
+\index{setIdleAI@{setIdleAI}!ecs.components.ai.AIComponent@{ecs.components.ai.AIComponent}}
+\doxysubsubsection{\texorpdfstring{setIdleAI()}{setIdleAI()}}
+{\footnotesize\ttfamily void ecs.\+components.\+ai.\+AIComponent.\+set\+Idle\+AI (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{interfaceecs_1_1components_1_1ai_1_1idle_1_1_i_idle_a_i}{IIdle\+AI}}}]{ai }\end{DoxyParamCaption})}
+
+Set a new idle ai
+
+
+\begin{DoxyParams}{Parameters}
+{\em ai} & new idle ai \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classecs_1_1components_1_1ai_1_1_a_i_component_a3b3a74381f665a09f32fae26895ade7b}\label{classecs_1_1components_1_1ai_1_1_a_i_component_a3b3a74381f665a09f32fae26895ade7b}} 
+\index{ecs.components.ai.AIComponent@{ecs.components.ai.AIComponent}!setTransitionAI@{setTransitionAI}}
+\index{setTransitionAI@{setTransitionAI}!ecs.components.ai.AIComponent@{ecs.components.ai.AIComponent}}
+\doxysubsubsection{\texorpdfstring{setTransitionAI()}{setTransitionAI()}}
+{\footnotesize\ttfamily void ecs.\+components.\+ai.\+AIComponent.\+set\+Transition\+AI (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{interfaceecs_1_1components_1_1ai_1_1transition_1_1_i_transition}{ITransition}}}]{ai }\end{DoxyParamCaption})}
+
+Set a new transition ai
+
+
+\begin{DoxyParams}{Parameters}
+{\em ai} & new transition ai \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/schli/\+Desktop/\+Projects/\+Intelli\+J/pm-\/dungeon-\/jan/game/src/ecs/components/ai/AIComponent.\+java\end{DoxyCompactItemize}

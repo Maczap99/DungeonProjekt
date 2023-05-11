@@ -1,0 +1,100 @@
+\hypertarget{classconfiguration_1_1_config_key}{}\doxysection{configuration.\+Config\+Key\texorpdfstring{$<$}{<} Type \texorpdfstring{$>$}{>} Class Template Reference}
+\label{classconfiguration_1_1_config_key}\index{configuration.ConfigKey$<$ Type $>$@{configuration.ConfigKey$<$ Type $>$}}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classconfiguration_1_1_config_key_a7b1355376dce23756910a104bf87de34}{Config\+Key}} (String\mbox{[}$\,$\mbox{]} path, \mbox{\hyperlink{classconfiguration_1_1values_1_1_config_value}{Config\+Value}}$<$ Type $>$ default\+Value)
+\item 
+\mbox{\hyperlink{classconfiguration_1_1_config_key_ac579c8def4866937fe66209fac94e9a8}{Config\+Key}} (String path, \mbox{\hyperlink{classconfiguration_1_1values_1_1_config_value}{Config\+Value}}$<$ Type $>$ default\+Value)
+\item 
+Type \mbox{\hyperlink{classconfiguration_1_1_config_key_adc6d6edd997ea3748a0baf6d14fb2b14}{get}} ()
+\item 
+void \mbox{\hyperlink{classconfiguration_1_1_config_key_a0d0baee1c74f8390c621203815b11eee}{set}} (Type value)
+\end{DoxyCompactItemize}
+\doxysubsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classconfiguration_1_1_config_key_a2ce9dda5e0ab80452bbbcdccb3e0ada1}\label{classconfiguration_1_1_config_key_a2ce9dda5e0ab80452bbbcdccb3e0ada1}} 
+String\mbox{[}$\,$\mbox{]} {\bfseries path}
+\item 
+\mbox{\Hypertarget{classconfiguration_1_1_config_key_adbc1aa1924ed09d9d01dd14142645d72}\label{classconfiguration_1_1_config_key_adbc1aa1924ed09d9d01dd14142645d72}} 
+final \mbox{\hyperlink{classconfiguration_1_1values_1_1_config_value}{Config\+Value}}$<$ Type $>$ {\bfseries value}
+\item 
+\mbox{\Hypertarget{classconfiguration_1_1_config_key_a21dd4dc26b4926c045327608b032161f}\label{classconfiguration_1_1_config_key_a21dd4dc26b4926c045327608b032161f}} 
+Optional$<$ \mbox{\hyperlink{classconfiguration_1_1_configuration}{Configuration}} $>$ {\bfseries configuration} = Optional.\+empty()
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+A Config\+Key is a key to a value in the configuration file.
+
+
+\begin{DoxyParams}{Parameters}
+{\em $<$\+Type$>$} & The type of the value. \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classconfiguration_1_1_config_key_a7b1355376dce23756910a104bf87de34}\label{classconfiguration_1_1_config_key_a7b1355376dce23756910a104bf87de34}} 
+\index{configuration.ConfigKey$<$ Type $>$@{configuration.ConfigKey$<$ Type $>$}!ConfigKey@{ConfigKey}}
+\index{ConfigKey@{ConfigKey}!configuration.ConfigKey$<$ Type $>$@{configuration.ConfigKey$<$ Type $>$}}
+\doxysubsubsection{\texorpdfstring{ConfigKey()}{ConfigKey()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classconfiguration_1_1_config_key}{configuration.\+Config\+Key}}$<$ Type $>$.\mbox{\hyperlink{classconfiguration_1_1_config_key}{Config\+Key}} (\begin{DoxyParamCaption}\item[{String\mbox{[}$\,$\mbox{]}}]{path,  }\item[{\mbox{\hyperlink{classconfiguration_1_1values_1_1_config_value}{Config\+Value}}$<$ Type $>$}]{default\+Value }\end{DoxyParamCaption})}
+
+Creates a new Config\+Key.
+
+
+\begin{DoxyParams}{Parameters}
+{\em path} & The path to the value in the configuration file as array of strings. \\
+\hline
+{\em default\+Value} & The default value for this key. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classconfiguration_1_1_config_key_ac579c8def4866937fe66209fac94e9a8}\label{classconfiguration_1_1_config_key_ac579c8def4866937fe66209fac94e9a8}} 
+\index{configuration.ConfigKey$<$ Type $>$@{configuration.ConfigKey$<$ Type $>$}!ConfigKey@{ConfigKey}}
+\index{ConfigKey@{ConfigKey}!configuration.ConfigKey$<$ Type $>$@{configuration.ConfigKey$<$ Type $>$}}
+\doxysubsubsection{\texorpdfstring{ConfigKey()}{ConfigKey()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classconfiguration_1_1_config_key}{configuration.\+Config\+Key}}$<$ Type $>$.\mbox{\hyperlink{classconfiguration_1_1_config_key}{Config\+Key}} (\begin{DoxyParamCaption}\item[{String}]{path,  }\item[{\mbox{\hyperlink{classconfiguration_1_1values_1_1_config_value}{Config\+Value}}$<$ Type $>$}]{default\+Value }\end{DoxyParamCaption})}
+
+Creates a new Config\+Key.
+
+
+\begin{DoxyParams}{Parameters}
+{\em path} & The path to the value in the configuration file as string, seperated by dots. \\
+\hline
+{\em default\+Value} & The default value for this key. \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classconfiguration_1_1_config_key_adc6d6edd997ea3748a0baf6d14fb2b14}\label{classconfiguration_1_1_config_key_adc6d6edd997ea3748a0baf6d14fb2b14}} 
+\index{configuration.ConfigKey$<$ Type $>$@{configuration.ConfigKey$<$ Type $>$}!get@{get}}
+\index{get@{get}!configuration.ConfigKey$<$ Type $>$@{configuration.ConfigKey$<$ Type $>$}}
+\doxysubsubsection{\texorpdfstring{get()}{get()}}
+{\footnotesize\ttfamily Type \mbox{\hyperlink{classconfiguration_1_1_config_key}{configuration.\+Config\+Key}}$<$ Type $>$.get (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Get the current value of this key. If not set, the default value will be returned.
+
+\begin{DoxyReturn}{Returns}
+The current or default value of this key. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classconfiguration_1_1_config_key_a0d0baee1c74f8390c621203815b11eee}\label{classconfiguration_1_1_config_key_a0d0baee1c74f8390c621203815b11eee}} 
+\index{configuration.ConfigKey$<$ Type $>$@{configuration.ConfigKey$<$ Type $>$}!set@{set}}
+\index{set@{set}!configuration.ConfigKey$<$ Type $>$@{configuration.ConfigKey$<$ Type $>$}}
+\doxysubsubsection{\texorpdfstring{set()}{set()}}
+{\footnotesize\ttfamily void \mbox{\hyperlink{classconfiguration_1_1_config_key}{configuration.\+Config\+Key}}$<$ Type $>$.set (\begin{DoxyParamCaption}\item[{Type}]{value }\end{DoxyParamCaption})}
+
+Set the value of this key. This will also update the configuration file.
+
+
+\begin{DoxyParams}{Parameters}
+{\em value} & The new value of this key. \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/schli/\+Desktop/\+Projects/\+Intelli\+J/pm-\/dungeon-\/jan/game/src/configuration/Config\+Key.\+java\end{DoxyCompactItemize}

@@ -1,0 +1,62 @@
+\hypertarget{classlevel_1_1room_1_1_room_generator}{}\doxysection{level.\+room.\+Room\+Generator Class Reference}
+\label{classlevel_1_1room_1_1_room_generator}\index{level.room.RoomGenerator@{level.room.RoomGenerator}}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{interfacelevel_1_1room_1_1_i_room}{IRoom}} \mbox{\hyperlink{classlevel_1_1room_1_1_room_generator_aa01ed94258ca45ba20b3d3229d247ba7}{get\+Level}} (\mbox{\hyperlink{enumlevel_1_1tools_1_1_design_label}{Design\+Label}} design\+Label, \mbox{\hyperlink{enumlevel_1_1tools_1_1_level_size}{Level\+Size}} size, \mbox{\hyperlink{enumlevel_1_1levelgraph_1_1_door_direction}{Door\+Direction}}\mbox{[}$\,$\mbox{]} doors, \mbox{\hyperlink{classlevel_1_1levelgraph_1_1_level_node}{Level\+Node}} node)
+\item 
+\mbox{\hyperlink{enumlevel_1_1tools_1_1_level_element}{Level\+Element}}\mbox{[}$\,$\mbox{]}\mbox{[}$\,$\mbox{]} \mbox{\hyperlink{classlevel_1_1room_1_1_room_generator_a45d0afa20ae31485972053ef67484e3f}{get\+Layout}} (\mbox{\hyperlink{enumlevel_1_1tools_1_1_level_size}{Level\+Size}} size, \mbox{\hyperlink{enumlevel_1_1levelgraph_1_1_door_direction}{Door\+Direction}}\mbox{[}$\,$\mbox{]} doors)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Generator for a random room of a given size and adds doors at given directions.
+
+The generation of the layout can be initialized with a seed to generate the same room again. A room consists of a base\+Floor area and random extension areas to the corners or sides of the base\+Floor. Walls surrounding the areas are generated. Holes are generated at random Floor\+Tiles. Supports are generated in rooms with a big base\+Floor. Finally, doors are generated at the outermost walls for every given door direction. 
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classlevel_1_1room_1_1_room_generator_a45d0afa20ae31485972053ef67484e3f}\label{classlevel_1_1room_1_1_room_generator_a45d0afa20ae31485972053ef67484e3f}} 
+\index{level.room.RoomGenerator@{level.room.RoomGenerator}!getLayout@{getLayout}}
+\index{getLayout@{getLayout}!level.room.RoomGenerator@{level.room.RoomGenerator}}
+\doxysubsubsection{\texorpdfstring{getLayout()}{getLayout()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{enumlevel_1_1tools_1_1_level_element}{Level\+Element}}\mbox{[}$\,$\mbox{]}\mbox{[}$\,$\mbox{]} level.\+room.\+Room\+Generator.\+get\+Layout (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{enumlevel_1_1tools_1_1_level_size}{Level\+Size}}}]{size,  }\item[{\mbox{\hyperlink{enumlevel_1_1levelgraph_1_1_door_direction}{Door\+Direction}}\mbox{[}$\,$\mbox{]}}]{doors }\end{DoxyParamCaption})}
+
+Generates a random room layout with the given parameters.
+
+
+\begin{DoxyParams}{Parameters}
+{\em size} & Size of the room \\
+\hline
+{\em doors} & Array of Door\+Directions to specify where doors should be generated \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The generated room layout 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classlevel_1_1room_1_1_room_generator_aa01ed94258ca45ba20b3d3229d247ba7}\label{classlevel_1_1room_1_1_room_generator_aa01ed94258ca45ba20b3d3229d247ba7}} 
+\index{level.room.RoomGenerator@{level.room.RoomGenerator}!getLevel@{getLevel}}
+\index{getLevel@{getLevel}!level.room.RoomGenerator@{level.room.RoomGenerator}}
+\doxysubsubsection{\texorpdfstring{getLevel()}{getLevel()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{interfacelevel_1_1room_1_1_i_room}{IRoom}} level.\+room.\+Room\+Generator.\+get\+Level (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{enumlevel_1_1tools_1_1_design_label}{Design\+Label}}}]{design\+Label,  }\item[{\mbox{\hyperlink{enumlevel_1_1tools_1_1_level_size}{Level\+Size}}}]{size,  }\item[{\mbox{\hyperlink{enumlevel_1_1levelgraph_1_1_door_direction}{Door\+Direction}}\mbox{[}$\,$\mbox{]}}]{doors,  }\item[{\mbox{\hyperlink{classlevel_1_1levelgraph_1_1_level_node}{Level\+Node}}}]{node }\end{DoxyParamCaption})}
+
+Generates a random room with given parameters.
+
+
+\begin{DoxyParams}{Parameters}
+{\em design\+Label} & Design of the room tiles \\
+\hline
+{\em size} & Size of the room \\
+\hline
+{\em doors} & Directions of doors to be generated \\
+\hline
+{\em node} & Level\+Node the room should be attached to \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The generated room 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/schli/\+Desktop/\+Projects/\+Intelli\+J/pm-\/dungeon-\/jan/game/src/level/room/Room\+Generator.\+java\end{DoxyCompactItemize}

@@ -1,0 +1,69 @@
+\hypertarget{classecs_1_1systems_1_1_e_c_s___system}{}\doxysection{ecs.\+systems.\+ECS\+\_\+\+System Class Reference}
+\label{classecs_1_1systems_1_1_e_c_s___system}\index{ecs.systems.ECS\_System@{ecs.systems.ECS\_System}}
+Inheritance diagram for ecs.\+systems.\+ECS\+\_\+\+System\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=10.000000cm]{classecs_1_1systems_1_1_e_c_s___system}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+abstract void \mbox{\hyperlink{classecs_1_1systems_1_1_e_c_s___system_aadb0e27b4a261cba71140c73e4acc699}{update}} ()
+\item 
+boolean \mbox{\hyperlink{classecs_1_1systems_1_1_e_c_s___system_aa294a7dc60acbd3343b48e700173d299}{is\+Running}} ()
+\item 
+void \mbox{\hyperlink{classecs_1_1systems_1_1_e_c_s___system_af486a1dfce859a2d0384edb9b57081bd}{toggle\+Run}} ()
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classecs_1_1systems_1_1_e_c_s___system_a93f579e2c6f4c151fb721517ea41cb64}\label{classecs_1_1systems_1_1_e_c_s___system_a93f579e2c6f4c151fb721517ea41cb64}} 
+Logger {\bfseries system\+Logger} = Logger.\+get\+Logger(this.\+get\+Class().get\+Name())
+\end{DoxyCompactItemize}
+\doxysubsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classecs_1_1systems_1_1_e_c_s___system_ae18b974e133268bb03dc6234bd210823}\label{classecs_1_1systems_1_1_e_c_s___system_ae18b974e133268bb03dc6234bd210823}} 
+boolean {\bfseries run}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Marks a Class as a System in the ECS 
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classecs_1_1systems_1_1_e_c_s___system_aa294a7dc60acbd3343b48e700173d299}\label{classecs_1_1systems_1_1_e_c_s___system_aa294a7dc60acbd3343b48e700173d299}} 
+\index{ecs.systems.ECS\_System@{ecs.systems.ECS\_System}!isRunning@{isRunning}}
+\index{isRunning@{isRunning}!ecs.systems.ECS\_System@{ecs.systems.ECS\_System}}
+\doxysubsubsection{\texorpdfstring{isRunning()}{isRunning()}}
+{\footnotesize\ttfamily boolean ecs.\+systems.\+ECS\+\_\+\+System.\+is\+Running (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\begin{DoxyReturn}{Returns}
+true if this system is running, false if it is in pause mode 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classecs_1_1systems_1_1_e_c_s___system_af486a1dfce859a2d0384edb9b57081bd}\label{classecs_1_1systems_1_1_e_c_s___system_af486a1dfce859a2d0384edb9b57081bd}} 
+\index{ecs.systems.ECS\_System@{ecs.systems.ECS\_System}!toggleRun@{toggleRun}}
+\index{toggleRun@{toggleRun}!ecs.systems.ECS\_System@{ecs.systems.ECS\_System}}
+\doxysubsubsection{\texorpdfstring{toggleRun()}{toggleRun()}}
+{\footnotesize\ttfamily void ecs.\+systems.\+ECS\+\_\+\+System.\+toggle\+Run (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Toggle this system between run and pause 
+
+Reimplemented in \mbox{\hyperlink{classecs_1_1systems_1_1_draw_system_a716e40d5119bb3047f7ce18231a9d157}{ecs.\+systems.\+Draw\+System}}.
+
+\mbox{\Hypertarget{classecs_1_1systems_1_1_e_c_s___system_aadb0e27b4a261cba71140c73e4acc699}\label{classecs_1_1systems_1_1_e_c_s___system_aadb0e27b4a261cba71140c73e4acc699}} 
+\index{ecs.systems.ECS\_System@{ecs.systems.ECS\_System}!update@{update}}
+\index{update@{update}!ecs.systems.ECS\_System@{ecs.systems.ECS\_System}}
+\doxysubsubsection{\texorpdfstring{update()}{update()}}
+{\footnotesize\ttfamily abstract void ecs.\+systems.\+ECS\+\_\+\+System.\+update (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [abstract]}}
+
+Gets called every Frame 
+
+Reimplemented in \mbox{\hyperlink{classecs_1_1systems_1_1_a_i_system_a5808c939c27a8f70422839148a01b8d8}{ecs.\+systems.\+AISystem}}, \mbox{\hyperlink{classecs_1_1systems_1_1_collision_system_afe3846dd4dbf34371e39e37b60b71e55}{ecs.\+systems.\+Collision\+System}}, \mbox{\hyperlink{classecs_1_1systems_1_1_draw_system_a92afbe983283f2660f84e55bf9b2e838}{ecs.\+systems.\+Draw\+System}}, \mbox{\hyperlink{classecs_1_1systems_1_1_health_system_a705e0cd4b8e4df2f978818192b85eead}{ecs.\+systems.\+Health\+System}}, \mbox{\hyperlink{classecs_1_1systems_1_1_player_system_ae162a2eb85a647aed1ae406940ba46c9}{ecs.\+systems.\+Player\+System}}, \mbox{\hyperlink{classecs_1_1systems_1_1_projectile_system_a52737c682db382abe25214dad31182eb}{ecs.\+systems.\+Projectile\+System}}, \mbox{\hyperlink{classecs_1_1systems_1_1_skill_system_a12b873b881c1070c7db6edd305911bcb}{ecs.\+systems.\+Skill\+System}}, \mbox{\hyperlink{classecs_1_1systems_1_1_velocity_system_ae7b61965448e2005d4eadcfa8c0d3684}{ecs.\+systems.\+Velocity\+System}}, and \mbox{\hyperlink{classecs_1_1systems_1_1_x_p_system_ad3fab542106f50ed1e89a1fe3165c540}{ecs.\+systems.\+XPSystem}}.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/schli/\+Desktop/\+Projects/\+Intelli\+J/pm-\/dungeon-\/jan/game/src/ecs/systems/ECS\+\_\+\+System.\+java\end{DoxyCompactItemize}

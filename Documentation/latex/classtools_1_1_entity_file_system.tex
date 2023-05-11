@@ -1,0 +1,65 @@
+\hypertarget{classtools_1_1_entity_file_system}{}\doxysection{tools.\+Entity\+File\+System Class Reference}
+\label{classtools_1_1_entity_file_system}\index{tools.EntityFileSystem@{tools.EntityFileSystem}}
+\doxysubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static void \mbox{\hyperlink{classtools_1_1_entity_file_system_a401b1e7f075d61580d4110731c979e3a}{save\+Entities}} (Set$<$ \mbox{\hyperlink{classecs_1_1entities_1_1_entity}{Entity}} $>$ entity\+Set)
+\item 
+static Set$<$ \mbox{\hyperlink{classecs_1_1entities_1_1_entity}{Entity}} $>$ \mbox{\hyperlink{classtools_1_1_entity_file_system_ac1b21507cd21fb779b55deddc5507218}{load\+Entities}} ()
+\item 
+static boolean \mbox{\hyperlink{classtools_1_1_entity_file_system_ac17b3922613f4bd70575a563082a00d4}{save\+Game\+Exists}} ()
+\item 
+static void \mbox{\hyperlink{classtools_1_1_entity_file_system_a8725e01bb207d7d3b3789d951f81cd38}{delete\+Save\+Game}} ()
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+The Entity\+File\+System class provides methods for saving and loading sets of entities to/from a file. It uses serialization to write the entity set to a file and deserialize it back to a set of entities. 
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classtools_1_1_entity_file_system_a8725e01bb207d7d3b3789d951f81cd38}\label{classtools_1_1_entity_file_system_a8725e01bb207d7d3b3789d951f81cd38}} 
+\index{tools.EntityFileSystem@{tools.EntityFileSystem}!deleteSaveGame@{deleteSaveGame}}
+\index{deleteSaveGame@{deleteSaveGame}!tools.EntityFileSystem@{tools.EntityFileSystem}}
+\doxysubsubsection{\texorpdfstring{deleteSaveGame()}{deleteSaveGame()}}
+{\footnotesize\ttfamily static void tools.\+Entity\+File\+System.\+delete\+Save\+Game (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Deletes the save game file. \mbox{\Hypertarget{classtools_1_1_entity_file_system_ac1b21507cd21fb779b55deddc5507218}\label{classtools_1_1_entity_file_system_ac1b21507cd21fb779b55deddc5507218}} 
+\index{tools.EntityFileSystem@{tools.EntityFileSystem}!loadEntities@{loadEntities}}
+\index{loadEntities@{loadEntities}!tools.EntityFileSystem@{tools.EntityFileSystem}}
+\doxysubsubsection{\texorpdfstring{loadEntities()}{loadEntities()}}
+{\footnotesize\ttfamily static Set$<$ \mbox{\hyperlink{classecs_1_1entities_1_1_entity}{Entity}} $>$ tools.\+Entity\+File\+System.\+load\+Entities (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Loads a set of entities from a file.
+
+\begin{DoxyReturn}{Returns}
+The set of entities loaded from the file. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classtools_1_1_entity_file_system_a401b1e7f075d61580d4110731c979e3a}\label{classtools_1_1_entity_file_system_a401b1e7f075d61580d4110731c979e3a}} 
+\index{tools.EntityFileSystem@{tools.EntityFileSystem}!saveEntities@{saveEntities}}
+\index{saveEntities@{saveEntities}!tools.EntityFileSystem@{tools.EntityFileSystem}}
+\doxysubsubsection{\texorpdfstring{saveEntities()}{saveEntities()}}
+{\footnotesize\ttfamily static void tools.\+Entity\+File\+System.\+save\+Entities (\begin{DoxyParamCaption}\item[{Set$<$ \mbox{\hyperlink{classecs_1_1entities_1_1_entity}{Entity}} $>$}]{entity\+Set }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Saves a set of entities to a file.
+
+
+\begin{DoxyParams}{Parameters}
+{\em entity\+Set} & The set of entities to save. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classtools_1_1_entity_file_system_ac17b3922613f4bd70575a563082a00d4}\label{classtools_1_1_entity_file_system_ac17b3922613f4bd70575a563082a00d4}} 
+\index{tools.EntityFileSystem@{tools.EntityFileSystem}!saveGameExists@{saveGameExists}}
+\index{saveGameExists@{saveGameExists}!tools.EntityFileSystem@{tools.EntityFileSystem}}
+\doxysubsubsection{\texorpdfstring{saveGameExists()}{saveGameExists()}}
+{\footnotesize\ttfamily static boolean tools.\+Entity\+File\+System.\+save\+Game\+Exists (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Checks if a save game file exists.
+
+\begin{DoxyReturn}{Returns}
+{\ttfamily true} if the save game file exists, {\ttfamily false} otherwise. 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/schli/\+Desktop/\+Projects/\+Intelli\+J/pm-\/dungeon-\/jan/game/src/tools/Entity\+File\+System.\+java\end{DoxyCompactItemize}

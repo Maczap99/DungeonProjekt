@@ -1,0 +1,77 @@
+\hypertarget{interfacelevel_1_1elements_1_1_i_pathable}{}\doxysection{level.\+elements.\+IPathable Interface Reference}
+\label{interfacelevel_1_1elements_1_1_i_pathable}\index{level.elements.IPathable@{level.elements.IPathable}}
+Inheritance diagram for level.\+elements.\+IPathable\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=6.000000cm]{interfacelevel_1_1elements_1_1_i_pathable}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{interfacelevel_1_1elements_1_1_i_pathable_aad645ee2427b77f84258642077bf87bc}{get\+Node\+Count}} ()
+\item 
+default Graph\+Path$<$ \mbox{\hyperlink{classlevel_1_1elements_1_1tile_1_1_tile}{Tile}} $>$ \mbox{\hyperlink{interfacelevel_1_1elements_1_1_i_pathable_a73e3d7baecc19aa8ecefaaf83233b075}{find\+Path}} (\mbox{\hyperlink{classlevel_1_1elements_1_1tile_1_1_tile}{Tile}} start, \mbox{\hyperlink{classlevel_1_1elements_1_1tile_1_1_tile}{Tile}} end)
+\item 
+\mbox{\Hypertarget{interfacelevel_1_1elements_1_1_i_pathable_ac1d865590ae720a5d8365a64fcee8234}\label{interfacelevel_1_1elements_1_1_i_pathable_ac1d865590ae720a5d8365a64fcee8234}} 
+default int {\bfseries get\+Index} (\mbox{\hyperlink{classlevel_1_1elements_1_1tile_1_1_tile}{Tile}} tile)
+\item 
+\mbox{\Hypertarget{interfacelevel_1_1elements_1_1_i_pathable_a6df57d9f09fc706c55e5c8f2a65890f6}\label{interfacelevel_1_1elements_1_1_i_pathable_a6df57d9f09fc706c55e5c8f2a65890f6}} 
+default Array$<$ Connection$<$ \mbox{\hyperlink{classlevel_1_1elements_1_1tile_1_1_tile}{Tile}} $>$ $>$ {\bfseries get\+Connections} (\mbox{\hyperlink{classlevel_1_1elements_1_1tile_1_1_tile}{Tile}} from\+Node)
+\item 
+\mbox{\hyperlink{classlevel_1_1elements_1_1astar_1_1_tile_heuristic}{Tile\+Heuristic}} \mbox{\hyperlink{interfacelevel_1_1elements_1_1_i_pathable_a7b212f40ae68c6f54c60e02741be9ea3}{get\+Tile\+Heuristic}} ()
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{interfacelevel_1_1elements_1_1_i_pathable_a73e3d7baecc19aa8ecefaaf83233b075}\label{interfacelevel_1_1elements_1_1_i_pathable_a73e3d7baecc19aa8ecefaaf83233b075}} 
+\index{level.elements.IPathable@{level.elements.IPathable}!findPath@{findPath}}
+\index{findPath@{findPath}!level.elements.IPathable@{level.elements.IPathable}}
+\doxysubsubsection{\texorpdfstring{findPath()}{findPath()}}
+{\footnotesize\ttfamily default Graph\+Path$<$ \mbox{\hyperlink{classlevel_1_1elements_1_1tile_1_1_tile}{Tile}} $>$ level.\+elements.\+IPathable.\+find\+Path (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classlevel_1_1elements_1_1tile_1_1_tile}{Tile}}}]{start,  }\item[{\mbox{\hyperlink{classlevel_1_1elements_1_1tile_1_1_tile}{Tile}}}]{end }\end{DoxyParamCaption})}
+
+Starts the indexed A$\ast$ pathfinding algorithm a returns a path
+
+
+\begin{DoxyParams}{Parameters}
+{\em start} & Start tile \\
+\hline
+{\em end} & End tile \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Generated path 
+\end{DoxyReturn}
+\mbox{\Hypertarget{interfacelevel_1_1elements_1_1_i_pathable_aad645ee2427b77f84258642077bf87bc}\label{interfacelevel_1_1elements_1_1_i_pathable_aad645ee2427b77f84258642077bf87bc}} 
+\index{level.elements.IPathable@{level.elements.IPathable}!getNodeCount@{getNodeCount}}
+\index{getNodeCount@{getNodeCount}!level.elements.IPathable@{level.elements.IPathable}}
+\doxysubsubsection{\texorpdfstring{getNodeCount()}{getNodeCount()}}
+{\footnotesize\ttfamily int level.\+elements.\+IPathable.\+get\+Node\+Count (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+For lib\+GDX pathfinding algorithms
+
+\begin{DoxyReturn}{Returns}
+node\+Count 
+\end{DoxyReturn}
+
+
+Implemented in \mbox{\hyperlink{classlevel_1_1elements_1_1_tile_level_a702797006f297537e27743368b859189}{level.\+elements.\+Tile\+Level}}.
+
+\mbox{\Hypertarget{interfacelevel_1_1elements_1_1_i_pathable_a7b212f40ae68c6f54c60e02741be9ea3}\label{interfacelevel_1_1elements_1_1_i_pathable_a7b212f40ae68c6f54c60e02741be9ea3}} 
+\index{level.elements.IPathable@{level.elements.IPathable}!getTileHeuristic@{getTileHeuristic}}
+\index{getTileHeuristic@{getTileHeuristic}!level.elements.IPathable@{level.elements.IPathable}}
+\doxysubsubsection{\texorpdfstring{getTileHeuristic()}{getTileHeuristic()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classlevel_1_1elements_1_1astar_1_1_tile_heuristic}{Tile\+Heuristic}} level.\+elements.\+IPathable.\+get\+Tile\+Heuristic (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\begin{DoxyReturn}{Returns}
+the Tile\+Heuristic for the Level 
+\end{DoxyReturn}
+
+
+Implemented in \mbox{\hyperlink{classlevel_1_1elements_1_1_tile_level_a40280c5518e999e6c9efe0b74ab8ff1b}{level.\+elements.\+Tile\+Level}}.
+
+
+
+The documentation for this interface was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/schli/\+Desktop/\+Projects/\+Intelli\+J/pm-\/dungeon-\/jan/game/src/level/elements/IPathable.\+java\end{DoxyCompactItemize}

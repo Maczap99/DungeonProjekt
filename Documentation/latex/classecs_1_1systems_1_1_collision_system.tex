@@ -1,0 +1,120 @@
+\hypertarget{classecs_1_1systems_1_1_collision_system}{}\doxysection{ecs.\+systems.\+Collision\+System Class Reference}
+\label{classecs_1_1systems_1_1_collision_system}\index{ecs.systems.CollisionSystem@{ecs.systems.CollisionSystem}}
+Inheritance diagram for ecs.\+systems.\+Collision\+System\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classecs_1_1systems_1_1_collision_system}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{classecs_1_1systems_1_1_collision_system_afe3846dd4dbf34371e39e37b60b71e55}{update}} ()
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Member Functions inherited from \mbox{\hyperlink{classecs_1_1systems_1_1_e_c_s___system}{ecs.\+systems.\+ECS\+\_\+\+System}}}
+\begin{DoxyCompactItemize}
+\item 
+abstract void \mbox{\hyperlink{classecs_1_1systems_1_1_e_c_s___system_aadb0e27b4a261cba71140c73e4acc699}{update}} ()
+\item 
+boolean \mbox{\hyperlink{classecs_1_1systems_1_1_e_c_s___system_aa294a7dc60acbd3343b48e700173d299}{is\+Running}} ()
+\item 
+void \mbox{\hyperlink{classecs_1_1systems_1_1_e_c_s___system_af486a1dfce859a2d0384edb9b57081bd}{toggle\+Run}} ()
+\end{DoxyCompactItemize}
+\doxysubsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classecs_1_1systems_1_1_collision_system_a922294e3cce92cdf6d6f2880c5322d14}\label{classecs_1_1systems_1_1_collision_system_a922294e3cce92cdf6d6f2880c5322d14}} 
+record {\bfseries Collision\+Data} (\mbox{\hyperlink{classecs_1_1components_1_1_hitbox_component}{Hitbox\+Component}} a, \mbox{\hyperlink{classecs_1_1components_1_1_hitbox_component}{Hitbox\+Component}} b)
+\item 
+Tile.\+Direction \mbox{\hyperlink{classecs_1_1systems_1_1_collision_system_a685b1e48033c7668a4f40152d4daebbf}{inverse}} (Tile.\+Direction d)
+\item 
+boolean \mbox{\hyperlink{classecs_1_1systems_1_1_collision_system_a418c99ed424adc6090e47d7598257cc5}{check\+For\+Collision}} (\mbox{\hyperlink{classecs_1_1components_1_1_hitbox_component}{Hitbox\+Component}} hitbox1, \mbox{\hyperlink{classecs_1_1components_1_1_hitbox_component}{Hitbox\+Component}} hitbox2)
+\item 
+Tile.\+Direction \mbox{\hyperlink{classecs_1_1systems_1_1_collision_system_aa32bc6bdef4d3007d06178d797af2e9c}{check\+Direction\+Of\+Collision}} (\mbox{\hyperlink{classecs_1_1components_1_1_hitbox_component}{Hitbox\+Component}} hitbox1, \mbox{\hyperlink{classecs_1_1components_1_1_hitbox_component}{Hitbox\+Component}} hitbox2)
+\end{DoxyCompactItemize}
+\doxysubsection*{Additional Inherited Members}
+\doxysubsubsection*{Public Attributes inherited from \mbox{\hyperlink{classecs_1_1systems_1_1_e_c_s___system}{ecs.\+systems.\+ECS\+\_\+\+System}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classecs_1_1systems_1_1_e_c_s___system_a93f579e2c6f4c151fb721517ea41cb64}\label{classecs_1_1systems_1_1_e_c_s___system_a93f579e2c6f4c151fb721517ea41cb64}} 
+Logger {\bfseries system\+Logger} = Logger.\+get\+Logger(this.\+get\+Class().get\+Name())
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Protected Attributes inherited from \mbox{\hyperlink{classecs_1_1systems_1_1_e_c_s___system}{ecs.\+systems.\+ECS\+\_\+\+System}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classecs_1_1systems_1_1_e_c_s___system_ae18b974e133268bb03dc6234bd210823}\label{classecs_1_1systems_1_1_e_c_s___system_ae18b974e133268bb03dc6234bd210823}} 
+boolean {\bfseries run}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+System to check for collisions between two entities 
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classecs_1_1systems_1_1_collision_system_aa32bc6bdef4d3007d06178d797af2e9c}\label{classecs_1_1systems_1_1_collision_system_aa32bc6bdef4d3007d06178d797af2e9c}} 
+\index{ecs.systems.CollisionSystem@{ecs.systems.CollisionSystem}!checkDirectionOfCollision@{checkDirectionOfCollision}}
+\index{checkDirectionOfCollision@{checkDirectionOfCollision}!ecs.systems.CollisionSystem@{ecs.systems.CollisionSystem}}
+\doxysubsubsection{\texorpdfstring{checkDirectionOfCollision()}{checkDirectionOfCollision()}}
+{\footnotesize\ttfamily Tile.\+Direction ecs.\+systems.\+Collision\+System.\+check\+Direction\+Of\+Collision (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classecs_1_1components_1_1_hitbox_component}{Hitbox\+Component}}}]{hitbox1,  }\item[{\mbox{\hyperlink{classecs_1_1components_1_1_hitbox_component}{Hitbox\+Component}}}]{hitbox2 }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+Calculates the direction based on a square, can be broken once the hitboxes are rectangular.
+
+
+\begin{DoxyParams}{Parameters}
+{\em hitbox1} & \\
+\hline
+{\em hitbox2} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Tile direction for where hitbox 2 is compared to hitbox 1 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classecs_1_1systems_1_1_collision_system_a418c99ed424adc6090e47d7598257cc5}\label{classecs_1_1systems_1_1_collision_system_a418c99ed424adc6090e47d7598257cc5}} 
+\index{ecs.systems.CollisionSystem@{ecs.systems.CollisionSystem}!checkForCollision@{checkForCollision}}
+\index{checkForCollision@{checkForCollision}!ecs.systems.CollisionSystem@{ecs.systems.CollisionSystem}}
+\doxysubsubsection{\texorpdfstring{checkForCollision()}{checkForCollision()}}
+{\footnotesize\ttfamily boolean ecs.\+systems.\+Collision\+System.\+check\+For\+Collision (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classecs_1_1components_1_1_hitbox_component}{Hitbox\+Component}}}]{hitbox1,  }\item[{\mbox{\hyperlink{classecs_1_1components_1_1_hitbox_component}{Hitbox\+Component}}}]{hitbox2 }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+The Check if hitbox intersect
+
+
+\begin{DoxyParams}{Parameters}
+{\em hitbox1} & \\
+\hline
+{\em hitbox2} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if intersection exists otherwise false 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classecs_1_1systems_1_1_collision_system_a685b1e48033c7668a4f40152d4daebbf}\label{classecs_1_1systems_1_1_collision_system_a685b1e48033c7668a4f40152d4daebbf}} 
+\index{ecs.systems.CollisionSystem@{ecs.systems.CollisionSystem}!inverse@{inverse}}
+\index{inverse@{inverse}!ecs.systems.CollisionSystem@{ecs.systems.CollisionSystem}}
+\doxysubsubsection{\texorpdfstring{inverse()}{inverse()}}
+{\footnotesize\ttfamily Tile.\+Direction ecs.\+systems.\+Collision\+System.\+inverse (\begin{DoxyParamCaption}\item[{Tile.\+Direction}]{d }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+Simple Direction inversion
+
+
+\begin{DoxyParams}{Parameters}
+{\em d} & to inverse \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the oposite direction 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classecs_1_1systems_1_1_collision_system_afe3846dd4dbf34371e39e37b60b71e55}\label{classecs_1_1systems_1_1_collision_system_afe3846dd4dbf34371e39e37b60b71e55}} 
+\index{ecs.systems.CollisionSystem@{ecs.systems.CollisionSystem}!update@{update}}
+\index{update@{update}!ecs.systems.CollisionSystem@{ecs.systems.CollisionSystem}}
+\doxysubsubsection{\texorpdfstring{update()}{update()}}
+{\footnotesize\ttfamily void ecs.\+systems.\+Collision\+System.\+update (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+checks if there is a collision between two entities based on their hitbox 
+
+Reimplemented from \mbox{\hyperlink{classecs_1_1systems_1_1_e_c_s___system_aadb0e27b4a261cba71140c73e4acc699}{ecs.\+systems.\+ECS\+\_\+\+System}}.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/schli/\+Desktop/\+Projects/\+Intelli\+J/pm-\/dungeon-\/jan/game/src/ecs/systems/Collision\+System.\+java\end{DoxyCompactItemize}
