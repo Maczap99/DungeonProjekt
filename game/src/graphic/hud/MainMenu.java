@@ -2,8 +2,10 @@ package graphic.hud;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
+import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.graphics.g2d.freetype.FreeTypeFontGenerator;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
@@ -11,9 +13,9 @@ import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
+import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
 import com.badlogic.gdx.utils.Align;
 import controller.ScreenController;
-import ecs.components.PositionComponent;
 import ecs.entities.Entity;
 import ecs.entities.Hero;
 import level.LevelAPI;
@@ -74,9 +76,16 @@ public class MainMenu<T extends Actor> extends ScreenController<T> {
 
         // Create the table for UI elements
         table = new Table();
-        var backgroundColor = new Color(0f, 0f, 0f, 1f);
-        var backgroundDrawable = new ColorBackground(backgroundColor);
-        table.setBackground(backgroundDrawable);
+
+        try{
+            table.setBackground(new TextureRegionDrawable(new TextureRegion(new Texture("game/assets/menu/start1.png"))));
+        }catch (Exception e){
+            var backgroundColor = new Color(0f, 0f, 0f, 1f);
+            var backgroundDrawable = new ColorBackground(backgroundColor);
+            table.setBackground(backgroundDrawable);
+        }
+
+
         table.setFillParent(true);
 
         // Create buttons and add listeners
