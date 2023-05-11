@@ -1,5 +1,7 @@
 package ecs.components.skill;
 
+import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.audio.Sound;
 import dslToGame.AnimationBuilder;
 import ecs.components.*;
 import ecs.components.collision.ICollide;
@@ -21,6 +23,7 @@ public abstract class DamageProjectileSkill implements ISkillFunction, Serializa
     private Point projectileHitboxSize;
 
     private ITargetSelection selectionFunction;
+    private Sound sound;
 
     public DamageProjectileSkill(
             String pathToTexturesOfProjectile,
@@ -73,5 +76,15 @@ public abstract class DamageProjectileSkill implements ISkillFunction, Serializa
 
         new HitboxComponent(
                 projectile, new Point(0.25f, 0.25f), projectileHitboxSize, collide, null);
+
+
+        try{
+            // start menu soundtrack
+            sound = Gdx.audio.newSound(Gdx.files.internal("game/sounds/skill/fireball2.mp3"));
+            sound.play(0.2f);
+
+        }catch (Exception e){
+            System.out.println("Sounddatei 'Fireball1.mp3' konnte nicht gefunden werden");
+        }
     }
 }

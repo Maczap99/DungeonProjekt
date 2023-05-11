@@ -1,5 +1,7 @@
 package ecs.components.skill;
 
+import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.audio.Sound;
 import ecs.components.Component;
 import ecs.components.HealthComponent;
 import ecs.components.MissingComponentException;
@@ -15,6 +17,7 @@ import java.util.Optional;
  * **/
 
 public class HealSkill extends BuffSkill {
+    private Sound sound;
     public HealSkill() {
         super();
     }
@@ -33,6 +36,15 @@ public class HealSkill extends BuffSkill {
             System.out.println("Leben: " + hc.getCurrentHealthpoints());
 
             hero.setCurrentHealth(hero.getHealth());
+
+            try{
+                // start menu soundtrack
+                sound = Gdx.audio.newSound(Gdx.files.internal("game/sounds/skill/heal1.mp3"));
+                sound.play(0.2f);
+
+            }catch (Exception e){
+                System.out.println("Sounddatei 'heal1.mp3' konnte nicht gefunden werden");
+            }
 
         } else {
             throw new MissingComponentException("Player has no HealthComponent!");

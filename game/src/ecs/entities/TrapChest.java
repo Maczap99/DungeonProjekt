@@ -1,5 +1,7 @@
 package ecs.entities;
 
+import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.audio.Sound;
 import ecs.components.*;
 import ecs.damage.Damage;
 import ecs.damage.DamageType;
@@ -37,6 +39,7 @@ public class TrapChest extends Entity implements IInteraction {
             "objects/trapchest/trap_chest_open_anim_f2.png",
             "objects/trapchest/trap_chest_open_anim_f1.png");
     private transient AnimationComponent ac;
+    private Sound sound;
 
     //Erstellt eine TrapChest an position
     public TrapChest(Point position){
@@ -52,7 +55,6 @@ public class TrapChest extends Entity implements IInteraction {
             new AnimationComponent(
                 this,
                 new Animation(DEFAULT_CLOSED_ANIMATION_FRAMES, 100, false),
-
                 new Animation(DEFAULT_OPENING_ANIMATION_FRAMES, 20, false));
 
     }
@@ -86,6 +88,17 @@ public class TrapChest extends Entity implements IInteraction {
             }
             System.out.println("Held id "+ hero.id + " bekommt " + damage + " Schaden!");
             System.out.println("Leben: " + held.getCurrentHealth() + " von "+held.getHealth());
+
+            try{
+                // start menu soundtrack
+                sound = Gdx.audio.newSound(Gdx.files.internal("game/sounds/trap/trapCheast1.mp3"));
+                sound.play(0.2f);
+                sound = Gdx.audio.newSound(Gdx.files.internal("game/sounds/damageLong.mp3"));
+                sound.play(0.2f);
+
+            }catch (Exception e){
+                System.out.println("Sounddatei konnte nicht gefunden werden");
+            }
         }
     }
 }

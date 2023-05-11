@@ -1,5 +1,7 @@
 package ecs.components.skill;
 
+import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.audio.Sound;
 import ecs.components.Component;
 import ecs.components.MissingComponentException;
 import ecs.components.VelocityComponent;
@@ -17,6 +19,7 @@ import java.util.Optional;
  * **/
 
 public class SpeedSkill extends BuffSkill {
+    private Sound sound;
     public SpeedSkill() {
         super();
     }
@@ -46,9 +49,17 @@ public class SpeedSkill extends BuffSkill {
                 }
 
                 System.out.println(time + " Sekunden SpeedUP");
-
-
                 hero.startTrapTimer(time * 1000);
+
+                try{
+                    // start menu soundtrack
+                    sound = Gdx.audio.newSound(Gdx.files.internal("game/sounds/skill/speedUpIn.mp3"));
+                    sound.play(0.2f);
+
+                }catch (Exception e){
+                    System.out.println("Sounddatei 'speedUpIn.mp3' konnte nicht gefunden werden");
+                }
+
             } else {
                 System.out.println("SpeedUp nicht nutzbar, da eine Falle aktiviert ist");
                 hero.setCurrentMana(hero.getCurrentMana() + 10);

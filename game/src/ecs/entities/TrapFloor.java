@@ -1,5 +1,7 @@
 package ecs.entities;
 
+import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.audio.Sound;
 import ecs.components.HitboxComponent;
 import ecs.components.PositionComponent;
 import ecs.components.collision.ICollide;
@@ -16,6 +18,7 @@ import java.util.Random;
  *
  */
 public class TrapFloor extends Entity implements ICollide {
+    private Sound sound;
 
     public TrapFloor(Point position) {
         super();
@@ -60,6 +63,15 @@ public class TrapFloor extends Entity implements ICollide {
                 System.out.println(time + " Sekunden verlangsamt");
 
                 hero.startTrapTimer(time * 1000);
+            }
+
+            try{
+                // start menu soundtrack
+                sound = Gdx.audio.newSound(Gdx.files.internal("game/sounds/trap/trapFloor1.mp3"));
+                sound.play(0.2f);
+
+            }catch (Exception e){
+                System.out.println("Sounddatei 'trapFloor1.mp3' konnte nicht gefunden werden");
             }
 
             // set new speed
