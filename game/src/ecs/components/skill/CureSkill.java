@@ -16,6 +16,9 @@ import java.io.Serializable;
 public class CureSkill extends BuffSkill implements Serializable {
     private float manaCost = 10f;
 
+    private transient Sound sound;
+
+
     public CureSkill() {
         super();
     }
@@ -33,7 +36,17 @@ public class CureSkill extends BuffSkill implements Serializable {
                 // reduce mana
                 hero.setCurrentMana(hero.getCurrentMana() - manaCost);
                 System.out.println("Mana: " + (int) hero.getCurrentMana());
-                
+
+                try {
+                    // start menu soundtrack
+                    sound = Gdx.audio.newSound(Gdx.files.internal("game/sounds/skill/cure1.mp3"));
+                    sound.play(0.7f);
+
+                } catch (Exception e) {
+                    System.out.println("Sounddatei 'cure1.mp3' konnte nicht gefunden werden");
+                }
+
+               
             } else {
                 System.out.println("Nicht genug Mana!");
             }

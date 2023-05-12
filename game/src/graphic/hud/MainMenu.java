@@ -1,6 +1,7 @@
 package graphic.hud;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
@@ -22,6 +23,7 @@ import level.LevelAPI;
 import level.tools.LevelSize;
 import starter.Game;
 import tools.EntityFileSystem;
+import java.util.Random;
 
 import java.util.HashMap;
 
@@ -33,6 +35,7 @@ public class MainMenu<T extends Actor> extends ScreenController<T> {
     private TextButton newButton;
     private TextButton saveButton;
     private TextButton loadButton;
+    private transient Sound sound;
 
     private static boolean initialState = true;
 
@@ -77,6 +80,7 @@ public class MainMenu<T extends Actor> extends ScreenController<T> {
         // Create the table for UI elements
         table = new Table();
 
+        // try picture else set background to black
         try{
             table.setBackground(new TextureRegionDrawable(new TextureRegion(new Texture("game/assets/menu/start1.png"))));
         }catch (Exception e){
@@ -85,8 +89,26 @@ public class MainMenu<T extends Actor> extends ScreenController<T> {
             table.setBackground(backgroundDrawable);
         }
 
-
         table.setFillParent(true);
+
+        int secretSound = getSoundNubmer(0,29);
+        System.out.println(secretSound);
+
+        try{
+            if(secretSound != 7){
+                // start menu soundtrack
+                sound = Gdx.audio.newSound(Gdx.files.internal("game/sounds/menu/menu1.mp3"));
+                sound.loop(0.2f);
+            }else{
+                // start menu soundtrack
+                sound = Gdx.audio.newSound(Gdx.files.internal("game/sounds/menu/menu2.mp3"));
+                sound.loop(0.2f);
+            }
+
+
+        }catch (Exception e){
+            System.out.println("Sounddatei konnte nicht gefunden werden");
+        }
 
         // Create buttons and add listeners
         newButton = new TextButton("New", buttonStyle);
@@ -95,6 +117,17 @@ public class MainMenu<T extends Actor> extends ScreenController<T> {
             public void clicked(InputEvent event, float x, float y) {
                 if (!newButton.isDisabled()) {
                     EntityFileSystem.deleteSaveGame();
+
+                    sound.stop();
+
+                    try{
+                        // start menu soundtrack
+                        sound = Gdx.audio.newSound(Gdx.files.internal("game/sounds/dungeon/dungeon"+ getSoundNubmer(0,4)+".wav"));
+                        sound.loop(0.2f);
+
+                    }catch (Exception e){
+                        System.out.println("Sounddatei konnte nicht gefunden werden");
+                    }
 
                     Game.setHero(new Hero());
                     levelAPI.loadLevel(LevelSize.MEDIUM);
@@ -132,6 +165,17 @@ public class MainMenu<T extends Actor> extends ScreenController<T> {
                 if (!loadButton.isDisabled()) {
                     var entities = EntityFileSystem.loadEntities();
 
+                    sound.stop();
+
+                    try{
+                        // start menu soundtrack
+                        sound = Gdx.audio.newSound(Gdx.files.internal("game/sounds/dungeon/dungeon"+ getSoundNubmer(0,4)+".wav"));
+                        sound.loop(0.2f);
+
+                    }catch (Exception e){
+                        System.out.println("Sounddatei konnte nicht gefunden werden");
+                    }
+
                     Game.getEntities().clear();
 
                     for (Entity entity : entities) {
@@ -140,6 +184,7 @@ public class MainMenu<T extends Actor> extends ScreenController<T> {
                             ((Hero) entity).setup();
                             Game.setHero(entity);
                         }
+
                         System.out.println("Entität geladen: " + entity.getClass().getName() + " ID: " + entity.id);
                     }
 
@@ -179,6 +224,13 @@ public class MainMenu<T extends Actor> extends ScreenController<T> {
         table.setBackground(backgroundDrawable);
 
         initialState = false;
+    }
+
+    public int getSoundNubmer(int first, int last){
+        Random random = new Random();
+        int value = random.nextInt(last + first) + 1;
+
+        return value;
     }
 
     public void showMenu() {

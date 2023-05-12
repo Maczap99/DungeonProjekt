@@ -19,6 +19,8 @@ import java.util.Optional;
 
 public class HealSkill extends BuffSkill {
     private float manaCost = 100f;
+    private transient Sound sound;
+
 
     public HealSkill() {
         super();
@@ -41,12 +43,21 @@ public class HealSkill extends BuffSkill {
                     hc.setCurrentHealthpoints(hc.getMaximalHealthpoints());
                     System.out.println("Leben: " + hc.getCurrentHealthpoints());
 
+
                     // reduce mana
                     hero.setCurrentMana(hero.getCurrentMana() - manaCost);
                     System.out.println("Mana: " + (int) hero.getCurrentMana());
 
                     hero.setCurrentHealth(hero.getHealth());
-                    
+
+                    try {
+                        // start menu soundtrack
+                        sound = Gdx.audio.newSound(Gdx.files.internal("game/sounds/skill/heal1.mp3"));
+                        sound.play(0.5f);
+
+                    } catch (Exception e) {
+                        System.out.println("Sounddatei 'heal1.mp3' konnte nicht gefunden werden");
+                    }
                 } else {
                     System.out.println("Leben sind voll!");
                     hero.setCurrentMana(100);

@@ -24,7 +24,9 @@ public abstract class DamageProjectileSkill implements ISkillFunction, Serializa
     private Point projectileHitboxSize;
 
     private ITargetSelection selectionFunction;
+
     private float manaCost;
+
     private transient Sound sound;
 
     public DamageProjectileSkill(
