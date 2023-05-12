@@ -77,7 +77,7 @@ public class SpeedSkill extends BuffSkill {
 
                     // reduce mana
                     hero.setCurrentMana(hero.getCurrentMana() - manaCost);
-                    System.out.println("Mana: " + (int) hero.getCurrentMana());
+                    System.out.println("Mana: "+(int) hero.getCurrentMana() + " / " + (int) hero.getMana());
 
 
                 } else {
@@ -89,6 +89,7 @@ public class SpeedSkill extends BuffSkill {
             }
         }else{
             System.out.println("Nicht genug Mana!");
+            System.out.println("Mana: "+(int) hero.getCurrentMana() + " / " + (int) hero.getMana());
         }
     }
 }
