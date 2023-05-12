@@ -15,7 +15,7 @@ import java.io.Serializable;
  */
 public class CureSkill extends BuffSkill implements Serializable {
     private float manaCost = 10f;
-    private Sound sound;
+    private transient Sound sound;
 
     public CureSkill() {
         super();

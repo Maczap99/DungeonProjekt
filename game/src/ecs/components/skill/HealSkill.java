@@ -19,7 +19,7 @@ import java.util.Optional;
 
 public class HealSkill extends BuffSkill {
     private float manaCost = 100f;
-    private Sound sound;
+    private transient Sound sound;
 
     public HealSkill() {
         super();

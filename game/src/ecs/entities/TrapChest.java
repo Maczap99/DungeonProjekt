@@ -39,7 +39,7 @@ public class TrapChest extends Entity implements IInteraction {
             "objects/trapchest/trap_chest_open_anim_f2.png",
             "objects/trapchest/trap_chest_open_anim_f1.png");
     private transient AnimationComponent ac;
-    private Sound sound;
+    private transient Sound sound;
 
     //Erstellt eine TrapChest an position
     public TrapChest(Point position){

@@ -20,7 +20,7 @@ import java.util.Optional;
 
 public class SpeedSkill extends BuffSkill {
     private float manaCost = 10f;
-    private Sound sound;
+    private transient Sound sound;
     public SpeedSkill() {
         super();
     }

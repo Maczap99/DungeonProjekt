@@ -35,7 +35,7 @@ public class MainMenu<T extends Actor> extends ScreenController<T> {
     private TextButton newButton;
     private TextButton saveButton;
     private TextButton loadButton;
-    private Sound sound;
+    private transient Sound sound;
 
     private static boolean initialState = true;
 

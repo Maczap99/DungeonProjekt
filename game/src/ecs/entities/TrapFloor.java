@@ -18,7 +18,7 @@ import java.util.Random;
  *
  */
 public class TrapFloor extends Entity implements ICollide {
-    private Sound sound;
+    private transient Sound sound;
 
     public TrapFloor(Point position) {
         super();

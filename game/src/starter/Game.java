@@ -84,7 +84,7 @@ public class Game extends ScreenAdapter implements IOnLevelLoader {
     private Logger gameLogger;
     private static int levelStage = 1;
     public static boolean gameLoaded;
-    private Sound sound;
+    private transient Sound sound;
 
     public static void main(String[] args) {
         // start the game
@@ -224,7 +224,10 @@ public class Game extends ScreenAdapter implements IOnLevelLoader {
                 if(xp.isPresent()){
                     XPComponent x = (XPComponent) xp.get();
                     x.setCurrentLevel(x.getCurrentLevel() + 1);
+
                     System.out.println("Level up! Level: " + x.getCurrentLevel());
+                    Hero h = (Hero) Game.getHero().get();
+                    h.setCurrentLevel(x.getCurrentLevel());
 
                     if(x.getCurrentLevel() == 2){
                         System.out.println("Skill Speed Up Freigeschaltet! (Aktivierung: F)");
