@@ -1,0 +1,131 @@
+\hypertarget{classgraphic_1_1_animation}{}\doxysection{graphic.\+Animation Class Reference}
+\label{classgraphic_1_1_animation}\index{graphic.Animation@{graphic.Animation}}
+Inheritance diagram for graphic.\+Animation\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classgraphic_1_1_animation}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classgraphic_1_1_animation_a3caa0e21565e9ec6985ad9f5d21dec65}{Animation}} (Collection$<$ String $>$ \mbox{\hyperlink{classgraphic_1_1_animation_a2b68f1d08d2fffb4f4f9e12e0e210d57}{animation\+Frames}}, int frame\+Time, boolean looping)
+\item 
+\mbox{\hyperlink{classgraphic_1_1_animation_a61a046d1cb88e6ac4ab5cf78d3e09dbe}{Animation}} (Collection$<$ String $>$ \mbox{\hyperlink{classgraphic_1_1_animation_a2b68f1d08d2fffb4f4f9e12e0e210d57}{animation\+Frames}}, int frame\+Time)
+\item 
+String \mbox{\hyperlink{classgraphic_1_1_animation_a865b054afcdbc88908e0934256925720}{get\+Next\+Animation\+Texture\+Path}} ()
+\item 
+boolean \mbox{\hyperlink{classgraphic_1_1_animation_a480eff3a5b56196aa9fd9acea4edd58d}{is\+Finished}} ()
+\item 
+List$<$ String $>$ \mbox{\hyperlink{classgraphic_1_1_animation_a460a4726a0953178e0ac8b98489914b7}{get\+Animation\+Frames}} ()
+\end{DoxyCompactItemize}
+\doxysubsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+final List$<$ String $>$ \mbox{\hyperlink{classgraphic_1_1_animation_a2b68f1d08d2fffb4f4f9e12e0e210d57}{animation\+Frames}}
+\item 
+final int \mbox{\hyperlink{classgraphic_1_1_animation_a57f90f9be1400ed67d2b534b38e7dd77}{frames}}
+\item 
+int \mbox{\hyperlink{classgraphic_1_1_animation_a3eba95741e17cd536df607c678477b3b}{current\+Frame\+Index}} = 0
+\item 
+\mbox{\Hypertarget{classgraphic_1_1_animation_a0c047a6c735846705710162904d2adf3}\label{classgraphic_1_1_animation_a0c047a6c735846705710162904d2adf3}} 
+boolean {\bfseries looping}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+A list of textures from an animation. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classgraphic_1_1_animation_a3caa0e21565e9ec6985ad9f5d21dec65}\label{classgraphic_1_1_animation_a3caa0e21565e9ec6985ad9f5d21dec65}} 
+\index{graphic.Animation@{graphic.Animation}!Animation@{Animation}}
+\index{Animation@{Animation}!graphic.Animation@{graphic.Animation}}
+\doxysubsubsection{\texorpdfstring{Animation()}{Animation()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily graphic.\+Animation.\+Animation (\begin{DoxyParamCaption}\item[{Collection$<$ String $>$}]{animation\+Frames,  }\item[{int}]{frame\+Time,  }\item[{boolean}]{looping }\end{DoxyParamCaption})}
+
+Creates an animation.
+
+
+\begin{DoxyParams}{Parameters}
+{\em animation\+Frames} & The list of textures that builds the animation. Must be in order. \\
+\hline
+{\em frame\+Time} & How many frames to wait, before switching to the next texture? \\
+\hline
+{\em looping} & should the Animation continue to repeat ? \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classgraphic_1_1_animation_a61a046d1cb88e6ac4ab5cf78d3e09dbe}\label{classgraphic_1_1_animation_a61a046d1cb88e6ac4ab5cf78d3e09dbe}} 
+\index{graphic.Animation@{graphic.Animation}!Animation@{Animation}}
+\index{Animation@{Animation}!graphic.Animation@{graphic.Animation}}
+\doxysubsubsection{\texorpdfstring{Animation()}{Animation()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily graphic.\+Animation.\+Animation (\begin{DoxyParamCaption}\item[{Collection$<$ String $>$}]{animation\+Frames,  }\item[{int}]{frame\+Time }\end{DoxyParamCaption})}
+
+Creates an animation. repeats forever
+
+
+\begin{DoxyParams}{Parameters}
+{\em animation\+Frames} & The list of textures that builds the animation. Must be in order. \\
+\hline
+{\em frame\+Time} & How many frames to wait, before switching to the next texture? \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classgraphic_1_1_animation_a460a4726a0953178e0ac8b98489914b7}\label{classgraphic_1_1_animation_a460a4726a0953178e0ac8b98489914b7}} 
+\index{graphic.Animation@{graphic.Animation}!getAnimationFrames@{getAnimationFrames}}
+\index{getAnimationFrames@{getAnimationFrames}!graphic.Animation@{graphic.Animation}}
+\doxysubsubsection{\texorpdfstring{getAnimationFrames()}{getAnimationFrames()}}
+{\footnotesize\ttfamily List$<$ String $>$ graphic.\+Animation.\+get\+Animation\+Frames (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Get the List of animation frames.
+
+\begin{DoxyReturn}{Returns}
+List containing the paths of the single frames of the animation. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classgraphic_1_1_animation_a865b054afcdbc88908e0934256925720}\label{classgraphic_1_1_animation_a865b054afcdbc88908e0934256925720}} 
+\index{graphic.Animation@{graphic.Animation}!getNextAnimationTexturePath@{getNextAnimationTexturePath}}
+\index{getNextAnimationTexturePath@{getNextAnimationTexturePath}!graphic.Animation@{graphic.Animation}}
+\doxysubsubsection{\texorpdfstring{getNextAnimationTexturePath()}{getNextAnimationTexturePath()}}
+{\footnotesize\ttfamily String graphic.\+Animation.\+get\+Next\+Animation\+Texture\+Path (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Automatically updates current\+Frame to next frame.
+
+\begin{DoxyReturn}{Returns}
+The texture of the next animation step (draw this). 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classgraphic_1_1_animation_a480eff3a5b56196aa9fd9acea4edd58d}\label{classgraphic_1_1_animation_a480eff3a5b56196aa9fd9acea4edd58d}} 
+\index{graphic.Animation@{graphic.Animation}!isFinished@{isFinished}}
+\index{isFinished@{isFinished}!graphic.Animation@{graphic.Animation}}
+\doxysubsubsection{\texorpdfstring{isFinished()}{isFinished()}}
+{\footnotesize\ttfamily boolean graphic.\+Animation.\+is\+Finished (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\begin{DoxyReturn}{Returns}
+true when last frame and is not looping, otherwise false 
+\end{DoxyReturn}
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{classgraphic_1_1_animation_a2b68f1d08d2fffb4f4f9e12e0e210d57}\label{classgraphic_1_1_animation_a2b68f1d08d2fffb4f4f9e12e0e210d57}} 
+\index{graphic.Animation@{graphic.Animation}!animationFrames@{animationFrames}}
+\index{animationFrames@{animationFrames}!graphic.Animation@{graphic.Animation}}
+\doxysubsubsection{\texorpdfstring{animationFrames}{animationFrames}}
+{\footnotesize\ttfamily final List$<$String$>$ graphic.\+Animation.\+animation\+Frames\hspace{0.3cm}{\ttfamily [protected]}}
+
+The set of textures that build the animation. \mbox{\Hypertarget{classgraphic_1_1_animation_a3eba95741e17cd536df607c678477b3b}\label{classgraphic_1_1_animation_a3eba95741e17cd536df607c678477b3b}} 
+\index{graphic.Animation@{graphic.Animation}!currentFrameIndex@{currentFrameIndex}}
+\index{currentFrameIndex@{currentFrameIndex}!graphic.Animation@{graphic.Animation}}
+\doxysubsubsection{\texorpdfstring{currentFrameIndex}{currentFrameIndex}}
+{\footnotesize\ttfamily int graphic.\+Animation.\+current\+Frame\+Index = 0\hspace{0.3cm}{\ttfamily [protected]}}
+
+Index of the NEXT texture that will be returned. \mbox{\Hypertarget{classgraphic_1_1_animation_a57f90f9be1400ed67d2b534b38e7dd77}\label{classgraphic_1_1_animation_a57f90f9be1400ed67d2b534b38e7dd77}} 
+\index{graphic.Animation@{graphic.Animation}!frames@{frames}}
+\index{frames@{frames}!graphic.Animation@{graphic.Animation}}
+\doxysubsubsection{\texorpdfstring{frames}{frames}}
+{\footnotesize\ttfamily final int graphic.\+Animation.\+frames\hspace{0.3cm}{\ttfamily [protected]}}
+
+The count of textures for the animation. 
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/schli/\+Desktop/\+Projects/\+Intelli\+J/pm-\/dungeon-\/jan/game/src/graphic/Animation.\+java\end{DoxyCompactItemize}

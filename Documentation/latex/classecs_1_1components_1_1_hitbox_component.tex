@@ -1,0 +1,194 @@
+\hypertarget{classecs_1_1components_1_1_hitbox_component}{}\doxysection{ecs.\+components.\+Hitbox\+Component Class Reference}
+\label{classecs_1_1components_1_1_hitbox_component}\index{ecs.components.HitboxComponent@{ecs.components.HitboxComponent}}
+Inheritance diagram for ecs.\+components.\+Hitbox\+Component\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=3.000000cm]{classecs_1_1components_1_1_hitbox_component}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classecs_1_1components_1_1_hitbox_component_a86f1b9c1bcaf3c3699f2c1cb8db7adb7}{Hitbox\+Component}} (\mbox{\hyperlink{classecs_1_1entities_1_1_entity}{Entity}} entity, \mbox{\hyperlink{classtools_1_1_point}{Point}} offset, \mbox{\hyperlink{classtools_1_1_point}{Point}} size, \mbox{\hyperlink{interfaceecs_1_1components_1_1collision_1_1_i_collide}{ICollide}} i\+Collide\+Enter, \mbox{\hyperlink{interfaceecs_1_1components_1_1collision_1_1_i_collide}{ICollide}} i\+Collide\+Leave)
+\item 
+\mbox{\hyperlink{classecs_1_1components_1_1_hitbox_component_abbcfcf84c60c38e1679eed49b71b063b}{Hitbox\+Component}} (\mbox{\hyperlink{classecs_1_1entities_1_1_entity}{Entity}} entity, \mbox{\hyperlink{interfaceecs_1_1components_1_1collision_1_1_i_collide}{ICollide}} i\+Collide\+Enter, \mbox{\hyperlink{interfaceecs_1_1components_1_1collision_1_1_i_collide}{ICollide}} i\+Collide\+Leave)
+\item 
+\mbox{\hyperlink{classecs_1_1components_1_1_hitbox_component_aa551dd4377c17b549f05ccddbce836c8}{Hitbox\+Component}} (@DSLContext\+Member(name=\char`\"{}entity\char`\"{}) \mbox{\hyperlink{classecs_1_1entities_1_1_entity}{Entity}} entity)
+\item 
+void \mbox{\hyperlink{classecs_1_1components_1_1_hitbox_component_a3cf3108f6ac4692d719185ead7135a43}{on\+Enter}} (\mbox{\hyperlink{classecs_1_1components_1_1_hitbox_component}{Hitbox\+Component}} other, Tile.\+Direction direction)
+\item 
+void \mbox{\hyperlink{classecs_1_1components_1_1_hitbox_component_a4599722e03e7c48ca9104dac378c6b3d}{on\+Leave}} (\mbox{\hyperlink{classecs_1_1components_1_1_hitbox_component}{Hitbox\+Component}} other, Tile.\+Direction direction)
+\item 
+\mbox{\hyperlink{classtools_1_1_point}{Point}} \mbox{\hyperlink{classecs_1_1components_1_1_hitbox_component_ad8f21de8208d5d9da34399b1ff80dc6f}{get\+Bottom\+Left}} ()
+\item 
+\mbox{\hyperlink{classtools_1_1_point}{Point}} \mbox{\hyperlink{classecs_1_1components_1_1_hitbox_component_a6decee4d8444535745071361a73ac5c6}{get\+Top\+Right}} ()
+\item 
+\mbox{\hyperlink{classtools_1_1_point}{Point}} \mbox{\hyperlink{classecs_1_1components_1_1_hitbox_component_a553ad6022abadb5d7c2c2a211fda289a}{get\+Center}} ()
+\item 
+void \mbox{\hyperlink{classecs_1_1components_1_1_hitbox_component_a99e4a82ba4b94f6fe39f537d7d8f7a91}{seti\+Collide\+Enter}} (\mbox{\hyperlink{interfaceecs_1_1components_1_1collision_1_1_i_collide}{ICollide}} i\+Collide\+Enter)
+\item 
+void \mbox{\hyperlink{classecs_1_1components_1_1_hitbox_component_a73a6184d09aa693a007cc7c33ab9e0bc}{seti\+Collide\+Leave}} (\mbox{\hyperlink{interfaceecs_1_1components_1_1collision_1_1_i_collide}{ICollide}} i\+Collide\+Leave)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Member Functions inherited from \mbox{\hyperlink{classecs_1_1components_1_1_component}{ecs.\+components.\+Component}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classecs_1_1components_1_1_component_a1c4a399b019dcc3630c7614d631554ef}{Component}} (\mbox{\hyperlink{classecs_1_1entities_1_1_entity}{Entity}} entity)
+\item 
+\mbox{\hyperlink{classecs_1_1entities_1_1_entity}{Entity}} \mbox{\hyperlink{classecs_1_1components_1_1_component_a1db3804bc32e6724c76e0555d6720c2f}{get\+Entity}} ()
+\end{DoxyCompactItemize}
+\doxysubsection*{Static Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classecs_1_1components_1_1_hitbox_component_ac1ce75f0bc4b84c7e04253cf932d0cd9}\label{classecs_1_1components_1_1_hitbox_component_ac1ce75f0bc4b84c7e04253cf932d0cd9}} 
+static final \mbox{\hyperlink{classtools_1_1_point}{Point}} {\bfseries DEFAULT\+\_\+\+OFFSET} = new \mbox{\hyperlink{classtools_1_1_point}{Point}}(0.\+25f, 0.\+25f)
+\item 
+\mbox{\Hypertarget{classecs_1_1components_1_1_hitbox_component_a6177312a425e8c2e28d77c85bf5ec24d}\label{classecs_1_1components_1_1_hitbox_component_a6177312a425e8c2e28d77c85bf5ec24d}} 
+static final \mbox{\hyperlink{classtools_1_1_point}{Point}} {\bfseries DEFAULT\+\_\+\+SIZE} = new \mbox{\hyperlink{classtools_1_1_point}{Point}}(0.\+5f, 0.\+5f)
+\item 
+\mbox{\Hypertarget{classecs_1_1components_1_1_hitbox_component_ab5d76823d33f50644083aeb1bf2e52a4}\label{classecs_1_1components_1_1_hitbox_component_ab5d76823d33f50644083aeb1bf2e52a4}} 
+static final \mbox{\hyperlink{interfaceecs_1_1components_1_1collision_1_1_i_collide}{ICollide}} {\bfseries DEFAULT\+\_\+\+COLLIDER} = (a, b, c) -\/$>$ System.\+out.\+println(\char`\"{}Collide\char`\"{})
+\end{DoxyCompactItemize}
+\doxysubsection*{Additional Inherited Members}
+\doxysubsubsection*{Protected Attributes inherited from \mbox{\hyperlink{classecs_1_1components_1_1_component}{ecs.\+components.\+Component}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classecs_1_1components_1_1_component_aa33a53c73a06c5000d7ba4cc005acedc}\label{classecs_1_1components_1_1_component_aa33a53c73a06c5000d7ba4cc005acedc}} 
+\mbox{\hyperlink{classecs_1_1entities_1_1_entity}{Entity}} {\bfseries entity}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classecs_1_1components_1_1_hitbox_component_a86f1b9c1bcaf3c3699f2c1cb8db7adb7}\label{classecs_1_1components_1_1_hitbox_component_a86f1b9c1bcaf3c3699f2c1cb8db7adb7}} 
+\index{ecs.components.HitboxComponent@{ecs.components.HitboxComponent}!HitboxComponent@{HitboxComponent}}
+\index{HitboxComponent@{HitboxComponent}!ecs.components.HitboxComponent@{ecs.components.HitboxComponent}}
+\doxysubsubsection{\texorpdfstring{HitboxComponent()}{HitboxComponent()}\hspace{0.1cm}{\footnotesize\ttfamily [1/3]}}
+{\footnotesize\ttfamily ecs.\+components.\+Hitbox\+Component.\+Hitbox\+Component (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classecs_1_1entities_1_1_entity}{Entity}}}]{entity,  }\item[{\mbox{\hyperlink{classtools_1_1_point}{Point}}}]{offset,  }\item[{\mbox{\hyperlink{classtools_1_1_point}{Point}}}]{size,  }\item[{\mbox{\hyperlink{interfaceecs_1_1components_1_1collision_1_1_i_collide}{ICollide}}}]{i\+Collide\+Enter,  }\item[{\mbox{\hyperlink{interfaceecs_1_1components_1_1collision_1_1_i_collide}{ICollide}}}]{i\+Collide\+Leave }\end{DoxyParamCaption})}
+
+Creates A Hitbox
+
+
+\begin{DoxyParams}{Parameters}
+{\em entity} & associated entity \\
+\hline
+{\em offset} & the offset for the hitbox to the position \\
+\hline
+{\em size} & the size for the hitbox \\
+\hline
+{\em i\+Collide\+Enter} & behaviour if a collision started \\
+\hline
+{\em i\+Collide\+Leave} & behaviour if a collision stopped \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classecs_1_1components_1_1_hitbox_component_abbcfcf84c60c38e1679eed49b71b063b}\label{classecs_1_1components_1_1_hitbox_component_abbcfcf84c60c38e1679eed49b71b063b}} 
+\index{ecs.components.HitboxComponent@{ecs.components.HitboxComponent}!HitboxComponent@{HitboxComponent}}
+\index{HitboxComponent@{HitboxComponent}!ecs.components.HitboxComponent@{ecs.components.HitboxComponent}}
+\doxysubsubsection{\texorpdfstring{HitboxComponent()}{HitboxComponent()}\hspace{0.1cm}{\footnotesize\ttfamily [2/3]}}
+{\footnotesize\ttfamily ecs.\+components.\+Hitbox\+Component.\+Hitbox\+Component (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classecs_1_1entities_1_1_entity}{Entity}}}]{entity,  }\item[{\mbox{\hyperlink{interfaceecs_1_1components_1_1collision_1_1_i_collide}{ICollide}}}]{i\+Collide\+Enter,  }\item[{\mbox{\hyperlink{interfaceecs_1_1components_1_1collision_1_1_i_collide}{ICollide}}}]{i\+Collide\+Leave }\end{DoxyParamCaption})}
+
+Creates A Hitbox with a default offset of 0.\+25f x 0.\+25f and a default size of 0.\+5f x 0.\+5f
+
+
+\begin{DoxyParams}{Parameters}
+{\em entity} & associated entity \\
+\hline
+{\em i\+Collide\+Enter} & behaviour if a collision started \\
+\hline
+{\em i\+Collide\+Leave} & behaviour if a collision stopped \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classecs_1_1components_1_1_hitbox_component_aa551dd4377c17b549f05ccddbce836c8}\label{classecs_1_1components_1_1_hitbox_component_aa551dd4377c17b549f05ccddbce836c8}} 
+\index{ecs.components.HitboxComponent@{ecs.components.HitboxComponent}!HitboxComponent@{HitboxComponent}}
+\index{HitboxComponent@{HitboxComponent}!ecs.components.HitboxComponent@{ecs.components.HitboxComponent}}
+\doxysubsubsection{\texorpdfstring{HitboxComponent()}{HitboxComponent()}\hspace{0.1cm}{\footnotesize\ttfamily [3/3]}}
+{\footnotesize\ttfamily ecs.\+components.\+Hitbox\+Component.\+Hitbox\+Component (\begin{DoxyParamCaption}\item[{@DSLContext\+Member(name=\char`\"{}entity\char`\"{}) \mbox{\hyperlink{classecs_1_1entities_1_1_entity}{Entity}}}]{entity }\end{DoxyParamCaption})}
+
+Creates A Hitbox with a default offset of 0.\+25f x 0.\+25f and a default size of 0.\+5f x 0.\+5f and default\+Collide\+Methods
+
+
+\begin{DoxyParams}{Parameters}
+{\em entity} & associated entity \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classecs_1_1components_1_1_hitbox_component_ad8f21de8208d5d9da34399b1ff80dc6f}\label{classecs_1_1components_1_1_hitbox_component_ad8f21de8208d5d9da34399b1ff80dc6f}} 
+\index{ecs.components.HitboxComponent@{ecs.components.HitboxComponent}!getBottomLeft@{getBottomLeft}}
+\index{getBottomLeft@{getBottomLeft}!ecs.components.HitboxComponent@{ecs.components.HitboxComponent}}
+\doxysubsubsection{\texorpdfstring{getBottomLeft()}{getBottomLeft()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classtools_1_1_point}{Point}} ecs.\+components.\+Hitbox\+Component.\+get\+Bottom\+Left (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\begin{DoxyReturn}{Returns}
+bottom left point of entity\textquotesingle{}s hitbox 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classecs_1_1components_1_1_hitbox_component_a553ad6022abadb5d7c2c2a211fda289a}\label{classecs_1_1components_1_1_hitbox_component_a553ad6022abadb5d7c2c2a211fda289a}} 
+\index{ecs.components.HitboxComponent@{ecs.components.HitboxComponent}!getCenter@{getCenter}}
+\index{getCenter@{getCenter}!ecs.components.HitboxComponent@{ecs.components.HitboxComponent}}
+\doxysubsubsection{\texorpdfstring{getCenter()}{getCenter()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classtools_1_1_point}{Point}} ecs.\+components.\+Hitbox\+Component.\+get\+Center (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\begin{DoxyReturn}{Returns}
+center point of entity\textquotesingle{}s hitbox 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classecs_1_1components_1_1_hitbox_component_a6decee4d8444535745071361a73ac5c6}\label{classecs_1_1components_1_1_hitbox_component_a6decee4d8444535745071361a73ac5c6}} 
+\index{ecs.components.HitboxComponent@{ecs.components.HitboxComponent}!getTopRight@{getTopRight}}
+\index{getTopRight@{getTopRight}!ecs.components.HitboxComponent@{ecs.components.HitboxComponent}}
+\doxysubsubsection{\texorpdfstring{getTopRight()}{getTopRight()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classtools_1_1_point}{Point}} ecs.\+components.\+Hitbox\+Component.\+get\+Top\+Right (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\begin{DoxyReturn}{Returns}
+top right point of entity\textquotesingle{}s hitbox 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classecs_1_1components_1_1_hitbox_component_a3cf3108f6ac4692d719185ead7135a43}\label{classecs_1_1components_1_1_hitbox_component_a3cf3108f6ac4692d719185ead7135a43}} 
+\index{ecs.components.HitboxComponent@{ecs.components.HitboxComponent}!onEnter@{onEnter}}
+\index{onEnter@{onEnter}!ecs.components.HitboxComponent@{ecs.components.HitboxComponent}}
+\doxysubsubsection{\texorpdfstring{onEnter()}{onEnter()}}
+{\footnotesize\ttfamily void ecs.\+components.\+Hitbox\+Component.\+on\+Enter (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classecs_1_1components_1_1_hitbox_component}{Hitbox\+Component}}}]{other,  }\item[{Tile.\+Direction}]{direction }\end{DoxyParamCaption})}
+
+
+\begin{DoxyParams}{Parameters}
+{\em other} & hitbox of another entity \\
+\hline
+{\em direction} & direction in which the collision happens \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classecs_1_1components_1_1_hitbox_component_a4599722e03e7c48ca9104dac378c6b3d}\label{classecs_1_1components_1_1_hitbox_component_a4599722e03e7c48ca9104dac378c6b3d}} 
+\index{ecs.components.HitboxComponent@{ecs.components.HitboxComponent}!onLeave@{onLeave}}
+\index{onLeave@{onLeave}!ecs.components.HitboxComponent@{ecs.components.HitboxComponent}}
+\doxysubsubsection{\texorpdfstring{onLeave()}{onLeave()}}
+{\footnotesize\ttfamily void ecs.\+components.\+Hitbox\+Component.\+on\+Leave (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classecs_1_1components_1_1_hitbox_component}{Hitbox\+Component}}}]{other,  }\item[{Tile.\+Direction}]{direction }\end{DoxyParamCaption})}
+
+
+\begin{DoxyParams}{Parameters}
+{\em other} & hitbox of another entity \\
+\hline
+{\em direction} & direction in which the collision happens \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classecs_1_1components_1_1_hitbox_component_a99e4a82ba4b94f6fe39f537d7d8f7a91}\label{classecs_1_1components_1_1_hitbox_component_a99e4a82ba4b94f6fe39f537d7d8f7a91}} 
+\index{ecs.components.HitboxComponent@{ecs.components.HitboxComponent}!setiCollideEnter@{setiCollideEnter}}
+\index{setiCollideEnter@{setiCollideEnter}!ecs.components.HitboxComponent@{ecs.components.HitboxComponent}}
+\doxysubsubsection{\texorpdfstring{setiCollideEnter()}{setiCollideEnter()}}
+{\footnotesize\ttfamily void ecs.\+components.\+Hitbox\+Component.\+seti\+Collide\+Enter (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{interfaceecs_1_1components_1_1collision_1_1_i_collide}{ICollide}}}]{i\+Collide\+Enter }\end{DoxyParamCaption})}
+
+
+\begin{DoxyParams}{Parameters}
+{\em i\+Collide\+Enter} & new collide\+Method of the associated entity \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classecs_1_1components_1_1_hitbox_component_a73a6184d09aa693a007cc7c33ab9e0bc}\label{classecs_1_1components_1_1_hitbox_component_a73a6184d09aa693a007cc7c33ab9e0bc}} 
+\index{ecs.components.HitboxComponent@{ecs.components.HitboxComponent}!setiCollideLeave@{setiCollideLeave}}
+\index{setiCollideLeave@{setiCollideLeave}!ecs.components.HitboxComponent@{ecs.components.HitboxComponent}}
+\doxysubsubsection{\texorpdfstring{setiCollideLeave()}{setiCollideLeave()}}
+{\footnotesize\ttfamily void ecs.\+components.\+Hitbox\+Component.\+seti\+Collide\+Leave (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{interfaceecs_1_1components_1_1collision_1_1_i_collide}{ICollide}}}]{i\+Collide\+Leave }\end{DoxyParamCaption})}
+
+
+\begin{DoxyParams}{Parameters}
+{\em i\+Collide\+Leave} & new collide\+Method of the associated entity \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/schli/\+Desktop/\+Projects/\+Intelli\+J/pm-\/dungeon-\/jan/game/src/ecs/components/Hitbox\+Component.\+java\end{DoxyCompactItemize}

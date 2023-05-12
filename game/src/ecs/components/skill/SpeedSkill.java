@@ -20,7 +20,9 @@ import java.util.Optional;
 
 public class SpeedSkill extends BuffSkill {
     private float manaCost = 10f;
+
     private transient Sound sound;
+
     public SpeedSkill() {
         super();
     }
@@ -48,6 +50,24 @@ public class SpeedSkill extends BuffSkill {
                     int ebene = Game.getLevelStage();
                     int time = startTime + (ebene / 2);
 
+
+                    if (time > 15) {
+                        time = 15;
+                    }
+
+                    System.out.println(time + " Sekunden SpeedUP");
+                    hero.startTrapTimer(time * 1000);
+
+                    try {
+                        // start menu soundtrack
+                        sound = Gdx.audio.newSound(Gdx.files.internal("game/sounds/skill/speedUpIn.mp3"));
+                        sound.play(0.3f);
+
+                    } catch (Exception e) {
+                        System.out.println("Sounddatei 'speedUpIn.mp3' konnte nicht gefunden werden");
+                    }
+
+
                     if (time > 15) {
                         time = 15;
                     }
@@ -59,14 +79,6 @@ public class SpeedSkill extends BuffSkill {
                     hero.setCurrentMana(hero.getCurrentMana() - manaCost);
                     System.out.println("Mana: " + (int) hero.getCurrentMana());
 
-                    try {
-                        // start menu soundtrack
-                        sound = Gdx.audio.newSound(Gdx.files.internal("game/sounds/skill/speedUpIn.mp3"));
-                        sound.play(0.3f);
-
-                    } catch (Exception e) {
-                        System.out.println("Sounddatei 'speedUpIn.mp3' konnte nicht gefunden werden");
-                    }
 
                 } else {
                     System.out.println("SpeedUp nicht nutzbar, da eine Falle aktiviert ist");

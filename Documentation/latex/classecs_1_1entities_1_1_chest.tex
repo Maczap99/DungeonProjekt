@@ -1,0 +1,115 @@
+\hypertarget{classecs_1_1entities_1_1_chest}{}\doxysection{ecs.\+entities.\+Chest Class Reference}
+\label{classecs_1_1entities_1_1_chest}\index{ecs.entities.Chest@{ecs.entities.Chest}}
+Inheritance diagram for ecs.\+entities.\+Chest\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=3.000000cm]{classecs_1_1entities_1_1_chest}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classecs_1_1entities_1_1_chest_af0a1d1562d6106b1b9aa1588fda8e879}{Chest}} (List$<$ \mbox{\hyperlink{classecs_1_1items_1_1_item_data}{Item\+Data}} $>$ item\+Data, \mbox{\hyperlink{classtools_1_1_point}{Point}} position)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Member Functions inherited from \mbox{\hyperlink{classecs_1_1entities_1_1_entity}{ecs.\+entities.\+Entity}}}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{classecs_1_1entities_1_1_entity_a3743bd48c8ac35911a502a611bb0f6a2}{add\+Component}} (\mbox{\hyperlink{classecs_1_1components_1_1_component}{Component}} component)
+\item 
+void \mbox{\hyperlink{classecs_1_1entities_1_1_entity_ad9d8b6a5934e40fd3e896bd25baf1fe0}{remove\+Component}} (Class klass)
+\item 
+Optional$<$ \mbox{\hyperlink{classecs_1_1components_1_1_component}{Component}} $>$ \mbox{\hyperlink{classecs_1_1entities_1_1_entity_ab8a120351ce29bd17b15d3bb67c2b7d2}{get\+Component}} (Class klass)
+\end{DoxyCompactItemize}
+\doxysubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static \mbox{\hyperlink{classecs_1_1entities_1_1_chest}{Chest}} \mbox{\hyperlink{classecs_1_1entities_1_1_chest_a41caa621c110713bf2bb9652b505e3fb}{create\+New\+Chest}} ()
+\end{DoxyCompactItemize}
+\doxysubsection*{Static Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classecs_1_1entities_1_1_chest_ade20344687d2ec06a793489c5d5c17a5}\label{classecs_1_1entities_1_1_chest_ade20344687d2ec06a793489c5d5c17a5}} 
+static final float {\bfseries default\+Interaction\+Radius} = 1f
+\item 
+static final List$<$ String $>$ \mbox{\hyperlink{classecs_1_1entities_1_1_chest_a8f1315e7750dcfc476988b72c2986b8e}{DEFAULT\+\_\+\+CLOSED\+\_\+\+ANIMATION\+\_\+\+FRAMES}}
+\item 
+static final List$<$ String $>$ \mbox{\hyperlink{classecs_1_1entities_1_1_chest_a94c91ee92c6bc25400e5ee292e3544a3}{DEFAULT\+\_\+\+OPENING\+\_\+\+ANIMATION\+\_\+\+FRAMES}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Additional Inherited Members}
+\doxysubsubsection*{Public Attributes inherited from \mbox{\hyperlink{classecs_1_1entities_1_1_entity}{ecs.\+entities.\+Entity}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classecs_1_1entities_1_1_entity_a2da842f2e4db9a8d6a11f025a7948be6}\label{classecs_1_1entities_1_1_entity_a2da842f2e4db9a8d6a11f025a7948be6}} 
+final int {\bfseries id} = next\+Id++
+\item 
+\mbox{\Hypertarget{classecs_1_1entities_1_1_entity_a51e739b91fe9b2603d210082361bb098}\label{classecs_1_1entities_1_1_entity_a51e739b91fe9b2603d210082361bb098}} 
+transient Hash\+Map$<$ Class, \mbox{\hyperlink{classecs_1_1components_1_1_component}{Component}} $>$ {\bfseries components}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classecs_1_1entities_1_1_chest_af0a1d1562d6106b1b9aa1588fda8e879}\label{classecs_1_1entities_1_1_chest_af0a1d1562d6106b1b9aa1588fda8e879}} 
+\index{ecs.entities.Chest@{ecs.entities.Chest}!Chest@{Chest}}
+\index{Chest@{Chest}!ecs.entities.Chest@{ecs.entities.Chest}}
+\doxysubsubsection{\texorpdfstring{Chest()}{Chest()}}
+{\footnotesize\ttfamily ecs.\+entities.\+Chest.\+Chest (\begin{DoxyParamCaption}\item[{List$<$ \mbox{\hyperlink{classecs_1_1items_1_1_item_data}{Item\+Data}} $>$}]{item\+Data,  }\item[{\mbox{\hyperlink{classtools_1_1_point}{Point}}}]{position }\end{DoxyParamCaption})}
+
+Creates a new Chest which drops the given items on interaction
+
+
+\begin{DoxyParams}{Parameters}
+{\em item\+Data} & which the chest is supposed to drop \\
+\hline
+{\em position} & the position where the chest is placed \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classecs_1_1entities_1_1_chest_a41caa621c110713bf2bb9652b505e3fb}\label{classecs_1_1entities_1_1_chest_a41caa621c110713bf2bb9652b505e3fb}} 
+\index{ecs.entities.Chest@{ecs.entities.Chest}!createNewChest@{createNewChest}}
+\index{createNewChest@{createNewChest}!ecs.entities.Chest@{ecs.entities.Chest}}
+\doxysubsubsection{\texorpdfstring{createNewChest()}{createNewChest()}}
+{\footnotesize\ttfamily static \mbox{\hyperlink{classecs_1_1entities_1_1_chest}{Chest}} ecs.\+entities.\+Chest.\+create\+New\+Chest (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+small Generator which uses the Item\+::\+ITEM\+\_\+\+REGISTER
+
+\begin{DoxyReturn}{Returns}
+a configured Chest 
+\end{DoxyReturn}
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{classecs_1_1entities_1_1_chest_a8f1315e7750dcfc476988b72c2986b8e}\label{classecs_1_1entities_1_1_chest_a8f1315e7750dcfc476988b72c2986b8e}} 
+\index{ecs.entities.Chest@{ecs.entities.Chest}!DEFAULT\_CLOSED\_ANIMATION\_FRAMES@{DEFAULT\_CLOSED\_ANIMATION\_FRAMES}}
+\index{DEFAULT\_CLOSED\_ANIMATION\_FRAMES@{DEFAULT\_CLOSED\_ANIMATION\_FRAMES}!ecs.entities.Chest@{ecs.entities.Chest}}
+\doxysubsubsection{\texorpdfstring{DEFAULT\_CLOSED\_ANIMATION\_FRAMES}{DEFAULT\_CLOSED\_ANIMATION\_FRAMES}}
+{\footnotesize\ttfamily final List$<$String$>$ ecs.\+entities.\+Chest.\+DEFAULT\+\_\+\+CLOSED\+\_\+\+ANIMATION\+\_\+\+FRAMES\hspace{0.3cm}{\ttfamily [static]}}
+
+{\bfseries Initial value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{=}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ List.of(\textcolor{stringliteral}{"{}objects/treasurechest/chest\_full\_open\_anim\_f0.png"{}})}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classecs_1_1entities_1_1_chest_a94c91ee92c6bc25400e5ee292e3544a3}\label{classecs_1_1entities_1_1_chest_a94c91ee92c6bc25400e5ee292e3544a3}} 
+\index{ecs.entities.Chest@{ecs.entities.Chest}!DEFAULT\_OPENING\_ANIMATION\_FRAMES@{DEFAULT\_OPENING\_ANIMATION\_FRAMES}}
+\index{DEFAULT\_OPENING\_ANIMATION\_FRAMES@{DEFAULT\_OPENING\_ANIMATION\_FRAMES}!ecs.entities.Chest@{ecs.entities.Chest}}
+\doxysubsubsection{\texorpdfstring{DEFAULT\_OPENING\_ANIMATION\_FRAMES}{DEFAULT\_OPENING\_ANIMATION\_FRAMES}}
+{\footnotesize\ttfamily final List$<$String$>$ ecs.\+entities.\+Chest.\+DEFAULT\+\_\+\+OPENING\+\_\+\+ANIMATION\+\_\+\+FRAMES\hspace{0.3cm}{\ttfamily [static]}}
+
+{\bfseries Initial value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{=}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ List.of(}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}objects/treasurechest/chest\_full\_open\_anim\_f0.png"{}},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}objects/treasurechest/chest\_full\_open\_anim\_f1.png"{}},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}objects/treasurechest/chest\_full\_open\_anim\_f2.png"{}},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}objects/treasurechest/chest\_empty\_open\_anim\_f2.png"{}})}
+
+\end{DoxyCode}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/schli/\+Desktop/\+Projects/\+Intelli\+J/pm-\/dungeon-\/jan/game/src/ecs/entities/Chest.\+java\end{DoxyCompactItemize}

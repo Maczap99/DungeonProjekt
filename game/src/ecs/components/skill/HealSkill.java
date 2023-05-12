@@ -21,6 +21,7 @@ public class HealSkill extends BuffSkill {
     private float manaCost = 100f;
     private transient Sound sound;
 
+
     public HealSkill() {
         super();
     }
@@ -41,6 +42,7 @@ public class HealSkill extends BuffSkill {
                     // set the curren health on maximal health
                     hc.setCurrentHealthpoints(hc.getMaximalHealthpoints());
                     System.out.println("Leben: " + hc.getCurrentHealthpoints());
+
 
                     // reduce mana
                     hero.setCurrentMana(hero.getCurrentMana() - manaCost);

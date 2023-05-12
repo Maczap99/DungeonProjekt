@@ -1,0 +1,256 @@
+\hypertarget{classecs_1_1components_1_1_health_component}{}\doxysection{ecs.\+components.\+Health\+Component Class Reference}
+\label{classecs_1_1components_1_1_health_component}\index{ecs.components.HealthComponent@{ecs.components.HealthComponent}}
+Inheritance diagram for ecs.\+components.\+Health\+Component\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=3.000000cm]{classecs_1_1components_1_1_health_component}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classecs_1_1components_1_1_health_component_adb8bed2060dc9513d4a951cfe0a379d4}{Health\+Component}} (\mbox{\hyperlink{classecs_1_1entities_1_1_entity}{Entity}} entity, int maximal\+Hit\+Points, \mbox{\hyperlink{interfaceecs_1_1components_1_1_i_on_death_function}{IOn\+Death\+Function}} on\+Death, \mbox{\hyperlink{classgraphic_1_1_animation}{Animation}} get\+Hit\+Animation, \mbox{\hyperlink{classgraphic_1_1_animation}{Animation}} die\+Animation)
+\item 
+\mbox{\hyperlink{classecs_1_1components_1_1_health_component_aa7e1c97c5082b26cec4453e7b8f89a67}{Health\+Component}} (@DSLContext\+Member(name=\char`\"{}entity\char`\"{}) \mbox{\hyperlink{classecs_1_1entities_1_1_entity}{Entity}} entity)
+\item 
+void \mbox{\hyperlink{classecs_1_1components_1_1_health_component_aef3df01cdb374f077327b2e886b60c30}{receive\+Hit}} (Damage damage)
+\item 
+void \mbox{\hyperlink{classecs_1_1components_1_1_health_component_a5089393ddbaae28e15f60c76ec2683bf}{trigger\+On\+Death}} ()
+\item 
+int \mbox{\hyperlink{classecs_1_1components_1_1_health_component_a3015dd19947876c4594a6b39f3c4313f}{get\+Damage}} (\mbox{\hyperlink{enumecs_1_1damage_1_1_damage_type}{Damage\+Type}} dt)
+\item 
+void \mbox{\hyperlink{classecs_1_1components_1_1_health_component_a51c4b61a6d9c262b52a1653463364d1a}{clear\+Damage}} ()
+\item 
+void \mbox{\hyperlink{classecs_1_1components_1_1_health_component_af5bcbbcacb1ed63962342fb38e5f4ec2}{set\+Current\+Healthpoints}} (int amount)
+\item 
+void \mbox{\hyperlink{classecs_1_1components_1_1_health_component_a1cb0a587782961fe544aaa20f48257c9}{set\+Maximal\+Healthpoints}} (int amount)
+\item 
+void \mbox{\hyperlink{classecs_1_1components_1_1_health_component_a6241980d6f345735c6d8763eeaf25018}{set\+Die\+Animation}} (\mbox{\hyperlink{classgraphic_1_1_animation}{Animation}} die\+Animation)
+\item 
+void \mbox{\hyperlink{classecs_1_1components_1_1_health_component_aedaf6b26a2829d4f79302bae42ae7613}{set\+Get\+Hit\+Animation}} (\mbox{\hyperlink{classgraphic_1_1_animation}{Animation}} is\+Hit\+Animation)
+\item 
+void \mbox{\hyperlink{classecs_1_1components_1_1_health_component_ab9ed43fefda523dc0a643285f165031d}{set\+On\+Death}} (\mbox{\hyperlink{interfaceecs_1_1components_1_1_i_on_death_function}{IOn\+Death\+Function}} on\+Death)
+\item 
+int \mbox{\hyperlink{classecs_1_1components_1_1_health_component_a708f2ede0e8b52819c7b8ea16ef69f07}{get\+Current\+Healthpoints}} ()
+\item 
+int \mbox{\hyperlink{classecs_1_1components_1_1_health_component_a1ebf0fd5febf8bf4a4592e8649cb44ea}{get\+Maximal\+Healthpoints}} ()
+\item 
+\mbox{\hyperlink{classgraphic_1_1_animation}{Animation}} \mbox{\hyperlink{classecs_1_1components_1_1_health_component_a01e6a2168c5ab05b9d4ec49cfcb0607e}{get\+Get\+Hit\+Animation}} ()
+\item 
+\mbox{\hyperlink{classgraphic_1_1_animation}{Animation}} \mbox{\hyperlink{classecs_1_1components_1_1_health_component_ab8d90ebab340c5e6c070c5492632f2ec}{get\+Die\+Animation}} ()
+\item 
+Optional$<$ \mbox{\hyperlink{classecs_1_1entities_1_1_entity}{Entity}} $>$ \mbox{\hyperlink{classecs_1_1components_1_1_health_component_a9acb4630b4568b5075bb68ede2fd2940}{get\+Last\+Damage\+Cause}} ()
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Member Functions inherited from \mbox{\hyperlink{classecs_1_1components_1_1_component}{ecs.\+components.\+Component}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classecs_1_1components_1_1_component_a1c4a399b019dcc3630c7614d631554ef}{Component}} (\mbox{\hyperlink{classecs_1_1entities_1_1_entity}{Entity}} entity)
+\item 
+\mbox{\hyperlink{classecs_1_1entities_1_1_entity}{Entity}} \mbox{\hyperlink{classecs_1_1components_1_1_component_a1db3804bc32e6724c76e0555d6720c2f}{get\+Entity}} ()
+\end{DoxyCompactItemize}
+\doxysubsection*{Additional Inherited Members}
+\doxysubsubsection*{Protected Attributes inherited from \mbox{\hyperlink{classecs_1_1components_1_1_component}{ecs.\+components.\+Component}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classecs_1_1components_1_1_component_aa33a53c73a06c5000d7ba4cc005acedc}\label{classecs_1_1components_1_1_component_aa33a53c73a06c5000d7ba4cc005acedc}} 
+\mbox{\hyperlink{classecs_1_1entities_1_1_entity}{Entity}} {\bfseries entity}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+The Health\+Component makes an entity vulnerable and killable 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classecs_1_1components_1_1_health_component_adb8bed2060dc9513d4a951cfe0a379d4}\label{classecs_1_1components_1_1_health_component_adb8bed2060dc9513d4a951cfe0a379d4}} 
+\index{ecs.components.HealthComponent@{ecs.components.HealthComponent}!HealthComponent@{HealthComponent}}
+\index{HealthComponent@{HealthComponent}!ecs.components.HealthComponent@{ecs.components.HealthComponent}}
+\doxysubsubsection{\texorpdfstring{HealthComponent()}{HealthComponent()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily ecs.\+components.\+Health\+Component.\+Health\+Component (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classecs_1_1entities_1_1_entity}{Entity}}}]{entity,  }\item[{int}]{maximal\+Hit\+Points,  }\item[{\mbox{\hyperlink{interfaceecs_1_1components_1_1_i_on_death_function}{IOn\+Death\+Function}}}]{on\+Death,  }\item[{\mbox{\hyperlink{classgraphic_1_1_animation}{Animation}}}]{get\+Hit\+Animation,  }\item[{\mbox{\hyperlink{classgraphic_1_1_animation}{Animation}}}]{die\+Animation }\end{DoxyParamCaption})}
+
+Creates a new Health\+Component
+
+
+\begin{DoxyParams}{Parameters}
+{\em entity} & associated entity \\
+\hline
+{\em maximal\+Hit\+Points} & maximum amount of hit-\/points, current\+Hit\+Points can\textquotesingle{}t be bigger than that \\
+\hline
+{\em on\+Death} & Function that gets called, when this entity dies \\
+\hline
+{\em get\+Hit\+Animation} & Animation to be played as the entity was hit \\
+\hline
+{\em die\+Animation} & Animation to be played as the entity dies \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classecs_1_1components_1_1_health_component_aa7e1c97c5082b26cec4453e7b8f89a67}\label{classecs_1_1components_1_1_health_component_aa7e1c97c5082b26cec4453e7b8f89a67}} 
+\index{ecs.components.HealthComponent@{ecs.components.HealthComponent}!HealthComponent@{HealthComponent}}
+\index{HealthComponent@{HealthComponent}!ecs.components.HealthComponent@{ecs.components.HealthComponent}}
+\doxysubsubsection{\texorpdfstring{HealthComponent()}{HealthComponent()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily ecs.\+components.\+Health\+Component.\+Health\+Component (\begin{DoxyParamCaption}\item[{@DSLContext\+Member(name=\char`\"{}entity\char`\"{}) \mbox{\hyperlink{classecs_1_1entities_1_1_entity}{Entity}}}]{entity }\end{DoxyParamCaption})}
+
+Creates a Health\+Component with default values
+
+
+\begin{DoxyParams}{Parameters}
+{\em entity} & associated entity \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classecs_1_1components_1_1_health_component_a51c4b61a6d9c262b52a1653463364d1a}\label{classecs_1_1components_1_1_health_component_a51c4b61a6d9c262b52a1653463364d1a}} 
+\index{ecs.components.HealthComponent@{ecs.components.HealthComponent}!clearDamage@{clearDamage}}
+\index{clearDamage@{clearDamage}!ecs.components.HealthComponent@{ecs.components.HealthComponent}}
+\doxysubsubsection{\texorpdfstring{clearDamage()}{clearDamage()}}
+{\footnotesize\ttfamily void ecs.\+components.\+Health\+Component.\+clear\+Damage (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Clear the damage list \mbox{\Hypertarget{classecs_1_1components_1_1_health_component_a708f2ede0e8b52819c7b8ea16ef69f07}\label{classecs_1_1components_1_1_health_component_a708f2ede0e8b52819c7b8ea16ef69f07}} 
+\index{ecs.components.HealthComponent@{ecs.components.HealthComponent}!getCurrentHealthpoints@{getCurrentHealthpoints}}
+\index{getCurrentHealthpoints@{getCurrentHealthpoints}!ecs.components.HealthComponent@{ecs.components.HealthComponent}}
+\doxysubsubsection{\texorpdfstring{getCurrentHealthpoints()}{getCurrentHealthpoints()}}
+{\footnotesize\ttfamily int ecs.\+components.\+Health\+Component.\+get\+Current\+Healthpoints (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\begin{DoxyReturn}{Returns}
+The current health-\/points the entity has 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classecs_1_1components_1_1_health_component_a3015dd19947876c4594a6b39f3c4313f}\label{classecs_1_1components_1_1_health_component_a3015dd19947876c4594a6b39f3c4313f}} 
+\index{ecs.components.HealthComponent@{ecs.components.HealthComponent}!getDamage@{getDamage}}
+\index{getDamage@{getDamage}!ecs.components.HealthComponent@{ecs.components.HealthComponent}}
+\doxysubsubsection{\texorpdfstring{getDamage()}{getDamage()}}
+{\footnotesize\ttfamily int ecs.\+components.\+Health\+Component.\+get\+Damage (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{enumecs_1_1damage_1_1_damage_type}{Damage\+Type}}}]{dt }\end{DoxyParamCaption})}
+
+Calculate the amount of damage of a certain type
+
+
+\begin{DoxyParams}{Parameters}
+{\em dt} & Type of damage object that still need to be accounted for \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Sum of all damage objects of type dt (default\+: 0) 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classecs_1_1components_1_1_health_component_ab8d90ebab340c5e6c070c5492632f2ec}\label{classecs_1_1components_1_1_health_component_ab8d90ebab340c5e6c070c5492632f2ec}} 
+\index{ecs.components.HealthComponent@{ecs.components.HealthComponent}!getDieAnimation@{getDieAnimation}}
+\index{getDieAnimation@{getDieAnimation}!ecs.components.HealthComponent@{ecs.components.HealthComponent}}
+\doxysubsubsection{\texorpdfstring{getDieAnimation()}{getDieAnimation()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classgraphic_1_1_animation}{Animation}} ecs.\+components.\+Health\+Component.\+get\+Die\+Animation (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\begin{DoxyReturn}{Returns}
+Animation to be played when dying 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classecs_1_1components_1_1_health_component_a01e6a2168c5ab05b9d4ec49cfcb0607e}\label{classecs_1_1components_1_1_health_component_a01e6a2168c5ab05b9d4ec49cfcb0607e}} 
+\index{ecs.components.HealthComponent@{ecs.components.HealthComponent}!getGetHitAnimation@{getGetHitAnimation}}
+\index{getGetHitAnimation@{getGetHitAnimation}!ecs.components.HealthComponent@{ecs.components.HealthComponent}}
+\doxysubsubsection{\texorpdfstring{getGetHitAnimation()}{getGetHitAnimation()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classgraphic_1_1_animation}{Animation}} ecs.\+components.\+Health\+Component.\+get\+Get\+Hit\+Animation (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\begin{DoxyReturn}{Returns}
+Animation to be played as the entity was hit 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classecs_1_1components_1_1_health_component_a9acb4630b4568b5075bb68ede2fd2940}\label{classecs_1_1components_1_1_health_component_a9acb4630b4568b5075bb68ede2fd2940}} 
+\index{ecs.components.HealthComponent@{ecs.components.HealthComponent}!getLastDamageCause@{getLastDamageCause}}
+\index{getLastDamageCause@{getLastDamageCause}!ecs.components.HealthComponent@{ecs.components.HealthComponent}}
+\doxysubsubsection{\texorpdfstring{getLastDamageCause()}{getLastDamageCause()}}
+{\footnotesize\ttfamily Optional$<$ \mbox{\hyperlink{classecs_1_1entities_1_1_entity}{Entity}} $>$ ecs.\+components.\+Health\+Component.\+get\+Last\+Damage\+Cause (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\begin{DoxyReturn}{Returns}
+The last entity that caused damage to this entity. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classecs_1_1components_1_1_health_component_a1ebf0fd5febf8bf4a4592e8649cb44ea}\label{classecs_1_1components_1_1_health_component_a1ebf0fd5febf8bf4a4592e8649cb44ea}} 
+\index{ecs.components.HealthComponent@{ecs.components.HealthComponent}!getMaximalHealthpoints@{getMaximalHealthpoints}}
+\index{getMaximalHealthpoints@{getMaximalHealthpoints}!ecs.components.HealthComponent@{ecs.components.HealthComponent}}
+\doxysubsubsection{\texorpdfstring{getMaximalHealthpoints()}{getMaximalHealthpoints()}}
+{\footnotesize\ttfamily int ecs.\+components.\+Health\+Component.\+get\+Maximal\+Healthpoints (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\begin{DoxyReturn}{Returns}
+The maximal health-\/points the entity can have 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classecs_1_1components_1_1_health_component_aef3df01cdb374f077327b2e886b60c30}\label{classecs_1_1components_1_1_health_component_aef3df01cdb374f077327b2e886b60c30}} 
+\index{ecs.components.HealthComponent@{ecs.components.HealthComponent}!receiveHit@{receiveHit}}
+\index{receiveHit@{receiveHit}!ecs.components.HealthComponent@{ecs.components.HealthComponent}}
+\doxysubsubsection{\texorpdfstring{receiveHit()}{receiveHit()}}
+{\footnotesize\ttfamily void ecs.\+components.\+Health\+Component.\+receive\+Hit (\begin{DoxyParamCaption}\item[{Damage}]{damage }\end{DoxyParamCaption})}
+
+Adds damage, which is accounted for by the system
+
+
+\begin{DoxyParams}{Parameters}
+{\em damage} & Damage that should be inflicted \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classecs_1_1components_1_1_health_component_af5bcbbcacb1ed63962342fb38e5f4ec2}\label{classecs_1_1components_1_1_health_component_af5bcbbcacb1ed63962342fb38e5f4ec2}} 
+\index{ecs.components.HealthComponent@{ecs.components.HealthComponent}!setCurrentHealthpoints@{setCurrentHealthpoints}}
+\index{setCurrentHealthpoints@{setCurrentHealthpoints}!ecs.components.HealthComponent@{ecs.components.HealthComponent}}
+\doxysubsubsection{\texorpdfstring{setCurrentHealthpoints()}{setCurrentHealthpoints()}}
+{\footnotesize\ttfamily void ecs.\+components.\+Health\+Component.\+set\+Current\+Healthpoints (\begin{DoxyParamCaption}\item[{int}]{amount }\end{DoxyParamCaption})}
+
+Sets the current life points, capped at the value of the maximum hit-\/points
+
+
+\begin{DoxyParams}{Parameters}
+{\em amount} & new amount of current health-\/points \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classecs_1_1components_1_1_health_component_a6241980d6f345735c6d8763eeaf25018}\label{classecs_1_1components_1_1_health_component_a6241980d6f345735c6d8763eeaf25018}} 
+\index{ecs.components.HealthComponent@{ecs.components.HealthComponent}!setDieAnimation@{setDieAnimation}}
+\index{setDieAnimation@{setDieAnimation}!ecs.components.HealthComponent@{ecs.components.HealthComponent}}
+\doxysubsubsection{\texorpdfstring{setDieAnimation()}{setDieAnimation()}}
+{\footnotesize\ttfamily void ecs.\+components.\+Health\+Component.\+set\+Die\+Animation (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classgraphic_1_1_animation}{Animation}}}]{die\+Animation }\end{DoxyParamCaption})}
+
+Set the animation to be played when the entity dies
+
+
+\begin{DoxyParams}{Parameters}
+{\em die\+Animation} & new die\+Animation \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classecs_1_1components_1_1_health_component_aedaf6b26a2829d4f79302bae42ae7613}\label{classecs_1_1components_1_1_health_component_aedaf6b26a2829d4f79302bae42ae7613}} 
+\index{ecs.components.HealthComponent@{ecs.components.HealthComponent}!setGetHitAnimation@{setGetHitAnimation}}
+\index{setGetHitAnimation@{setGetHitAnimation}!ecs.components.HealthComponent@{ecs.components.HealthComponent}}
+\doxysubsubsection{\texorpdfstring{setGetHitAnimation()}{setGetHitAnimation()}}
+{\footnotesize\ttfamily void ecs.\+components.\+Health\+Component.\+set\+Get\+Hit\+Animation (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classgraphic_1_1_animation}{Animation}}}]{is\+Hit\+Animation }\end{DoxyParamCaption})}
+
+Set the animation to be played when the entity is hit
+
+
+\begin{DoxyParams}{Parameters}
+{\em is\+Hit\+Animation} & new is\+Hit\+Animation \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classecs_1_1components_1_1_health_component_a1cb0a587782961fe544aaa20f48257c9}\label{classecs_1_1components_1_1_health_component_a1cb0a587782961fe544aaa20f48257c9}} 
+\index{ecs.components.HealthComponent@{ecs.components.HealthComponent}!setMaximalHealthpoints@{setMaximalHealthpoints}}
+\index{setMaximalHealthpoints@{setMaximalHealthpoints}!ecs.components.HealthComponent@{ecs.components.HealthComponent}}
+\doxysubsubsection{\texorpdfstring{setMaximalHealthpoints()}{setMaximalHealthpoints()}}
+{\footnotesize\ttfamily void ecs.\+components.\+Health\+Component.\+set\+Maximal\+Healthpoints (\begin{DoxyParamCaption}\item[{int}]{amount }\end{DoxyParamCaption})}
+
+Sets the value of the Maximum health-\/points. If the new maximum health-\/points are less than the current health-\/points, the current points are set to the new maximum health-\/points.
+
+
+\begin{DoxyParams}{Parameters}
+{\em amount} & new amount of maximal health-\/points \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classecs_1_1components_1_1_health_component_ab9ed43fefda523dc0a643285f165031d}\label{classecs_1_1components_1_1_health_component_ab9ed43fefda523dc0a643285f165031d}} 
+\index{ecs.components.HealthComponent@{ecs.components.HealthComponent}!setOnDeath@{setOnDeath}}
+\index{setOnDeath@{setOnDeath}!ecs.components.HealthComponent@{ecs.components.HealthComponent}}
+\doxysubsubsection{\texorpdfstring{setOnDeath()}{setOnDeath()}}
+{\footnotesize\ttfamily void ecs.\+components.\+Health\+Component.\+set\+On\+Death (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{interfaceecs_1_1components_1_1_i_on_death_function}{IOn\+Death\+Function}}}]{on\+Death }\end{DoxyParamCaption})}
+
+Set a new function to be called when dying.
+
+
+\begin{DoxyParams}{Parameters}
+{\em on\+Death} & new on\+Death function \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classecs_1_1components_1_1_health_component_a5089393ddbaae28e15f60c76ec2683bf}\label{classecs_1_1components_1_1_health_component_a5089393ddbaae28e15f60c76ec2683bf}} 
+\index{ecs.components.HealthComponent@{ecs.components.HealthComponent}!triggerOnDeath@{triggerOnDeath}}
+\index{triggerOnDeath@{triggerOnDeath}!ecs.components.HealthComponent@{ecs.components.HealthComponent}}
+\doxysubsubsection{\texorpdfstring{triggerOnDeath()}{triggerOnDeath()}}
+{\footnotesize\ttfamily void ecs.\+components.\+Health\+Component.\+trigger\+On\+Death (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Triggers the on\+Death Function 
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/schli/\+Desktop/\+Projects/\+Intelli\+J/pm-\/dungeon-\/jan/game/src/ecs/components/Health\+Component.\+java\end{DoxyCompactItemize}

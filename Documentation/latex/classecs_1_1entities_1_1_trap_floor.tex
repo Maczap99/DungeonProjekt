@@ -1,0 +1,74 @@
+\hypertarget{classecs_1_1entities_1_1_trap_floor}{}\doxysection{ecs.\+entities.\+Trap\+Floor Class Reference}
+\label{classecs_1_1entities_1_1_trap_floor}\index{ecs.entities.TrapFloor@{ecs.entities.TrapFloor}}
+Inheritance diagram for ecs.\+entities.\+Trap\+Floor\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=3.000000cm]{classecs_1_1entities_1_1_trap_floor}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classecs_1_1entities_1_1_trap_floor_a5a33dc79d98dd306cb9864ecf9ee4b0b}\label{classecs_1_1entities_1_1_trap_floor_a5a33dc79d98dd306cb9864ecf9ee4b0b}} 
+{\bfseries Trap\+Floor} (\mbox{\hyperlink{classtools_1_1_point}{Point}} position)
+\item 
+\mbox{\Hypertarget{classecs_1_1entities_1_1_trap_floor_a5c1320e9ed65fc8e853ee67e410dbef4}\label{classecs_1_1entities_1_1_trap_floor_a5c1320e9ed65fc8e853ee67e410dbef4}} 
+void {\bfseries setup} (\mbox{\hyperlink{classtools_1_1_point}{Point}} position)
+\item 
+void \mbox{\hyperlink{classecs_1_1entities_1_1_trap_floor_a9375525d1c24f2190ffc20a924fd4303}{on\+Collision}} (\mbox{\hyperlink{classecs_1_1entities_1_1_entity}{Entity}} a, \mbox{\hyperlink{classecs_1_1entities_1_1_entity}{Entity}} b, Tile.\+Direction from)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Member Functions inherited from \mbox{\hyperlink{classecs_1_1entities_1_1_entity}{ecs.\+entities.\+Entity}}}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{classecs_1_1entities_1_1_entity_a3743bd48c8ac35911a502a611bb0f6a2}{add\+Component}} (\mbox{\hyperlink{classecs_1_1components_1_1_component}{Component}} component)
+\item 
+void \mbox{\hyperlink{classecs_1_1entities_1_1_entity_ad9d8b6a5934e40fd3e896bd25baf1fe0}{remove\+Component}} (Class klass)
+\item 
+Optional$<$ \mbox{\hyperlink{classecs_1_1components_1_1_component}{Component}} $>$ \mbox{\hyperlink{classecs_1_1entities_1_1_entity_ab8a120351ce29bd17b15d3bb67c2b7d2}{get\+Component}} (Class klass)
+\end{DoxyCompactItemize}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{interfaceecs_1_1components_1_1collision_1_1_i_collide_a009c2a58aef2d6f9f1bdc188c7b6841e}{on\+Collision}} (\mbox{\hyperlink{classecs_1_1entities_1_1_entity}{Entity}} a, \mbox{\hyperlink{classecs_1_1entities_1_1_entity}{Entity}} b, Tile.\+Direction from)
+\end{DoxyCompactItemize}
+\doxysubsection*{Additional Inherited Members}
+\doxysubsubsection*{Public Attributes inherited from \mbox{\hyperlink{classecs_1_1entities_1_1_entity}{ecs.\+entities.\+Entity}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classecs_1_1entities_1_1_entity_a2da842f2e4db9a8d6a11f025a7948be6}\label{classecs_1_1entities_1_1_entity_a2da842f2e4db9a8d6a11f025a7948be6}} 
+final int {\bfseries id} = next\+Id++
+\item 
+\mbox{\Hypertarget{classecs_1_1entities_1_1_entity_a51e739b91fe9b2603d210082361bb098}\label{classecs_1_1entities_1_1_entity_a51e739b91fe9b2603d210082361bb098}} 
+transient Hash\+Map$<$ Class, \mbox{\hyperlink{classecs_1_1components_1_1_component}{Component}} $>$ {\bfseries components}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+This ist a Class for the entity Trap\+Floor If the Player have collision with the Trap he will be slow for random seconds 
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classecs_1_1entities_1_1_trap_floor_a9375525d1c24f2190ffc20a924fd4303}\label{classecs_1_1entities_1_1_trap_floor_a9375525d1c24f2190ffc20a924fd4303}} 
+\index{ecs.entities.TrapFloor@{ecs.entities.TrapFloor}!onCollision@{onCollision}}
+\index{onCollision@{onCollision}!ecs.entities.TrapFloor@{ecs.entities.TrapFloor}}
+\doxysubsubsection{\texorpdfstring{onCollision()}{onCollision()}}
+{\footnotesize\ttfamily void ecs.\+entities.\+Trap\+Floor.\+on\+Collision (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classecs_1_1entities_1_1_entity}{Entity}}}]{a,  }\item[{\mbox{\hyperlink{classecs_1_1entities_1_1_entity}{Entity}}}]{b,  }\item[{Tile.\+Direction}]{from }\end{DoxyParamCaption})}
+
+Implements the Collision behavior of a Hitbox having entity
+
+
+\begin{DoxyParams}{Parameters}
+{\em a} & is the current Entity \\
+\hline
+{\em b} & is the Entity with whom the Collision happened \\
+\hline
+{\em from} & the direction from a to b \\
+\hline
+\end{DoxyParams}
+
+
+Implements \mbox{\hyperlink{interfaceecs_1_1components_1_1collision_1_1_i_collide_a009c2a58aef2d6f9f1bdc188c7b6841e}{ecs.\+components.\+collision.\+ICollide}}.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/schli/\+Desktop/\+Projects/\+Intelli\+J/pm-\/dungeon-\/jan/game/src/ecs/entities/Trap\+Floor.\+java\end{DoxyCompactItemize}

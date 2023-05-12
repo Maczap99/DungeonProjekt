@@ -1,0 +1,188 @@
+\hypertarget{classecs_1_1components_1_1_playable_component}{}\doxysection{ecs.\+components.\+Playable\+Component Class Reference}
+\label{classecs_1_1components_1_1_playable_component}\index{ecs.components.PlayableComponent@{ecs.components.PlayableComponent}}
+Inheritance diagram for ecs.\+components.\+Playable\+Component\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=3.000000cm]{classecs_1_1components_1_1_playable_component}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classecs_1_1components_1_1_playable_component_ab2b9bc7d651fd3da62ac82f830e12f50}{Playable\+Component}} (\mbox{\hyperlink{classecs_1_1entities_1_1_entity}{Entity}} entity, \mbox{\hyperlink{classecs_1_1components_1_1skill_1_1_skill}{Skill}} skill\+Slot1, \mbox{\hyperlink{classecs_1_1components_1_1skill_1_1_skill}{Skill}} skill\+Slot2, \mbox{\hyperlink{classecs_1_1components_1_1skill_1_1_skill}{Skill}} skill\+Slot3, \mbox{\hyperlink{classecs_1_1components_1_1skill_1_1_skill}{Skill}} skill\+Slot4)
+\item 
+\mbox{\hyperlink{classecs_1_1components_1_1_playable_component_a74650b3f306ee110cdc83bfaff471bc0}{Playable\+Component}} (\mbox{\hyperlink{classecs_1_1entities_1_1_entity}{Entity}} entity)
+\item 
+boolean \mbox{\hyperlink{classecs_1_1components_1_1_playable_component_aa2b6e2c5287a4361b93470458ceacd01}{is\+Playable}} ()
+\item 
+void \mbox{\hyperlink{classecs_1_1components_1_1_playable_component_a6fae5a0c71622cdff8e14e8f46bd333c}{set\+Playable}} (boolean playable)
+\item 
+void \mbox{\hyperlink{classecs_1_1components_1_1_playable_component_afa99a6ccf2bccf978b351dd5ee8cd1e1}{set\+Skill\+Slot1}} (\mbox{\hyperlink{classecs_1_1components_1_1skill_1_1_skill}{Skill}} skill\+Slot1)
+\item 
+void \mbox{\hyperlink{classecs_1_1components_1_1_playable_component_a064e2ca5ac11de780b9eed865145edfe}{set\+Skill\+Slot2}} (\mbox{\hyperlink{classecs_1_1components_1_1skill_1_1_skill}{Skill}} skill\+Slot2)
+\item 
+void \mbox{\hyperlink{classecs_1_1components_1_1_playable_component_a1731dbf49d02334908f4c50a9bfae5fc}{set\+Skill\+Slot3}} (\mbox{\hyperlink{classecs_1_1components_1_1skill_1_1_skill}{Skill}} skill\+Slot3)
+\item 
+void \mbox{\hyperlink{classecs_1_1components_1_1_playable_component_a3ad539b68d03c645e5056e795c8d5162}{set\+Skill\+Slot4}} (\mbox{\hyperlink{classecs_1_1components_1_1skill_1_1_skill}{Skill}} skill\+Slot4)
+\item 
+Optional$<$ \mbox{\hyperlink{classecs_1_1components_1_1skill_1_1_skill}{Skill}} $>$ \mbox{\hyperlink{classecs_1_1components_1_1_playable_component_aecc08fca4669800d54457765d029ce5a}{get\+Skill\+Slot1}} ()
+\item 
+Optional$<$ \mbox{\hyperlink{classecs_1_1components_1_1skill_1_1_skill}{Skill}} $>$ \mbox{\hyperlink{classecs_1_1components_1_1_playable_component_af9e45723447009a8c5c1b23ebf88e765}{get\+Skill\+Slot2}} ()
+\item 
+Optional$<$ \mbox{\hyperlink{classecs_1_1components_1_1skill_1_1_skill}{Skill}} $>$ \mbox{\hyperlink{classecs_1_1components_1_1_playable_component_a84c714b94d4a8db3c794d3f4736cfd18}{get\+Skill\+Slot3}} ()
+\item 
+Optional$<$ \mbox{\hyperlink{classecs_1_1components_1_1skill_1_1_skill}{Skill}} $>$ \mbox{\hyperlink{classecs_1_1components_1_1_playable_component_a877ac819e0a218b28934f8096cf728cc}{get\+Skill\+Slot4}} ()
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Member Functions inherited from \mbox{\hyperlink{classecs_1_1components_1_1_component}{ecs.\+components.\+Component}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classecs_1_1components_1_1_component_a1c4a399b019dcc3630c7614d631554ef}{Component}} (\mbox{\hyperlink{classecs_1_1entities_1_1_entity}{Entity}} entity)
+\item 
+\mbox{\hyperlink{classecs_1_1entities_1_1_entity}{Entity}} \mbox{\hyperlink{classecs_1_1components_1_1_component_a1db3804bc32e6724c76e0555d6720c2f}{get\+Entity}} ()
+\end{DoxyCompactItemize}
+\doxysubsection*{Additional Inherited Members}
+\doxysubsubsection*{Protected Attributes inherited from \mbox{\hyperlink{classecs_1_1components_1_1_component}{ecs.\+components.\+Component}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classecs_1_1components_1_1_component_aa33a53c73a06c5000d7ba4cc005acedc}\label{classecs_1_1components_1_1_component_aa33a53c73a06c5000d7ba4cc005acedc}} 
+\mbox{\hyperlink{classecs_1_1entities_1_1_entity}{Entity}} {\bfseries entity}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+This component is for the player character entity only. It should only be implemented by one entity and mark this entity as the player character. This component stores data that is only relevant for the player character. The Player\+Systems acts on the Playable\+Component. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classecs_1_1components_1_1_playable_component_ab2b9bc7d651fd3da62ac82f830e12f50}\label{classecs_1_1components_1_1_playable_component_ab2b9bc7d651fd3da62ac82f830e12f50}} 
+\index{ecs.components.PlayableComponent@{ecs.components.PlayableComponent}!PlayableComponent@{PlayableComponent}}
+\index{PlayableComponent@{PlayableComponent}!ecs.components.PlayableComponent@{ecs.components.PlayableComponent}}
+\doxysubsubsection{\texorpdfstring{PlayableComponent()}{PlayableComponent()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily ecs.\+components.\+Playable\+Component.\+Playable\+Component (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classecs_1_1entities_1_1_entity}{Entity}}}]{entity,  }\item[{\mbox{\hyperlink{classecs_1_1components_1_1skill_1_1_skill}{Skill}}}]{skill\+Slot1,  }\item[{\mbox{\hyperlink{classecs_1_1components_1_1skill_1_1_skill}{Skill}}}]{skill\+Slot2,  }\item[{\mbox{\hyperlink{classecs_1_1components_1_1skill_1_1_skill}{Skill}}}]{skill\+Slot3,  }\item[{\mbox{\hyperlink{classecs_1_1components_1_1skill_1_1_skill}{Skill}}}]{skill\+Slot4 }\end{DoxyParamCaption})}
+
+
+\begin{DoxyParams}{Parameters}
+{\em entity} & associated entity \\
+\hline
+{\em skill\+Slot1} & skill that will be on the first skill slot \\
+\hline
+{\em skill\+Slot2} & skill that will be on the second skill slot \\
+\hline
+{\em skill\+Slot3} & skill that will be on the third skill slot \\
+\hline
+{\em skill\+Slot4} & skill that will be on the fourth skill slot \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classecs_1_1components_1_1_playable_component_a74650b3f306ee110cdc83bfaff471bc0}\label{classecs_1_1components_1_1_playable_component_a74650b3f306ee110cdc83bfaff471bc0}} 
+\index{ecs.components.PlayableComponent@{ecs.components.PlayableComponent}!PlayableComponent@{PlayableComponent}}
+\index{PlayableComponent@{PlayableComponent}!ecs.components.PlayableComponent@{ecs.components.PlayableComponent}}
+\doxysubsubsection{\texorpdfstring{PlayableComponent()}{PlayableComponent()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily ecs.\+components.\+Playable\+Component.\+Playable\+Component (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classecs_1_1entities_1_1_entity}{Entity}}}]{entity }\end{DoxyParamCaption})}
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classecs_1_1components_1_1_playable_component_aecc08fca4669800d54457765d029ce5a}\label{classecs_1_1components_1_1_playable_component_aecc08fca4669800d54457765d029ce5a}} 
+\index{ecs.components.PlayableComponent@{ecs.components.PlayableComponent}!getSkillSlot1@{getSkillSlot1}}
+\index{getSkillSlot1@{getSkillSlot1}!ecs.components.PlayableComponent@{ecs.components.PlayableComponent}}
+\doxysubsubsection{\texorpdfstring{getSkillSlot1()}{getSkillSlot1()}}
+{\footnotesize\ttfamily Optional$<$ \mbox{\hyperlink{classecs_1_1components_1_1skill_1_1_skill}{Skill}} $>$ ecs.\+components.\+Playable\+Component.\+get\+Skill\+Slot1 (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\begin{DoxyReturn}{Returns}
+skill on first skill slot 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classecs_1_1components_1_1_playable_component_af9e45723447009a8c5c1b23ebf88e765}\label{classecs_1_1components_1_1_playable_component_af9e45723447009a8c5c1b23ebf88e765}} 
+\index{ecs.components.PlayableComponent@{ecs.components.PlayableComponent}!getSkillSlot2@{getSkillSlot2}}
+\index{getSkillSlot2@{getSkillSlot2}!ecs.components.PlayableComponent@{ecs.components.PlayableComponent}}
+\doxysubsubsection{\texorpdfstring{getSkillSlot2()}{getSkillSlot2()}}
+{\footnotesize\ttfamily Optional$<$ \mbox{\hyperlink{classecs_1_1components_1_1skill_1_1_skill}{Skill}} $>$ ecs.\+components.\+Playable\+Component.\+get\+Skill\+Slot2 (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\begin{DoxyReturn}{Returns}
+skill on second skill slot 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classecs_1_1components_1_1_playable_component_a84c714b94d4a8db3c794d3f4736cfd18}\label{classecs_1_1components_1_1_playable_component_a84c714b94d4a8db3c794d3f4736cfd18}} 
+\index{ecs.components.PlayableComponent@{ecs.components.PlayableComponent}!getSkillSlot3@{getSkillSlot3}}
+\index{getSkillSlot3@{getSkillSlot3}!ecs.components.PlayableComponent@{ecs.components.PlayableComponent}}
+\doxysubsubsection{\texorpdfstring{getSkillSlot3()}{getSkillSlot3()}}
+{\footnotesize\ttfamily Optional$<$ \mbox{\hyperlink{classecs_1_1components_1_1skill_1_1_skill}{Skill}} $>$ ecs.\+components.\+Playable\+Component.\+get\+Skill\+Slot3 (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\begin{DoxyReturn}{Returns}
+skill on third skill slot 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classecs_1_1components_1_1_playable_component_a877ac819e0a218b28934f8096cf728cc}\label{classecs_1_1components_1_1_playable_component_a877ac819e0a218b28934f8096cf728cc}} 
+\index{ecs.components.PlayableComponent@{ecs.components.PlayableComponent}!getSkillSlot4@{getSkillSlot4}}
+\index{getSkillSlot4@{getSkillSlot4}!ecs.components.PlayableComponent@{ecs.components.PlayableComponent}}
+\doxysubsubsection{\texorpdfstring{getSkillSlot4()}{getSkillSlot4()}}
+{\footnotesize\ttfamily Optional$<$ \mbox{\hyperlink{classecs_1_1components_1_1skill_1_1_skill}{Skill}} $>$ ecs.\+components.\+Playable\+Component.\+get\+Skill\+Slot4 (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\begin{DoxyReturn}{Returns}
+skill on fourth skill slot 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classecs_1_1components_1_1_playable_component_aa2b6e2c5287a4361b93470458ceacd01}\label{classecs_1_1components_1_1_playable_component_aa2b6e2c5287a4361b93470458ceacd01}} 
+\index{ecs.components.PlayableComponent@{ecs.components.PlayableComponent}!isPlayable@{isPlayable}}
+\index{isPlayable@{isPlayable}!ecs.components.PlayableComponent@{ecs.components.PlayableComponent}}
+\doxysubsubsection{\texorpdfstring{isPlayable()}{isPlayable()}}
+{\footnotesize\ttfamily boolean ecs.\+components.\+Playable\+Component.\+is\+Playable (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\begin{DoxyReturn}{Returns}
+the playable state 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classecs_1_1components_1_1_playable_component_a6fae5a0c71622cdff8e14e8f46bd333c}\label{classecs_1_1components_1_1_playable_component_a6fae5a0c71622cdff8e14e8f46bd333c}} 
+\index{ecs.components.PlayableComponent@{ecs.components.PlayableComponent}!setPlayable@{setPlayable}}
+\index{setPlayable@{setPlayable}!ecs.components.PlayableComponent@{ecs.components.PlayableComponent}}
+\doxysubsubsection{\texorpdfstring{setPlayable()}{setPlayable()}}
+{\footnotesize\ttfamily void ecs.\+components.\+Playable\+Component.\+set\+Playable (\begin{DoxyParamCaption}\item[{boolean}]{playable }\end{DoxyParamCaption})}
+
+
+\begin{DoxyParams}{Parameters}
+{\em playable} & set the playabale state \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classecs_1_1components_1_1_playable_component_afa99a6ccf2bccf978b351dd5ee8cd1e1}\label{classecs_1_1components_1_1_playable_component_afa99a6ccf2bccf978b351dd5ee8cd1e1}} 
+\index{ecs.components.PlayableComponent@{ecs.components.PlayableComponent}!setSkillSlot1@{setSkillSlot1}}
+\index{setSkillSlot1@{setSkillSlot1}!ecs.components.PlayableComponent@{ecs.components.PlayableComponent}}
+\doxysubsubsection{\texorpdfstring{setSkillSlot1()}{setSkillSlot1()}}
+{\footnotesize\ttfamily void ecs.\+components.\+Playable\+Component.\+set\+Skill\+Slot1 (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classecs_1_1components_1_1skill_1_1_skill}{Skill}}}]{skill\+Slot1 }\end{DoxyParamCaption})}
+
+
+\begin{DoxyParams}{Parameters}
+{\em skill\+Slot1} & skill that will be on the first skillslot \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classecs_1_1components_1_1_playable_component_a064e2ca5ac11de780b9eed865145edfe}\label{classecs_1_1components_1_1_playable_component_a064e2ca5ac11de780b9eed865145edfe}} 
+\index{ecs.components.PlayableComponent@{ecs.components.PlayableComponent}!setSkillSlot2@{setSkillSlot2}}
+\index{setSkillSlot2@{setSkillSlot2}!ecs.components.PlayableComponent@{ecs.components.PlayableComponent}}
+\doxysubsubsection{\texorpdfstring{setSkillSlot2()}{setSkillSlot2()}}
+{\footnotesize\ttfamily void ecs.\+components.\+Playable\+Component.\+set\+Skill\+Slot2 (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classecs_1_1components_1_1skill_1_1_skill}{Skill}}}]{skill\+Slot2 }\end{DoxyParamCaption})}
+
+
+\begin{DoxyParams}{Parameters}
+{\em skill\+Slot2} & skill that will be on the second skillslot \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classecs_1_1components_1_1_playable_component_a1731dbf49d02334908f4c50a9bfae5fc}\label{classecs_1_1components_1_1_playable_component_a1731dbf49d02334908f4c50a9bfae5fc}} 
+\index{ecs.components.PlayableComponent@{ecs.components.PlayableComponent}!setSkillSlot3@{setSkillSlot3}}
+\index{setSkillSlot3@{setSkillSlot3}!ecs.components.PlayableComponent@{ecs.components.PlayableComponent}}
+\doxysubsubsection{\texorpdfstring{setSkillSlot3()}{setSkillSlot3()}}
+{\footnotesize\ttfamily void ecs.\+components.\+Playable\+Component.\+set\+Skill\+Slot3 (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classecs_1_1components_1_1skill_1_1_skill}{Skill}}}]{skill\+Slot3 }\end{DoxyParamCaption})}
+
+
+\begin{DoxyParams}{Parameters}
+{\em skill\+Slot3} & skill that will be on the third skillslot \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classecs_1_1components_1_1_playable_component_a3ad539b68d03c645e5056e795c8d5162}\label{classecs_1_1components_1_1_playable_component_a3ad539b68d03c645e5056e795c8d5162}} 
+\index{ecs.components.PlayableComponent@{ecs.components.PlayableComponent}!setSkillSlot4@{setSkillSlot4}}
+\index{setSkillSlot4@{setSkillSlot4}!ecs.components.PlayableComponent@{ecs.components.PlayableComponent}}
+\doxysubsubsection{\texorpdfstring{setSkillSlot4()}{setSkillSlot4()}}
+{\footnotesize\ttfamily void ecs.\+components.\+Playable\+Component.\+set\+Skill\+Slot4 (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classecs_1_1components_1_1skill_1_1_skill}{Skill}}}]{skill\+Slot4 }\end{DoxyParamCaption})}
+
+
+\begin{DoxyParams}{Parameters}
+{\em skill\+Slot4} & skill that will be on the fourth skillslot \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/schli/\+Desktop/\+Projects/\+Intelli\+J/pm-\/dungeon-\/jan/game/src/ecs/components/Playable\+Component.\+java\end{DoxyCompactItemize}

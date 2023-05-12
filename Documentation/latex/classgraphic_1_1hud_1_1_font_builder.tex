@@ -1,0 +1,106 @@
+\hypertarget{classgraphic_1_1hud_1_1_font_builder}{}\doxysection{graphic.\+hud.\+Font\+Builder Class Reference}
+\label{classgraphic_1_1hud_1_1_font_builder}\index{graphic.hud.FontBuilder@{graphic.hud.FontBuilder}}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classgraphic_1_1hud_1_1_font_builder_ae8d7d5de431a3319150d54c84386c3df}{Font\+Builder}} (String fontpath)
+\item 
+\mbox{\hyperlink{classgraphic_1_1hud_1_1_font_builder}{Font\+Builder}} \mbox{\hyperlink{classgraphic_1_1hud_1_1_font_builder_a307b5f1bf0105a5ed12a8ff0391f435f}{set\+Size}} (int size)
+\item 
+\mbox{\hyperlink{classgraphic_1_1hud_1_1_font_builder}{Font\+Builder}} \mbox{\hyperlink{classgraphic_1_1hud_1_1_font_builder_a3d55440f0f7b09a4539ce381a4c9dcb6}{set\+Font\+Color}} (Color color)
+\item 
+\mbox{\hyperlink{classgraphic_1_1hud_1_1_font_builder}{Font\+Builder}} \mbox{\hyperlink{classgraphic_1_1hud_1_1_font_builder_a0e4236eaa74521065dbeda37ce7e863f}{add\+Border}} (Color color, int width)
+\item 
+Bitmap\+Font \mbox{\hyperlink{classgraphic_1_1hud_1_1_font_builder_a844a14b4a21c5e25348f83d6364c7986}{build}} ()
+\end{DoxyCompactItemize}
+\doxysubsection*{Static Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classgraphic_1_1hud_1_1_font_builder_a928b4b2f906f821e46e02b8b179c1097}\label{classgraphic_1_1hud_1_1_font_builder_a928b4b2f906f821e46e02b8b179c1097}} 
+static final Bitmap\+Font {\bfseries DEFAULT\+\_\+\+FONT} = new Bitmap\+Font()
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classgraphic_1_1hud_1_1_font_builder_ae8d7d5de431a3319150d54c84386c3df}\label{classgraphic_1_1hud_1_1_font_builder_ae8d7d5de431a3319150d54c84386c3df}} 
+\index{graphic.hud.FontBuilder@{graphic.hud.FontBuilder}!FontBuilder@{FontBuilder}}
+\index{FontBuilder@{FontBuilder}!graphic.hud.FontBuilder@{graphic.hud.FontBuilder}}
+\doxysubsubsection{\texorpdfstring{FontBuilder()}{FontBuilder()}}
+{\footnotesize\ttfamily graphic.\+hud.\+Font\+Builder.\+Font\+Builder (\begin{DoxyParamCaption}\item[{String}]{fontpath }\end{DoxyParamCaption})}
+
+Starts the building progress for a font.
+
+
+\begin{DoxyParams}{Parameters}
+{\em fontpath} & an internal path to the font file \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classgraphic_1_1hud_1_1_font_builder_a0e4236eaa74521065dbeda37ce7e863f}\label{classgraphic_1_1hud_1_1_font_builder_a0e4236eaa74521065dbeda37ce7e863f}} 
+\index{graphic.hud.FontBuilder@{graphic.hud.FontBuilder}!addBorder@{addBorder}}
+\index{addBorder@{addBorder}!graphic.hud.FontBuilder@{graphic.hud.FontBuilder}}
+\doxysubsubsection{\texorpdfstring{addBorder()}{addBorder()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classgraphic_1_1hud_1_1_font_builder}{Font\+Builder}} graphic.\+hud.\+Font\+Builder.\+add\+Border (\begin{DoxyParamCaption}\item[{Color}]{color,  }\item[{int}]{width }\end{DoxyParamCaption})}
+
+Adds a border to the font.
+
+
+\begin{DoxyParams}{Parameters}
+{\em color} & the {\ttfamily \mbox{\hyperlink{}{Color}}} for the border \\
+\hline
+{\em width} & the width of the border \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the {\ttfamily \mbox{\hyperlink{}{Font\+Builder}}} to chain calls. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classgraphic_1_1hud_1_1_font_builder_a844a14b4a21c5e25348f83d6364c7986}\label{classgraphic_1_1hud_1_1_font_builder_a844a14b4a21c5e25348f83d6364c7986}} 
+\index{graphic.hud.FontBuilder@{graphic.hud.FontBuilder}!build@{build}}
+\index{build@{build}!graphic.hud.FontBuilder@{graphic.hud.FontBuilder}}
+\doxysubsubsection{\texorpdfstring{build()}{build()}}
+{\footnotesize\ttfamily Bitmap\+Font graphic.\+hud.\+Font\+Builder.\+build (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Creates the {\ttfamily \mbox{\hyperlink{}{Bitmap\+Font}}} with the previous configuration.
+
+\begin{DoxyReturn}{Returns}
+the {\ttfamily \mbox{\hyperlink{}{Bitmap\+Font}}} for UI Elements. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classgraphic_1_1hud_1_1_font_builder_a3d55440f0f7b09a4539ce381a4c9dcb6}\label{classgraphic_1_1hud_1_1_font_builder_a3d55440f0f7b09a4539ce381a4c9dcb6}} 
+\index{graphic.hud.FontBuilder@{graphic.hud.FontBuilder}!setFontColor@{setFontColor}}
+\index{setFontColor@{setFontColor}!graphic.hud.FontBuilder@{graphic.hud.FontBuilder}}
+\doxysubsubsection{\texorpdfstring{setFontColor()}{setFontColor()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classgraphic_1_1hud_1_1_font_builder}{Font\+Builder}} graphic.\+hud.\+Font\+Builder.\+set\+Font\+Color (\begin{DoxyParamCaption}\item[{Color}]{color }\end{DoxyParamCaption})}
+
+Set the font color.
+
+
+\begin{DoxyParams}{Parameters}
+{\em color} & the {\ttfamily \mbox{\hyperlink{}{Color}}} for the font \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the {\ttfamily \mbox{\hyperlink{}{Font\+Builder}}} to chain calls. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classgraphic_1_1hud_1_1_font_builder_a307b5f1bf0105a5ed12a8ff0391f435f}\label{classgraphic_1_1hud_1_1_font_builder_a307b5f1bf0105a5ed12a8ff0391f435f}} 
+\index{graphic.hud.FontBuilder@{graphic.hud.FontBuilder}!setSize@{setSize}}
+\index{setSize@{setSize}!graphic.hud.FontBuilder@{graphic.hud.FontBuilder}}
+\doxysubsubsection{\texorpdfstring{setSize()}{setSize()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classgraphic_1_1hud_1_1_font_builder}{Font\+Builder}} graphic.\+hud.\+Font\+Builder.\+set\+Size (\begin{DoxyParamCaption}\item[{int}]{size }\end{DoxyParamCaption})}
+
+Set the size of the font.
+
+
+\begin{DoxyParams}{Parameters}
+{\em size} & of the font \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the {\ttfamily \mbox{\hyperlink{}{Font\+Builder}}} to chain calls. 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/schli/\+Desktop/\+Projects/\+Intelli\+J/pm-\/dungeon-\/jan/game/src/graphic/hud/Font\+Builder.\+java\end{DoxyCompactItemize}

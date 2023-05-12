@@ -1,0 +1,47 @@
+\hypertarget{classgraphic_1_1textures_1_1_texture_handler}{}\doxysection{graphic.\+textures.\+Texture\+Handler Class Reference}
+\label{classgraphic_1_1textures_1_1_texture_handler}\index{graphic.textures.TextureHandler@{graphic.textures.TextureHandler}}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classgraphic_1_1textures_1_1_texture_handler_a633a4c6fd0ead418ec69495aac9c0d05}\label{classgraphic_1_1textures_1_1_texture_handler_a633a4c6fd0ead418ec69495aac9c0d05}} 
+Set$<$ String $>$ {\bfseries get\+Available\+Paths} ()
+\item 
+List$<$ String $>$ \mbox{\hyperlink{classgraphic_1_1textures_1_1_texture_handler_a13a6ca8f306e9485493c35cc4b5d1c99}{get\+Texture\+Paths}} (String regex)
+\end{DoxyCompactItemize}
+\doxysubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classgraphic_1_1textures_1_1_texture_handler_ae8e08c528de466988348fafc51679bb2}\label{classgraphic_1_1textures_1_1_texture_handler_ae8e08c528de466988348fafc51679bb2}} 
+static \mbox{\hyperlink{classgraphic_1_1textures_1_1_texture_handler}{Texture\+Handler}} {\bfseries get\+Instance} ()
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+A texture handler class for managing textures paths for further use.
+
+Singleton (possibly thread-\/safe). 
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classgraphic_1_1textures_1_1_texture_handler_a13a6ca8f306e9485493c35cc4b5d1c99}\label{classgraphic_1_1textures_1_1_texture_handler_a13a6ca8f306e9485493c35cc4b5d1c99}} 
+\index{graphic.textures.TextureHandler@{graphic.textures.TextureHandler}!getTexturePaths@{getTexturePaths}}
+\index{getTexturePaths@{getTexturePaths}!graphic.textures.TextureHandler@{graphic.textures.TextureHandler}}
+\doxysubsubsection{\texorpdfstring{getTexturePaths()}{getTexturePaths()}}
+{\footnotesize\ttfamily List$<$ String $>$ graphic.\+textures.\+Texture\+Handler.\+get\+Texture\+Paths (\begin{DoxyParamCaption}\item[{String}]{regex }\end{DoxyParamCaption})}
+
+Searches for all textures paths that matches with the given regular expression.
+
+Example\+: knight\+\_\+m\+\_\+idle\+\_\+anim\+\_\+f(2$\vert$3).png will return the paths for knight\+\_\+m\+\_\+idle\+\_\+anim\+\_\+f2.\+png and knight\+\_\+m\+\_\+idle\+\_\+anim\+\_\+f3.\+png.
+
+
+\begin{DoxyParams}{Parameters}
+{\em regex} & the regular expression \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+a String List with all texture paths, that have matched 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/schli/\+Desktop/\+Projects/\+Intelli\+J/pm-\/dungeon-\/jan/game/src/graphic/textures/Texture\+Handler.\+java\end{DoxyCompactItemize}

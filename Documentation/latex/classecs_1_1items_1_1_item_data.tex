@@ -1,0 +1,153 @@
+\hypertarget{classecs_1_1items_1_1_item_data}{}\doxysection{ecs.\+items.\+Item\+Data Class Reference}
+\label{classecs_1_1items_1_1_item_data}\index{ecs.items.ItemData@{ecs.items.ItemData}}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classecs_1_1items_1_1_item_data_aa0c8a094365ef5b572550b7cd70855cd}{Item\+Data}} (\mbox{\hyperlink{enumecs_1_1items_1_1_item_type}{Item\+Type}} item\+Type, \mbox{\hyperlink{classgraphic_1_1_animation}{Animation}} inventory\+Texture, \mbox{\hyperlink{classgraphic_1_1_animation}{Animation}} world\+Texture, String item\+Name, String description, \mbox{\hyperlink{interfaceecs_1_1items_1_1_i_on_collect}{IOn\+Collect}} on\+Collect, \mbox{\hyperlink{interfaceecs_1_1items_1_1_i_on_drop}{IOn\+Drop}} on\+Drop, \mbox{\hyperlink{interfaceecs_1_1items_1_1_i_on_use}{IOn\+Use}} on\+Use, \mbox{\hyperlink{classecs_1_1components_1_1stats_1_1_damage_modifier}{Damage\+Modifier}} damage\+Modifier)
+\item 
+\mbox{\hyperlink{classecs_1_1items_1_1_item_data_a620d85313239211d4f5b4ca6a7932d70}{Item\+Data}} (\mbox{\hyperlink{enumecs_1_1items_1_1_item_type}{Item\+Type}} item\+Type, \mbox{\hyperlink{classgraphic_1_1_animation}{Animation}} inventory\+Texture, \mbox{\hyperlink{classgraphic_1_1_animation}{Animation}} world\+Texture, String item\+Name, String description)
+\item 
+void \mbox{\hyperlink{classecs_1_1items_1_1_item_data_ab1d2181323b0f32991e60b2218d61f86}{trigger\+Collect}} (\mbox{\hyperlink{classecs_1_1entities_1_1_entity}{Entity}} world\+Item\+Entity, \mbox{\hyperlink{classecs_1_1entities_1_1_entity}{Entity}} who\+Tries\+Collects)
+\item 
+void \mbox{\hyperlink{classecs_1_1items_1_1_item_data_abd1b7ec9be57c73bb0c5c3c978305149}{trigger\+Drop}} (\mbox{\hyperlink{classecs_1_1entities_1_1_entity}{Entity}} e, \mbox{\hyperlink{classtools_1_1_point}{Point}} position)
+\item 
+void \mbox{\hyperlink{classecs_1_1items_1_1_item_data_ae9086e03cf083c0e7d444fc6cc8f85ce}{trigger\+Use}} (\mbox{\hyperlink{classecs_1_1entities_1_1_entity}{Entity}} entity)
+\item 
+\mbox{\Hypertarget{classecs_1_1items_1_1_item_data_a59be60b6e278807f92e54dda86b92720}\label{classecs_1_1items_1_1_item_data_a59be60b6e278807f92e54dda86b92720}} 
+\mbox{\hyperlink{enumecs_1_1items_1_1_item_type}{Item\+Type}} {\bfseries get\+Item\+Type} ()
+\item 
+\mbox{\Hypertarget{classecs_1_1items_1_1_item_data_ae94db3e4da90312c817dad0c637043fc}\label{classecs_1_1items_1_1_item_data_ae94db3e4da90312c817dad0c637043fc}} 
+\mbox{\hyperlink{classgraphic_1_1_animation}{Animation}} {\bfseries get\+Inventory\+Texture} ()
+\item 
+\mbox{\Hypertarget{classecs_1_1items_1_1_item_data_a48f15e810fd17b61bd7be416f4be8b1a}\label{classecs_1_1items_1_1_item_data_a48f15e810fd17b61bd7be416f4be8b1a}} 
+\mbox{\hyperlink{classgraphic_1_1_animation}{Animation}} {\bfseries get\+World\+Texture} ()
+\item 
+\mbox{\Hypertarget{classecs_1_1items_1_1_item_data_ad35dadb85e6cc3ce2511fb1d81de8416}\label{classecs_1_1items_1_1_item_data_ad35dadb85e6cc3ce2511fb1d81de8416}} 
+String {\bfseries get\+Item\+Name} ()
+\item 
+\mbox{\Hypertarget{classecs_1_1items_1_1_item_data_a7385c44e5b4207ccee518a1adaa02d03}\label{classecs_1_1items_1_1_item_data_a7385c44e5b4207ccee518a1adaa02d03}} 
+String {\bfseries get\+Description} ()
+\item 
+\mbox{\Hypertarget{classecs_1_1items_1_1_item_data_a4478d7610a5f468c5addd109863e3979}\label{classecs_1_1items_1_1_item_data_a4478d7610a5f468c5addd109863e3979}} 
+\mbox{\hyperlink{interfaceecs_1_1items_1_1_i_on_collect}{IOn\+Collect}} {\bfseries get\+On\+Collect} ()
+\item 
+\mbox{\Hypertarget{classecs_1_1items_1_1_item_data_a0d6ca80ea67f02137c65ea44721c98b9}\label{classecs_1_1items_1_1_item_data_a0d6ca80ea67f02137c65ea44721c98b9}} 
+void {\bfseries set\+On\+Collect} (\mbox{\hyperlink{interfaceecs_1_1items_1_1_i_on_collect}{IOn\+Collect}} on\+Collect)
+\item 
+\mbox{\Hypertarget{classecs_1_1items_1_1_item_data_ab8cb1a2e5e8a4b239abd7dfdb945fb52}\label{classecs_1_1items_1_1_item_data_ab8cb1a2e5e8a4b239abd7dfdb945fb52}} 
+\mbox{\hyperlink{interfaceecs_1_1items_1_1_i_on_drop}{IOn\+Drop}} {\bfseries get\+On\+Drop} ()
+\item 
+\mbox{\Hypertarget{classecs_1_1items_1_1_item_data_a011e3b21fba05ad077cb2bb18993dfa8}\label{classecs_1_1items_1_1_item_data_a011e3b21fba05ad077cb2bb18993dfa8}} 
+void {\bfseries set\+On\+Drop} (\mbox{\hyperlink{interfaceecs_1_1items_1_1_i_on_drop}{IOn\+Drop}} on\+Drop)
+\item 
+\mbox{\Hypertarget{classecs_1_1items_1_1_item_data_ab705d9a51683eaa1b786e8d5262acfe8}\label{classecs_1_1items_1_1_item_data_ab705d9a51683eaa1b786e8d5262acfe8}} 
+\mbox{\hyperlink{interfaceecs_1_1items_1_1_i_on_use}{IOn\+Use}} {\bfseries get\+On\+Use} ()
+\item 
+\mbox{\Hypertarget{classecs_1_1items_1_1_item_data_a76f1e287d2f79335ced359931b12137b}\label{classecs_1_1items_1_1_item_data_a76f1e287d2f79335ced359931b12137b}} 
+void {\bfseries set\+On\+Use} (\mbox{\hyperlink{interfaceecs_1_1items_1_1_i_on_use}{IOn\+Use}} on\+Use)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+A Class which contains the Information of a specific Item. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classecs_1_1items_1_1_item_data_aa0c8a094365ef5b572550b7cd70855cd}\label{classecs_1_1items_1_1_item_data_aa0c8a094365ef5b572550b7cd70855cd}} 
+\index{ecs.items.ItemData@{ecs.items.ItemData}!ItemData@{ItemData}}
+\index{ItemData@{ItemData}!ecs.items.ItemData@{ecs.items.ItemData}}
+\doxysubsubsection{\texorpdfstring{ItemData()}{ItemData()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily ecs.\+items.\+Item\+Data.\+Item\+Data (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{enumecs_1_1items_1_1_item_type}{Item\+Type}}}]{item\+Type,  }\item[{\mbox{\hyperlink{classgraphic_1_1_animation}{Animation}}}]{inventory\+Texture,  }\item[{\mbox{\hyperlink{classgraphic_1_1_animation}{Animation}}}]{world\+Texture,  }\item[{String}]{item\+Name,  }\item[{String}]{description,  }\item[{\mbox{\hyperlink{interfaceecs_1_1items_1_1_i_on_collect}{IOn\+Collect}}}]{on\+Collect,  }\item[{\mbox{\hyperlink{interfaceecs_1_1items_1_1_i_on_drop}{IOn\+Drop}}}]{on\+Drop,  }\item[{\mbox{\hyperlink{interfaceecs_1_1items_1_1_i_on_use}{IOn\+Use}}}]{on\+Use,  }\item[{\mbox{\hyperlink{classecs_1_1components_1_1stats_1_1_damage_modifier}{Damage\+Modifier}}}]{damage\+Modifier }\end{DoxyParamCaption})}
+
+creates a new item data object.
+
+
+\begin{DoxyParams}{Parameters}
+{\em item\+Type} & \\
+\hline
+{\em inventory\+Texture} & \\
+\hline
+{\em world\+Texture} & \\
+\hline
+{\em item\+Name} & \\
+\hline
+{\em description} & \\
+\hline
+{\em on\+Collect} & \\
+\hline
+{\em on\+Drop} & \\
+\hline
+{\em on\+Use} & \\
+\hline
+{\em damage\+Modifier} & \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classecs_1_1items_1_1_item_data_a620d85313239211d4f5b4ca6a7932d70}\label{classecs_1_1items_1_1_item_data_a620d85313239211d4f5b4ca6a7932d70}} 
+\index{ecs.items.ItemData@{ecs.items.ItemData}!ItemData@{ItemData}}
+\index{ItemData@{ItemData}!ecs.items.ItemData@{ecs.items.ItemData}}
+\doxysubsubsection{\texorpdfstring{ItemData()}{ItemData()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily ecs.\+items.\+Item\+Data.\+Item\+Data (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{enumecs_1_1items_1_1_item_type}{Item\+Type}}}]{item\+Type,  }\item[{\mbox{\hyperlink{classgraphic_1_1_animation}{Animation}}}]{inventory\+Texture,  }\item[{\mbox{\hyperlink{classgraphic_1_1_animation}{Animation}}}]{world\+Texture,  }\item[{String}]{item\+Name,  }\item[{String}]{description }\end{DoxyParamCaption})}
+
+creates a new item data object. With a basic handling of collecting and dropping
+
+
+\begin{DoxyParams}{Parameters}
+{\em item\+Type} & \\
+\hline
+{\em inventory\+Texture} & \\
+\hline
+{\em world\+Texture} & \\
+\hline
+{\em item\+Name} & \\
+\hline
+{\em description} & \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classecs_1_1items_1_1_item_data_ab1d2181323b0f32991e60b2218d61f86}\label{classecs_1_1items_1_1_item_data_ab1d2181323b0f32991e60b2218d61f86}} 
+\index{ecs.items.ItemData@{ecs.items.ItemData}!triggerCollect@{triggerCollect}}
+\index{triggerCollect@{triggerCollect}!ecs.items.ItemData@{ecs.items.ItemData}}
+\doxysubsubsection{\texorpdfstring{triggerCollect()}{triggerCollect()}}
+{\footnotesize\ttfamily void ecs.\+items.\+Item\+Data.\+trigger\+Collect (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classecs_1_1entities_1_1_entity}{Entity}}}]{world\+Item\+Entity,  }\item[{\mbox{\hyperlink{classecs_1_1entities_1_1_entity}{Entity}}}]{who\+Tries\+Collects }\end{DoxyParamCaption})}
+
+what should happen when an Entity interacts with the Item while it is lying in the World.
+
+
+\begin{DoxyParams}{Parameters}
+{\em world\+Item\+Entity} & \\
+\hline
+{\em who\+Tries\+Collects} & \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classecs_1_1items_1_1_item_data_abd1b7ec9be57c73bb0c5c3c978305149}\label{classecs_1_1items_1_1_item_data_abd1b7ec9be57c73bb0c5c3c978305149}} 
+\index{ecs.items.ItemData@{ecs.items.ItemData}!triggerDrop@{triggerDrop}}
+\index{triggerDrop@{triggerDrop}!ecs.items.ItemData@{ecs.items.ItemData}}
+\doxysubsubsection{\texorpdfstring{triggerDrop()}{triggerDrop()}}
+{\footnotesize\ttfamily void ecs.\+items.\+Item\+Data.\+trigger\+Drop (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classecs_1_1entities_1_1_entity}{Entity}}}]{e,  }\item[{\mbox{\hyperlink{classtools_1_1_point}{Point}}}]{position }\end{DoxyParamCaption})}
+
+implements what should happen once the Item is dropped.
+
+
+\begin{DoxyParams}{Parameters}
+{\em position} & the location of the drop \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classecs_1_1items_1_1_item_data_ae9086e03cf083c0e7d444fc6cc8f85ce}\label{classecs_1_1items_1_1_item_data_ae9086e03cf083c0e7d444fc6cc8f85ce}} 
+\index{ecs.items.ItemData@{ecs.items.ItemData}!triggerUse@{triggerUse}}
+\index{triggerUse@{triggerUse}!ecs.items.ItemData@{ecs.items.ItemData}}
+\doxysubsubsection{\texorpdfstring{triggerUse()}{triggerUse()}}
+{\footnotesize\ttfamily void ecs.\+items.\+Item\+Data.\+trigger\+Use (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classecs_1_1entities_1_1_entity}{Entity}}}]{entity }\end{DoxyParamCaption})}
+
+Using active Item by calling associated callback.
+
+
+\begin{DoxyParams}{Parameters}
+{\em entity} & Entity that uses the item \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/schli/\+Desktop/\+Projects/\+Intelli\+J/pm-\/dungeon-\/jan/game/src/ecs/items/Item\+Data.\+java\end{DoxyCompactItemize}

@@ -1,0 +1,101 @@
+\hypertarget{classgraphic_1_1_dungeon_camera}{}\doxysection{graphic.\+Dungeon\+Camera Class Reference}
+\label{classgraphic_1_1_dungeon_camera}\index{graphic.DungeonCamera@{graphic.DungeonCamera}}
+Inheritance diagram for graphic.\+Dungeon\+Camera\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classgraphic_1_1_dungeon_camera}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classgraphic_1_1_dungeon_camera_a524a63a84425449cdccfd6cd1b3ff18f}{Dungeon\+Camera}} (\mbox{\hyperlink{classecs_1_1components_1_1_position_component}{Position\+Component}} follows, float vw, float vh)
+\item 
+void \mbox{\hyperlink{classgraphic_1_1_dungeon_camera_a3d8d8d4fb5a50973af9177bec447c8a4}{update}} ()
+\item 
+void \mbox{\hyperlink{classgraphic_1_1_dungeon_camera_a0816665009d6cdc97a44fc3852c11a50}{follow}} (\mbox{\hyperlink{classecs_1_1components_1_1_position_component}{Position\+Component}} follows)
+\item 
+\mbox{\hyperlink{classecs_1_1components_1_1_position_component}{Position\+Component}} \mbox{\hyperlink{classgraphic_1_1_dungeon_camera_a113d02ca118fba6d54ce1e17b39cb6cb}{get\+Followed\+Object}} ()
+\item 
+void \mbox{\hyperlink{classgraphic_1_1_dungeon_camera_a898d9766e95c0ced76ff3c964395ca7b}{set\+Focus\+Point}} (\mbox{\hyperlink{classtools_1_1_point}{Point}} focus\+Point)
+\item 
+boolean \mbox{\hyperlink{classgraphic_1_1_dungeon_camera_af1dde78875ad0b095004e350bb008bb5}{is\+Point\+In\+Frustum}} (float x, float y)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Sauron\textquotesingle{}s eye. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classgraphic_1_1_dungeon_camera_a524a63a84425449cdccfd6cd1b3ff18f}\label{classgraphic_1_1_dungeon_camera_a524a63a84425449cdccfd6cd1b3ff18f}} 
+\index{graphic.DungeonCamera@{graphic.DungeonCamera}!DungeonCamera@{DungeonCamera}}
+\index{DungeonCamera@{DungeonCamera}!graphic.DungeonCamera@{graphic.DungeonCamera}}
+\doxysubsubsection{\texorpdfstring{DungeonCamera()}{DungeonCamera()}}
+{\footnotesize\ttfamily graphic.\+Dungeon\+Camera.\+Dungeon\+Camera (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classecs_1_1components_1_1_position_component}{Position\+Component}}}]{follows,  }\item[{float}]{vw,  }\item[{float}]{vh }\end{DoxyParamCaption})}
+
+Creates a new camera.
+
+
+\begin{DoxyParams}{Parameters}
+{\em follows} & the Position\+Component the camera should follow, {\ttfamily null} for default coordinates \\
+\hline
+{\em vw} & viewport width \\
+\hline
+{\em vh} & viewport height \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classgraphic_1_1_dungeon_camera_a0816665009d6cdc97a44fc3852c11a50}\label{classgraphic_1_1_dungeon_camera_a0816665009d6cdc97a44fc3852c11a50}} 
+\index{graphic.DungeonCamera@{graphic.DungeonCamera}!follow@{follow}}
+\index{follow@{follow}!graphic.DungeonCamera@{graphic.DungeonCamera}}
+\doxysubsubsection{\texorpdfstring{follow()}{follow()}}
+{\footnotesize\ttfamily void graphic.\+Dungeon\+Camera.\+follow (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classecs_1_1components_1_1_position_component}{Position\+Component}}}]{follows }\end{DoxyParamCaption})}
+
+Sets the entity to follow.
+
+
+\begin{DoxyParams}{Parameters}
+{\em follows} & Position\+Component to follow \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classgraphic_1_1_dungeon_camera_a113d02ca118fba6d54ce1e17b39cb6cb}\label{classgraphic_1_1_dungeon_camera_a113d02ca118fba6d54ce1e17b39cb6cb}} 
+\index{graphic.DungeonCamera@{graphic.DungeonCamera}!getFollowedObject@{getFollowedObject}}
+\index{getFollowedObject@{getFollowedObject}!graphic.DungeonCamera@{graphic.DungeonCamera}}
+\doxysubsubsection{\texorpdfstring{getFollowedObject()}{getFollowedObject()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classecs_1_1components_1_1_position_component}{Position\+Component}} graphic.\+Dungeon\+Camera.\+get\+Followed\+Object (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\begin{DoxyReturn}{Returns}
+the Position\+Component the camera currently follows 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classgraphic_1_1_dungeon_camera_af1dde78875ad0b095004e350bb008bb5}\label{classgraphic_1_1_dungeon_camera_af1dde78875ad0b095004e350bb008bb5}} 
+\index{graphic.DungeonCamera@{graphic.DungeonCamera}!isPointInFrustum@{isPointInFrustum}}
+\index{isPointInFrustum@{isPointInFrustum}!graphic.DungeonCamera@{graphic.DungeonCamera}}
+\doxysubsubsection{\texorpdfstring{isPointInFrustum()}{isPointInFrustum()}}
+{\footnotesize\ttfamily boolean graphic.\+Dungeon\+Camera.\+is\+Point\+In\+Frustum (\begin{DoxyParamCaption}\item[{float}]{x,  }\item[{float}]{y }\end{DoxyParamCaption})}
+
+Checks if point (x,y) is probably visible on screen. Points that are not visible should not be rendered. \mbox{\Hypertarget{classgraphic_1_1_dungeon_camera_a898d9766e95c0ced76ff3c964395ca7b}\label{classgraphic_1_1_dungeon_camera_a898d9766e95c0ced76ff3c964395ca7b}} 
+\index{graphic.DungeonCamera@{graphic.DungeonCamera}!setFocusPoint@{setFocusPoint}}
+\index{setFocusPoint@{setFocusPoint}!graphic.DungeonCamera@{graphic.DungeonCamera}}
+\doxysubsubsection{\texorpdfstring{setFocusPoint()}{setFocusPoint()}}
+{\footnotesize\ttfamily void graphic.\+Dungeon\+Camera.\+set\+Focus\+Point (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classtools_1_1_point}{Point}}}]{focus\+Point }\end{DoxyParamCaption})}
+
+Stops following and set the camera on a fix position.
+
+
+\begin{DoxyParams}{Parameters}
+{\em focus\+Point} & {\ttfamily Point} to set the camera on \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classgraphic_1_1_dungeon_camera_a3d8d8d4fb5a50973af9177bec447c8a4}\label{classgraphic_1_1_dungeon_camera_a3d8d8d4fb5a50973af9177bec447c8a4}} 
+\index{graphic.DungeonCamera@{graphic.DungeonCamera}!update@{update}}
+\index{update@{update}!graphic.DungeonCamera@{graphic.DungeonCamera}}
+\doxysubsubsection{\texorpdfstring{update()}{update()}}
+{\footnotesize\ttfamily void graphic.\+Dungeon\+Camera.\+update (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Updates camera position. 
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/schli/\+Desktop/\+Projects/\+Intelli\+J/pm-\/dungeon-\/jan/game/src/graphic/Dungeon\+Camera.\+java\end{DoxyCompactItemize}

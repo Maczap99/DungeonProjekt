@@ -7,6 +7,7 @@ import ecs.components.*;
 import ecs.components.collision.ICollide;
 import ecs.damage.Damage;
 import ecs.entities.Entity;
+import ecs.entities.Hero;
 import graphic.Animation;
 import starter.Game;
 import tools.Point;
@@ -23,6 +24,9 @@ public abstract class DamageProjectileSkill implements ISkillFunction, Serializa
     private Point projectileHitboxSize;
 
     private ITargetSelection selectionFunction;
+
+    private float manaCost;
+
     private transient Sound sound;
 
     public DamageProjectileSkill(
@@ -31,13 +35,15 @@ public abstract class DamageProjectileSkill implements ISkillFunction, Serializa
             Damage projectileDamage,
             Point projectileHitboxSize,
             ITargetSelection selectionFunction,
-            float projectileRange) {
+            float projectileRange,
+            float manaCost) {
         this.pathToTexturesOfProjectile = pathToTexturesOfProjectile;
         this.projectileDamage = projectileDamage;
         this.projectileSpeed = projectileSpeed;
         this.projectileRange = projectileRange;
         this.projectileHitboxSize = projectileHitboxSize;
         this.selectionFunction = selectionFunction;
+        this.manaCost = manaCost;
     }
 
     @Override
@@ -77,6 +83,10 @@ public abstract class DamageProjectileSkill implements ISkillFunction, Serializa
         new HitboxComponent(
                 projectile, new Point(0.25f, 0.25f), projectileHitboxSize, collide, null);
 
+        // reduce mana
+        Hero hero = (Hero) Game.getHero().get();
+        hero.setCurrentMana(hero.getCurrentMana() - manaCost);
+        System.out.println("Mana: " + (int) hero.getCurrentMana());
 
         try{
             // start menu soundtrack

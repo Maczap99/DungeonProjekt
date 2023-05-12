@@ -1,0 +1,119 @@
+\hypertarget{classtools_1_1_point}{}\doxysection{tools.\+Point Class Reference}
+\label{classtools_1_1_point}\index{tools.Point@{tools.Point}}
+Inheritance diagram for tools.\+Point\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classtools_1_1_point}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classtools_1_1_point_aa88c9f3d3c4bc555c4da2d76ab7414ba}{Point}} (float x, float y)
+\item 
+\mbox{\hyperlink{classtools_1_1_point_a27786b1cba3ea9ce97d7c9eb6c7de5c8}{Point}} (\mbox{\hyperlink{classtools_1_1_point}{Point}} p)
+\item 
+\mbox{\hyperlink{classlevel_1_1tools_1_1_coordinate}{Coordinate}} \mbox{\hyperlink{classtools_1_1_point_a7cd79f4c2872ef44aa295f9a0aa9afe5}{to\+Coordinate}} ()
+\end{DoxyCompactItemize}
+\doxysubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static \mbox{\hyperlink{classtools_1_1_point}{Point}} \mbox{\hyperlink{classtools_1_1_point_aec45c912f4312113a2a97bfd70630e3c}{get\+Unit\+Directional\+Vector}} (\mbox{\hyperlink{classtools_1_1_point}{Point}} b, \mbox{\hyperlink{classtools_1_1_point}{Point}} a)
+\item 
+static float \mbox{\hyperlink{classtools_1_1_point_a3741d41605bdcb0ba942120554248756}{calculate\+Distance}} (\mbox{\hyperlink{classtools_1_1_point}{Point}} p1, \mbox{\hyperlink{classtools_1_1_point}{Point}} p2)
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classtools_1_1_point_a3b5ba3181b86eb74f3393342cb842f26}\label{classtools_1_1_point_a3b5ba3181b86eb74f3393342cb842f26}} 
+float {\bfseries x}
+\item 
+\mbox{\Hypertarget{classtools_1_1_point_aed248f084cfbd7c876029dbcac0bcc20}\label{classtools_1_1_point_aed248f084cfbd7c876029dbcac0bcc20}} 
+float {\bfseries y}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+For easy handling of positions in the dungeon. ~\newline
+ No getter needed. All attributes are public. ~\newline
+ Point.\+x to get x ~\newline
+ Point.\+y to get y ~\newline
+ 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classtools_1_1_point_aa88c9f3d3c4bc555c4da2d76ab7414ba}\label{classtools_1_1_point_aa88c9f3d3c4bc555c4da2d76ab7414ba}} 
+\index{tools.Point@{tools.Point}!Point@{Point}}
+\index{Point@{Point}!tools.Point@{tools.Point}}
+\doxysubsubsection{\texorpdfstring{Point()}{Point()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily tools.\+Point.\+Point (\begin{DoxyParamCaption}\item[{float}]{x,  }\item[{float}]{y }\end{DoxyParamCaption})}
+
+A simple {\ttfamily float} point class.
+
+
+\begin{DoxyParams}{Parameters}
+{\em x} & the x value \\
+\hline
+{\em y} & the y value \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classtools_1_1_point_a27786b1cba3ea9ce97d7c9eb6c7de5c8}\label{classtools_1_1_point_a27786b1cba3ea9ce97d7c9eb6c7de5c8}} 
+\index{tools.Point@{tools.Point}!Point@{Point}}
+\index{Point@{Point}!tools.Point@{tools.Point}}
+\doxysubsubsection{\texorpdfstring{Point()}{Point()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily tools.\+Point.\+Point (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classtools_1_1_point}{Point}}}]{p }\end{DoxyParamCaption})}
+
+Copies the point. 
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classtools_1_1_point_a3741d41605bdcb0ba942120554248756}\label{classtools_1_1_point_a3741d41605bdcb0ba942120554248756}} 
+\index{tools.Point@{tools.Point}!calculateDistance@{calculateDistance}}
+\index{calculateDistance@{calculateDistance}!tools.Point@{tools.Point}}
+\doxysubsubsection{\texorpdfstring{calculateDistance()}{calculateDistance()}}
+{\footnotesize\ttfamily static float tools.\+Point.\+calculate\+Distance (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classtools_1_1_point}{Point}}}]{p1,  }\item[{\mbox{\hyperlink{classtools_1_1_point}{Point}}}]{p2 }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+calculates the distance between two points
+
+
+\begin{DoxyParams}{Parameters}
+{\em p1} & Point A \\
+\hline
+{\em p2} & Point B \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the Distance between the two points 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classtools_1_1_point_aec45c912f4312113a2a97bfd70630e3c}\label{classtools_1_1_point_aec45c912f4312113a2a97bfd70630e3c}} 
+\index{tools.Point@{tools.Point}!getUnitDirectionalVector@{getUnitDirectionalVector}}
+\index{getUnitDirectionalVector@{getUnitDirectionalVector}!tools.Point@{tools.Point}}
+\doxysubsubsection{\texorpdfstring{getUnitDirectionalVector()}{getUnitDirectionalVector()}}
+{\footnotesize\ttfamily static \mbox{\hyperlink{classtools_1_1_point}{Point}} tools.\+Point.\+get\+Unit\+Directional\+Vector (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classtools_1_1_point}{Point}}}]{b,  }\item[{\mbox{\hyperlink{classtools_1_1_point}{Point}}}]{a }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Creates the unit vector between point a and b
+
+
+\begin{DoxyParams}{Parameters}
+{\em a} & Point A \\
+\hline
+{\em b} & Point B \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the unit vector 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classtools_1_1_point_a7cd79f4c2872ef44aa295f9a0aa9afe5}\label{classtools_1_1_point_a7cd79f4c2872ef44aa295f9a0aa9afe5}} 
+\index{tools.Point@{tools.Point}!toCoordinate@{toCoordinate}}
+\index{toCoordinate@{toCoordinate}!tools.Point@{tools.Point}}
+\doxysubsubsection{\texorpdfstring{toCoordinate()}{toCoordinate()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classlevel_1_1tools_1_1_coordinate}{Coordinate}} tools.\+Point.\+to\+Coordinate (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Convert Point to Coordinate by parsing float to int
+
+\begin{DoxyReturn}{Returns}
+the converted point 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/schli/\+Desktop/\+Projects/\+Intelli\+J/pm-\/dungeon-\/jan/game/src/tools/Point.\+java\end{DoxyCompactItemize}
