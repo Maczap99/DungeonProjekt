@@ -102,7 +102,7 @@ public class MainMenu<T extends Actor> extends ScreenController<T> {
             }else{
                 // start menu soundtrack
                 sound = Gdx.audio.newSound(Gdx.files.internal("game/sounds/menu/menu2.mp3"));
-                sound.loop(0.2f);
+                sound.loop(1.3f);
             }
 
 
