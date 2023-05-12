@@ -91,9 +91,9 @@ public class TrapChest extends Entity implements IInteraction {
 
             try{
                 // start menu soundtrack
-                sound = Gdx.audio.newSound(Gdx.files.internal("game/sounds/trap/trapCheast1.mp3"));
+                sound = Gdx.audio.newSound(Gdx.files.internal("game/sounds/trap/trapChest1.mp3"));
                 sound.play(0.5f);
-                sound = Gdx.audio.newSound(Gdx.files.internal("game/sounds/damageLong.mp3"));
+                sound = Gdx.audio.newSound(Gdx.files.internal("game/sounds/effect/damageLong.mp3"));
                 sound.play(0.5f);
 
             }catch (Exception e){

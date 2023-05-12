@@ -90,7 +90,7 @@ public abstract class DamageProjectileSkill implements ISkillFunction, Serializa
 
         try{
             // start menu soundtrack
-            sound = Gdx.audio.newSound(Gdx.files.internal("game/sounds/skill/fireball2.mp3"));
+            sound = Gdx.audio.newSound(Gdx.files.internal("game/sounds/skill/fireball1.mp3"));
             sound.play(0.5f);
 
         }catch (Exception e){

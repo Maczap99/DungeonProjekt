@@ -119,7 +119,7 @@ public class Hero extends Entity implements ILevelUp {
     private void setupCureSkill() {
         cureSkill =
             new Skill(
-                new CureSkill(), cureCoolDown,  0);
+                new CureSkill(), cureCoolDown,  3);
     }
 
     private void setupSpeedSkill() {

@@ -211,7 +211,7 @@ public class Game extends ScreenAdapter implements IOnLevelLoader {
 
             try{
                 // start menu soundtrack
-                sound = Gdx.audio.newSound(Gdx.files.internal("game/sounds/door.mp3"));
+                sound = Gdx.audio.newSound(Gdx.files.internal("game/sounds/effect/door.mp3"));
                 sound.play(0.3f);
 
             }catch (Exception e){
