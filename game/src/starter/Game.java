@@ -3,6 +3,7 @@ package starter;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.ScreenAdapter;
+import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import configuration.Configuration;
@@ -213,7 +214,10 @@ public class Game extends ScreenAdapter implements IOnLevelLoader {
                 if(xp.isPresent()){
                     XPComponent x = (XPComponent) xp.get();
                     x.setCurrentLevel(x.getCurrentLevel() + 1);
+
                     System.out.println("Level up! Level: " + x.getCurrentLevel());
+                    Hero h = (Hero) Game.getHero().get();
+                    h.setCurrentLevel(x.getCurrentLevel());
 
                     if(x.getCurrentLevel() == 2){
                         System.out.println("Skill Speed Up Freigeschaltet! (Aktivierung: F)");

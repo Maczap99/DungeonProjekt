@@ -15,17 +15,15 @@ public class Skill implements Serializable {
     private ISkillFunction skillFunction;
     private int coolDownInFrames;
     private int currentCoolDownInFrames;
-    private float manaCost;
     private int levelNeed;
 
     /**
      * @param skillFunction Function of this skill
      */
-    public Skill(ISkillFunction skillFunction, float coolDownInSeconds, float manaCost, int levelNeed) {
+    public Skill(ISkillFunction skillFunction, float coolDownInSeconds, int levelNeed) {
         this.skillFunction = skillFunction;
         this.coolDownInFrames = (int) (coolDownInSeconds * Constants.FRAME_RATE);
         this.currentCoolDownInFrames = 0;
-        this.manaCost = manaCost;
         this.levelNeed = levelNeed;
     }
 
@@ -43,17 +41,8 @@ public class Skill implements Serializable {
 
             // check for enough mana and if the skill is unlocked
             if (!isOnCoolDown() && x.getCurrentLevel() >= levelNeed) {
-                if(manaCost <= hero.getCurrentMana()) {
-
-                    // reduce mana
-                    hero.setCurrentMana(hero.getCurrentMana() - manaCost);
-                    System.out.println("Mana: " + (int) hero.getCurrentMana());
-
-                    skillFunction.execute(entity);
-                    activateCoolDown();
-                }else{
-                    System.out.println("Nicht genug Mana!");
-                }
+                skillFunction.execute(entity);
+                activateCoolDown();
             }
         }
     }

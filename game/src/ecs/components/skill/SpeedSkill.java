@@ -1,5 +1,7 @@
 package ecs.components.skill;
 
+import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.audio.Sound;
 import ecs.components.Component;
 import ecs.components.MissingComponentException;
 import ecs.components.VelocityComponent;
@@ -17,6 +19,7 @@ import java.util.Optional;
  * **/
 
 public class SpeedSkill extends BuffSkill {
+    private float manaCost = 10f;
     public SpeedSkill() {
         super();
     }
@@ -25,36 +28,45 @@ public class SpeedSkill extends BuffSkill {
     public void execute(Entity entity) {
         Hero hero = (Hero) Game.getHero().get();
 
-        // get the velocity component
-        Optional<Component> ve = entity.getComponent(VelocityComponent.class);
-        if (ve.isPresent()) {
-            // if the timer is null or is finished
-            if (hero.getTrapTimer() == null || hero.getTrapTimer().isFinished()) {
 
-                // set new velocity
-                VelocityComponent v = (VelocityComponent) ve.get();
-                v.setYVelocity(0.4f);
-                v.setXVelocity(0.4f);
+        if (manaCost <= hero.getCurrentMana()) {
 
-                // set seconds for timer
-                int startTime = 3;
-                int ebene = Game.getLevelStage();
-                int time = startTime + (ebene / 2);
+            // get the velocity component
+            Optional<Component> ve = entity.getComponent(VelocityComponent.class);
+            if (ve.isPresent()) {
+                // if the timer is null or is finished
+                if (hero.getTrapTimer() == null || hero.getTrapTimer().isFinished()) {
 
-                if (time > 15) {
-                    time = 15;
+                    // set new velocity
+                    VelocityComponent v = (VelocityComponent) ve.get();
+                    v.setYVelocity(0.4f);
+                    v.setXVelocity(0.4f);
+
+                    // set seconds for timer
+                    int startTime = 3;
+                    int ebene = Game.getLevelStage();
+                    int time = startTime + (ebene / 2);
+
+                    if (time > 15) {
+                        time = 15;
+                    }
+
+                    System.out.println(time + " Sekunden SpeedUP");
+                    hero.startTrapTimer(time * 1000);
+
+                    // reduce mana
+                    hero.setCurrentMana(hero.getCurrentMana() - manaCost);
+                    System.out.println("Mana: " + (int) hero.getCurrentMana());
+
+                } else {
+                    System.out.println("SpeedUp nicht nutzbar, da eine Falle aktiviert ist");
+                    hero.setCurrentMana(hero.getCurrentMana() + 10);
                 }
-
-                System.out.println(time + " Sekunden SpeedUP");
-
-
-                hero.startTrapTimer(time * 1000);
             } else {
-                System.out.println("SpeedUp nicht nutzbar, da eine Falle aktiviert ist");
-                hero.setCurrentMana(hero.getCurrentMana() + 10);
+                throw new MissingComponentException("Player has no HealthComponent!");
             }
-        } else {
-            throw new MissingComponentException("Player has no HealthComponent!");
+        }else{
+            System.out.println("Nicht genug Mana!");
         }
     }
 }
