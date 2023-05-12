@@ -18,4 +18,4 @@ Effects:
 - v/ damage: https://www.youtube.com/watch?v=Sz5aUsBq2T4
 - v/ speed up: https://www.youtube.com/watch?v=HCj2-NCGijQ LLC
 
-- v/ menu 2: https://www.youtube.com/watch?v=RrYVwJCtV60
+- v/ menu 2 soundtrack: https://www.youtube.com/watch?v=RrYVwJCtV60
