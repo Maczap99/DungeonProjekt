@@ -72,9 +72,9 @@ public class MainMenu<T extends Actor> extends ScreenController<T> {
 
         TextButton.TextButtonStyle buttonStyle = new TextButton.TextButtonStyle();
         buttonStyle.font = labelStyle.font;
-        buttonStyle.fontColor = Color.GREEN;
+        buttonStyle.fontColor = Color.RED;
         buttonStyle.downFontColor = Color.YELLOW;
-        buttonStyle.overFontColor = Color.RED;
+        buttonStyle.overFontColor = Color.ORANGE;
         buttonStyle.disabledFontColor = Color.GRAY;
 
         // Create the table for UI elements
@@ -82,7 +82,7 @@ public class MainMenu<T extends Actor> extends ScreenController<T> {
 
         // try picture else set background to black
         try{
-            table.setBackground(new TextureRegionDrawable(new TextureRegion(new Texture("game/assets/menu/start1.png"))));
+            table.setBackground(new TextureRegionDrawable(new TextureRegion(new Texture("game/assets/menu/start1.jpg"))));
         }catch (Exception e){
             var backgroundColor = new Color(0f, 0f, 0f, 1f);
             var backgroundDrawable = new ColorBackground(backgroundColor);
