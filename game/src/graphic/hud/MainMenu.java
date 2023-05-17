@@ -175,8 +175,10 @@ public class MainMenu<T extends Actor> extends ScreenController<T> {
 
                     try{
                         // start menu soundtrack
-                        music = Gdx.audio.newSound(Gdx.files.internal("game/sounds/dungeon/dungeon"+ getSoundNubmer(0,4)+".wav"));
-                        music.loop(0.2f);
+                        music = Gdx.audio.newMusic(Gdx.files.internal("game/sounds/dungeon/dungeon"+ getSoundNubmer(0,4)+".wav"));
+                        music.setLooping(true);
+                        music.setVolume(0.2f);
+                        music.play();
 
                     }catch (Exception e){
                         System.out.println("Sounddatei konnte nicht gefunden werden");
