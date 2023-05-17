@@ -1,7 +1,7 @@
 package graphic.hud;
 
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.audio.Sound;
+import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
@@ -35,7 +35,7 @@ public class MainMenu<T extends Actor> extends ScreenController<T> {
     private TextButton newButton;
     private TextButton saveButton;
     private TextButton loadButton;
-    private transient Sound sound;
+    private transient Music music;
 
     private static boolean initialState = true;
 
@@ -97,12 +97,16 @@ public class MainMenu<T extends Actor> extends ScreenController<T> {
         try{
             if(secretSound != 7){
                 // start menu soundtrack
-                sound = Gdx.audio.newSound(Gdx.files.internal("game/sounds/menu/menu1.mp3"));
-                sound.loop(0.2f);
+                music = Gdx.audio.newMusic(Gdx.files.internal("game/sounds/menu/menu1.mp3"));
+                music.setLooping(true);
+                music.setVolume(0.2f);
+                music.play();
             }else{
                 // start menu soundtrack
-                sound = Gdx.audio.newSound(Gdx.files.internal("game/sounds/menu/menu2.mp3"));
-                sound.loop(0.2f);
+                music = Gdx.audio.newMusic(Gdx.files.internal("game/sounds/menu/menu2.mp3"));
+                music.setLooping(true);
+                music.setVolume(0.2f);
+                music.play();
             }
 
 
@@ -118,12 +122,14 @@ public class MainMenu<T extends Actor> extends ScreenController<T> {
                 if (!newButton.isDisabled()) {
                     EntityFileSystem.deleteSaveGame();
 
-                    sound.stop();
+                    music.stop();
 
                     try{
                         // start menu soundtrack
-                        sound = Gdx.audio.newSound(Gdx.files.internal("game/sounds/dungeon/dungeon"+ getSoundNubmer(0,4)+".wav"));
-                        sound.loop(0.2f);
+                        music = Gdx.audio.newMusic(Gdx.files.internal("game/sounds/dungeon/dungeon"+ getSoundNubmer(0,4)+".wav"));
+                        music.setLooping(true);
+                        music.setVolume(0.2f);
+                        music.play();
 
                     }catch (Exception e){
                         System.out.println("Sounddatei konnte nicht gefunden werden");
@@ -165,12 +171,12 @@ public class MainMenu<T extends Actor> extends ScreenController<T> {
                 if (!loadButton.isDisabled()) {
                     var entities = EntityFileSystem.loadEntities();
 
-                    sound.stop();
+                    music.stop();
 
                     try{
                         // start menu soundtrack
-                        sound = Gdx.audio.newSound(Gdx.files.internal("game/sounds/dungeon/dungeon"+ getSoundNubmer(0,4)+".wav"));
-                        sound.loop(0.2f);
+                        music = Gdx.audio.newSound(Gdx.files.internal("game/sounds/dungeon/dungeon"+ getSoundNubmer(0,4)+".wav"));
+                        music.loop(0.2f);
 
                     }catch (Exception e){
                         System.out.println("Sounddatei konnte nicht gefunden werden");
