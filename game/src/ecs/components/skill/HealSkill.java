@@ -46,7 +46,7 @@ public class HealSkill extends BuffSkill {
 
                     // reduce mana
                     hero.setCurrentMana(hero.getCurrentMana() - manaCost);
-                    System.out.println("Mana: " + (int) hero.getCurrentMana());
+                    System.out.println("Mana: "+(int) hero.getCurrentMana() + " / " + (int) hero.getMana());
 
                     hero.setCurrentHealth(hero.getHealth());
 
@@ -68,6 +68,7 @@ public class HealSkill extends BuffSkill {
             }
         }else{
             System.out.println("Nicht genug Mana!");
+            System.out.println("Mana: "+(int) hero.getCurrentMana() + " / " + (int) hero.getMana());
         }
     }
 }

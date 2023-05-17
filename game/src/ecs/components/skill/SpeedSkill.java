@@ -60,11 +60,11 @@ public class SpeedSkill extends BuffSkill {
 
                     try {
                         // start menu soundtrack
-                        sound = Gdx.audio.newSound(Gdx.files.internal("game/sounds/skill/speedUpIn.mp3"));
+                        sound = Gdx.audio.newSound(Gdx.files.internal("game/sounds/skill/speedUp.mp3"));
                         sound.play(0.3f);
 
                     } catch (Exception e) {
-                        System.out.println("Sounddatei 'speedUpIn.mp3' konnte nicht gefunden werden");
+                        System.out.println("Sounddatei 'speedUp.mp3' konnte nicht gefunden werden");
                     }
 
 
@@ -77,7 +77,7 @@ public class SpeedSkill extends BuffSkill {
 
                     // reduce mana
                     hero.setCurrentMana(hero.getCurrentMana() - manaCost);
-                    System.out.println("Mana: " + (int) hero.getCurrentMana());
+                    System.out.println("Mana: "+(int) hero.getCurrentMana() + " / " + (int) hero.getMana());
 
 
                 } else {
@@ -89,6 +89,7 @@ public class SpeedSkill extends BuffSkill {
             }
         }else{
             System.out.println("Nicht genug Mana!");
+            System.out.println("Mana: "+(int) hero.getCurrentMana() + " / " + (int) hero.getMana());
         }
     }
 }

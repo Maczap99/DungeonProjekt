@@ -35,7 +35,7 @@ public class CureSkill extends BuffSkill implements Serializable {
 
                 // reduce mana
                 hero.setCurrentMana(hero.getCurrentMana() - manaCost);
-                System.out.println("Mana: " + (int) hero.getCurrentMana());
+                System.out.println("Mana: "+(int) hero.getCurrentMana() + " / " + (int) hero.getMana());
 
                 try {
                     // start menu soundtrack
@@ -46,9 +46,10 @@ public class CureSkill extends BuffSkill implements Serializable {
                     System.out.println("Sounddatei 'cure1.mp3' konnte nicht gefunden werden");
                 }
 
-               
+
             } else {
                 System.out.println("Nicht genug Mana!");
+                System.out.println("Mana: "+(int) hero.getCurrentMana() + " / " + (int) hero.getMana());
             }
         }else{
             System.out.println("Kein Effekt vorhanden!");
