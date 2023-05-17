@@ -29,7 +29,6 @@ import java.util.HashMap;
 
 public class MainMenu<T extends Actor> extends ScreenController<T> {
 
-    private Game game;
     private LevelAPI levelAPI;
     private Table table;
     private TextButton newButton;
@@ -42,12 +41,10 @@ public class MainMenu<T extends Actor> extends ScreenController<T> {
     /**
      * Constructs a MainMenu object with a given Game instance and LevelAPI instance.
      *
-     * @param game     The Game instance.
      * @param levelAPI The LevelAPI instance.
      */
-    public MainMenu(Game game, LevelAPI levelAPI) {
+    public MainMenu(LevelAPI levelAPI) {
         this(new SpriteBatch());
-        this.game = game;
         this.levelAPI = levelAPI;
     }
 
@@ -206,10 +203,19 @@ public class MainMenu<T extends Actor> extends ScreenController<T> {
             }
         });
 
+        var exitButton = new TextButton("Exit", buttonStyle);
+        exitButton.addListener(new ClickListener() {
+            @Override
+            public void clicked(InputEvent event, float x, float y) {
+                Gdx.app.exit();
+            }
+        });
+
         // Add buttons to the table
         table.add(newButton).width(Gdx.graphics.getWidth()).row();
         table.add(saveButton).width(Gdx.graphics.getWidth()).row();
         table.add(loadButton).width(Gdx.graphics.getWidth()).row();
+        table.add(exitButton).width(Gdx.graphics.getWidth()).row();
         table.align(Align.center);
 
         // Add the table to the stage

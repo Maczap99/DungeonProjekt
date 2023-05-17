@@ -133,7 +133,7 @@ public class Game extends ScreenAdapter implements IOnLevelLoader {
         controller.add(systems);
         pauseMenu = new PauseMenu<>();
         controller.add(pauseMenu);
-        mainMenu = new MainMenu<>(this, levelAPI);
+        mainMenu = new MainMenu<>(levelAPI);
         controller.add(mainMenu);
 
         hero = new Hero();
