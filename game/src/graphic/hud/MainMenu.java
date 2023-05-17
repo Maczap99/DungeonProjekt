@@ -93,7 +93,6 @@ public class MainMenu<T extends Actor> extends ScreenController<T> {
         table.setFillParent(true);
 
         int secretSound = getSoundNubmer(0,29);
-        System.out.println(secretSound);
 
         try{
             if(secretSound != 7){
