@@ -23,8 +23,6 @@ public class Monster extends Entity {
         new HealthComponent(this);
         new HitboxComponent(this);
         new AIComponent(this);
-        new VelocityComponent(this);
-        new AnimationComponent(this);
         new XPComponent(this);
     }
 }
