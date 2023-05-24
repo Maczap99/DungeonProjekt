@@ -9,6 +9,7 @@ import graphic.Animation;
 public class Monster extends Entity {
 
     public Monster(){
+        super();
         setup();
     }
 
