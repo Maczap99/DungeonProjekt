@@ -1,11 +1,14 @@
 package ecs.entities;
 
-import dslToGame.AnimationBuilder;
 import ecs.components.*;
 import ecs.components.ai.AIComponent;
 import ecs.components.xp.XPComponent;
-import graphic.Animation;
 
+
+/**
+ * A base class for all Monsters.
+ * The attributes of a Monster are set inside the MonsterBuilder Class
+ */
 public class Monster extends Entity {
 
     public Monster(){

@@ -17,8 +17,13 @@ import graphic.Animation;
 import java.util.Optional;
 import java.util.concurrent.ThreadLocalRandom;
 
-public class MonsterBuilder {
 
+/**
+ * A Class used to randomly generate different Monsters.
+ * Health, Speed, Animations and XP depend on the Type of monster
+ * AI is completely random
+ */
+public class MonsterBuilder {
 
     /**
      * Structure for an Animation filepath Array
@@ -52,6 +57,10 @@ public class MonsterBuilder {
     }
 
 
+    /**
+     * Create a random Type of monster
+     * @return Returns the created Monster
+     */
     public Monster createRandomMonster(){
         Monster m = new Monster();
         int type = ThreadLocalRandom.current().nextInt(0,3);
@@ -60,10 +69,16 @@ public class MonsterBuilder {
         else if(type == 1)
             m = setupChort(m);
         else
-            m = setupBlueChort(m);
+            m = setupGoblin(m);
 
         return m;
     }
+
+    /**
+     * Create a specific Monster
+     * @param type The type of monster created
+     * @return Returns the created Monster
+     */
     public Monster createMonsterOfType(int type){
         Monster m = new Monster();
 
@@ -72,11 +87,16 @@ public class MonsterBuilder {
         else if(type == 1)
             m = setupChort(m);
         else
-            m = setupBlueChort(m);
+            m = setupGoblin(m);
 
         return m;
     }
 
+    /**
+     * Creates an Imp
+     * @param base Monster Entity to which changed are applied
+     * @return Returns the created Monster
+     */
     private Monster setupImp(Monster base){
         float xSpeed = 0.15f;
         float ySpeed = 0.15f;
@@ -112,6 +132,12 @@ public class MonsterBuilder {
 
         return base;
     }
+
+    /**
+     * Creates a Chort
+     * @param base Monster Entity to which changed are applied
+     * @return Returns the created Monster
+     */
     private Monster setupChort(Monster base){
         float xSpeed = 0.1f;
         float ySpeed = 0.1f;
@@ -147,7 +173,13 @@ public class MonsterBuilder {
 
         return base;
     }
-    private Monster setupBlueChort(Monster base) {
+
+    /**
+     * Creates a Goblin
+     * @param base Monster Entity to which changed are applied
+     * @return Returns the created Monster
+     */
+    private Monster setupGoblin(Monster base) {
         float xSpeed = 0.4f;
         float ySpeed = 0.4f;
         int maxHealth = 1;
@@ -183,6 +215,11 @@ public class MonsterBuilder {
         return base;
     }
 
+    /**
+     * Rolls random numbers to apply a Fight, Transition and Idle AI
+     * @param base Monster to which the AI is applied
+     * @return Returns the created Monster
+     */
     private Monster applyRandomAI(Monster base){
         Optional<Component> optAI = base.getComponent(AIComponent.class);
         AIComponent aiComponent;
