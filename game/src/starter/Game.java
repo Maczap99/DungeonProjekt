@@ -16,6 +16,7 @@ import ecs.components.PositionComponent;
 import ecs.components.xp.XPComponent;
 import ecs.entities.Entity;
 import ecs.entities.Hero;
+import ecs.entities.Monster;
 import ecs.systems.*;
 import graphic.DungeonCamera;
 import graphic.Painter;
@@ -30,12 +31,14 @@ import level.generator.IGenerator;
 import level.generator.maze.MazeGenerator;
 import level.generator.postGeneration.WallGenerator;
 import level.generator.randomwalk.RandomWalkGenerator;
+import level.tools.LevelElement;
 import level.tools.LevelSize;
 import tools.Constants;
 import tools.Point;
 
 import java.io.IOException;
 import java.util.*;
+import java.util.concurrent.ThreadLocalRandom;
 import java.util.logging.Logger;
 
 import static com.badlogic.gdx.graphics.GL20.GL_COLOR_BUFFER_BIT;
@@ -86,6 +89,8 @@ public class Game extends ScreenAdapter implements IOnLevelLoader {
     public static boolean gameLoaded, gameOver;
 
     private transient Sound sound;
+
+    private MonsterBuilder monsterBuilder;
 
     public static void main(String[] args) {
         // start the game
@@ -138,6 +143,7 @@ public class Game extends ScreenAdapter implements IOnLevelLoader {
         controller.add(mainMenu);
 
         hero = new Hero();
+        monsterBuilder = new MonsterBuilder();
 
         createSystems();
 
@@ -180,6 +186,15 @@ public class Game extends ScreenAdapter implements IOnLevelLoader {
         currentLevel = levelAPI.getCurrentLevel();
         entities.clear();
         getHero().ifPresent(this::placeOnLevelStart);
+
+        int monsterAmount = ThreadLocalRandom.current().nextInt(5, 16);
+        monsterBuilder = new MonsterBuilder();
+        for(int i = 0; i < monsterAmount; i++){
+            Monster monster = monsterBuilder.createRandomMonster();
+            PositionComponent pc = (PositionComponent) monster.getComponent(PositionComponent.class).get();
+            pc.setPosition(currentLevel.getRandomTile(LevelElement.FLOOR).getCoordinateAsPoint());
+        }
+
     }
 
     private void manageEntitiesSets() {
