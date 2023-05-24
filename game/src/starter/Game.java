@@ -89,6 +89,7 @@ public class Game extends ScreenAdapter implements IOnLevelLoader {
     public static boolean gameLoaded;
     private transient Sound sound;
 
+    /** Used for creating Monsters */
     private MonsterBuilder monsterBuilder;
 
     public static void main(String[] args) {
