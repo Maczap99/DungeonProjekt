@@ -36,7 +36,7 @@ public class MainMenu<T extends Actor> extends ScreenController<T> {
     private TextButton saveButton;
     private TextButton loadButton;
     private transient Music music;
-    private transient Sound sound = Gdx.audio.newSound(Gdx.files.internal("game/sounds/effect/gameOverX.mp3"));;
+    private transient Sound sound = Gdx.audio.newSound(Gdx.files.internal("game/sounds/effect/gameOver.mp3"));;
     private Label gameOverLabel;
 
     private static boolean initialState = true;
