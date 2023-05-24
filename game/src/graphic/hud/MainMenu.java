@@ -36,7 +36,7 @@ public class MainMenu<T extends Actor> extends ScreenController<T> {
     private TextButton saveButton;
     private TextButton loadButton;
     private transient Music music;
-    private transient Sound sound;
+    private transient Sound sound = Gdx.audio.newSound(Gdx.files.internal("game/sounds/effect/gameOverX.mp3"));;
     private Label gameOverLabel;
 
     private static boolean initialState = true;
@@ -91,6 +91,7 @@ public class MainMenu<T extends Actor> extends ScreenController<T> {
         int secretSound = getSoundNumber(0,29);
 
         try{
+            sound.stop();
             if(secretSound != 7){
                 // start menu soundtrack
                 music = Gdx.audio.newMusic(Gdx.files.internal("game/sounds/menu/menu1.mp3"));
@@ -122,6 +123,7 @@ public class MainMenu<T extends Actor> extends ScreenController<T> {
 
                     try{
                         // start menu soundtrack
+                        sound.stop();
                         music = Gdx.audio.newMusic(Gdx.files.internal("game/sounds/dungeon/dungeon"+ getSoundNumber(0,4)+".wav"));
                         music.setLooping(true);
                         music.setVolume(0.2f);
@@ -174,6 +176,7 @@ public class MainMenu<T extends Actor> extends ScreenController<T> {
 
                     try{
                         // start menu soundtrack
+                        sound.stop();
                         music = Gdx.audio.newMusic(Gdx.files.internal("game/sounds/dungeon/dungeon"+ getSoundNumber(0,4)+".wav"));
                         music.setLooping(true);
                         music.setVolume(0.2f);
@@ -281,12 +284,11 @@ public class MainMenu<T extends Actor> extends ScreenController<T> {
 
             try {
                 // start menu soundtrack
-                sound = Gdx.audio.newSound(Gdx.files.internal("game/sounds/effect/gameOver1.mp3"));
                 music.stop();
-                sound.play(0.5f);
+                sound.play(0.3f);
 
             } catch (Exception e) {
-                System.out.println("Sounddatei 'cure1.mp3' konnte nicht gefunden werden");
+                System.out.println("Sounddatei 'GameOver.mp3' konnte nicht gefunden werden");
             }
 
             refreshUI();

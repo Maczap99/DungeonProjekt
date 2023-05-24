@@ -187,7 +187,7 @@ public class Game extends ScreenAdapter implements IOnLevelLoader {
         entities.clear();
         getHero().ifPresent(this::placeOnLevelStart);
 
-        int monsterAmount = ThreadLocalRandom.current().nextInt(5, 16);
+        int monsterAmount = ThreadLocalRandom.current().nextInt(5, 11);
         monsterBuilder = new MonsterBuilder();
         for(int i = 0; i < monsterAmount; i++){
             Monster monster = monsterBuilder.createRandomMonster();
