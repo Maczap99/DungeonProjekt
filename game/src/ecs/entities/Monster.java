@@ -1,10 +1,8 @@
 package ecs.entities;
 
-import dslToGame.AnimationBuilder;
 import ecs.components.*;
 import ecs.components.ai.AIComponent;
 import ecs.components.xp.XPComponent;
-import graphic.Animation;
 
 
 /**
