@@ -35,6 +35,7 @@ public class MainMenu<T extends Actor> extends ScreenController<T> {
     private TextButton saveButton;
     private TextButton loadButton;
     private transient Music music;
+    private Label gameOverLabel;
 
     private static boolean initialState = true;
 
@@ -58,18 +59,14 @@ public class MainMenu<T extends Actor> extends ScreenController<T> {
 
         // Initialize button font
         FreeTypeFontGenerator generator = new FreeTypeFontGenerator(Gdx.files.internal("game/assets/fonts/pixelplay.ttf"));
-        FreeTypeFontGenerator.FreeTypeFontParameter parameter = new FreeTypeFontGenerator.FreeTypeFontParameter();
-        parameter.size = 46;
-        BitmapFont buttonFont = generator.generateFont(parameter);
-        generator.dispose();
+        FreeTypeFontGenerator.FreeTypeFontParameter buttonParameter = new FreeTypeFontGenerator.FreeTypeFontParameter();
+        buttonParameter.size = 46;
+        BitmapFont buttonFont = generator.generateFont(buttonParameter);
 
-        // Initialize label and button styles
-        Label.LabelStyle labelStyle = new Label.LabelStyle();
-        labelStyle.font = buttonFont;
-
+        // Initialize button style
         TextButton.TextButtonStyle buttonStyle = new TextButton.TextButtonStyle();
-        buttonStyle.font = labelStyle.font;
-        buttonStyle.fontColor = Color.RED;
+        buttonStyle.font = buttonFont;
+        buttonStyle.fontColor = Color.GREEN;
         buttonStyle.downFontColor = Color.YELLOW;
         buttonStyle.overFontColor = Color.ORANGE;
         buttonStyle.disabledFontColor = Color.GRAY;
@@ -89,7 +86,7 @@ public class MainMenu<T extends Actor> extends ScreenController<T> {
 
         table.setFillParent(true);
 
-        int secretSound = getSoundNubmer(0,29);
+        int secretSound = getSoundNumber(0,29);
 
         try{
             if(secretSound != 7){
@@ -123,7 +120,7 @@ public class MainMenu<T extends Actor> extends ScreenController<T> {
 
                     try{
                         // start menu soundtrack
-                        music = Gdx.audio.newMusic(Gdx.files.internal("game/sounds/dungeon/dungeon"+ getSoundNubmer(0,4)+".wav"));
+                        music = Gdx.audio.newMusic(Gdx.files.internal("game/sounds/dungeon/dungeon"+ getSoundNumber(0,4)+".wav"));
                         music.setLooping(true);
                         music.setVolume(0.2f);
                         music.play();
@@ -135,10 +132,13 @@ public class MainMenu<T extends Actor> extends ScreenController<T> {
                     Game.setHero(new Hero());
                     levelAPI.loadLevel(LevelSize.MEDIUM);
 
-                    refreshUI();
                     Game.toggleMainMenu();
 
                     Game.gameLoaded = false;
+
+                    Game.gameOver = false;
+
+                    refreshUI();
                 }
             }
         });
@@ -172,7 +172,7 @@ public class MainMenu<T extends Actor> extends ScreenController<T> {
 
                     try{
                         // start menu soundtrack
-                        music = Gdx.audio.newMusic(Gdx.files.internal("game/sounds/dungeon/dungeon"+ getSoundNubmer(0,4)+".wav"));
+                        music = Gdx.audio.newMusic(Gdx.files.internal("game/sounds/dungeon/dungeon"+ getSoundNumber(0,4)+".wav"));
                         music.setLooping(true);
                         music.setVolume(0.2f);
                         music.play();
@@ -193,12 +193,15 @@ public class MainMenu<T extends Actor> extends ScreenController<T> {
                         System.out.println("Entität geladen: " + entity.getClass().getName() + " ID: " + entity.id);
                     }
 
-                    refreshUI();
                     Game.toggleMainMenu();
 
                     Game.gameLoaded = true;
 
+                    Game.gameOver = false;
+
                     levelAPI.loadLevel(LevelSize.MEDIUM);
+
+                    refreshUI();
                 }
             }
         });
@@ -210,6 +213,25 @@ public class MainMenu<T extends Actor> extends ScreenController<T> {
                 Gdx.app.exit();
             }
         });
+
+        // Initialize button font
+        generator = new FreeTypeFontGenerator(Gdx.files.internal("game/assets/fonts/BLOODY.TTF"));
+        FreeTypeFontGenerator.FreeTypeFontParameter labelParameter = new FreeTypeFontGenerator.FreeTypeFontParameter();
+        labelParameter.size = 56;
+        BitmapFont labelFont = generator.generateFont(labelParameter);
+        generator.dispose();
+
+        // Creates "Game Over" label
+        Label.LabelStyle gameOverLabelStyle = new Label.LabelStyle();
+        gameOverLabelStyle.font = labelFont;
+        gameOverLabelStyle.fontColor = Color.RED;
+
+        gameOverLabel = new Label("Game Over", gameOverLabelStyle);
+        gameOverLabel.setAlignment(Align.center);
+        gameOverLabel.setVisible(false);
+
+        // Add "Game Over" label
+        table.add(gameOverLabel).width(Gdx.graphics.getWidth()).row();
 
         // Add buttons to the table
         table.add(newButton).width(Gdx.graphics.getWidth()).row();
@@ -231,7 +253,14 @@ public class MainMenu<T extends Actor> extends ScreenController<T> {
      */
     private void refreshUI() {
         loadButton.setDisabled(!EntityFileSystem.saveGameExists());
-        saveButton.setDisabled(false);
+
+        if (Game.gameOver) {
+            saveButton.setDisabled(true);
+        } else {
+            saveButton.setDisabled(false);
+        }
+
+        gameOverLabel.setVisible(Game.gameOver);
 
         var backgroundColor = new Color(0f, 0f, 0f, .8f);
         var backgroundDrawable = new ColorBackground(backgroundColor);
@@ -240,17 +269,42 @@ public class MainMenu<T extends Actor> extends ScreenController<T> {
         initialState = false;
     }
 
-    public int getSoundNubmer(int first, int last){
+    /**
+     * Called when the game is over.
+     * Displays the menu and shows the "Game Over" label.
+     */
+    public void onGameOver() {
+        if (!Game.gameOver) {
+            Game.gameOver = true;
+
+            refreshUI();
+        }
+    }
+
+    /**
+     * Generates a random number between the specified range.
+     *
+     * @param first The first number of the range.
+     * @param last  The last number of the range.
+     * @return The generated random number.
+     */
+    public int getSoundNumber(int first, int last) {
         Random random = new Random();
         int value = random.nextInt(last + first) + 1;
 
         return value;
     }
 
+    /**
+     * Shows the menu by setting all actors visible.
+     */
     public void showMenu() {
         this.forEach((Actor s) -> s.setVisible(true));
     }
 
+    /**
+     * Hides the menu by setting all actors invisible.
+     */
     public void hideMenu() {
         this.forEach((Actor s) -> s.setVisible(false));
     }

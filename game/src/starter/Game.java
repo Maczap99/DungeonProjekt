@@ -83,7 +83,8 @@ public class Game extends ScreenAdapter implements IOnLevelLoader {
     private static Entity hero;
     private Logger gameLogger;
     private static int levelStage = 1;
-    public static boolean gameLoaded;
+    public static boolean gameLoaded, gameOver;
+
     private transient Sound sound;
 
     public static void main(String[] args) {
@@ -160,12 +161,18 @@ public class Game extends ScreenAdapter implements IOnLevelLoader {
             systems.update();
         }
 
+        if (h.getCurrentHealth() <= 0 && !gameOver) {
+            mainMenu.onGameOver();
+            toggleMainMenu();
+        }
+
         if(h.getCurrentMana() < h.getMana()){
             h.setCurrentMana(Math.min(h.getCurrentMana() + (0.5f / Constants.FRAME_RATE), 100));
         }
 
         //if (Gdx.input.isKeyJustPressed(Input.Keys.P)) togglePauseMenu();
-        if (Gdx.input.isKeyJustPressed(Input.Keys.ESCAPE) && !MainMenu.isInitialState()) toggleMainMenu();
+        if (Gdx.input.isKeyJustPressed(Input.Keys.ESCAPE) && !MainMenu.isInitialState() && !gameOver)
+            toggleMainMenu();
     }
 
     @Override
