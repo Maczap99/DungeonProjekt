@@ -2,6 +2,7 @@ package graphic.hud;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.audio.Music;
+import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
@@ -35,6 +36,7 @@ public class MainMenu<T extends Actor> extends ScreenController<T> {
     private TextButton saveButton;
     private TextButton loadButton;
     private transient Music music;
+    private transient Sound sound;
     private Label gameOverLabel;
 
     private static boolean initialState = true;
@@ -276,6 +278,16 @@ public class MainMenu<T extends Actor> extends ScreenController<T> {
     public void onGameOver() {
         if (!Game.gameOver) {
             Game.gameOver = true;
+
+            try {
+                // start menu soundtrack
+                sound = Gdx.audio.newSound(Gdx.files.internal("game/sounds/effect/gameOver1.mp3"));
+                music.stop();
+                sound.play(0.5f);
+
+            } catch (Exception e) {
+                System.out.println("Sounddatei 'cure1.mp3' konnte nicht gefunden werden");
+            }
 
             refreshUI();
         }
