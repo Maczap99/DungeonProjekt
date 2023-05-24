@@ -1,9 +1,6 @@
 Picture:
 - Main menu: https://www.freepik.com/free-vector/infernal-dark-cave-with-lava-scene_11403253.htm#page=3&query=dungeon%20background&position=21&from_view=search&track=ais
 
-- menu 2 : https://www.freepik.com/free-vector/dark-cave-landscape_2722247.htm#query=dungeon%20background&position=17&from_view=search&track=ais
-
-
 Music:
 - https://xdeviruchi.itch.io/8-bit-fantasy-adventure-music-pack
 
