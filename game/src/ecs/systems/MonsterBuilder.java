@@ -180,8 +180,8 @@ public class MonsterBuilder {
      * @return Returns the created Monster
      */
     private Monster setupGoblin(Monster base) {
-        float xSpeed = 0.4f;
-        float ySpeed = 0.4f;
+        float xSpeed = 0.3f;
+        float ySpeed = 0.3f;
         int maxHealth = 1;
 
         Animation moveLeft = AnimationBuilder.buildAnimation(goblinPaths[0]);
