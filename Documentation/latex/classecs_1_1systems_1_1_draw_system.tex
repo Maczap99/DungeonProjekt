@@ -1,0 +1,84 @@
+\hypertarget{classecs_1_1systems_1_1_draw_system}{}\doxysection{ecs.\+systems.\+Draw\+System Class Reference}
+\label{classecs_1_1systems_1_1_draw_system}\index{ecs.systems.DrawSystem@{ecs.systems.DrawSystem}}
+Inheritance diagram for ecs.\+systems.\+Draw\+System\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classecs_1_1systems_1_1_draw_system}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classecs_1_1systems_1_1_draw_system_ac5025c0fe3f7f396d8c233af2b9254d2}{Draw\+System}} (\mbox{\hyperlink{classgraphic_1_1_painter}{Painter}} painter)
+\item 
+void \mbox{\hyperlink{classecs_1_1systems_1_1_draw_system_a92afbe983283f2660f84e55bf9b2e838}{update}} ()
+\item 
+void \mbox{\hyperlink{classecs_1_1systems_1_1_draw_system_a716e40d5119bb3047f7ce18231a9d157}{toggle\+Run}} ()
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Member Functions inherited from \mbox{\hyperlink{classecs_1_1systems_1_1_e_c_s___system}{ecs.\+systems.\+ECS\+\_\+\+System}}}
+\begin{DoxyCompactItemize}
+\item 
+abstract void \mbox{\hyperlink{classecs_1_1systems_1_1_e_c_s___system_aadb0e27b4a261cba71140c73e4acc699}{update}} ()
+\item 
+boolean \mbox{\hyperlink{classecs_1_1systems_1_1_e_c_s___system_aa294a7dc60acbd3343b48e700173d299}{is\+Running}} ()
+\item 
+void \mbox{\hyperlink{classecs_1_1systems_1_1_e_c_s___system_af486a1dfce859a2d0384edb9b57081bd}{toggle\+Run}} ()
+\end{DoxyCompactItemize}
+\doxysubsection*{Additional Inherited Members}
+\doxysubsubsection*{Public Attributes inherited from \mbox{\hyperlink{classecs_1_1systems_1_1_e_c_s___system}{ecs.\+systems.\+ECS\+\_\+\+System}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classecs_1_1systems_1_1_e_c_s___system_a93f579e2c6f4c151fb721517ea41cb64}\label{classecs_1_1systems_1_1_e_c_s___system_a93f579e2c6f4c151fb721517ea41cb64}} 
+Logger {\bfseries system\+Logger} = Logger.\+get\+Logger(this.\+get\+Class().get\+Name())
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Protected Attributes inherited from \mbox{\hyperlink{classecs_1_1systems_1_1_e_c_s___system}{ecs.\+systems.\+ECS\+\_\+\+System}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classecs_1_1systems_1_1_e_c_s___system_ae18b974e133268bb03dc6234bd210823}\label{classecs_1_1systems_1_1_e_c_s___system_ae18b974e133268bb03dc6234bd210823}} 
+boolean {\bfseries run}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+used to draw entities 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classecs_1_1systems_1_1_draw_system_ac5025c0fe3f7f396d8c233af2b9254d2}\label{classecs_1_1systems_1_1_draw_system_ac5025c0fe3f7f396d8c233af2b9254d2}} 
+\index{ecs.systems.DrawSystem@{ecs.systems.DrawSystem}!DrawSystem@{DrawSystem}}
+\index{DrawSystem@{DrawSystem}!ecs.systems.DrawSystem@{ecs.systems.DrawSystem}}
+\doxysubsubsection{\texorpdfstring{DrawSystem()}{DrawSystem()}}
+{\footnotesize\ttfamily ecs.\+systems.\+Draw\+System.\+Draw\+System (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classgraphic_1_1_painter}{Painter}}}]{painter }\end{DoxyParamCaption})}
+
+
+\begin{DoxyParams}{Parameters}
+{\em painter} & PM-\/\+Dungeon painter to draw \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classecs_1_1systems_1_1_draw_system_a716e40d5119bb3047f7ce18231a9d157}\label{classecs_1_1systems_1_1_draw_system_a716e40d5119bb3047f7ce18231a9d157}} 
+\index{ecs.systems.DrawSystem@{ecs.systems.DrawSystem}!toggleRun@{toggleRun}}
+\index{toggleRun@{toggleRun}!ecs.systems.DrawSystem@{ecs.systems.DrawSystem}}
+\doxysubsubsection{\texorpdfstring{toggleRun()}{toggleRun()}}
+{\footnotesize\ttfamily void ecs.\+systems.\+Draw\+System.\+toggle\+Run (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Toggle this system between run and pause 
+
+Reimplemented from \mbox{\hyperlink{classecs_1_1systems_1_1_e_c_s___system_af486a1dfce859a2d0384edb9b57081bd}{ecs.\+systems.\+ECS\+\_\+\+System}}.
+
+\mbox{\Hypertarget{classecs_1_1systems_1_1_draw_system_a92afbe983283f2660f84e55bf9b2e838}\label{classecs_1_1systems_1_1_draw_system_a92afbe983283f2660f84e55bf9b2e838}} 
+\index{ecs.systems.DrawSystem@{ecs.systems.DrawSystem}!update@{update}}
+\index{update@{update}!ecs.systems.DrawSystem@{ecs.systems.DrawSystem}}
+\doxysubsubsection{\texorpdfstring{update()}{update()}}
+{\footnotesize\ttfamily void ecs.\+systems.\+Draw\+System.\+update (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+draw entities at their position 
+
+Reimplemented from \mbox{\hyperlink{classecs_1_1systems_1_1_e_c_s___system_aadb0e27b4a261cba71140c73e4acc699}{ecs.\+systems.\+ECS\+\_\+\+System}}.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/schli/\+Desktop/\+Projects/\+Intelli\+J/pm-\/dungeon-\/jan/game/src/ecs/systems/Draw\+System.\+java\end{DoxyCompactItemize}

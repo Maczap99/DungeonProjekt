@@ -1,0 +1,79 @@
+\hypertarget{classecs_1_1entities_1_1_entity}{}\doxysection{ecs.\+entities.\+Entity Class Reference}
+\label{classecs_1_1entities_1_1_entity}\index{ecs.entities.Entity@{ecs.entities.Entity}}
+Inheritance diagram for ecs.\+entities.\+Entity\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.896552cm]{classecs_1_1entities_1_1_entity}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{classecs_1_1entities_1_1_entity_a3743bd48c8ac35911a502a611bb0f6a2}{add\+Component}} (\mbox{\hyperlink{classecs_1_1components_1_1_component}{Component}} component)
+\item 
+void \mbox{\hyperlink{classecs_1_1entities_1_1_entity_ad9d8b6a5934e40fd3e896bd25baf1fe0}{remove\+Component}} (Class klass)
+\item 
+Optional$<$ \mbox{\hyperlink{classecs_1_1components_1_1_component}{Component}} $>$ \mbox{\hyperlink{classecs_1_1entities_1_1_entity_ab8a120351ce29bd17b15d3bb67c2b7d2}{get\+Component}} (Class klass)
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classecs_1_1entities_1_1_entity_a2da842f2e4db9a8d6a11f025a7948be6}\label{classecs_1_1entities_1_1_entity_a2da842f2e4db9a8d6a11f025a7948be6}} 
+final int {\bfseries id} = next\+Id++
+\item 
+\mbox{\Hypertarget{classecs_1_1entities_1_1_entity_a51e739b91fe9b2603d210082361bb098}\label{classecs_1_1entities_1_1_entity_a51e739b91fe9b2603d210082361bb098}} 
+transient Hash\+Map$<$ Class, \mbox{\hyperlink{classecs_1_1components_1_1_component}{Component}} $>$ {\bfseries components}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Entity is a unique identifier for an object in the game world 
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classecs_1_1entities_1_1_entity_a3743bd48c8ac35911a502a611bb0f6a2}\label{classecs_1_1entities_1_1_entity_a3743bd48c8ac35911a502a611bb0f6a2}} 
+\index{ecs.entities.Entity@{ecs.entities.Entity}!addComponent@{addComponent}}
+\index{addComponent@{addComponent}!ecs.entities.Entity@{ecs.entities.Entity}}
+\doxysubsubsection{\texorpdfstring{addComponent()}{addComponent()}}
+{\footnotesize\ttfamily void ecs.\+entities.\+Entity.\+add\+Component (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classecs_1_1components_1_1_component}{Component}}}]{component }\end{DoxyParamCaption})}
+
+Add a new component to this entity
+
+
+\begin{DoxyParams}{Parameters}
+{\em component} & The component \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classecs_1_1entities_1_1_entity_ab8a120351ce29bd17b15d3bb67c2b7d2}\label{classecs_1_1entities_1_1_entity_ab8a120351ce29bd17b15d3bb67c2b7d2}} 
+\index{ecs.entities.Entity@{ecs.entities.Entity}!getComponent@{getComponent}}
+\index{getComponent@{getComponent}!ecs.entities.Entity@{ecs.entities.Entity}}
+\doxysubsubsection{\texorpdfstring{getComponent()}{getComponent()}}
+{\footnotesize\ttfamily Optional$<$ \mbox{\hyperlink{classecs_1_1components_1_1_component}{Component}} $>$ ecs.\+entities.\+Entity.\+get\+Component (\begin{DoxyParamCaption}\item[{Class}]{klass }\end{DoxyParamCaption})}
+
+Get the component
+
+
+\begin{DoxyParams}{Parameters}
+{\em klass} & Class of the component \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Optional that can contain the requested component 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classecs_1_1entities_1_1_entity_ad9d8b6a5934e40fd3e896bd25baf1fe0}\label{classecs_1_1entities_1_1_entity_ad9d8b6a5934e40fd3e896bd25baf1fe0}} 
+\index{ecs.entities.Entity@{ecs.entities.Entity}!removeComponent@{removeComponent}}
+\index{removeComponent@{removeComponent}!ecs.entities.Entity@{ecs.entities.Entity}}
+\doxysubsubsection{\texorpdfstring{removeComponent()}{removeComponent()}}
+{\footnotesize\ttfamily void ecs.\+entities.\+Entity.\+remove\+Component (\begin{DoxyParamCaption}\item[{Class}]{klass }\end{DoxyParamCaption})}
+
+Remove a component from this entity
+
+
+\begin{DoxyParams}{Parameters}
+{\em klass} & Class of the component \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/schli/\+Desktop/\+Projects/\+Intelli\+J/pm-\/dungeon-\/jan/game/src/ecs/entities/Entity.\+java\end{DoxyCompactItemize}

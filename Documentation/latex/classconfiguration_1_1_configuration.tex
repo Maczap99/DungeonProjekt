@@ -1,0 +1,67 @@
+\hypertarget{classconfiguration_1_1_configuration}{}\doxysection{configuration.\+Configuration Class Reference}
+\label{classconfiguration_1_1_configuration}\index{configuration.Configuration@{configuration.Configuration}}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{classconfiguration_1_1_configuration_a055298223b0e40f338505c33636ffee1}{save\+Configuration}} ()
+\end{DoxyCompactItemize}
+\doxysubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static \mbox{\hyperlink{classconfiguration_1_1_configuration}{Configuration}} \mbox{\hyperlink{classconfiguration_1_1_configuration_ab086cc7cbcf4b46b4d6d98d1f95de20e}{load\+And\+Get\+Configuration}} (String path, Class$<$?$>$... config\+Map\+Classes)  throws IOException 
+\end{DoxyCompactItemize}
+\doxysubsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{classconfiguration_1_1_configuration_ada70f5a3e9dd52debe1998ceab19c9f9}{update}} (\mbox{\hyperlink{classconfiguration_1_1_config_key}{Config\+Key}}$<$?$>$ key)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classconfiguration_1_1_configuration_ab086cc7cbcf4b46b4d6d98d1f95de20e}\label{classconfiguration_1_1_configuration_ab086cc7cbcf4b46b4d6d98d1f95de20e}} 
+\index{configuration.Configuration@{configuration.Configuration}!loadAndGetConfiguration@{loadAndGetConfiguration}}
+\index{loadAndGetConfiguration@{loadAndGetConfiguration}!configuration.Configuration@{configuration.Configuration}}
+\doxysubsubsection{\texorpdfstring{loadAndGetConfiguration()}{loadAndGetConfiguration()}}
+{\footnotesize\ttfamily static \mbox{\hyperlink{classconfiguration_1_1_configuration}{Configuration}} configuration.\+Configuration.\+load\+And\+Get\+Configuration (\begin{DoxyParamCaption}\item[{String}]{path,  }\item[{Class$<$?$>$...}]{config\+Map\+Classes }\end{DoxyParamCaption}) throws IOException\hspace{0.3cm}{\ttfamily [static]}}
+
+Load the configuration from the given path and return it. If the configuration has already been loaded, the cached version will be returned.
+
+
+\begin{DoxyParams}{Parameters}
+{\em path} & Path to the configuration file \\
+\hline
+{\em config\+Map\+Classes} & Classes where the Config\+Key fields are located (may be annotated with Config\+Map annotation) \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Configuration 
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em IOException} & If the file could not be read \\
+\hline
+\end{DoxyExceptions}
+\mbox{\Hypertarget{classconfiguration_1_1_configuration_a055298223b0e40f338505c33636ffee1}\label{classconfiguration_1_1_configuration_a055298223b0e40f338505c33636ffee1}} 
+\index{configuration.Configuration@{configuration.Configuration}!saveConfiguration@{saveConfiguration}}
+\index{saveConfiguration@{saveConfiguration}!configuration.Configuration@{configuration.Configuration}}
+\doxysubsubsection{\texorpdfstring{saveConfiguration()}{saveConfiguration()}}
+{\footnotesize\ttfamily void configuration.\+Configuration.\+save\+Configuration (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Save the current configuration to the file \mbox{\Hypertarget{classconfiguration_1_1_configuration_ada70f5a3e9dd52debe1998ceab19c9f9}\label{classconfiguration_1_1_configuration_ada70f5a3e9dd52debe1998ceab19c9f9}} 
+\index{configuration.Configuration@{configuration.Configuration}!update@{update}}
+\index{update@{update}!configuration.Configuration@{configuration.Configuration}}
+\doxysubsubsection{\texorpdfstring{update()}{update()}}
+{\footnotesize\ttfamily void configuration.\+Configuration.\+update (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classconfiguration_1_1_config_key}{Config\+Key}}$<$?$>$}]{key }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+Update the configuration with the given key
+
+
+\begin{DoxyParams}{Parameters}
+{\em key} & Key to update \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/schli/\+Desktop/\+Projects/\+Intelli\+J/pm-\/dungeon-\/jan/game/src/configuration/Configuration.\+java\end{DoxyCompactItemize}

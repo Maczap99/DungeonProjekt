@@ -1,0 +1,159 @@
+\hypertarget{classlevel_1_1tools_1_1_area}{}\doxysection{level.\+tools.\+Area Class Reference}
+\label{classlevel_1_1tools_1_1_area}\index{level.tools.Area@{level.tools.Area}}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classlevel_1_1tools_1_1_area_aaf8006cf575f6cae4ca78175a4f79fce}{Area}} (int x, int y, int width, int height)
+\item 
+boolean \mbox{\hyperlink{classlevel_1_1tools_1_1_area_a8f02d65b714bf0a2d2d1dafdef894463}{intersects}} (\mbox{\hyperlink{classlevel_1_1tools_1_1_area}{Area}} other)
+\item 
+\mbox{\hyperlink{classlevel_1_1tools_1_1_area}{Area}} \mbox{\hyperlink{classlevel_1_1tools_1_1_area_ae98ea6f34c0cb5f50f6f8db35a8cfd7b}{intersection}} (\mbox{\hyperlink{classlevel_1_1tools_1_1_area}{Area}} other)
+\item 
+boolean \mbox{\hyperlink{classlevel_1_1tools_1_1_area_ab5378715d542eda7b73d640650b5f15d}{contains}} (int x, int y)
+\item 
+\mbox{\hyperlink{classlevel_1_1tools_1_1_coordinate}{Coordinate}} \mbox{\hyperlink{classlevel_1_1tools_1_1_area_a2613ec1164b7127ed7288d2f75e6e105}{get\+Position}} ()
+\item 
+List$<$ \mbox{\hyperlink{classlevel_1_1tools_1_1_coordinate}{Coordinate}} $>$ \mbox{\hyperlink{classlevel_1_1tools_1_1_area_a1daa58d2b0d975d22eca1869b197fe44}{all\+Positions\+Within}} ()
+\item 
+\mbox{\hyperlink{classtools_1_1_point}{Point}} \mbox{\hyperlink{classlevel_1_1tools_1_1_area_afe9c304b00ee4c6cd987238088812dc3}{get\+Center\+Point}} ()
+\item 
+\mbox{\Hypertarget{classlevel_1_1tools_1_1_area_a44fb41f32b4ac88bc495680907382478}\label{classlevel_1_1tools_1_1_area_a44fb41f32b4ac88bc495680907382478}} 
+boolean {\bfseries equals} (Object o)
+\item 
+\mbox{\Hypertarget{classlevel_1_1tools_1_1_area_a5fbc3a0bae14a3f574cb7a9e4e5f90ca}\label{classlevel_1_1tools_1_1_area_a5fbc3a0bae14a3f574cb7a9e4e5f90ca}} 
+int {\bfseries hash\+Code} ()
+\item 
+\mbox{\Hypertarget{classlevel_1_1tools_1_1_area_a70fcc79024dea0345af5b001dca2911c}\label{classlevel_1_1tools_1_1_area_a70fcc79024dea0345af5b001dca2911c}} 
+String {\bfseries to\+String} ()
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classlevel_1_1tools_1_1_area_a945d684edc9912826f044469e461af00}\label{classlevel_1_1tools_1_1_area_a945d684edc9912826f044469e461af00}} 
+final int {\bfseries x}
+\item 
+\mbox{\Hypertarget{classlevel_1_1tools_1_1_area_a25a78a862a246c9286b91e37688dc938}\label{classlevel_1_1tools_1_1_area_a25a78a862a246c9286b91e37688dc938}} 
+final int {\bfseries y}
+\item 
+\mbox{\Hypertarget{classlevel_1_1tools_1_1_area_aaf1556a339b0c03eee65d6bea0c527fa}\label{classlevel_1_1tools_1_1_area_aaf1556a339b0c03eee65d6bea0c527fa}} 
+final int {\bfseries width}
+\item 
+\mbox{\Hypertarget{classlevel_1_1tools_1_1_area_af038346dd0be6b6e533476cef4c69006}\label{classlevel_1_1tools_1_1_area_af038346dd0be6b6e533476cef4c69006}} 
+final int {\bfseries height}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+A rectangular area defined by its bottom-\/left corner and its width and height. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classlevel_1_1tools_1_1_area_aaf8006cf575f6cae4ca78175a4f79fce}\label{classlevel_1_1tools_1_1_area_aaf8006cf575f6cae4ca78175a4f79fce}} 
+\index{level.tools.Area@{level.tools.Area}!Area@{Area}}
+\index{Area@{Area}!level.tools.Area@{level.tools.Area}}
+\doxysubsubsection{\texorpdfstring{Area()}{Area()}}
+{\footnotesize\ttfamily level.\+tools.\+Area.\+Area (\begin{DoxyParamCaption}\item[{int}]{x,  }\item[{int}]{y,  }\item[{int}]{width,  }\item[{int}]{height }\end{DoxyParamCaption})}
+
+Constructs a new Area with the specified position and size.
+
+
+\begin{DoxyParams}{Parameters}
+{\em x} & the x-\/coordinate of the bottom-\/left corner of the area \\
+\hline
+{\em y} & the y-\/coordinate of the bottom-\/left corner of the area \\
+\hline
+{\em width} & the width of the area \\
+\hline
+{\em height} & the height of the area \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classlevel_1_1tools_1_1_area_a1daa58d2b0d975d22eca1869b197fe44}\label{classlevel_1_1tools_1_1_area_a1daa58d2b0d975d22eca1869b197fe44}} 
+\index{level.tools.Area@{level.tools.Area}!allPositionsWithin@{allPositionsWithin}}
+\index{allPositionsWithin@{allPositionsWithin}!level.tools.Area@{level.tools.Area}}
+\doxysubsubsection{\texorpdfstring{allPositionsWithin()}{allPositionsWithin()}}
+{\footnotesize\ttfamily List$<$ \mbox{\hyperlink{classlevel_1_1tools_1_1_coordinate}{Coordinate}} $>$ level.\+tools.\+Area.\+all\+Positions\+Within (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Returns a list of all coordinates inside this area.
+
+\begin{DoxyReturn}{Returns}
+the list of coordinates 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classlevel_1_1tools_1_1_area_ab5378715d542eda7b73d640650b5f15d}\label{classlevel_1_1tools_1_1_area_ab5378715d542eda7b73d640650b5f15d}} 
+\index{level.tools.Area@{level.tools.Area}!contains@{contains}}
+\index{contains@{contains}!level.tools.Area@{level.tools.Area}}
+\doxysubsubsection{\texorpdfstring{contains()}{contains()}}
+{\footnotesize\ttfamily boolean level.\+tools.\+Area.\+contains (\begin{DoxyParamCaption}\item[{int}]{x,  }\item[{int}]{y }\end{DoxyParamCaption})}
+
+Checks if the specified point is inside this area.
+
+
+\begin{DoxyParams}{Parameters}
+{\em x} & the x-\/coordinate of the point \\
+\hline
+{\em y} & the y-\/coordinate of the point \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if the point is inside the area, false otherwise 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classlevel_1_1tools_1_1_area_afe9c304b00ee4c6cd987238088812dc3}\label{classlevel_1_1tools_1_1_area_afe9c304b00ee4c6cd987238088812dc3}} 
+\index{level.tools.Area@{level.tools.Area}!getCenterPoint@{getCenterPoint}}
+\index{getCenterPoint@{getCenterPoint}!level.tools.Area@{level.tools.Area}}
+\doxysubsubsection{\texorpdfstring{getCenterPoint()}{getCenterPoint()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classtools_1_1_point}{Point}} level.\+tools.\+Area.\+get\+Center\+Point (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Returns the center point of this area.
+
+\begin{DoxyReturn}{Returns}
+the center point 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classlevel_1_1tools_1_1_area_a2613ec1164b7127ed7288d2f75e6e105}\label{classlevel_1_1tools_1_1_area_a2613ec1164b7127ed7288d2f75e6e105}} 
+\index{level.tools.Area@{level.tools.Area}!getPosition@{getPosition}}
+\index{getPosition@{getPosition}!level.tools.Area@{level.tools.Area}}
+\doxysubsubsection{\texorpdfstring{getPosition()}{getPosition()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classlevel_1_1tools_1_1_coordinate}{Coordinate}} level.\+tools.\+Area.\+get\+Position (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Returns the bottom-\/left coordinate of this area.
+
+\begin{DoxyReturn}{Returns}
+the bottom-\/left coordinate 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classlevel_1_1tools_1_1_area_ae98ea6f34c0cb5f50f6f8db35a8cfd7b}\label{classlevel_1_1tools_1_1_area_ae98ea6f34c0cb5f50f6f8db35a8cfd7b}} 
+\index{level.tools.Area@{level.tools.Area}!intersection@{intersection}}
+\index{intersection@{intersection}!level.tools.Area@{level.tools.Area}}
+\doxysubsubsection{\texorpdfstring{intersection()}{intersection()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classlevel_1_1tools_1_1_area}{Area}} level.\+tools.\+Area.\+intersection (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classlevel_1_1tools_1_1_area}{Area}}}]{other }\end{DoxyParamCaption})}
+
+Returns the intersection of this area with the given area.
+
+
+\begin{DoxyParams}{Parameters}
+{\em other} & the area to intersect with \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the intersection area or null if the areas don\textquotesingle{}t intersect 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classlevel_1_1tools_1_1_area_a8f02d65b714bf0a2d2d1dafdef894463}\label{classlevel_1_1tools_1_1_area_a8f02d65b714bf0a2d2d1dafdef894463}} 
+\index{level.tools.Area@{level.tools.Area}!intersects@{intersects}}
+\index{intersects@{intersects}!level.tools.Area@{level.tools.Area}}
+\doxysubsubsection{\texorpdfstring{intersects()}{intersects()}}
+{\footnotesize\ttfamily boolean level.\+tools.\+Area.\+intersects (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classlevel_1_1tools_1_1_area}{Area}}}]{other }\end{DoxyParamCaption})}
+
+Checks if this area intersects with the given area.
+
+
+\begin{DoxyParams}{Parameters}
+{\em other} & the area to check intersection with \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if the areas intersect, false otherwise 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/schli/\+Desktop/\+Projects/\+Intelli\+J/pm-\/dungeon-\/jan/game/src/level/tools/Area.\+java\end{DoxyCompactItemize}

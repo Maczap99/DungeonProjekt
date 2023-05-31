@@ -1,0 +1,159 @@
+\hypertarget{classlevel_1_1_level_a_p_i}{}\doxysection{level.\+Level\+API Class Reference}
+\label{classlevel_1_1_level_a_p_i}\index{level.LevelAPI@{level.LevelAPI}}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classlevel_1_1_level_a_p_i_a1cc7ce29d15691a7fc3e192a946e293b}{Level\+API}} (Sprite\+Batch batch, \mbox{\hyperlink{classgraphic_1_1_painter}{Painter}} painter, \mbox{\hyperlink{interfacelevel_1_1generator_1_1_i_generator_strategy}{IGenerator\+Strategy}} gen\+Strategy, List$<$ \mbox{\hyperlink{interfacelevel_1_1generator_1_1_i_generator}{IGenerator}} $>$ gens, \mbox{\hyperlink{interfacelevel_1_1_i_on_level_loader}{IOn\+Level\+Loader}} on\+Level\+Loader)
+\item 
+void \mbox{\hyperlink{classlevel_1_1_level_a_p_i_a32bf6d8f1662d237fc5fd2b3e868986a}{load\+Level}} (\mbox{\hyperlink{enumlevel_1_1tools_1_1_level_size}{Level\+Size}} size, \mbox{\hyperlink{enumlevel_1_1tools_1_1_design_label}{Design\+Label}} label)
+\item 
+void \mbox{\hyperlink{classlevel_1_1_level_a_p_i_aa6cdf4d82b49123acc6d71c55f05ff50}{load\+Level}} (\mbox{\hyperlink{enumlevel_1_1tools_1_1_design_label}{Design\+Label}} design\+Label)
+\item 
+void \mbox{\hyperlink{classlevel_1_1_level_a_p_i_adaeff739a86d6e224bc40e33fe2c064d}{load\+Level}} (\mbox{\hyperlink{enumlevel_1_1tools_1_1_level_size}{Level\+Size}} size)
+\item 
+void \mbox{\hyperlink{classlevel_1_1_level_a_p_i_a16c472d4f3b241df223906e66805c407}{load\+Level}} ()
+\item 
+void \mbox{\hyperlink{classlevel_1_1_level_a_p_i_ad384f5a79339ccbdfaf1100112362b5f}{update}} ()
+\item 
+\mbox{\hyperlink{interfacelevel_1_1elements_1_1_i_level}{ILevel}} \mbox{\hyperlink{classlevel_1_1_level_a_p_i_aa481b14aaa0b03ff4f4c159fab6847b1}{get\+Current\+Level}} ()
+\item 
+List$<$ \mbox{\hyperlink{interfacelevel_1_1generator_1_1_i_generator}{IGenerator}} $>$ \mbox{\hyperlink{classlevel_1_1_level_a_p_i_af65927331639560b3e71cb79030970da}{get\+Generator}} ()
+\item 
+void \mbox{\hyperlink{classlevel_1_1_level_a_p_i_abe0ac4c55f3a12a9d73d57bd2397d4d5}{set\+Generator}} (List$<$ \mbox{\hyperlink{interfacelevel_1_1generator_1_1_i_generator}{IGenerator}} $>$ generators)
+\item 
+void \mbox{\hyperlink{classlevel_1_1_level_a_p_i_a527c10dacf7e473db483d35826865de6}{set\+Level}} (\mbox{\hyperlink{interfacelevel_1_1elements_1_1_i_level}{ILevel}} level)
+\end{DoxyCompactItemize}
+\doxysubsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classlevel_1_1_level_a_p_i_a0edd3976f4f15f3162dd8cf85f56fcfb}\label{classlevel_1_1_level_a_p_i_a0edd3976f4f15f3162dd8cf85f56fcfb}} 
+void {\bfseries draw\+Level} ()
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Manages the level. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classlevel_1_1_level_a_p_i_a1cc7ce29d15691a7fc3e192a946e293b}\label{classlevel_1_1_level_a_p_i_a1cc7ce29d15691a7fc3e192a946e293b}} 
+\index{level.LevelAPI@{level.LevelAPI}!LevelAPI@{LevelAPI}}
+\index{LevelAPI@{LevelAPI}!level.LevelAPI@{level.LevelAPI}}
+\doxysubsubsection{\texorpdfstring{LevelAPI()}{LevelAPI()}}
+{\footnotesize\ttfamily level.\+Level\+API.\+Level\+API (\begin{DoxyParamCaption}\item[{Sprite\+Batch}]{batch,  }\item[{\mbox{\hyperlink{classgraphic_1_1_painter}{Painter}}}]{painter,  }\item[{\mbox{\hyperlink{interfacelevel_1_1generator_1_1_i_generator_strategy}{IGenerator\+Strategy}}}]{gen\+Strategy,  }\item[{List$<$ \mbox{\hyperlink{interfacelevel_1_1generator_1_1_i_generator}{IGenerator}} $>$}]{gens,  }\item[{\mbox{\hyperlink{interfacelevel_1_1_i_on_level_loader}{IOn\+Level\+Loader}}}]{on\+Level\+Loader }\end{DoxyParamCaption})}
+
+
+\begin{DoxyParams}{Parameters}
+{\em batch} & Batch on which to draw. \\
+\hline
+{\em painter} & Who draws? \\
+\hline
+{\em gens} & Level generators \\
+\hline
+{\em on\+Level\+Loader} & Object that implements the on\+Level\+Load method. \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classlevel_1_1_level_a_p_i_aa481b14aaa0b03ff4f4c159fab6847b1}\label{classlevel_1_1_level_a_p_i_aa481b14aaa0b03ff4f4c159fab6847b1}} 
+\index{level.LevelAPI@{level.LevelAPI}!getCurrentLevel@{getCurrentLevel}}
+\index{getCurrentLevel@{getCurrentLevel}!level.LevelAPI@{level.LevelAPI}}
+\doxysubsubsection{\texorpdfstring{getCurrentLevel()}{getCurrentLevel()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{interfacelevel_1_1elements_1_1_i_level}{ILevel}} level.\+Level\+API.\+get\+Current\+Level (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\begin{DoxyReturn}{Returns}
+The currently loaded level. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classlevel_1_1_level_a_p_i_af65927331639560b3e71cb79030970da}\label{classlevel_1_1_level_a_p_i_af65927331639560b3e71cb79030970da}} 
+\index{level.LevelAPI@{level.LevelAPI}!getGenerator@{getGenerator}}
+\index{getGenerator@{getGenerator}!level.LevelAPI@{level.LevelAPI}}
+\doxysubsubsection{\texorpdfstring{getGenerator()}{getGenerator()}}
+{\footnotesize\ttfamily List$<$ \mbox{\hyperlink{interfacelevel_1_1generator_1_1_i_generator}{IGenerator}} $>$ level.\+Level\+API.\+get\+Generator (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\begin{DoxyReturn}{Returns}
+The currently used Level-\/\+Generators 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classlevel_1_1_level_a_p_i_a16c472d4f3b241df223906e66805c407}\label{classlevel_1_1_level_a_p_i_a16c472d4f3b241df223906e66805c407}} 
+\index{level.LevelAPI@{level.LevelAPI}!loadLevel@{loadLevel}}
+\index{loadLevel@{loadLevel}!level.LevelAPI@{level.LevelAPI}}
+\doxysubsubsection{\texorpdfstring{loadLevel()}{loadLevel()}\hspace{0.1cm}{\footnotesize\ttfamily [1/4]}}
+{\footnotesize\ttfamily void level.\+Level\+API.\+load\+Level (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Load a new level with random size and random design. \mbox{\Hypertarget{classlevel_1_1_level_a_p_i_aa6cdf4d82b49123acc6d71c55f05ff50}\label{classlevel_1_1_level_a_p_i_aa6cdf4d82b49123acc6d71c55f05ff50}} 
+\index{level.LevelAPI@{level.LevelAPI}!loadLevel@{loadLevel}}
+\index{loadLevel@{loadLevel}!level.LevelAPI@{level.LevelAPI}}
+\doxysubsubsection{\texorpdfstring{loadLevel()}{loadLevel()}\hspace{0.1cm}{\footnotesize\ttfamily [2/4]}}
+{\footnotesize\ttfamily void level.\+Level\+API.\+load\+Level (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{enumlevel_1_1tools_1_1_design_label}{Design\+Label}}}]{design\+Label }\end{DoxyParamCaption})}
+
+Load a new level with random size and the given desing
+
+
+\begin{DoxyParams}{Parameters}
+{\em design\+Label} & The design that the level should have \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classlevel_1_1_level_a_p_i_adaeff739a86d6e224bc40e33fe2c064d}\label{classlevel_1_1_level_a_p_i_adaeff739a86d6e224bc40e33fe2c064d}} 
+\index{level.LevelAPI@{level.LevelAPI}!loadLevel@{loadLevel}}
+\index{loadLevel@{loadLevel}!level.LevelAPI@{level.LevelAPI}}
+\doxysubsubsection{\texorpdfstring{loadLevel()}{loadLevel()}\hspace{0.1cm}{\footnotesize\ttfamily [3/4]}}
+{\footnotesize\ttfamily void level.\+Level\+API.\+load\+Level (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{enumlevel_1_1tools_1_1_level_size}{Level\+Size}}}]{size }\end{DoxyParamCaption})}
+
+Load a new level with the given size and a random desing
+
+
+\begin{DoxyParams}{Parameters}
+{\em size} & wanted size of the level \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classlevel_1_1_level_a_p_i_a32bf6d8f1662d237fc5fd2b3e868986a}\label{classlevel_1_1_level_a_p_i_a32bf6d8f1662d237fc5fd2b3e868986a}} 
+\index{level.LevelAPI@{level.LevelAPI}!loadLevel@{loadLevel}}
+\index{loadLevel@{loadLevel}!level.LevelAPI@{level.LevelAPI}}
+\doxysubsubsection{\texorpdfstring{loadLevel()}{loadLevel()}\hspace{0.1cm}{\footnotesize\ttfamily [4/4]}}
+{\footnotesize\ttfamily void level.\+Level\+API.\+load\+Level (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{enumlevel_1_1tools_1_1_level_size}{Level\+Size}}}]{size,  }\item[{\mbox{\hyperlink{enumlevel_1_1tools_1_1_design_label}{Design\+Label}}}]{label }\end{DoxyParamCaption})}
+
+Load a new Level
+
+
+\begin{DoxyParams}{Parameters}
+{\em size} & The size that the level should have \\
+\hline
+{\em label} & The design that the level should have \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classlevel_1_1_level_a_p_i_abe0ac4c55f3a12a9d73d57bd2397d4d5}\label{classlevel_1_1_level_a_p_i_abe0ac4c55f3a12a9d73d57bd2397d4d5}} 
+\index{level.LevelAPI@{level.LevelAPI}!setGenerator@{setGenerator}}
+\index{setGenerator@{setGenerator}!level.LevelAPI@{level.LevelAPI}}
+\doxysubsubsection{\texorpdfstring{setGenerator()}{setGenerator()}}
+{\footnotesize\ttfamily void level.\+Level\+API.\+set\+Generator (\begin{DoxyParamCaption}\item[{List$<$ \mbox{\hyperlink{interfacelevel_1_1generator_1_1_i_generator}{IGenerator}} $>$}]{generators }\end{DoxyParamCaption})}
+
+Set the level generator
+
+
+\begin{DoxyParams}{Parameters}
+{\em generators} & new level generators \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classlevel_1_1_level_a_p_i_a527c10dacf7e473db483d35826865de6}\label{classlevel_1_1_level_a_p_i_a527c10dacf7e473db483d35826865de6}} 
+\index{level.LevelAPI@{level.LevelAPI}!setLevel@{setLevel}}
+\index{setLevel@{setLevel}!level.LevelAPI@{level.LevelAPI}}
+\doxysubsubsection{\texorpdfstring{setLevel()}{setLevel()}}
+{\footnotesize\ttfamily void level.\+Level\+API.\+set\+Level (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{interfacelevel_1_1elements_1_1_i_level}{ILevel}}}]{level }\end{DoxyParamCaption})}
+
+Sets the current level to the given level and calls on\+Level\+Load().
+
+
+\begin{DoxyParams}{Parameters}
+{\em level} & The level to be set. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classlevel_1_1_level_a_p_i_ad384f5a79339ccbdfaf1100112362b5f}\label{classlevel_1_1_level_a_p_i_ad384f5a79339ccbdfaf1100112362b5f}} 
+\index{level.LevelAPI@{level.LevelAPI}!update@{update}}
+\index{update@{update}!level.LevelAPI@{level.LevelAPI}}
+\doxysubsubsection{\texorpdfstring{update()}{update()}}
+{\footnotesize\ttfamily void level.\+Level\+API.\+update (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Draw level 
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/schli/\+Desktop/\+Projects/\+Intelli\+J/pm-\/dungeon-\/jan/game/src/level/Level\+API.\+java\end{DoxyCompactItemize}

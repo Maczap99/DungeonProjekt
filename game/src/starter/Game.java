@@ -3,6 +3,7 @@ package starter;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.ScreenAdapter;
+import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import configuration.Configuration;
@@ -15,6 +16,7 @@ import ecs.components.PositionComponent;
 import ecs.components.xp.XPComponent;
 import ecs.entities.Entity;
 import ecs.entities.Hero;
+import ecs.entities.Monster;
 import ecs.systems.*;
 import graphic.DungeonCamera;
 import graphic.Painter;
@@ -29,12 +31,14 @@ import level.generator.IGenerator;
 import level.generator.maze.MazeGenerator;
 import level.generator.postGeneration.WallGenerator;
 import level.generator.randomwalk.RandomWalkGenerator;
+import level.tools.LevelElement;
 import level.tools.LevelSize;
 import tools.Constants;
 import tools.Point;
 
 import java.io.IOException;
 import java.util.*;
+import java.util.concurrent.ThreadLocalRandom;
 import java.util.logging.Logger;
 
 import static com.badlogic.gdx.graphics.GL20.GL_COLOR_BUFFER_BIT;
@@ -82,7 +86,12 @@ public class Game extends ScreenAdapter implements IOnLevelLoader {
     private static Entity hero;
     private Logger gameLogger;
     private static int levelStage = 1;
-    public static boolean gameLoaded;
+    public static boolean gameLoaded, gameOver;
+
+    private transient Sound sound;
+
+    /** Used for creating Monsters */
+    private MonsterBuilder monsterBuilder;
 
     public static void main(String[] args) {
         // start the game
@@ -131,10 +140,11 @@ public class Game extends ScreenAdapter implements IOnLevelLoader {
         controller.add(systems);
         pauseMenu = new PauseMenu<>();
         controller.add(pauseMenu);
-        mainMenu = new MainMenu<>(this, levelAPI);
+        mainMenu = new MainMenu<>(levelAPI);
         controller.add(mainMenu);
 
         hero = new Hero();
+        monsterBuilder = new MonsterBuilder();
 
         createSystems();
 
@@ -158,12 +168,18 @@ public class Game extends ScreenAdapter implements IOnLevelLoader {
             systems.update();
         }
 
+        if (h.getCurrentHealth() <= 0 && !gameOver) {
+            mainMenu.onGameOver();
+            toggleMainMenu();
+        }
+
         if(h.getCurrentMana() < h.getMana()){
             h.setCurrentMana(Math.min(h.getCurrentMana() + (0.5f / Constants.FRAME_RATE), 100));
         }
 
         //if (Gdx.input.isKeyJustPressed(Input.Keys.P)) togglePauseMenu();
-        if (Gdx.input.isKeyJustPressed(Input.Keys.ESCAPE) && !MainMenu.isInitialState()) toggleMainMenu();
+        if (Gdx.input.isKeyJustPressed(Input.Keys.ESCAPE) && !MainMenu.isInitialState() && !gameOver)
+            toggleMainMenu();
     }
 
     @Override
@@ -171,6 +187,15 @@ public class Game extends ScreenAdapter implements IOnLevelLoader {
         currentLevel = levelAPI.getCurrentLevel();
         entities.clear();
         getHero().ifPresent(this::placeOnLevelStart);
+
+        int monsterAmount = ThreadLocalRandom.current().nextInt(5, 11);
+        monsterBuilder = new MonsterBuilder();
+        for(int i = 0; i < monsterAmount; i++){
+            Monster monster = monsterBuilder.createRandomMonster();
+            PositionComponent pc = (PositionComponent) monster.getComponent(PositionComponent.class).get();
+            pc.setPosition(currentLevel.getRandomTile(LevelElement.FLOOR).getCoordinateAsPoint());
+        }
+
     }
 
     private void manageEntitiesSets() {
@@ -207,13 +232,25 @@ public class Game extends ScreenAdapter implements IOnLevelLoader {
             levelStage++;
             System.out.println("Ebene: "+levelStage);
 
+            try{
+                // start menu soundtrack
+                sound = Gdx.audio.newSound(Gdx.files.internal("game/sounds/effect/door.mp3"));
+                sound.play(0.5f);
+
+            }catch (Exception e){
+                System.out.println("Sounddatei konnte nicht gefunden werden");
+            }
+
             if(levelStage % 2 == 0){
                 Optional<Component> xp = hero.getComponent(XPComponent.class);
 
                 if(xp.isPresent()){
                     XPComponent x = (XPComponent) xp.get();
                     x.setCurrentLevel(x.getCurrentLevel() + 1);
+
                     System.out.println("Level up! Level: " + x.getCurrentLevel());
+                    Hero h = (Hero) Game.getHero().get();
+                    h.setCurrentLevel(x.getCurrentLevel());
 
                     if(x.getCurrentLevel() == 2){
                         System.out.println("Skill Speed Up Freigeschaltet! (Aktivierung: F)");

@@ -1,0 +1,314 @@
+\hypertarget{classecs_1_1components_1_1ai_1_1_a_i_tools}{}\doxysection{ecs.\+components.\+ai.\+AITools Class Reference}
+\label{classecs_1_1components_1_1ai_1_1_a_i_tools}\index{ecs.components.ai.AITools@{ecs.components.ai.AITools}}
+\doxysubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static void \mbox{\hyperlink{classecs_1_1components_1_1ai_1_1_a_i_tools_a64406611d025b28f050a13c5695126ff}{move}} (\mbox{\hyperlink{classecs_1_1entities_1_1_entity}{Entity}} entity, Graph\+Path$<$ \mbox{\hyperlink{classlevel_1_1elements_1_1tile_1_1_tile}{Tile}} $>$ path)
+\item 
+static List$<$ \mbox{\hyperlink{classlevel_1_1elements_1_1tile_1_1_tile}{Tile}} $>$ \mbox{\hyperlink{classecs_1_1components_1_1ai_1_1_a_i_tools_ac158be30e1fd52ab7d358f5bbb78e9f0}{get\+Tiles\+In\+Range}} (\mbox{\hyperlink{classtools_1_1_point}{Point}} center, float radius)
+\item 
+static List$<$ \mbox{\hyperlink{classlevel_1_1elements_1_1tile_1_1_tile}{Tile}} $>$ \mbox{\hyperlink{classecs_1_1components_1_1ai_1_1_a_i_tools_af3880be2b77907361a09dc41f89eda78}{get\+Accessible\+Tiles\+In\+Range}} (\mbox{\hyperlink{classtools_1_1_point}{Point}} center, float radius)
+\item 
+static \mbox{\hyperlink{classlevel_1_1tools_1_1_coordinate}{Coordinate}} \mbox{\hyperlink{classecs_1_1components_1_1ai_1_1_a_i_tools_a3d4fe9034a0340e84a7b72540c6e5988}{get\+Random\+Accessible\+Tile\+Coordinate\+In\+Range}} (\mbox{\hyperlink{classtools_1_1_point}{Point}} center, float radius)
+\item 
+static Graph\+Path$<$ \mbox{\hyperlink{classlevel_1_1elements_1_1tile_1_1_tile}{Tile}} $>$ \mbox{\hyperlink{classecs_1_1components_1_1ai_1_1_a_i_tools_ac1123d03102d55e5bb843045fcb3572b}{calculate\+Path}} (\mbox{\hyperlink{classtools_1_1_point}{Point}} from, \mbox{\hyperlink{classtools_1_1_point}{Point}} to)
+\item 
+static Graph\+Path$<$ \mbox{\hyperlink{classlevel_1_1elements_1_1tile_1_1_tile}{Tile}} $>$ \mbox{\hyperlink{classecs_1_1components_1_1ai_1_1_a_i_tools_a76e7865f1e9468c2161c459eaca7e72c}{calculate\+Path}} (\mbox{\hyperlink{classlevel_1_1tools_1_1_coordinate}{Coordinate}} from, \mbox{\hyperlink{classlevel_1_1tools_1_1_coordinate}{Coordinate}} to)
+\item 
+static Graph\+Path$<$ \mbox{\hyperlink{classlevel_1_1elements_1_1tile_1_1_tile}{Tile}} $>$ \mbox{\hyperlink{classecs_1_1components_1_1ai_1_1_a_i_tools_abec590568175033bcf929c19b0e3ae27}{calculate\+Path\+To\+Random\+Tile\+In\+Range}} (\mbox{\hyperlink{classtools_1_1_point}{Point}} point, float radius)
+\item 
+static Graph\+Path$<$ \mbox{\hyperlink{classlevel_1_1elements_1_1tile_1_1_tile}{Tile}} $>$ \mbox{\hyperlink{classecs_1_1components_1_1ai_1_1_a_i_tools_a067c8fb0a3396de5f7a4fec163ef3ebc}{calculate\+Path\+To\+Random\+Tile\+In\+Range}} (\mbox{\hyperlink{classecs_1_1entities_1_1_entity}{Entity}} entity, float radius)
+\item 
+static Graph\+Path$<$ \mbox{\hyperlink{classlevel_1_1elements_1_1tile_1_1_tile}{Tile}} $>$ \mbox{\hyperlink{classecs_1_1components_1_1ai_1_1_a_i_tools_a0d20d1ef93740cb00ff4b0e042708f43}{calculate\+Path}} (\mbox{\hyperlink{classecs_1_1entities_1_1_entity}{Entity}} from, \mbox{\hyperlink{classecs_1_1entities_1_1_entity}{Entity}} to)
+\item 
+static Graph\+Path$<$ \mbox{\hyperlink{classlevel_1_1elements_1_1tile_1_1_tile}{Tile}} $>$ \mbox{\hyperlink{classecs_1_1components_1_1ai_1_1_a_i_tools_a5cfe7b9b5825044b2b45e32ae560c6cc}{calculate\+Path\+To\+Hero}} (\mbox{\hyperlink{classecs_1_1entities_1_1_entity}{Entity}} entity)
+\item 
+static boolean \mbox{\hyperlink{classecs_1_1components_1_1ai_1_1_a_i_tools_aaccd52af2b874ad52d26a6bd85e0dcc5}{in\+Range}} (\mbox{\hyperlink{classtools_1_1_point}{Point}} p1, \mbox{\hyperlink{classtools_1_1_point}{Point}} p2, float range)
+\item 
+static boolean \mbox{\hyperlink{classecs_1_1components_1_1ai_1_1_a_i_tools_ac793d809510fa2bf7b080903cb4ef1d8}{entity\+In\+Range}} (\mbox{\hyperlink{classecs_1_1entities_1_1_entity}{Entity}} entity1, \mbox{\hyperlink{classecs_1_1entities_1_1_entity}{Entity}} entity2, float range)
+\item 
+static boolean \mbox{\hyperlink{classecs_1_1components_1_1ai_1_1_a_i_tools_a9dc7b8e755a29777f7acbf98c5973687}{player\+In\+Range}} (\mbox{\hyperlink{classecs_1_1entities_1_1_entity}{Entity}} entity, float range)
+\item 
+static boolean \mbox{\hyperlink{classecs_1_1components_1_1ai_1_1_a_i_tools_a142a569a0c00bd043c0e1f66b8b452b3}{path\+Finished\+Or\+Left}} (\mbox{\hyperlink{classecs_1_1entities_1_1_entity}{Entity}} entity, Graph\+Path$<$ \mbox{\hyperlink{classlevel_1_1elements_1_1tile_1_1_tile}{Tile}} $>$ path)
+\item 
+static boolean \mbox{\hyperlink{classecs_1_1components_1_1ai_1_1_a_i_tools_af44beb2a8436a6c517a780b91f4333bc}{path\+Finished}} (\mbox{\hyperlink{classecs_1_1entities_1_1_entity}{Entity}} entity, Graph\+Path$<$ \mbox{\hyperlink{classlevel_1_1elements_1_1tile_1_1_tile}{Tile}} $>$ path)
+\item 
+static boolean \mbox{\hyperlink{classecs_1_1components_1_1ai_1_1_a_i_tools_a0627e6b5e0f888320e26755f91871d0b}{path\+Left}} (\mbox{\hyperlink{classecs_1_1entities_1_1_entity}{Entity}} entity, Graph\+Path$<$ \mbox{\hyperlink{classlevel_1_1elements_1_1tile_1_1_tile}{Tile}} $>$ path)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classecs_1_1components_1_1ai_1_1_a_i_tools_a76e7865f1e9468c2161c459eaca7e72c}\label{classecs_1_1components_1_1ai_1_1_a_i_tools_a76e7865f1e9468c2161c459eaca7e72c}} 
+\index{ecs.components.ai.AITools@{ecs.components.ai.AITools}!calculatePath@{calculatePath}}
+\index{calculatePath@{calculatePath}!ecs.components.ai.AITools@{ecs.components.ai.AITools}}
+\doxysubsubsection{\texorpdfstring{calculatePath()}{calculatePath()}\hspace{0.1cm}{\footnotesize\ttfamily [1/3]}}
+{\footnotesize\ttfamily static Graph\+Path$<$ \mbox{\hyperlink{classlevel_1_1elements_1_1tile_1_1_tile}{Tile}} $>$ ecs.\+components.\+ai.\+AITools.\+calculate\+Path (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classlevel_1_1tools_1_1_coordinate}{Coordinate}}}]{from,  }\item[{\mbox{\hyperlink{classlevel_1_1tools_1_1_coordinate}{Coordinate}}}]{to }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+\begin{DoxyParams}{Parameters}
+{\em from} & start coordinate \\
+\hline
+{\em to} & end coordinate \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Path from the start coordinate to the end coordinate 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classecs_1_1components_1_1ai_1_1_a_i_tools_a0d20d1ef93740cb00ff4b0e042708f43}\label{classecs_1_1components_1_1ai_1_1_a_i_tools_a0d20d1ef93740cb00ff4b0e042708f43}} 
+\index{ecs.components.ai.AITools@{ecs.components.ai.AITools}!calculatePath@{calculatePath}}
+\index{calculatePath@{calculatePath}!ecs.components.ai.AITools@{ecs.components.ai.AITools}}
+\doxysubsubsection{\texorpdfstring{calculatePath()}{calculatePath()}\hspace{0.1cm}{\footnotesize\ttfamily [2/3]}}
+{\footnotesize\ttfamily static Graph\+Path$<$ \mbox{\hyperlink{classlevel_1_1elements_1_1tile_1_1_tile}{Tile}} $>$ ecs.\+components.\+ai.\+AITools.\+calculate\+Path (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classecs_1_1entities_1_1_entity}{Entity}}}]{from,  }\item[{\mbox{\hyperlink{classecs_1_1entities_1_1_entity}{Entity}}}]{to }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Finds the path from the position of one entity to the position of another entity.
+
+
+\begin{DoxyParams}{Parameters}
+{\em from} & Entity whose position is the start point \\
+\hline
+{\em to} & Entity whose position is the goal point \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Path 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classecs_1_1components_1_1ai_1_1_a_i_tools_ac1123d03102d55e5bb843045fcb3572b}\label{classecs_1_1components_1_1ai_1_1_a_i_tools_ac1123d03102d55e5bb843045fcb3572b}} 
+\index{ecs.components.ai.AITools@{ecs.components.ai.AITools}!calculatePath@{calculatePath}}
+\index{calculatePath@{calculatePath}!ecs.components.ai.AITools@{ecs.components.ai.AITools}}
+\doxysubsubsection{\texorpdfstring{calculatePath()}{calculatePath()}\hspace{0.1cm}{\footnotesize\ttfamily [3/3]}}
+{\footnotesize\ttfamily static Graph\+Path$<$ \mbox{\hyperlink{classlevel_1_1elements_1_1tile_1_1_tile}{Tile}} $>$ ecs.\+components.\+ai.\+AITools.\+calculate\+Path (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classtools_1_1_point}{Point}}}]{from,  }\item[{\mbox{\hyperlink{classtools_1_1_point}{Point}}}]{to }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+\begin{DoxyParams}{Parameters}
+{\em from} & start point \\
+\hline
+{\em to} & end point \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Path from the start point to the end point 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classecs_1_1components_1_1ai_1_1_a_i_tools_a5cfe7b9b5825044b2b45e32ae560c6cc}\label{classecs_1_1components_1_1ai_1_1_a_i_tools_a5cfe7b9b5825044b2b45e32ae560c6cc}} 
+\index{ecs.components.ai.AITools@{ecs.components.ai.AITools}!calculatePathToHero@{calculatePathToHero}}
+\index{calculatePathToHero@{calculatePathToHero}!ecs.components.ai.AITools@{ecs.components.ai.AITools}}
+\doxysubsubsection{\texorpdfstring{calculatePathToHero()}{calculatePathToHero()}}
+{\footnotesize\ttfamily static Graph\+Path$<$ \mbox{\hyperlink{classlevel_1_1elements_1_1tile_1_1_tile}{Tile}} $>$ ecs.\+components.\+ai.\+AITools.\+calculate\+Path\+To\+Hero (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classecs_1_1entities_1_1_entity}{Entity}}}]{entity }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+\begin{DoxyParams}{Parameters}
+{\em entity} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Path from the entity to the hero, if there is no hero, path from the entity to itself 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classecs_1_1components_1_1ai_1_1_a_i_tools_a067c8fb0a3396de5f7a4fec163ef3ebc}\label{classecs_1_1components_1_1ai_1_1_a_i_tools_a067c8fb0a3396de5f7a4fec163ef3ebc}} 
+\index{ecs.components.ai.AITools@{ecs.components.ai.AITools}!calculatePathToRandomTileInRange@{calculatePathToRandomTileInRange}}
+\index{calculatePathToRandomTileInRange@{calculatePathToRandomTileInRange}!ecs.components.ai.AITools@{ecs.components.ai.AITools}}
+\doxysubsubsection{\texorpdfstring{calculatePathToRandomTileInRange()}{calculatePathToRandomTileInRange()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily static Graph\+Path$<$ \mbox{\hyperlink{classlevel_1_1elements_1_1tile_1_1_tile}{Tile}} $>$ ecs.\+components.\+ai.\+AITools.\+calculate\+Path\+To\+Random\+Tile\+In\+Range (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classecs_1_1entities_1_1_entity}{Entity}}}]{entity,  }\item[{float}]{radius }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Finds the path to a random (accessible) tile in the given radius, starting from the position of the given entity.
+
+
+\begin{DoxyParams}{Parameters}
+{\em entity} & Entity whose position is the center point \\
+\hline
+{\em radius} & Search radius \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Path from the position of the entity to the randomly selected tile 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classecs_1_1components_1_1ai_1_1_a_i_tools_abec590568175033bcf929c19b0e3ae27}\label{classecs_1_1components_1_1ai_1_1_a_i_tools_abec590568175033bcf929c19b0e3ae27}} 
+\index{ecs.components.ai.AITools@{ecs.components.ai.AITools}!calculatePathToRandomTileInRange@{calculatePathToRandomTileInRange}}
+\index{calculatePathToRandomTileInRange@{calculatePathToRandomTileInRange}!ecs.components.ai.AITools@{ecs.components.ai.AITools}}
+\doxysubsubsection{\texorpdfstring{calculatePathToRandomTileInRange()}{calculatePathToRandomTileInRange()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily static Graph\+Path$<$ \mbox{\hyperlink{classlevel_1_1elements_1_1tile_1_1_tile}{Tile}} $>$ ecs.\+components.\+ai.\+AITools.\+calculate\+Path\+To\+Random\+Tile\+In\+Range (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classtools_1_1_point}{Point}}}]{point,  }\item[{float}]{radius }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Finds the path to a random (accessible) tile in the given radius, starting from the given center point
+
+
+\begin{DoxyParams}{Parameters}
+{\em point} & Center point \\
+\hline
+{\em radius} & Search radius \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Path from the center point to the randomly selected tile 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classecs_1_1components_1_1ai_1_1_a_i_tools_ac793d809510fa2bf7b080903cb4ef1d8}\label{classecs_1_1components_1_1ai_1_1_a_i_tools_ac793d809510fa2bf7b080903cb4ef1d8}} 
+\index{ecs.components.ai.AITools@{ecs.components.ai.AITools}!entityInRange@{entityInRange}}
+\index{entityInRange@{entityInRange}!ecs.components.ai.AITools@{ecs.components.ai.AITools}}
+\doxysubsubsection{\texorpdfstring{entityInRange()}{entityInRange()}}
+{\footnotesize\ttfamily static boolean ecs.\+components.\+ai.\+AITools.\+entity\+In\+Range (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classecs_1_1entities_1_1_entity}{Entity}}}]{entity1,  }\item[{\mbox{\hyperlink{classecs_1_1entities_1_1_entity}{Entity}}}]{entity2,  }\item[{float}]{range }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+\begin{DoxyParams}{Parameters}
+{\em entity1} & \\
+\hline
+{\em entity2} & \\
+\hline
+{\em range} & search radius \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+if the position of the two entities is within the given radius 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classecs_1_1components_1_1ai_1_1_a_i_tools_af3880be2b77907361a09dc41f89eda78}\label{classecs_1_1components_1_1ai_1_1_a_i_tools_af3880be2b77907361a09dc41f89eda78}} 
+\index{ecs.components.ai.AITools@{ecs.components.ai.AITools}!getAccessibleTilesInRange@{getAccessibleTilesInRange}}
+\index{getAccessibleTilesInRange@{getAccessibleTilesInRange}!ecs.components.ai.AITools@{ecs.components.ai.AITools}}
+\doxysubsubsection{\texorpdfstring{getAccessibleTilesInRange()}{getAccessibleTilesInRange()}}
+{\footnotesize\ttfamily static List$<$ \mbox{\hyperlink{classlevel_1_1elements_1_1tile_1_1_tile}{Tile}} $>$ ecs.\+components.\+ai.\+AITools.\+get\+Accessible\+Tiles\+In\+Range (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classtools_1_1_point}{Point}}}]{center,  }\item[{float}]{radius }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+\begin{DoxyParams}{Parameters}
+{\em center} & center point \\
+\hline
+{\em radius} & Search radius \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+List of accessible tiles in the given radius arround the center point 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classecs_1_1components_1_1ai_1_1_a_i_tools_a3d4fe9034a0340e84a7b72540c6e5988}\label{classecs_1_1components_1_1ai_1_1_a_i_tools_a3d4fe9034a0340e84a7b72540c6e5988}} 
+\index{ecs.components.ai.AITools@{ecs.components.ai.AITools}!getRandomAccessibleTileCoordinateInRange@{getRandomAccessibleTileCoordinateInRange}}
+\index{getRandomAccessibleTileCoordinateInRange@{getRandomAccessibleTileCoordinateInRange}!ecs.components.ai.AITools@{ecs.components.ai.AITools}}
+\doxysubsubsection{\texorpdfstring{getRandomAccessibleTileCoordinateInRange()}{getRandomAccessibleTileCoordinateInRange()}}
+{\footnotesize\ttfamily static \mbox{\hyperlink{classlevel_1_1tools_1_1_coordinate}{Coordinate}} ecs.\+components.\+ai.\+AITools.\+get\+Random\+Accessible\+Tile\+Coordinate\+In\+Range (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classtools_1_1_point}{Point}}}]{center,  }\item[{float}]{radius }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+\begin{DoxyParams}{Parameters}
+{\em center} & center point \\
+\hline
+{\em radius} & search radius \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+random tile in given range 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classecs_1_1components_1_1ai_1_1_a_i_tools_ac158be30e1fd52ab7d358f5bbb78e9f0}\label{classecs_1_1components_1_1ai_1_1_a_i_tools_ac158be30e1fd52ab7d358f5bbb78e9f0}} 
+\index{ecs.components.ai.AITools@{ecs.components.ai.AITools}!getTilesInRange@{getTilesInRange}}
+\index{getTilesInRange@{getTilesInRange}!ecs.components.ai.AITools@{ecs.components.ai.AITools}}
+\doxysubsubsection{\texorpdfstring{getTilesInRange()}{getTilesInRange()}}
+{\footnotesize\ttfamily static List$<$ \mbox{\hyperlink{classlevel_1_1elements_1_1tile_1_1_tile}{Tile}} $>$ ecs.\+components.\+ai.\+AITools.\+get\+Tiles\+In\+Range (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classtools_1_1_point}{Point}}}]{center,  }\item[{float}]{radius }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+\begin{DoxyParams}{Parameters}
+{\em center} & center point \\
+\hline
+{\em radius} & Search radius \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+List of tiles in the given radius arround the center point 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classecs_1_1components_1_1ai_1_1_a_i_tools_aaccd52af2b874ad52d26a6bd85e0dcc5}\label{classecs_1_1components_1_1ai_1_1_a_i_tools_aaccd52af2b874ad52d26a6bd85e0dcc5}} 
+\index{ecs.components.ai.AITools@{ecs.components.ai.AITools}!inRange@{inRange}}
+\index{inRange@{inRange}!ecs.components.ai.AITools@{ecs.components.ai.AITools}}
+\doxysubsubsection{\texorpdfstring{inRange()}{inRange()}}
+{\footnotesize\ttfamily static boolean ecs.\+components.\+ai.\+AITools.\+in\+Range (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classtools_1_1_point}{Point}}}]{p1,  }\item[{\mbox{\hyperlink{classtools_1_1_point}{Point}}}]{p2,  }\item[{float}]{range }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+\begin{DoxyParams}{Parameters}
+{\em p1} & Point A \\
+\hline
+{\em p2} & Point B \\
+\hline
+{\em range} & Radius \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+if the distance between the two points is within the radius 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classecs_1_1components_1_1ai_1_1_a_i_tools_a64406611d025b28f050a13c5695126ff}\label{classecs_1_1components_1_1ai_1_1_a_i_tools_a64406611d025b28f050a13c5695126ff}} 
+\index{ecs.components.ai.AITools@{ecs.components.ai.AITools}!move@{move}}
+\index{move@{move}!ecs.components.ai.AITools@{ecs.components.ai.AITools}}
+\doxysubsubsection{\texorpdfstring{move()}{move()}}
+{\footnotesize\ttfamily static void ecs.\+components.\+ai.\+AITools.\+move (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classecs_1_1entities_1_1_entity}{Entity}}}]{entity,  }\item[{Graph\+Path$<$ \mbox{\hyperlink{classlevel_1_1elements_1_1tile_1_1_tile}{Tile}} $>$}]{path }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Sets the velocity of the passed entity so that it takes the next necessary step to get to the end of the path.
+
+
+\begin{DoxyParams}{Parameters}
+{\em entity} & Entity moving on the path \\
+\hline
+{\em path} & Path on which the entity moves \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classecs_1_1components_1_1ai_1_1_a_i_tools_af44beb2a8436a6c517a780b91f4333bc}\label{classecs_1_1components_1_1ai_1_1_a_i_tools_af44beb2a8436a6c517a780b91f4333bc}} 
+\index{ecs.components.ai.AITools@{ecs.components.ai.AITools}!pathFinished@{pathFinished}}
+\index{pathFinished@{pathFinished}!ecs.components.ai.AITools@{ecs.components.ai.AITools}}
+\doxysubsubsection{\texorpdfstring{pathFinished()}{pathFinished()}}
+{\footnotesize\ttfamily static boolean ecs.\+components.\+ai.\+AITools.\+path\+Finished (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classecs_1_1entities_1_1_entity}{Entity}}}]{entity,  }\item[{Graph\+Path$<$ \mbox{\hyperlink{classlevel_1_1elements_1_1tile_1_1_tile}{Tile}} $>$}]{path }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Check if the entity is on the end of the path
+
+
+\begin{DoxyParams}{Parameters}
+{\em entity} & Entity \\
+\hline
+{\em path} & Path \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true, if the entity is on the end of the path. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classecs_1_1components_1_1ai_1_1_a_i_tools_a142a569a0c00bd043c0e1f66b8b452b3}\label{classecs_1_1components_1_1ai_1_1_a_i_tools_a142a569a0c00bd043c0e1f66b8b452b3}} 
+\index{ecs.components.ai.AITools@{ecs.components.ai.AITools}!pathFinishedOrLeft@{pathFinishedOrLeft}}
+\index{pathFinishedOrLeft@{pathFinishedOrLeft}!ecs.components.ai.AITools@{ecs.components.ai.AITools}}
+\doxysubsubsection{\texorpdfstring{pathFinishedOrLeft()}{pathFinishedOrLeft()}}
+{\footnotesize\ttfamily static boolean ecs.\+components.\+ai.\+AITools.\+path\+Finished\+Or\+Left (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classecs_1_1entities_1_1_entity}{Entity}}}]{entity,  }\item[{Graph\+Path$<$ \mbox{\hyperlink{classlevel_1_1elements_1_1tile_1_1_tile}{Tile}} $>$}]{path }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Check if the entity is on the end of the path or has left the path.
+
+
+\begin{DoxyParams}{Parameters}
+{\em entity} & Entity \\
+\hline
+{\em path} & Path \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true, if the entity is on the end of the path or has left the path 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classecs_1_1components_1_1ai_1_1_a_i_tools_a0627e6b5e0f888320e26755f91871d0b}\label{classecs_1_1components_1_1ai_1_1_a_i_tools_a0627e6b5e0f888320e26755f91871d0b}} 
+\index{ecs.components.ai.AITools@{ecs.components.ai.AITools}!pathLeft@{pathLeft}}
+\index{pathLeft@{pathLeft}!ecs.components.ai.AITools@{ecs.components.ai.AITools}}
+\doxysubsubsection{\texorpdfstring{pathLeft()}{pathLeft()}}
+{\footnotesize\ttfamily static boolean ecs.\+components.\+ai.\+AITools.\+path\+Left (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classecs_1_1entities_1_1_entity}{Entity}}}]{entity,  }\item[{Graph\+Path$<$ \mbox{\hyperlink{classlevel_1_1elements_1_1tile_1_1_tile}{Tile}} $>$}]{path }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Check if the entity has left the path
+
+
+\begin{DoxyParams}{Parameters}
+{\em entity} & Entity \\
+\hline
+{\em path} & Path \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true, if the entity has left the path. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classecs_1_1components_1_1ai_1_1_a_i_tools_a9dc7b8e755a29777f7acbf98c5973687}\label{classecs_1_1components_1_1ai_1_1_a_i_tools_a9dc7b8e755a29777f7acbf98c5973687}} 
+\index{ecs.components.ai.AITools@{ecs.components.ai.AITools}!playerInRange@{playerInRange}}
+\index{playerInRange@{playerInRange}!ecs.components.ai.AITools@{ecs.components.ai.AITools}}
+\doxysubsubsection{\texorpdfstring{playerInRange()}{playerInRange()}}
+{\footnotesize\ttfamily static boolean ecs.\+components.\+ai.\+AITools.\+player\+In\+Range (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classecs_1_1entities_1_1_entity}{Entity}}}]{entity,  }\item[{float}]{range }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+\begin{DoxyParams}{Parameters}
+{\em entity} & Entity whose position specifies the center point \\
+\hline
+{\em range} & search radius \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+if the position of the player is within the given radius of the position of the given entity. If there is no hero, return false. 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/schli/\+Desktop/\+Projects/\+Intelli\+J/pm-\/dungeon-\/jan/game/src/ecs/components/ai/AITools.\+java\end{DoxyCompactItemize}

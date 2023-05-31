@@ -1,0 +1,129 @@
+\hypertarget{classlevel_1_1levelgraph_1_1_level_node}{}\doxysection{level.\+levelgraph.\+Level\+Node\texorpdfstring{$<$}{<} T extends IRoom \texorpdfstring{$>$}{>} Class Template Reference}
+\label{classlevel_1_1levelgraph_1_1_level_node}\index{level.levelgraph.LevelNode$<$ T extends IRoom $>$@{level.levelgraph.LevelNode$<$ T extends IRoom $>$}}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+boolean \mbox{\hyperlink{classlevel_1_1levelgraph_1_1_level_node_ae4d71fa5c42c4935aab75b89b2798929}{connect}} (\mbox{\hyperlink{classlevel_1_1levelgraph_1_1_level_node}{Level\+Node}} other, \mbox{\hyperlink{enumlevel_1_1levelgraph_1_1_door_direction}{Door\+Direction}} direction, boolean onedirected\+Edge, Door\+Tile.\+Door\+Color color)
+\item 
+boolean \mbox{\hyperlink{classlevel_1_1levelgraph_1_1_level_node_a2ba3261999b78820e7377ed73b205773}{connect}} (\mbox{\hyperlink{classlevel_1_1levelgraph_1_1_level_node}{Level\+Node}} other, \mbox{\hyperlink{enumlevel_1_1levelgraph_1_1_door_direction}{Door\+Direction}} direction, Door\+Tile.\+Door\+Color color)
+\item 
+\mbox{\Hypertarget{classlevel_1_1levelgraph_1_1_level_node_a8d78b50c6e9d76045e84b17b6794e938}\label{classlevel_1_1levelgraph_1_1_level_node_a8d78b50c6e9d76045e84b17b6794e938}} 
+boolean {\bfseries connect} (\mbox{\hyperlink{classlevel_1_1levelgraph_1_1_level_node}{Level\+Node}} other)
+\item 
+void \mbox{\hyperlink{classlevel_1_1levelgraph_1_1_level_node_a7aa4e03fe6db1409f7778ee5ac9b8d44}{set\+Room}} (T room)
+\item 
+\mbox{\hyperlink{classlevel_1_1levelgraph_1_1_level_node}{Level\+Node}} \mbox{\hyperlink{classlevel_1_1levelgraph_1_1_level_node_a184e7b18dcc9128868d3f81bac028005}{get\+Neighbour}} (\mbox{\hyperlink{enumlevel_1_1levelgraph_1_1_door_direction}{Door\+Direction}} direction)
+\item 
+\mbox{\hyperlink{classlevel_1_1levelgraph_1_1_level_node}{Level\+Node}}\mbox{[}$\,$\mbox{]} \mbox{\hyperlink{classlevel_1_1levelgraph_1_1_level_node_a75fbd83ddbaeae368a0720de801bd078}{get\+Neighbours}} ()
+\item 
+T \mbox{\hyperlink{classlevel_1_1levelgraph_1_1_level_node_a7c1ad0a788cdaacc2c4610f3694f3c9b}{get\+Room}} ()
+\item 
+\mbox{\Hypertarget{classlevel_1_1levelgraph_1_1_level_node_af6e22d8c61f3052f8b39b67dd37edf52}\label{classlevel_1_1levelgraph_1_1_level_node_af6e22d8c61f3052f8b39b67dd37edf52}} 
+\mbox{\hyperlink{enumlevel_1_1levelgraph_1_1_door_direction}{Door\+Direction}}\mbox{[}$\,$\mbox{]} {\bfseries get\+Neighbours\+As\+Direction} ()
+\item 
+\mbox{\Hypertarget{classlevel_1_1levelgraph_1_1_level_node_a07c43a3241da53bab443c36050b26bc9}\label{classlevel_1_1levelgraph_1_1_level_node_a07c43a3241da53bab443c36050b26bc9}} 
+Door\+Tile.\+Door\+Color\mbox{[}$\,$\mbox{]} {\bfseries get\+Colors} ()
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+A Node in the Graph for a Level. A Leve\+Node can have a maximum of four edges
+
+
+\begin{DoxyParams}{Parameters}
+{\em $<$\+T$>$} & Each Node is a Room in the Level \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classlevel_1_1levelgraph_1_1_level_node_ae4d71fa5c42c4935aab75b89b2798929}\label{classlevel_1_1levelgraph_1_1_level_node_ae4d71fa5c42c4935aab75b89b2798929}} 
+\index{level.levelgraph.LevelNode$<$ T extends IRoom $>$@{level.levelgraph.LevelNode$<$ T extends IRoom $>$}!connect@{connect}}
+\index{connect@{connect}!level.levelgraph.LevelNode$<$ T extends IRoom $>$@{level.levelgraph.LevelNode$<$ T extends IRoom $>$}}
+\doxysubsubsection{\texorpdfstring{connect()}{connect()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily boolean \mbox{\hyperlink{classlevel_1_1levelgraph_1_1_level_node}{level.\+levelgraph.\+Level\+Node}}$<$ T extends \mbox{\hyperlink{interfacelevel_1_1room_1_1_i_room}{IRoom}} $>$.connect (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classlevel_1_1levelgraph_1_1_level_node}{Level\+Node}}$<$ T extends \mbox{\hyperlink{interfacelevel_1_1room_1_1_i_room}{IRoom}} $>$}]{other,  }\item[{\mbox{\hyperlink{enumlevel_1_1levelgraph_1_1_door_direction}{Door\+Direction}}}]{direction,  }\item[{boolean}]{onedirected\+Edge,  }\item[{Door\+Tile.\+Door\+Color}]{color }\end{DoxyParamCaption})}
+
+Connect two nodes on the given direction
+
+
+\begin{DoxyParams}{Parameters}
+{\em other} & Other Node \\
+\hline
+{\em direction} & Direction to connect the nodes \\
+\hline
+{\em onedirected\+Edge} & if true, the connection is one directed \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+if connection was successful 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classlevel_1_1levelgraph_1_1_level_node_a2ba3261999b78820e7377ed73b205773}\label{classlevel_1_1levelgraph_1_1_level_node_a2ba3261999b78820e7377ed73b205773}} 
+\index{level.levelgraph.LevelNode$<$ T extends IRoom $>$@{level.levelgraph.LevelNode$<$ T extends IRoom $>$}!connect@{connect}}
+\index{connect@{connect}!level.levelgraph.LevelNode$<$ T extends IRoom $>$@{level.levelgraph.LevelNode$<$ T extends IRoom $>$}}
+\doxysubsubsection{\texorpdfstring{connect()}{connect()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily boolean \mbox{\hyperlink{classlevel_1_1levelgraph_1_1_level_node}{level.\+levelgraph.\+Level\+Node}}$<$ T extends \mbox{\hyperlink{interfacelevel_1_1room_1_1_i_room}{IRoom}} $>$.connect (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classlevel_1_1levelgraph_1_1_level_node}{Level\+Node}}$<$ T extends \mbox{\hyperlink{interfacelevel_1_1room_1_1_i_room}{IRoom}} $>$}]{other,  }\item[{\mbox{\hyperlink{enumlevel_1_1levelgraph_1_1_door_direction}{Door\+Direction}}}]{direction,  }\item[{Door\+Tile.\+Door\+Color}]{color }\end{DoxyParamCaption})}
+
+Connect two nodes on the given direction
+
+
+\begin{DoxyParams}{Parameters}
+{\em other} & Other Node \\
+\hline
+{\em direction} & Direction to connect the nodes \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+if connection was successful 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classlevel_1_1levelgraph_1_1_level_node_a184e7b18dcc9128868d3f81bac028005}\label{classlevel_1_1levelgraph_1_1_level_node_a184e7b18dcc9128868d3f81bac028005}} 
+\index{level.levelgraph.LevelNode$<$ T extends IRoom $>$@{level.levelgraph.LevelNode$<$ T extends IRoom $>$}!getNeighbour@{getNeighbour}}
+\index{getNeighbour@{getNeighbour}!level.levelgraph.LevelNode$<$ T extends IRoom $>$@{level.levelgraph.LevelNode$<$ T extends IRoom $>$}}
+\doxysubsubsection{\texorpdfstring{getNeighbour()}{getNeighbour()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classlevel_1_1levelgraph_1_1_level_node}{Level\+Node}} \mbox{\hyperlink{classlevel_1_1levelgraph_1_1_level_node}{level.\+levelgraph.\+Level\+Node}}$<$ T extends \mbox{\hyperlink{interfacelevel_1_1room_1_1_i_room}{IRoom}} $>$.get\+Neighbour (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{enumlevel_1_1levelgraph_1_1_door_direction}{Door\+Direction}}}]{direction }\end{DoxyParamCaption})}
+
+Get the neighbour node on a specific direction
+
+
+\begin{DoxyParams}{Parameters}
+{\em direction} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+\mbox{\Hypertarget{classlevel_1_1levelgraph_1_1_level_node_a75fbd83ddbaeae368a0720de801bd078}\label{classlevel_1_1levelgraph_1_1_level_node_a75fbd83ddbaeae368a0720de801bd078}} 
+\index{level.levelgraph.LevelNode$<$ T extends IRoom $>$@{level.levelgraph.LevelNode$<$ T extends IRoom $>$}!getNeighbours@{getNeighbours}}
+\index{getNeighbours@{getNeighbours}!level.levelgraph.LevelNode$<$ T extends IRoom $>$@{level.levelgraph.LevelNode$<$ T extends IRoom $>$}}
+\doxysubsubsection{\texorpdfstring{getNeighbours()}{getNeighbours()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classlevel_1_1levelgraph_1_1_level_node}{Level\+Node}}\mbox{[}$\,$\mbox{]} \mbox{\hyperlink{classlevel_1_1levelgraph_1_1_level_node}{level.\+levelgraph.\+Level\+Node}}$<$ T extends \mbox{\hyperlink{interfacelevel_1_1room_1_1_i_room}{IRoom}} $>$.get\+Neighbours (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\begin{DoxyReturn}{Returns}
+all neighbour nodes 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classlevel_1_1levelgraph_1_1_level_node_a7c1ad0a788cdaacc2c4610f3694f3c9b}\label{classlevel_1_1levelgraph_1_1_level_node_a7c1ad0a788cdaacc2c4610f3694f3c9b}} 
+\index{level.levelgraph.LevelNode$<$ T extends IRoom $>$@{level.levelgraph.LevelNode$<$ T extends IRoom $>$}!getRoom@{getRoom}}
+\index{getRoom@{getRoom}!level.levelgraph.LevelNode$<$ T extends IRoom $>$@{level.levelgraph.LevelNode$<$ T extends IRoom $>$}}
+\doxysubsubsection{\texorpdfstring{getRoom()}{getRoom()}}
+{\footnotesize\ttfamily T \mbox{\hyperlink{classlevel_1_1levelgraph_1_1_level_node}{level.\+levelgraph.\+Level\+Node}}$<$ T extends \mbox{\hyperlink{interfacelevel_1_1room_1_1_i_room}{IRoom}} $>$.get\+Room (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\begin{DoxyReturn}{Returns}
+The room this node \char`\"{}is\char`\"{} 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classlevel_1_1levelgraph_1_1_level_node_a7aa4e03fe6db1409f7778ee5ac9b8d44}\label{classlevel_1_1levelgraph_1_1_level_node_a7aa4e03fe6db1409f7778ee5ac9b8d44}} 
+\index{level.levelgraph.LevelNode$<$ T extends IRoom $>$@{level.levelgraph.LevelNode$<$ T extends IRoom $>$}!setRoom@{setRoom}}
+\index{setRoom@{setRoom}!level.levelgraph.LevelNode$<$ T extends IRoom $>$@{level.levelgraph.LevelNode$<$ T extends IRoom $>$}}
+\doxysubsubsection{\texorpdfstring{setRoom()}{setRoom()}}
+{\footnotesize\ttfamily void \mbox{\hyperlink{classlevel_1_1levelgraph_1_1_level_node}{level.\+levelgraph.\+Level\+Node}}$<$ T extends \mbox{\hyperlink{interfacelevel_1_1room_1_1_i_room}{IRoom}} $>$.set\+Room (\begin{DoxyParamCaption}\item[{T}]{room }\end{DoxyParamCaption})}
+
+Set the room for this node
+
+
+\begin{DoxyParams}{Parameters}
+{\em room} & \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/schli/\+Desktop/\+Projects/\+Intelli\+J/pm-\/dungeon-\/jan/game/src/level/levelgraph/Level\+Node.\+java\end{DoxyCompactItemize}

@@ -1,0 +1,136 @@
+\hypertarget{classecs_1_1components_1_1_inventory_component}{}\doxysection{ecs.\+components.\+Inventory\+Component Class Reference}
+\label{classecs_1_1components_1_1_inventory_component}\index{ecs.components.InventoryComponent@{ecs.components.InventoryComponent}}
+Inheritance diagram for ecs.\+components.\+Inventory\+Component\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=3.000000cm]{classecs_1_1components_1_1_inventory_component}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classecs_1_1components_1_1_inventory_component_a290dda3735eac378c00e3f17203f3ca4}{Inventory\+Component}} (\mbox{\hyperlink{classecs_1_1entities_1_1_entity}{Entity}} entity, int max\+Size)
+\item 
+boolean \mbox{\hyperlink{classecs_1_1components_1_1_inventory_component_a1030362d098abc1b5c919e72bcae7a0f}{add\+Item}} (\mbox{\hyperlink{classecs_1_1items_1_1_item_data}{Item\+Data}} item\+Data)
+\item 
+boolean \mbox{\hyperlink{classecs_1_1components_1_1_inventory_component_ab75d7e8d2478945a8830585c6606cb3c}{remove\+Item}} (\mbox{\hyperlink{classecs_1_1items_1_1_item_data}{Item\+Data}} item\+Data)
+\item 
+int \mbox{\hyperlink{classecs_1_1components_1_1_inventory_component_a53ada949e7089485dc1191a9bceeb165}{filled\+Slots}} ()
+\item 
+int \mbox{\hyperlink{classecs_1_1components_1_1_inventory_component_a68518bc11f5492b7de7df1872242684a}{empty\+Slots}} ()
+\item 
+int \mbox{\hyperlink{classecs_1_1components_1_1_inventory_component_aa8b2b87dc0b2966049f628f174bbf96e}{get\+Max\+Size}} ()
+\item 
+List$<$ \mbox{\hyperlink{classecs_1_1items_1_1_item_data}{Item\+Data}} $>$ \mbox{\hyperlink{classecs_1_1components_1_1_inventory_component_a24d2d3721cc12bb9cf28798e2aec346c}{get\+Items}} ()
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Member Functions inherited from \mbox{\hyperlink{classecs_1_1components_1_1_component}{ecs.\+components.\+Component}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classecs_1_1components_1_1_component_a1c4a399b019dcc3630c7614d631554ef}{Component}} (\mbox{\hyperlink{classecs_1_1entities_1_1_entity}{Entity}} entity)
+\item 
+\mbox{\hyperlink{classecs_1_1entities_1_1_entity}{Entity}} \mbox{\hyperlink{classecs_1_1components_1_1_component_a1db3804bc32e6724c76e0555d6720c2f}{get\+Entity}} ()
+\end{DoxyCompactItemize}
+\doxysubsection*{Additional Inherited Members}
+\doxysubsubsection*{Protected Attributes inherited from \mbox{\hyperlink{classecs_1_1components_1_1_component}{ecs.\+components.\+Component}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classecs_1_1components_1_1_component_aa33a53c73a06c5000d7ba4cc005acedc}\label{classecs_1_1components_1_1_component_aa33a53c73a06c5000d7ba4cc005acedc}} 
+\mbox{\hyperlink{classecs_1_1entities_1_1_entity}{Entity}} {\bfseries entity}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Allows an Entity to carry Items 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classecs_1_1components_1_1_inventory_component_a290dda3735eac378c00e3f17203f3ca4}\label{classecs_1_1components_1_1_inventory_component_a290dda3735eac378c00e3f17203f3ca4}} 
+\index{ecs.components.InventoryComponent@{ecs.components.InventoryComponent}!InventoryComponent@{InventoryComponent}}
+\index{InventoryComponent@{InventoryComponent}!ecs.components.InventoryComponent@{ecs.components.InventoryComponent}}
+\doxysubsubsection{\texorpdfstring{InventoryComponent()}{InventoryComponent()}}
+{\footnotesize\ttfamily ecs.\+components.\+Inventory\+Component.\+Inventory\+Component (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classecs_1_1entities_1_1_entity}{Entity}}}]{entity,  }\item[{int}]{max\+Size }\end{DoxyParamCaption})}
+
+creates a new Inventory\+Component
+
+
+\begin{DoxyParams}{Parameters}
+{\em entity} & the Entity where this Component should be added to \\
+\hline
+{\em max\+Size} & the maximal size of the inventory \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classecs_1_1components_1_1_inventory_component_a1030362d098abc1b5c919e72bcae7a0f}\label{classecs_1_1components_1_1_inventory_component_a1030362d098abc1b5c919e72bcae7a0f}} 
+\index{ecs.components.InventoryComponent@{ecs.components.InventoryComponent}!addItem@{addItem}}
+\index{addItem@{addItem}!ecs.components.InventoryComponent@{ecs.components.InventoryComponent}}
+\doxysubsubsection{\texorpdfstring{addItem()}{addItem()}}
+{\footnotesize\ttfamily boolean ecs.\+components.\+Inventory\+Component.\+add\+Item (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classecs_1_1items_1_1_item_data}{Item\+Data}}}]{item\+Data }\end{DoxyParamCaption})}
+
+Adding an Element to the Inventory does not allow adding more items than the size of the Inventory.
+
+
+\begin{DoxyParams}{Parameters}
+{\em item\+Data} & the item which should be added \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if the item was added, otherwise false 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classecs_1_1components_1_1_inventory_component_a68518bc11f5492b7de7df1872242684a}\label{classecs_1_1components_1_1_inventory_component_a68518bc11f5492b7de7df1872242684a}} 
+\index{ecs.components.InventoryComponent@{ecs.components.InventoryComponent}!emptySlots@{emptySlots}}
+\index{emptySlots@{emptySlots}!ecs.components.InventoryComponent@{ecs.components.InventoryComponent}}
+\doxysubsubsection{\texorpdfstring{emptySlots()}{emptySlots()}}
+{\footnotesize\ttfamily int ecs.\+components.\+Inventory\+Component.\+empty\+Slots (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\begin{DoxyReturn}{Returns}
+the number of slots still empty 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classecs_1_1components_1_1_inventory_component_a53ada949e7089485dc1191a9bceeb165}\label{classecs_1_1components_1_1_inventory_component_a53ada949e7089485dc1191a9bceeb165}} 
+\index{ecs.components.InventoryComponent@{ecs.components.InventoryComponent}!filledSlots@{filledSlots}}
+\index{filledSlots@{filledSlots}!ecs.components.InventoryComponent@{ecs.components.InventoryComponent}}
+\doxysubsubsection{\texorpdfstring{filledSlots()}{filledSlots()}}
+{\footnotesize\ttfamily int ecs.\+components.\+Inventory\+Component.\+filled\+Slots (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\begin{DoxyReturn}{Returns}
+the number of slots already filled with items 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classecs_1_1components_1_1_inventory_component_a24d2d3721cc12bb9cf28798e2aec346c}\label{classecs_1_1components_1_1_inventory_component_a24d2d3721cc12bb9cf28798e2aec346c}} 
+\index{ecs.components.InventoryComponent@{ecs.components.InventoryComponent}!getItems@{getItems}}
+\index{getItems@{getItems}!ecs.components.InventoryComponent@{ecs.components.InventoryComponent}}
+\doxysubsubsection{\texorpdfstring{getItems()}{getItems()}}
+{\footnotesize\ttfamily List$<$ \mbox{\hyperlink{classecs_1_1items_1_1_item_data}{Item\+Data}} $>$ ecs.\+components.\+Inventory\+Component.\+get\+Items (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\begin{DoxyReturn}{Returns}
+a copy of the inventory 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classecs_1_1components_1_1_inventory_component_aa8b2b87dc0b2966049f628f174bbf96e}\label{classecs_1_1components_1_1_inventory_component_aa8b2b87dc0b2966049f628f174bbf96e}} 
+\index{ecs.components.InventoryComponent@{ecs.components.InventoryComponent}!getMaxSize@{getMaxSize}}
+\index{getMaxSize@{getMaxSize}!ecs.components.InventoryComponent@{ecs.components.InventoryComponent}}
+\doxysubsubsection{\texorpdfstring{getMaxSize()}{getMaxSize()}}
+{\footnotesize\ttfamily int ecs.\+components.\+Inventory\+Component.\+get\+Max\+Size (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\begin{DoxyReturn}{Returns}
+the size of the inventory 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classecs_1_1components_1_1_inventory_component_ab75d7e8d2478945a8830585c6606cb3c}\label{classecs_1_1components_1_1_inventory_component_ab75d7e8d2478945a8830585c6606cb3c}} 
+\index{ecs.components.InventoryComponent@{ecs.components.InventoryComponent}!removeItem@{removeItem}}
+\index{removeItem@{removeItem}!ecs.components.InventoryComponent@{ecs.components.InventoryComponent}}
+\doxysubsubsection{\texorpdfstring{removeItem()}{removeItem()}}
+{\footnotesize\ttfamily boolean ecs.\+components.\+Inventory\+Component.\+remove\+Item (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classecs_1_1items_1_1_item_data}{Item\+Data}}}]{item\+Data }\end{DoxyParamCaption})}
+
+removes the given Item from the inventory
+
+
+\begin{DoxyParams}{Parameters}
+{\em item\+Data} & the item which should be removed \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if the element was removed, otherwise false 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/schli/\+Desktop/\+Projects/\+Intelli\+J/pm-\/dungeon-\/jan/game/src/ecs/components/Inventory\+Component.\+java\end{DoxyCompactItemize}

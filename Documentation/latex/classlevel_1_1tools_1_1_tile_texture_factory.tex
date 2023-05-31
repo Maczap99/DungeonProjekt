@@ -1,0 +1,97 @@
+\hypertarget{classlevel_1_1tools_1_1_tile_texture_factory}{}\doxysection{level.\+tools.\+Tile\+Texture\+Factory Class Reference}
+\label{classlevel_1_1tools_1_1_tile_texture_factory}\index{level.tools.TileTextureFactory@{level.tools.TileTextureFactory}}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+record \mbox{\hyperlink{classlevel_1_1tools_1_1_tile_texture_factory_a2960b9a4a469848476994edd6d3aa762}{Level\+Part}} (\mbox{\hyperlink{enumlevel_1_1tools_1_1_level_element}{Level\+Element}} element, \mbox{\hyperlink{enumlevel_1_1tools_1_1_design_label}{Design\+Label}} design, \mbox{\hyperlink{enumlevel_1_1tools_1_1_level_element}{Level\+Element}}\mbox{[}$\,$\mbox{]}\mbox{[}$\,$\mbox{]} layout, \mbox{\hyperlink{classlevel_1_1tools_1_1_coordinate}{Coordinate}} position)
+\end{DoxyCompactItemize}
+\doxysubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static String \mbox{\hyperlink{classlevel_1_1tools_1_1_tile_texture_factory_a36829b24a1d47327592cbabd1b8cf3ca}{find\+Texture\+Path}} (\mbox{\hyperlink{classlevel_1_1tools_1_1_tile_texture_factory_a2960b9a4a469848476994edd6d3aa762}{Level\+Part}} level\+Part)
+\item 
+static String \mbox{\hyperlink{classlevel_1_1tools_1_1_tile_texture_factory_abb9457787b5c6086f1a0b2d717dc5d24}{find\+Texture\+Path}} (\mbox{\hyperlink{classlevel_1_1elements_1_1tile_1_1_tile}{Tile}} element, \mbox{\hyperlink{classlevel_1_1elements_1_1tile_1_1_tile}{Tile}}\mbox{[}$\,$\mbox{]}\mbox{[}$\,$\mbox{]} layout)
+\item 
+static String \mbox{\hyperlink{classlevel_1_1tools_1_1_tile_texture_factory_a91ce9bcf45c598751693a8f53a13125e}{find\+Texture\+Path}} (\mbox{\hyperlink{classlevel_1_1elements_1_1tile_1_1_tile}{Tile}} element, \mbox{\hyperlink{classlevel_1_1elements_1_1tile_1_1_tile}{Tile}}\mbox{[}$\,$\mbox{]}\mbox{[}$\,$\mbox{]} layout, \mbox{\hyperlink{enumlevel_1_1tools_1_1_level_element}{Level\+Element}} element\+Type)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classlevel_1_1tools_1_1_tile_texture_factory_a36829b24a1d47327592cbabd1b8cf3ca}\label{classlevel_1_1tools_1_1_tile_texture_factory_a36829b24a1d47327592cbabd1b8cf3ca}} 
+\index{level.tools.TileTextureFactory@{level.tools.TileTextureFactory}!findTexturePath@{findTexturePath}}
+\index{findTexturePath@{findTexturePath}!level.tools.TileTextureFactory@{level.tools.TileTextureFactory}}
+\doxysubsubsection{\texorpdfstring{findTexturePath()}{findTexturePath()}\hspace{0.1cm}{\footnotesize\ttfamily [1/3]}}
+{\footnotesize\ttfamily static String level.\+tools.\+Tile\+Texture\+Factory.\+find\+Texture\+Path (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classlevel_1_1tools_1_1_tile_texture_factory_a2960b9a4a469848476994edd6d3aa762}{Level\+Part}}}]{level\+Part }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Checks which texture must be used for the passed field based on the surrounding fields.
+
+
+\begin{DoxyParams}{Parameters}
+{\em level\+Part} & a part of a level \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Path to texture 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classlevel_1_1tools_1_1_tile_texture_factory_abb9457787b5c6086f1a0b2d717dc5d24}\label{classlevel_1_1tools_1_1_tile_texture_factory_abb9457787b5c6086f1a0b2d717dc5d24}} 
+\index{level.tools.TileTextureFactory@{level.tools.TileTextureFactory}!findTexturePath@{findTexturePath}}
+\index{findTexturePath@{findTexturePath}!level.tools.TileTextureFactory@{level.tools.TileTextureFactory}}
+\doxysubsubsection{\texorpdfstring{findTexturePath()}{findTexturePath()}\hspace{0.1cm}{\footnotesize\ttfamily [2/3]}}
+{\footnotesize\ttfamily static String level.\+tools.\+Tile\+Texture\+Factory.\+find\+Texture\+Path (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classlevel_1_1elements_1_1tile_1_1_tile}{Tile}}}]{element,  }\item[{\mbox{\hyperlink{classlevel_1_1elements_1_1tile_1_1_tile}{Tile}}}]{layout\mbox{[}$\,$\mbox{]}\mbox{[}$\,$\mbox{]} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Checks which texture must be used for the passed tile based on the surrounding tiles.
+
+
+\begin{DoxyParams}{Parameters}
+{\em element} & Tile to check for \\
+\hline
+{\em layout} & The level \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Path to texture 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classlevel_1_1tools_1_1_tile_texture_factory_a91ce9bcf45c598751693a8f53a13125e}\label{classlevel_1_1tools_1_1_tile_texture_factory_a91ce9bcf45c598751693a8f53a13125e}} 
+\index{level.tools.TileTextureFactory@{level.tools.TileTextureFactory}!findTexturePath@{findTexturePath}}
+\index{findTexturePath@{findTexturePath}!level.tools.TileTextureFactory@{level.tools.TileTextureFactory}}
+\doxysubsubsection{\texorpdfstring{findTexturePath()}{findTexturePath()}\hspace{0.1cm}{\footnotesize\ttfamily [3/3]}}
+{\footnotesize\ttfamily static String level.\+tools.\+Tile\+Texture\+Factory.\+find\+Texture\+Path (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classlevel_1_1elements_1_1tile_1_1_tile}{Tile}}}]{element,  }\item[{\mbox{\hyperlink{classlevel_1_1elements_1_1tile_1_1_tile}{Tile}}}]{layout\mbox{[}$\,$\mbox{]}\mbox{[}$\,$\mbox{]},  }\item[{\mbox{\hyperlink{enumlevel_1_1tools_1_1_level_element}{Level\+Element}}}]{element\+Type }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Checks which texture must be used for the passed tile based on the surrounding tiles.
+
+
+\begin{DoxyParams}{Parameters}
+{\em element} & Tile to check for \\
+\hline
+{\em layout} & The level \\
+\hline
+{\em element\+Type} & The type ot the tile if different than the attribute \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Path to texture 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classlevel_1_1tools_1_1_tile_texture_factory_a2960b9a4a469848476994edd6d3aa762}\label{classlevel_1_1tools_1_1_tile_texture_factory_a2960b9a4a469848476994edd6d3aa762}} 
+\index{level.tools.TileTextureFactory@{level.tools.TileTextureFactory}!LevelPart@{LevelPart}}
+\index{LevelPart@{LevelPart}!level.tools.TileTextureFactory@{level.tools.TileTextureFactory}}
+\doxysubsubsection{\texorpdfstring{LevelPart()}{LevelPart()}}
+{\footnotesize\ttfamily record level.\+tools.\+Tile\+Texture\+Factory.\+Level\+Part (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{enumlevel_1_1tools_1_1_level_element}{Level\+Element}}}]{element,  }\item[{\mbox{\hyperlink{enumlevel_1_1tools_1_1_design_label}{Design\+Label}}}]{design,  }\item[{\mbox{\hyperlink{enumlevel_1_1tools_1_1_level_element}{Level\+Element}}}]{layout\mbox{[}$\,$\mbox{]}\mbox{[}$\,$\mbox{]},  }\item[{\mbox{\hyperlink{classlevel_1_1tools_1_1_coordinate}{Coordinate}}}]{position }\end{DoxyParamCaption})}
+
+Helper record class for {\ttfamily \mbox{\hyperlink{}{Tile\+Texture\+Factory}}}.
+
+
+\begin{DoxyParams}{Parameters}
+{\em element} & Element to check for \\
+\hline
+{\em design} & Design of the element \\
+\hline
+{\em layout} & The level \\
+\hline
+{\em position} & Position of the element. \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/schli/\+Desktop/\+Projects/\+Intelli\+J/pm-\/dungeon-\/jan/game/src/level/tools/Tile\+Texture\+Factory.\+java\end{DoxyCompactItemize}

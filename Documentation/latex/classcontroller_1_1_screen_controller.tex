@@ -1,0 +1,165 @@
+\hypertarget{classcontroller_1_1_screen_controller}{}\doxysection{controller.\+Screen\+Controller\texorpdfstring{$<$}{<} T extends Actor \texorpdfstring{$>$}{>} Class Template Reference}
+\label{classcontroller_1_1_screen_controller}\index{controller.ScreenController$<$ T extends Actor $>$@{controller.ScreenController$<$ T extends Actor $>$}}
+Inheritance diagram for controller.\+Screen\+Controller\texorpdfstring{$<$}{<} T extends Actor \texorpdfstring{$>$}{>}\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=3.862069cm]{classcontroller_1_1_screen_controller}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classcontroller_1_1_screen_controller_af8712e1510fda50325aa697e3b89635c}{Screen\+Controller}} (Sprite\+Batch batch)
+\item 
+void \mbox{\hyperlink{classcontroller_1_1_screen_controller_ae02c16a6e5d657f6f0f2085aca85c011}{update}} ()
+\item 
+void \mbox{\hyperlink{classcontroller_1_1_screen_controller_a71949095b60493da6c7e21bb079c7ee7}{process}} (T e)
+\item 
+boolean \mbox{\hyperlink{classcontroller_1_1_screen_controller_a6b5ade3eb61d59b014b0b41d4c1cb78c}{add}} (T screen\+Element, Controller\+Layer layer)
+\item 
+boolean \mbox{\hyperlink{classcontroller_1_1_screen_controller_af54439d11898d435871d751122ae4945}{remove}} (T e)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Member Functions inherited from \mbox{\hyperlink{classcontroller_1_1_abstract_controller}{controller.\+Abstract\+Controller$<$ T $>$}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classcontroller_1_1_abstract_controller_af30f993b00362f648485725093d8bfe4}\label{classcontroller_1_1_abstract_controller_af30f993b00362f648485725093d8bfe4}} 
+abstract void {\bfseries process} (T e)
+\item 
+\mbox{\Hypertarget{classcontroller_1_1_abstract_controller_a193972964b601937f1359656e23e6524}\label{classcontroller_1_1_abstract_controller_a193972964b601937f1359656e23e6524}} 
+void {\bfseries update} ()
+\item 
+boolean \mbox{\hyperlink{classcontroller_1_1_abstract_controller_a8753db620768325b6eabf12d54ebc3f5}{contains}} (Object t)
+\item 
+boolean \mbox{\hyperlink{classcontroller_1_1_abstract_controller_a5eb4cbec524bcdff132eb339dda6ed86}{add}} (T t)
+\item 
+boolean \mbox{\hyperlink{classcontroller_1_1_abstract_controller_a9c95b1f158170b7e9351337389113663}{add}} (T t, Controller\+Layer layer)
+\item 
+boolean \mbox{\hyperlink{classcontroller_1_1_abstract_controller_a14712b9f12c90a8d8c138a18149873df}{add\+All}} (Collection$<$ T $>$ c)
+\item 
+boolean \mbox{\hyperlink{classcontroller_1_1_abstract_controller_a1e7bf91c4d1bb669ff427fac5ab70c61}{add\+All}} (Collection$<$ T $>$ c, Controller\+Layer layer)
+\item 
+boolean \mbox{\hyperlink{classcontroller_1_1_abstract_controller_a660e590c26bd6995192960f31c94c49a}{remove}} (T t)
+\item 
+boolean \mbox{\hyperlink{classcontroller_1_1_abstract_controller_a71e3c87122af3c4e5dba6756ee943459}{is\+Empty}} ()
+\item 
+void \mbox{\hyperlink{classcontroller_1_1_abstract_controller_a48fcb6ad3c6fac96b1b06f50b851b2ae}{clear}} ()
+\item 
+void \mbox{\hyperlink{classcontroller_1_1_abstract_controller_a66fbb0506025028ccb80185c051cef4c}{clear\+Layer}} (Controller\+Layer layer)
+\item 
+Iterator$<$ T $>$ \mbox{\hyperlink{classcontroller_1_1_abstract_controller_a5a34df7a5ce9d5d6df836a3dd5f79a65}{iterator}} ()
+\item 
+\mbox{\Hypertarget{classcontroller_1_1_abstract_controller_a8832afea9e78d8391192a328f754f8ed}\label{classcontroller_1_1_abstract_controller_a8832afea9e78d8391192a328f754f8ed}} 
+int {\bfseries size} ()
+\item 
+\mbox{\Hypertarget{classcontroller_1_1_abstract_controller_a06935afd957dbbf3cc9e7155a5991c9d}\label{classcontroller_1_1_abstract_controller_a06935afd957dbbf3cc9e7155a5991c9d}} 
+void {\bfseries for\+Each} (Consumer$<$? super T $>$ action)
+\item 
+\mbox{\Hypertarget{classcontroller_1_1_abstract_controller_a8754d029be733fb213eb26e52f1ae8d5}\label{classcontroller_1_1_abstract_controller_a8754d029be733fb213eb26e52f1ae8d5}} 
+String {\bfseries to\+String} ()
+\end{DoxyCompactItemize}
+\doxysubsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classcontroller_1_1_screen_controller_ac682079ddfd1b69a46be4601ec361865}\label{classcontroller_1_1_screen_controller_ac682079ddfd1b69a46be4601ec361865}} 
+Stage {\bfseries stage}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+A class to manage {\ttfamily Actor} and {\ttfamily Removable{\ttfamily s. }}
+
+{\ttfamily {\ttfamily Provides methods for add, remove, update and reorder elements.}}
+
+{\ttfamily {\ttfamily }}
+
+{\ttfamily {\ttfamily 
+\begin{DoxyParams}{Parameters}
+{\em $<$\+T$>$} & A lib\+GDX {\ttfamily Actor} that has also the removable property. \\
+\hline
+\end{DoxyParams}
+}}
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classcontroller_1_1_screen_controller_af8712e1510fda50325aa697e3b89635c}\label{classcontroller_1_1_screen_controller_af8712e1510fda50325aa697e3b89635c}} 
+\index{controller.ScreenController$<$ T extends Actor $>$@{controller.ScreenController$<$ T extends Actor $>$}!ScreenController@{ScreenController}}
+\index{ScreenController@{ScreenController}!controller.ScreenController$<$ T extends Actor $>$@{controller.ScreenController$<$ T extends Actor $>$}}
+\doxysubsubsection{\texorpdfstring{ScreenController()}{ScreenController()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classcontroller_1_1_screen_controller}{controller.\+Screen\+Controller}}$<$ T extends Actor $>$.\mbox{\hyperlink{classcontroller_1_1_screen_controller}{Screen\+Controller}} (\begin{DoxyParamCaption}\item[{Sprite\+Batch}]{batch }\end{DoxyParamCaption})}
+
+Creates a Screencontroller with a Scaling\+Viewport which stretches the Screen\+Elements on resize
+
+
+\begin{DoxyParams}{Parameters}
+{\em batch} & the batch which should be used to draw with \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classcontroller_1_1_screen_controller_a6b5ade3eb61d59b014b0b41d4c1cb78c}\label{classcontroller_1_1_screen_controller_a6b5ade3eb61d59b014b0b41d4c1cb78c}} 
+\index{controller.ScreenController$<$ T extends Actor $>$@{controller.ScreenController$<$ T extends Actor $>$}!add@{add}}
+\index{add@{add}!controller.ScreenController$<$ T extends Actor $>$@{controller.ScreenController$<$ T extends Actor $>$}}
+\doxysubsubsection{\texorpdfstring{add()}{add()}}
+{\footnotesize\ttfamily boolean \mbox{\hyperlink{classcontroller_1_1_screen_controller}{controller.\+Screen\+Controller}}$<$ T extends Actor $>$.add (\begin{DoxyParamCaption}\item[{T}]{t,  }\item[{Controller\+Layer}]{layer }\end{DoxyParamCaption})}
+
+Adds the element with the specific layer to this controller, if it is not already added.
+
+
+\begin{DoxyParams}{Parameters}
+{\em t} & Element to add. \\
+\hline
+{\em layer} & Layer to add the element in. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true, if this was successful. 
+\end{DoxyReturn}
+
+
+Reimplemented from \mbox{\hyperlink{classcontroller_1_1_abstract_controller_a9c95b1f158170b7e9351337389113663}{controller.\+Abstract\+Controller$<$ T $>$}}.
+
+\mbox{\Hypertarget{classcontroller_1_1_screen_controller_a71949095b60493da6c7e21bb079c7ee7}\label{classcontroller_1_1_screen_controller_a71949095b60493da6c7e21bb079c7ee7}} 
+\index{controller.ScreenController$<$ T extends Actor $>$@{controller.ScreenController$<$ T extends Actor $>$}!process@{process}}
+\index{process@{process}!controller.ScreenController$<$ T extends Actor $>$@{controller.ScreenController$<$ T extends Actor $>$}}
+\doxysubsubsection{\texorpdfstring{process()}{process()}}
+{\footnotesize\ttfamily void \mbox{\hyperlink{classcontroller_1_1_screen_controller}{controller.\+Screen\+Controller}}$<$ T extends Actor $>$.process (\begin{DoxyParamCaption}\item[{T}]{e }\end{DoxyParamCaption})}
+
+
+
+Reimplemented from \mbox{\hyperlink{classcontroller_1_1_abstract_controller}{controller.\+Abstract\+Controller$<$ T $>$}}.
+
+\mbox{\Hypertarget{classcontroller_1_1_screen_controller_af54439d11898d435871d751122ae4945}\label{classcontroller_1_1_screen_controller_af54439d11898d435871d751122ae4945}} 
+\index{controller.ScreenController$<$ T extends Actor $>$@{controller.ScreenController$<$ T extends Actor $>$}!remove@{remove}}
+\index{remove@{remove}!controller.ScreenController$<$ T extends Actor $>$@{controller.ScreenController$<$ T extends Actor $>$}}
+\doxysubsubsection{\texorpdfstring{remove()}{remove()}}
+{\footnotesize\ttfamily boolean \mbox{\hyperlink{classcontroller_1_1_screen_controller}{controller.\+Screen\+Controller}}$<$ T extends Actor $>$.remove (\begin{DoxyParamCaption}\item[{T}]{t }\end{DoxyParamCaption})}
+
+Removes the element from this controller, if it is in this controller.
+
+
+\begin{DoxyParams}{Parameters}
+{\em t} & Element to remove. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true, if this was successful. 
+\end{DoxyReturn}
+
+
+Reimplemented from \mbox{\hyperlink{classcontroller_1_1_abstract_controller_a660e590c26bd6995192960f31c94c49a}{controller.\+Abstract\+Controller$<$ T $>$}}.
+
+\mbox{\Hypertarget{classcontroller_1_1_screen_controller_ae02c16a6e5d657f6f0f2085aca85c011}\label{classcontroller_1_1_screen_controller_ae02c16a6e5d657f6f0f2085aca85c011}} 
+\index{controller.ScreenController$<$ T extends Actor $>$@{controller.ScreenController$<$ T extends Actor $>$}!update@{update}}
+\index{update@{update}!controller.ScreenController$<$ T extends Actor $>$@{controller.ScreenController$<$ T extends Actor $>$}}
+\doxysubsubsection{\texorpdfstring{update()}{update()}}
+{\footnotesize\ttfamily void \mbox{\hyperlink{classcontroller_1_1_screen_controller}{controller.\+Screen\+Controller}}$<$ T extends Actor $>$.update (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Reimplemented from \mbox{\hyperlink{classcontroller_1_1_abstract_controller}{controller.\+Abstract\+Controller$<$ T $>$}}.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/schli/\+Desktop/\+Projects/\+Intelli\+J/pm-\/dungeon-\/jan/game/src/controller/Screen\+Controller.\+java\end{DoxyCompactItemize}

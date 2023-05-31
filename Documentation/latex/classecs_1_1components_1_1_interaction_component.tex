@@ -1,0 +1,118 @@
+\hypertarget{classecs_1_1components_1_1_interaction_component}{}\doxysection{ecs.\+components.\+Interaction\+Component Class Reference}
+\label{classecs_1_1components_1_1_interaction_component}\index{ecs.components.InteractionComponent@{ecs.components.InteractionComponent}}
+Inheritance diagram for ecs.\+components.\+Interaction\+Component\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=3.000000cm]{classecs_1_1components_1_1_interaction_component}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classecs_1_1components_1_1_interaction_component_a8014c6b42080389c8ad48187192d4eb8}{Interaction\+Component}} (\mbox{\hyperlink{classecs_1_1entities_1_1_entity}{Entity}} entity, float radius, boolean repeatable, \mbox{\hyperlink{interfaceecs_1_1components_1_1_i_interaction}{IInteraction}} on\+Interaction)
+\item 
+\mbox{\hyperlink{classecs_1_1components_1_1_interaction_component_a6ac0d0cea09aa2e2233f80fc49f97485}{Interaction\+Component}} (\mbox{\hyperlink{classecs_1_1entities_1_1_entity}{Entity}} entity)
+\item 
+void \mbox{\hyperlink{classecs_1_1components_1_1_interaction_component_a25f37cd17cafa22191f5affa5dc8e99f}{trigger\+Interaction}} ()
+\item 
+float \mbox{\hyperlink{classecs_1_1components_1_1_interaction_component_acc17913f473dc60ad1f363aad498545a}{get\+Radius}} ()
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Member Functions inherited from \mbox{\hyperlink{classecs_1_1components_1_1_component}{ecs.\+components.\+Component}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classecs_1_1components_1_1_component_a1c4a399b019dcc3630c7614d631554ef}{Component}} (\mbox{\hyperlink{classecs_1_1entities_1_1_entity}{Entity}} entity)
+\item 
+\mbox{\hyperlink{classecs_1_1entities_1_1_entity}{Entity}} \mbox{\hyperlink{classecs_1_1components_1_1_component_a1db3804bc32e6724c76e0555d6720c2f}{get\+Entity}} ()
+\end{DoxyCompactItemize}
+\doxysubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static void \mbox{\hyperlink{classecs_1_1components_1_1_interaction_component_a0ab48760cb177d2c2615be0b0b3fbb84}{Default\+Interaction}} (\mbox{\hyperlink{classecs_1_1entities_1_1_entity}{Entity}} e)
+\end{DoxyCompactItemize}
+\doxysubsection*{Static Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classecs_1_1components_1_1_interaction_component_a99326099910edc574f8d2ba037d1437e}\label{classecs_1_1components_1_1_interaction_component_a99326099910edc574f8d2ba037d1437e}} 
+static final int {\bfseries DEFAULT\+\_\+\+RADIUS} = 5
+\item 
+\mbox{\Hypertarget{classecs_1_1components_1_1_interaction_component_accaabd38b05b9ae248e2f690f1c860a1}\label{classecs_1_1components_1_1_interaction_component_accaabd38b05b9ae248e2f690f1c860a1}} 
+static final boolean {\bfseries DEFAULT\+\_\+\+REPEATABLE} = true
+\end{DoxyCompactItemize}
+\doxysubsection*{Additional Inherited Members}
+\doxysubsubsection*{Protected Attributes inherited from \mbox{\hyperlink{classecs_1_1components_1_1_component}{ecs.\+components.\+Component}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classecs_1_1components_1_1_component_aa33a53c73a06c5000d7ba4cc005acedc}\label{classecs_1_1components_1_1_component_aa33a53c73a06c5000d7ba4cc005acedc}} 
+\mbox{\hyperlink{classecs_1_1entities_1_1_entity}{Entity}} {\bfseries entity}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classecs_1_1components_1_1_interaction_component_a8014c6b42080389c8ad48187192d4eb8}\label{classecs_1_1components_1_1_interaction_component_a8014c6b42080389c8ad48187192d4eb8}} 
+\index{ecs.components.InteractionComponent@{ecs.components.InteractionComponent}!InteractionComponent@{InteractionComponent}}
+\index{InteractionComponent@{InteractionComponent}!ecs.components.InteractionComponent@{ecs.components.InteractionComponent}}
+\doxysubsubsection{\texorpdfstring{InteractionComponent()}{InteractionComponent()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily ecs.\+components.\+Interaction\+Component.\+Interaction\+Component (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classecs_1_1entities_1_1_entity}{Entity}}}]{entity,  }\item[{float}]{radius,  }\item[{boolean}]{repeatable,  }\item[{\mbox{\hyperlink{interfaceecs_1_1components_1_1_i_interaction}{IInteraction}}}]{on\+Interaction }\end{DoxyParamCaption})}
+
+complex ctor which allows the attribuhtes to be configured
+
+
+\begin{DoxyParams}{Parameters}
+{\em entity} & the entity to link to \\
+\hline
+{\em radius} & the radius in which an interaction can happen \\
+\hline
+{\em repeatable} & true if the interaction is repeatable, otherwise false \\
+\hline
+{\em on\+Interaction} & the strategy which should happen on an interaction \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classecs_1_1components_1_1_interaction_component_a6ac0d0cea09aa2e2233f80fc49f97485}\label{classecs_1_1components_1_1_interaction_component_a6ac0d0cea09aa2e2233f80fc49f97485}} 
+\index{ecs.components.InteractionComponent@{ecs.components.InteractionComponent}!InteractionComponent@{InteractionComponent}}
+\index{InteractionComponent@{InteractionComponent}!ecs.components.InteractionComponent@{ecs.components.InteractionComponent}}
+\doxysubsubsection{\texorpdfstring{InteractionComponent()}{InteractionComponent()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily ecs.\+components.\+Interaction\+Component.\+Interaction\+Component (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classecs_1_1entities_1_1_entity}{Entity}}}]{entity }\end{DoxyParamCaption})}
+
+simple ctor which sets all attributes to the default values
+
+
+\begin{DoxyParams}{Parameters}
+{\em entity} & the entity to link to \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classecs_1_1components_1_1_interaction_component_a0ab48760cb177d2c2615be0b0b3fbb84}\label{classecs_1_1components_1_1_interaction_component_a0ab48760cb177d2c2615be0b0b3fbb84}} 
+\index{ecs.components.InteractionComponent@{ecs.components.InteractionComponent}!DefaultInteraction@{DefaultInteraction}}
+\index{DefaultInteraction@{DefaultInteraction}!ecs.components.InteractionComponent@{ecs.components.InteractionComponent}}
+\doxysubsubsection{\texorpdfstring{DefaultInteraction()}{DefaultInteraction()}}
+{\footnotesize\ttfamily static void ecs.\+components.\+Interaction\+Component.\+Default\+Interaction (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classecs_1_1entities_1_1_entity}{Entity}}}]{e }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+simple default interaction which helps to get started
+
+
+\begin{DoxyParams}{Parameters}
+{\em e} & the Entity which interacts with the current \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classecs_1_1components_1_1_interaction_component_acc17913f473dc60ad1f363aad498545a}\label{classecs_1_1components_1_1_interaction_component_acc17913f473dc60ad1f363aad498545a}} 
+\index{ecs.components.InteractionComponent@{ecs.components.InteractionComponent}!getRadius@{getRadius}}
+\index{getRadius@{getRadius}!ecs.components.InteractionComponent@{ecs.components.InteractionComponent}}
+\doxysubsubsection{\texorpdfstring{getRadius()}{getRadius()}}
+{\footnotesize\ttfamily float ecs.\+components.\+Interaction\+Component.\+get\+Radius (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\begin{DoxyReturn}{Returns}
+the radius in which an interaction can happen 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classecs_1_1components_1_1_interaction_component_a25f37cd17cafa22191f5affa5dc8e99f}\label{classecs_1_1components_1_1_interaction_component_a25f37cd17cafa22191f5affa5dc8e99f}} 
+\index{ecs.components.InteractionComponent@{ecs.components.InteractionComponent}!triggerInteraction@{triggerInteraction}}
+\index{triggerInteraction@{triggerInteraction}!ecs.components.InteractionComponent@{ecs.components.InteractionComponent}}
+\doxysubsubsection{\texorpdfstring{triggerInteraction()}{triggerInteraction()}}
+{\footnotesize\ttfamily void ecs.\+components.\+Interaction\+Component.\+trigger\+Interaction (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+triggers the interaction between hero and the Entity of the component 
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/schli/\+Desktop/\+Projects/\+Intelli\+J/pm-\/dungeon-\/jan/game/src/ecs/components/Interaction\+Component.\+java\end{DoxyCompactItemize}

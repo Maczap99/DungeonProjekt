@@ -11,7 +11,6 @@ import ecs.components.xp.XPComponent;
 import graphic.Animation;
 import tools.TrapTimer;
 
-import java.io.Serializable;
 import java.util.Optional;
 
 /**
@@ -30,7 +29,9 @@ public class Hero extends Entity implements ILevelUp {
     private float currentMana = 100f;
     private int health = 100;
     private int currentHealth = 100;
-    private TrapTimer trapTimer;
+    private long level = 1;
+    private long currentLevel = 1;
+    private transient TrapTimer trapTimer;
     private final String pathToIdleLeft = "knight/idleLeft";
     private final String pathToIdleRight = "knight/idleRight";
     private final String pathToRunLeft = "knight/runLeft";
@@ -81,7 +82,7 @@ public class Hero extends Entity implements ILevelUp {
 
     private void setupXPComponent(){
         XPComponent xpcomponent = new XPComponent(this);
-        xpcomponent.setCurrentLevel(1);
+        xpcomponent.setCurrentLevel(currentLevel);
     }
 
     public void setupVelocityComponent() {
@@ -107,24 +108,24 @@ public class Hero extends Entity implements ILevelUp {
     private void setupFireballSkill() {
         firstSkill =
             new Skill(
-                new FireballSkill(SkillTools::getCursorPositionAsPoint), fireballCoolDown, 10f, 0);
+                new FireballSkill(SkillTools::getCursorPositionAsPoint), fireballCoolDown, 0);
     }
     private void setupHealSkill() {
         healSkill =
             new Skill(
-                new HealSkill(), healCoolDown, 100f, 4);
+                new HealSkill(), healCoolDown,  4);
     }
 
     private void setupCureSkill() {
         cureSkill =
             new Skill(
-                new CureSkill(), cureCoolDown, 10f, 3);
+                new CureSkill(), cureCoolDown,  3);
     }
 
     private void setupSpeedSkill() {
         speedSkill =
             new Skill(
-                new SpeedSkill(), speedCoolDown, 10f, 2);
+                new SpeedSkill(), speedCoolDown, 2);
     }
     private void setupHitboxComponent() {
         new HitboxComponent(
@@ -212,5 +213,13 @@ public class Hero extends Entity implements ILevelUp {
     @Override
     public void onLevelUp(long nexLevel) {
 
+    }
+
+    public long getCurrentLevel() {
+        return currentLevel;
+    }
+
+    public void setCurrentLevel(long currentLevel) {
+        this.currentLevel = currentLevel;
     }
 }
