@@ -78,6 +78,11 @@ public class Hero extends Entity implements ILevelUp {
         HealthComponent hc = new HealthComponent(this);
         hc.setMaximalHealthpoints(health);
         hc.setCurrentHealthpoints(currentHealth);
+
+        /*
+        * Inventory
+        * */
+        var inventory = new InventoryComponent(this, 3);
     }
 
     private void setupXPComponent(){

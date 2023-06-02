@@ -20,6 +20,7 @@ import com.badlogic.gdx.utils.Align;
 import controller.ScreenController;
 import ecs.entities.Entity;
 import ecs.entities.Hero;
+import graphic.effects.RainbowLayerDrawable;
 import level.LevelAPI;
 import level.tools.LevelSize;
 import starter.Game;
@@ -78,8 +79,7 @@ public class MainMenu<T extends Actor> extends ScreenController<T> {
 
         // try picture else set background to black
         try{
-            table.setBackground(new TextureRegionDrawable(new TextureRegion(new Texture("game/assets/menu/start1.jpg"))));
-            //table.setBackground(new TextureRegionDrawable(new TextureRegion(new Texture("game/assets/menu/start2.jpg"))));
+            table.setBackground(new RainbowLayerDrawable(400, 400));
         }catch (Exception e){
             var backgroundColor = new Color(0f, 0f, 0f, 1f);
             var backgroundDrawable = new ColorBackground(backgroundColor);
@@ -268,7 +268,7 @@ public class MainMenu<T extends Actor> extends ScreenController<T> {
         gameOverLabel.setVisible(Game.gameOver);
 
         var backgroundColor = new Color(0f, 0f, 0f, .8f);
-        var backgroundDrawable = new ColorBackground(backgroundColor);
+        var backgroundDrawable = new RainbowLayerDrawable(400, 400);
         table.setBackground(backgroundDrawable);
 
         initialState = false;
