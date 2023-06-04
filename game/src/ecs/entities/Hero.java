@@ -12,6 +12,7 @@ import graphic.Animation;
 import tools.TrapTimer;
 
 import java.util.Optional;
+import java.util.logging.Logger;
 
 /**
  * The Hero is the player character. It's entity in the ECS. This class helps to setup the hero with
@@ -40,6 +41,7 @@ public class Hero extends Entity implements ILevelUp {
     private transient Skill healSkill;
     private transient Skill cureSkill;
     private transient Skill speedSkill;
+    private transient Logger heroCollisionLogger;
 
 
     /**
@@ -78,6 +80,11 @@ public class Hero extends Entity implements ILevelUp {
         HealthComponent hc = new HealthComponent(this);
         hc.setMaximalHealthpoints(health);
         hc.setCurrentHealthpoints(currentHealth);
+
+        /*
+        * Inventory
+        * */
+        var inventory = new InventoryComponent(this, 3);
     }
 
     private void setupXPComponent(){
@@ -130,8 +137,8 @@ public class Hero extends Entity implements ILevelUp {
     private void setupHitboxComponent() {
         new HitboxComponent(
             this,
-            (you, other, direction) -> System.out.println("heroCollisionEnter"),
-            (you, other, direction) -> System.out.println("heroCollisionLeave"));
+            (you, other, direction) -> heroCollisionLogger = Logger.getLogger("heroCollisionEnter"),
+            (you, other, direction) -> heroCollisionLogger = Logger.getLogger("heroCollisionLeave"));
     }
 
     public void resetSpeed() {

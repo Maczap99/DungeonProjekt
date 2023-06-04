@@ -6,6 +6,7 @@ import ecs.components.MissingComponentException;
 import ecs.components.PlayableComponent;
 import ecs.components.VelocityComponent;
 import ecs.entities.Entity;
+import ecs.entities.Hero;
 import ecs.tools.interaction.InteractionTool;
 import starter.Game;
 
@@ -44,6 +45,10 @@ public class PlayerSystem extends ECS_System {
             ksd.pc.getSkillSlot3().ifPresent(skill -> skill.execute(ksd.e));
         else if (Gdx.input.isKeyPressed(KeyboardConfig.FOURTH_SKILL.get()))
             ksd.pc.getSkillSlot4().ifPresent(skill -> skill.execute(ksd.e));
+        else if (Gdx.input.isKeyPressed(KeyboardConfig.Suicide.get())) {
+            Hero hero = (Hero) Game.getHero().get();
+            hero.setCurrentHealth(0);
+        }
     }
 
     private KSData buildDataObject(PlayableComponent pc) {

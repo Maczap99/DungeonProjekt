@@ -10,6 +10,7 @@ import ecs.entities.Hero;
 import starter.Game;
 
 import java.util.Optional;
+import java.util.logging.Logger;
 
 /**
  * This class is for the speedUp skill
@@ -22,6 +23,8 @@ public class SpeedSkill extends BuffSkill {
     private float manaCost = 10f;
 
     private transient Sound sound;
+    private transient Logger speedSkillLogger;
+    private transient Logger soundLogger;
 
     public SpeedSkill() {
         super();
@@ -55,7 +58,7 @@ public class SpeedSkill extends BuffSkill {
                         time = 15;
                     }
 
-                    System.out.println(time + " Sekunden SpeedUP");
+                    speedSkillLogger = Logger.getLogger(time + " Sekunden SpeedUP");
                     hero.startTrapTimer(time * 1000);
 
                     try {
@@ -64,7 +67,7 @@ public class SpeedSkill extends BuffSkill {
                         sound.play(0.3f);
 
                     } catch (Exception e) {
-                        System.out.println("Sounddatei 'speedUp.mp3' konnte nicht gefunden werden");
+                        soundLogger = Logger.getLogger("Sounddatei 'speedUp.mp3' konnte nicht gefunden werden");
                     }
 
 
@@ -72,24 +75,24 @@ public class SpeedSkill extends BuffSkill {
                         time = 15;
                     }
 
-                    System.out.println(time + " Sekunden SpeedUP");
+                    speedSkillLogger = Logger.getLogger(time + " Sekunden SpeedUP");
                     hero.startTrapTimer(time * 1000);
 
                     // reduce mana
                     hero.setCurrentMana(hero.getCurrentMana() - manaCost);
-                    System.out.println("Mana: "+(int) hero.getCurrentMana() + " / " + (int) hero.getMana());
+                    speedSkillLogger = Logger.getLogger("Mana: "+(int) hero.getCurrentMana() + " / " + (int) hero.getMana());
 
 
                 } else {
-                    System.out.println("SpeedUp nicht nutzbar, da eine Falle aktiviert ist");
+                    speedSkillLogger = Logger.getLogger("SpeedUp nicht nutzbar, da eine Falle aktiviert ist");
                     hero.setCurrentMana(hero.getCurrentMana() + 10);
                 }
             } else {
                 throw new MissingComponentException("Player has no HealthComponent!");
             }
         }else{
-            System.out.println("Nicht genug Mana!");
-            System.out.println("Mana: "+(int) hero.getCurrentMana() + " / " + (int) hero.getMana());
+            speedSkillLogger = Logger.getLogger("Nicht genug Mana!");
+            speedSkillLogger = Logger.getLogger("Mana: "+(int) hero.getCurrentMana() + " / " + (int) hero.getMana());
         }
     }
 }
