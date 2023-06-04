@@ -87,8 +87,9 @@ public class Game extends ScreenAdapter implements IOnLevelLoader {
     private Logger gameLogger;
     private static int levelStage = 1;
     public static boolean gameLoaded, gameOver;
-
     private transient Sound sound;
+    private transient Logger skillUpLogger;
+    private transient Logger soundLogger;
 
     /** Used for creating Monsters */
     private MonsterBuilder monsterBuilder;
@@ -230,7 +231,7 @@ public class Game extends ScreenAdapter implements IOnLevelLoader {
     public void loadNextLevelIfEntityIsOnEndTile(Entity hero) {
         if (isOnEndTile(hero)){
             levelStage++;
-            System.out.println("Ebene: "+levelStage);
+            skillUpLogger = Logger.getLogger("Ebene: "+levelStage);
 
             try{
                 // start menu soundtrack
@@ -238,7 +239,7 @@ public class Game extends ScreenAdapter implements IOnLevelLoader {
                 sound.play(0.5f);
 
             }catch (Exception e){
-                System.out.println("Sounddatei konnte nicht gefunden werden");
+                soundLogger = Logger.getLogger("Sounddatei konnte nicht gefunden werden");
             }
 
             if(levelStage % 2 == 0){
@@ -248,16 +249,16 @@ public class Game extends ScreenAdapter implements IOnLevelLoader {
                     XPComponent x = (XPComponent) xp.get();
                     x.setCurrentLevel(x.getCurrentLevel() + 1);
 
-                    System.out.println("Level up! Level: " + x.getCurrentLevel());
+                    skillUpLogger = Logger.getLogger("Level up! Level: " + x.getCurrentLevel());
                     Hero h = (Hero) Game.getHero().get();
                     h.setCurrentLevel(x.getCurrentLevel());
 
                     if(x.getCurrentLevel() == 2){
-                        System.out.println("Skill Speed Up Freigeschaltet! (Aktivierung: F)");
+                        skillUpLogger = Logger.getLogger("Skill Speed Up Freigeschaltet! (Aktivierung: F)");
                     } else if (x.getCurrentLevel() == 3) {
-                        System.out.println("Skill Cure Freigeschaltet! (Aktivierung: G)");
+                        skillUpLogger = Logger.getLogger("Skill Cure Freigeschaltet! (Aktivierung: G)");
                     } else if (x.getCurrentLevel() == 4) {
-                        System.out.println("Skill Healing Freigeschaltet! (Aktivierung: H)");
+                        skillUpLogger = Logger.getLogger("Skill Healing Freigeschaltet! (Aktivierung: H)");
                     }
 
                 }

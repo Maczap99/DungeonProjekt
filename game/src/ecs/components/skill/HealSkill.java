@@ -10,6 +10,7 @@ import ecs.entities.Hero;
 import starter.Game;
 
 import java.util.Optional;
+import java.util.logging.Logger;
 
 /***
  * This class is for healing skill
@@ -20,6 +21,8 @@ import java.util.Optional;
 public class HealSkill extends BuffSkill {
     private float manaCost = 100f;
     private transient Sound sound;
+    private transient Logger healSkillLogger;
+    private transient Logger soundLogger;
 
 
     public HealSkill() {
@@ -41,12 +44,12 @@ public class HealSkill extends BuffSkill {
 
                     // set the curren health on maximal health
                     hc.setCurrentHealthpoints(hc.getMaximalHealthpoints());
-                    System.out.println("Leben: " + hc.getCurrentHealthpoints());
+                    healSkillLogger = Logger.getLogger("Leben: " + hc.getCurrentHealthpoints());
 
 
                     // reduce mana
                     hero.setCurrentMana(hero.getCurrentMana() - manaCost);
-                    System.out.println("Mana: "+(int) hero.getCurrentMana() + " / " + (int) hero.getMana());
+                    healSkillLogger = Logger.getLogger("Mana: "+(int) hero.getCurrentMana() + " / " + (int) hero.getMana());
 
                     hero.setCurrentHealth(hero.getHealth());
 
@@ -56,10 +59,10 @@ public class HealSkill extends BuffSkill {
                         sound.play(0.5f);
 
                     } catch (Exception e) {
-                        System.out.println("Sounddatei 'heal1.mp3' konnte nicht gefunden werden");
+                        soundLogger = Logger.getLogger("Sounddatei 'heal1.mp3' konnte nicht gefunden werden");
                     }
                 } else {
-                    System.out.println("Leben sind voll!");
+                    healSkillLogger = Logger.getLogger("Leben sind voll!");
                     hero.setCurrentMana(100);
                 }
 
@@ -67,8 +70,8 @@ public class HealSkill extends BuffSkill {
                 throw new MissingComponentException("Player has no HealthComponent!");
             }
         }else{
-            System.out.println("Nicht genug Mana!");
-            System.out.println("Mana: "+(int) hero.getCurrentMana() + " / " + (int) hero.getMana());
+            healSkillLogger = Logger.getLogger("Nicht genug Mana!");
+            healSkillLogger = Logger.getLogger("Mana: "+(int) hero.getCurrentMana() + " / " + (int) hero.getMana());
         }
     }
 }
