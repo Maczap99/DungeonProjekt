@@ -45,6 +45,10 @@ public class PlayerSystem extends ECS_System {
             ksd.pc.getSkillSlot3().ifPresent(skill -> skill.execute(ksd.e));
         else if (Gdx.input.isKeyPressed(KeyboardConfig.FOURTH_SKILL.get()))
             ksd.pc.getSkillSlot4().ifPresent(skill -> skill.execute(ksd.e));
+        else if (Gdx.input.isButtonPressed(KeyboardConfig.meleeCombat.get()))
+            ksd.pc.getMeleeCombat().ifPresent(skill -> skill.execute(ksd.e));
+        else if (Gdx.input.isButtonPressed(KeyboardConfig.rangedCombat.get()))
+            ksd.pc.getRangedCombat().ifPresent(skill -> skill.execute(ksd.e));
         else if (Gdx.input.isKeyPressed(KeyboardConfig.Suicide.get())) {
             Hero hero = (Hero) Game.getHero().get();
             hero.setCurrentHealth(0);

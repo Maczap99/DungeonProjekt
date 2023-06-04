@@ -22,6 +22,8 @@ public class PlayableComponent extends Component {
     private Skill skillSlot2;
     private Skill skillSlot3;
     private Skill skillSlot4;
+    private Skill meleeCombat;
+    private Skill rangedCombat;
 
     /**
      * @param entity     associated entity
@@ -96,6 +98,20 @@ public class PlayableComponent extends Component {
     }
 
     /**
+     * @param meleeCombat skill that will be on the fourth skillslot
+     */
+    public void setMeleeCombat(Skill meleeCombat) {
+        this.meleeCombat = meleeCombat;
+    }
+
+    /**
+     * @param rangedCombat skill that will be on the fourth skillslot
+     */
+    public void setRangedCombat(Skill rangedCombat) {
+        this.rangedCombat = rangedCombat;
+    }
+
+    /**
      * @return skill on first skill slot
      */
     public Optional<Skill> getSkillSlot1() {
@@ -121,5 +137,19 @@ public class PlayableComponent extends Component {
      */
     public Optional<Skill> getSkillSlot4() {
         return Optional.ofNullable(skillSlot4);
+    }
+
+    /**
+     * @return the skill for melle combat
+     */
+    public Optional<Skill> getMeleeCombat() {
+        return Optional.ofNullable(meleeCombat);
+    }
+
+    /**
+     * @return the skill ranged Combat
+     */
+    public Optional<Skill> getRangedCombat() {
+        return Optional.ofNullable(rangedCombat);
     }
 }
