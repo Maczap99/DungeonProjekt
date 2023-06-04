@@ -9,8 +9,8 @@ public class BowWeapon extends DamageProjectileSkill {
     public BowWeapon(ITargetSelection targetSelection) {
         super(
             "bow",
-            "skills/arrow/",
-            0.5f,
+            "skills/bow/bow_",
+            0.4f,
             new Damage(1 + (Game.getLevelStage() / 5), DamageType.PHYSICAL, null),
             new Point(10, 10),
             targetSelection,
