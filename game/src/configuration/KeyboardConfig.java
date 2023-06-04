@@ -26,4 +26,7 @@ public class KeyboardConfig {
         new ConfigKey<>(new String[] {"skill", "third"}, new ConfigIntValue(Input.Keys.G));
     public static final ConfigKey<Integer> FOURTH_SKILL =
         new ConfigKey<>(new String[] {"skill", "fourth"}, new ConfigIntValue(Input.Keys.F));
+
+    public static final ConfigKey<Integer> Suicide =
+        new ConfigKey<>(new String[] {"movement", "dead"}, new ConfigIntValue(Input.Keys.P));
 }
