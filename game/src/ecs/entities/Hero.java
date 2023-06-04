@@ -32,6 +32,7 @@ public class Hero extends Entity implements ILevelUp {
     private int currentHealth = 100;
     private long level = 1;
     private long currentLevel = 1;
+    private int ammo = 10;
     private transient TrapTimer trapTimer;
     private final String pathToIdleLeft = "knight/idleLeft";
     private final String pathToIdleRight = "knight/idleRight";
@@ -41,6 +42,11 @@ public class Hero extends Entity implements ILevelUp {
     private transient Skill healSkill;
     private transient Skill cureSkill;
     private transient Skill speedSkill;
+    private transient Skill meleeCombat;
+    private transient Skill rangedCombatBow;
+    private transient Skill rangedCombatBoomerang;
+
+    private transient boolean rangeWeapon = false;
     private transient Logger heroCollisionLogger;
 
 
@@ -75,6 +81,15 @@ public class Hero extends Entity implements ILevelUp {
         setupSpeedSkill();
         pc.setSkillSlot4(speedSkill);
 
+        setupMeleeCombat();
+        pc.setMeleeCombat(meleeCombat);
+
+        setupRandedCombatBow();
+        pc.setRangedCombatBow(rangedCombatBow);
+
+        setupRandedCombatBoomerang();
+        pc.setRangedCombatBoomerang(rangedCombatBoomerang);
+
         setupSkillComponent();
 
         HealthComponent hc = new HealthComponent(this);
@@ -82,12 +97,12 @@ public class Hero extends Entity implements ILevelUp {
         hc.setCurrentHealthpoints(currentHealth);
 
         /*
-        * Inventory
-        * */
+         * Inventory
+         * */
         var inventory = new InventoryComponent(this, 3);
     }
 
-    private void setupXPComponent(){
+    private void setupXPComponent() {
         XPComponent xpcomponent = new XPComponent(this);
         xpcomponent.setCurrentLevel(currentLevel);
     }
@@ -104,12 +119,15 @@ public class Hero extends Entity implements ILevelUp {
         new AnimationComponent(this, idleLeft, idleRight);
     }
 
-    private void setupSkillComponent(){
+    private void setupSkillComponent() {
         SkillComponent sc = new SkillComponent(this);
         sc.addSkill(firstSkill);
         sc.addSkill(healSkill);
         sc.addSkill(cureSkill);
         sc.addSkill(speedSkill);
+        // sc.addSkill(meleeCombat);
+        sc.addSkill(rangedCombatBow);
+        sc.addSkill(rangedCombatBoomerang);
     }
 
     private void setupFireballSkill() {
@@ -117,16 +135,17 @@ public class Hero extends Entity implements ILevelUp {
             new Skill(
                 new FireballSkill(SkillTools::getCursorPositionAsPoint), fireballCoolDown, 0);
     }
+
     private void setupHealSkill() {
         healSkill =
             new Skill(
-                new HealSkill(), healCoolDown,  4);
+                new HealSkill(), healCoolDown, 4);
     }
 
     private void setupCureSkill() {
         cureSkill =
             new Skill(
-                new CureSkill(), cureCoolDown,  3);
+                new CureSkill(), cureCoolDown, 3);
     }
 
     private void setupSpeedSkill() {
@@ -134,6 +153,24 @@ public class Hero extends Entity implements ILevelUp {
             new Skill(
                 new SpeedSkill(), speedCoolDown, 2);
     }
+
+    private void setupMeleeCombat() {
+        // Sie bringen die Hobbits nach Isengard
+    }
+
+    private void setupRandedCombatBow() {
+        rangedCombatBow =
+            new Skill(
+                new BowWeapon(SkillTools::getCursorPositionAsPoint), 1, 0);
+    }
+
+    private void setupRandedCombatBoomerang() {
+        rangedCombatBoomerang =
+            new Skill(
+                new BoomerangWeapon(SkillTools::getCursorPositionAsPoint), 1, 0);
+    }
+
+
     private void setupHitboxComponent() {
         new HitboxComponent(
             this,
@@ -141,6 +178,9 @@ public class Hero extends Entity implements ILevelUp {
             (you, other, direction) -> heroCollisionLogger = Logger.getLogger("heroCollisionLeave"));
     }
 
+    /**
+     * this Methode set the Speed back to Normal
+     */
     public void resetSpeed() {
         Optional<Component> ve = this.getComponent(VelocityComponent.class);
         if (ve.isPresent()) {
@@ -150,6 +190,9 @@ public class Hero extends Entity implements ILevelUp {
         }
     }
 
+    /**
+     * @param time This is a timer for the Floor Trap who count the time the traps is active
+     */
     public void startTrapTimer(int time) {
         trapTimer = new TrapTimer(time);
 
@@ -215,6 +258,14 @@ public class Hero extends Entity implements ILevelUp {
 
     public void setCurrentMana(float currentMana) {
         this.currentMana = currentMana;
+    }
+
+    public int getAmmo() {
+        return ammo;
+    }
+
+    public void setAmmo(int ammo) {
+        this.ammo = ammo;
     }
 
     @Override
