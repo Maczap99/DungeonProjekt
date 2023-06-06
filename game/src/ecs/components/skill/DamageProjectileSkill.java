@@ -182,49 +182,14 @@ public abstract class DamageProjectileSkill implements ISkillFunction, Serializa
             projectile, new Point(0.25f, 0.25f), projectileHitboxSize, collide, null);
     }
 
-    private void test(Entity entity) {
-        Entity projectile = new Entity();
-        PositionComponent epc =
-            (PositionComponent)
-                entity.getComponent(PositionComponent.class)
-                    .orElseThrow(
-                        () -> new MissingComponentException("PositionComponent"));
-        new PositionComponent(projectile, epc.getPosition());
-
-        Animation animation = AnimationBuilder.buildAnimation(pathToTexturesOfProjectile);
-        new AnimationComponent(projectile, animation);
-
-        Point aimedOn = selectionFunction.selectTargetPoint();
-        Point targetPoint =
-            SkillTools.calculateLastPositionInRange(
-                epc.getPosition(), aimedOn, projectileRange);
-        Point velocity =
-            SkillTools.calculateVelocity(epc.getPosition(), targetPoint, projectileSpeed);
-        VelocityComponent vc =
-            new VelocityComponent(projectile, velocity.x, velocity.y, animation, animation);
-        new ProjectileComponent(projectile, targetPoint, epc.getPosition());
-        ICollide collide =
-            (a, b, from) -> {
-                if (b != entity) {
-                    b.getComponent(HealthComponent.class)
-                        .ifPresent(
-                            hc -> {
-                                ((HealthComponent) hc).receiveHit(projectileDamage);
-                                Game.removeEntity(projectile);
-                            });
-                }
-            };
-
-        new HitboxComponent(
-            projectile, new Point(0.25f, 0.25f), projectileHitboxSize, collide, null);
-    }
-
     /**
      * This Method handle the bow entity and the Deviation behaviors for the arrows
      * @param entity
      */
     private void bow(Entity entity) {
         Hero hero = (Hero) Game.getHero().get();
+        float xC = 0;
+        float yC = 0;
 
         if (hero.getAmmo() > 0) {
 
@@ -245,9 +210,20 @@ public abstract class DamageProjectileSkill implements ISkillFunction, Serializa
             Animation animation = AnimationBuilder.buildAnimation(pathToTexturesOfProjectile + animationFix(targetPoint, entity));
             new AnimationComponent(projectile, animation);
 
-            targetPoint.x = targetPoint.x - (1f - getDeviationNumber());
-            targetPoint.y = targetPoint.y - (1f - getDeviationNumber());
-            System.out.println(1f - getDeviationNumber());
+            xC = 2f - getDeviationNumber();
+            yC = 2f - getDeviationNumber();
+
+            if(xC > 0){
+                targetPoint.x = targetPoint.x - (2f- xC);
+                System.out.println("-"+(2f- xC));
+            }else{
+                xC = xC * -1;
+                targetPoint.x = targetPoint.x + ( 2f - xC);
+                System.out.println("+"+  ( 2f - xC));
+            }
+
+            targetPoint.y = targetPoint.y - (2f - getDeviationNumber());
+
 
             Point velocity =
                 SkillTools.calculateVelocity(epc.getPosition(), targetPoint, projectileSpeed);
