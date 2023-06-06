@@ -77,6 +77,10 @@ public abstract class DamageProjectileSkill implements ISkillFunction, Serializa
         }
     }
 
+    /**
+     * @param entity
+     * This Method handles the fireball entity
+     */
     private void fireball(Entity entity) {
         Hero hero = (Hero) Game.getHero().get();
         if (manaCost <= hero.getCurrentMana()) {
@@ -95,7 +99,7 @@ public abstract class DamageProjectileSkill implements ISkillFunction, Serializa
                 SkillTools.calculateLastPositionInRange(
                     epc.getPosition(), aimedOn, projectileRange);
 
-            Animation animation = AnimationBuilder.buildAnimation(pathToTexturesOfProjectile + animationHelper(targetPoint, entity));
+            Animation animation = AnimationBuilder.buildAnimation(pathToTexturesOfProjectile + animationFix(targetPoint, entity));
             new AnimationComponent(projectile, animation);
 
             Point velocity =
@@ -137,6 +141,10 @@ public abstract class DamageProjectileSkill implements ISkillFunction, Serializa
         }
     }
 
+    /**
+     * This Method handle the Boomerang entity and his behaviour
+     * @param entity
+     */
     private void boomerang(Entity entity) {
         Entity projectile = new Entity();
         PositionComponent epc =
@@ -211,6 +219,10 @@ public abstract class DamageProjectileSkill implements ISkillFunction, Serializa
             projectile, new Point(0.25f, 0.25f), projectileHitboxSize, collide, null);
     }
 
+    /**
+     * This Method handle the bow entity and the Deviation behaviors for the arrows
+     * @param entity
+     */
     private void bow(Entity entity) {
         Hero hero = (Hero) Game.getHero().get();
 
@@ -222,6 +234,7 @@ public abstract class DamageProjectileSkill implements ISkillFunction, Serializa
                     entity.getComponent(PositionComponent.class)
                         .orElseThrow(
                             () -> new MissingComponentException("PositionComponent"));
+
             new PositionComponent(projectile, epc.getPosition());
 
             Point aimedOn = selectionFunction.selectTargetPoint();
@@ -229,8 +242,12 @@ public abstract class DamageProjectileSkill implements ISkillFunction, Serializa
                 SkillTools.calculateLastPositionInRange(
                     epc.getPosition(), aimedOn, projectileRange);
 
-            Animation animation = AnimationBuilder.buildAnimation(pathToTexturesOfProjectile + animationHelper(targetPoint, entity));
+            Animation animation = AnimationBuilder.buildAnimation(pathToTexturesOfProjectile + animationFix(targetPoint, entity));
             new AnimationComponent(projectile, animation);
+
+            targetPoint.x = targetPoint.x - (1f - getDeviationNumber());
+            targetPoint.y = targetPoint.y - (1f - getDeviationNumber());
+            System.out.println(1f - getDeviationNumber());
 
             Point velocity =
                 SkillTools.calculateVelocity(epc.getPosition(), targetPoint, projectileSpeed);
@@ -272,43 +289,50 @@ public abstract class DamageProjectileSkill implements ISkillFunction, Serializa
      * @param targetDirection
      * @param entity
      * @return
+     * This Method set the direction for the skill assets folder
      */
-    protected String animationHelper(Point targetDirection, Entity entity) {
+    protected String animationFix(Point targetDirection, Entity entity) {
         PositionComponent epc =
             (PositionComponent)
                 entity.getComponent(PositionComponent.class)
                     .orElseThrow(
                         () -> new MissingComponentException("PositionComponent"));
 
-        float xwert = epc.getPosition().x - targetDirection.x;
-        float ywert = epc.getPosition().y - targetDirection.y;
-        if (xwert > 0 && ywert < 0) { // rechts oberhalb
-            if (Math.abs(xwert) > Math.abs(ywert)) { // weiter rechts als oberhalb
+        float x = epc.getPosition().x - targetDirection.x;
+        float y = epc.getPosition().y - targetDirection.y;
+        if (x > 0 && y < 0) { // rechts oberhalb
+            if (Math.abs(y) > Math.abs(y)) { // weiter rechts als oberhalb
                 return "Left/";
             } else {
                 return "Up/";
             }
 
-        } else if (xwert > 0 && ywert > 0) { // rechts unterhalb
-            if (Math.abs(xwert) > Math.abs(ywert)) {
+        } else if (x > 0 && y > 0) { // rechts unterhalb
+            if (Math.abs(x) > Math.abs(y)) {
                 return "Left/"; // weiter rechts als unterhalb
             } else {
                 return "Down/";
             }
-        } else if (xwert < 0 && ywert < 0) { // links oberhalb
-            if (Math.abs(xwert) > Math.abs(ywert)) {
+        } else if (x < 0 && y < 0) { // links oberhalb
+            if (Math.abs(x) > Math.abs(y)) {
                 return "Right/"; // weiter links als oberhalb
             } else {
                 return "Up/";
             }
 
-        } else if (xwert < 0 && ywert > 0) { // links unterhalb
-            if (Math.abs(xwert) > Math.abs(ywert)) {
+        } else if (x < 0 && y > 0) { // links unterhalb
+            if (Math.abs(x) > Math.abs(y)) {
                 return "Right/"; // weiter links als unterhalb
             } else {
                 return "Down/";
             }
         }
         return pathToTexturesOfProjectile;
+    }
+
+    private float getDeviationNumber(){
+        float temp = (float) (Math.random() * 2) +1f;
+
+        return temp;
     }
 }
