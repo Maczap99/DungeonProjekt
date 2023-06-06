@@ -23,7 +23,8 @@ public class PlayableComponent extends Component {
     private Skill skillSlot3;
     private Skill skillSlot4;
     private Skill meleeCombat;
-    private Skill rangedCombat;
+    private Skill rangedCombatBow;
+    private Skill rangedCombatBoomerang;
 
     /**
      * @param entity     associated entity
@@ -32,13 +33,17 @@ public class PlayableComponent extends Component {
      * @param skillSlot3 skill that will be on the third skill slot
      * @param skillSlot4 skill that will be on the fourth skill slot
      */
-    public PlayableComponent(Entity entity, Skill skillSlot1, Skill skillSlot2, Skill skillSlot3, Skill skillSlot4) {
+    public PlayableComponent(Entity entity, Skill skillSlot1, Skill skillSlot2, Skill skillSlot3, Skill skillSlot4,
+                             Skill meleeCombat, Skill rangedCombatBow, Skill rangedCombatBoomerang) {
         super(entity);
         playable = true;
         this.skillSlot1 = skillSlot1;
         this.skillSlot2 = skillSlot2;
         this.skillSlot3 = skillSlot3;
         this.skillSlot4 = skillSlot4;
+        this.meleeCombat = meleeCombat;
+        this.rangedCombatBow = rangedCombatBow;
+        this.rangedCombatBoomerang = rangedCombatBoomerang;
     }
 
     /**
@@ -105,10 +110,17 @@ public class PlayableComponent extends Component {
     }
 
     /**
-     * @param rangedCombat skill that will be on the fourth skillslot
+     * @param rangedCombatBow skill that will be on the fourth skillslot
      */
-    public void setRangedCombat(Skill rangedCombat) {
-        this.rangedCombat = rangedCombat;
+    public void setRangedCombatBow(Skill rangedCombatBow) {
+        this.rangedCombatBow = rangedCombatBow;
+    }
+
+    /**
+     * @param rangedCombatBoomerang skill that will be on the fourth skillslot
+     */
+    public void setRangedCombatBoomerang(Skill rangedCombatBoomerang) {
+        this.rangedCombatBoomerang = rangedCombatBoomerang;
     }
 
     /**
@@ -149,7 +161,14 @@ public class PlayableComponent extends Component {
     /**
      * @return the skill ranged Combat
      */
-    public Optional<Skill> getRangedCombat() {
-        return Optional.ofNullable(rangedCombat);
+    public Optional<Skill> getRangedCombatBow() {
+        return Optional.ofNullable(rangedCombatBow);
+    }
+
+    /**
+     * @return the skill ranged Combat
+     */
+    public Optional<Skill> getRangedCombatBoomerang() {
+        return Optional.ofNullable(rangedCombatBoomerang);
     }
 }

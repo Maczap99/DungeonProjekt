@@ -10,11 +10,11 @@ public class BoomerangWeapon extends DamageProjectileSkill {
         super(
             "boomerang",
             "skills/boomerang/",
-            2f,
+            0.4f,
             new Damage(1 + (Game.getLevelStage() / 5), DamageType.PHYSICAL, null),
             new Point(10, 10),
             targetSelection,
-            3f,
+            4f,
             0f);
     }
 }

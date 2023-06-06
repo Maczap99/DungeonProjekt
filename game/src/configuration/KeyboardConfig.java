@@ -30,6 +30,8 @@ public class KeyboardConfig {
         new ConfigKey<>(new String[]{"movement", "dead"}, new ConfigIntValue(Input.Keys.P));
     public static final ConfigKey<Integer> meleeCombat =
         new ConfigKey<>(new String[]{"skill", "melee"}, new ConfigIntValue(Input.Buttons.LEFT));
-    public static final ConfigKey<Integer> rangedCombat =
-        new ConfigKey<>(new String[]{"skill", "range"}, new ConfigIntValue(Input.Buttons.RIGHT));
+    public static final ConfigKey<Integer> rangedCombatBow =
+        new ConfigKey<>(new String[]{"skill", "Bow"}, new ConfigIntValue(Input.Buttons.RIGHT));
+    public static final ConfigKey<Integer> rangedCombatBoomerang =
+        new ConfigKey<>(new String[]{"skill", "Boomerang"}, new ConfigIntValue(Input.Buttons.MIDDLE));
 }
