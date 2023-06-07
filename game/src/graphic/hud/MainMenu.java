@@ -42,7 +42,6 @@ public class MainMenu<T extends Actor> extends ScreenController<T> {
     private Label gameOverLabel;
     private transient Logger soundLogger;
     private transient Logger saveLoadLogger;
-
     private static boolean initialState = true;
 
     /**
@@ -82,7 +81,7 @@ public class MainMenu<T extends Actor> extends ScreenController<T> {
 
         // try picture else set background to black
         try{
-            table.setBackground(new RainbowLayerDrawable(400, 400));
+            table.setBackground(new TextureRegionDrawable(new TextureRegion(new Texture("game/assets/menu/start1.jpg"))));
         }catch (Exception e){
             var backgroundColor = new Color(0f, 0f, 0f, 1f);
             var backgroundDrawable = new ColorBackground(backgroundColor);
@@ -271,7 +270,7 @@ public class MainMenu<T extends Actor> extends ScreenController<T> {
         gameOverLabel.setVisible(Game.gameOver);
 
         var backgroundColor = new Color(0f, 0f, 0f, .8f);
-        var backgroundDrawable = new RainbowLayerDrawable(400, 400);
+        var backgroundDrawable = new ColorBackground(backgroundColor);
         table.setBackground(backgroundDrawable);
 
         initialState = false;
