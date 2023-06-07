@@ -38,7 +38,7 @@ public abstract class DamageProjectileSkill implements ISkillFunction, Serializa
     private ITargetSelection selectionFunction;
     private float manaCost;
     private transient Sound sound;
-    private transient Logger   fireballSkillLogger = Logger.getLogger(this.getClass().getName());
+    private transient Logger fireballSkillLogger = Logger.getLogger(this.getClass().getName());
     private transient Logger bowWeaponLogger = Logger.getLogger(this.getClass().getName());
     private transient Logger soundLogger = Logger.getLogger(this.getClass().getName());
     private boolean isCollide = false;
@@ -85,7 +85,7 @@ public abstract class DamageProjectileSkill implements ISkillFunction, Serializa
             boomerang(entity);
         } else if (skillName.equals("bow")) {
             bow(entity);
-        }else if(skillName.equals("sword")){
+        } else if (skillName.equals("sword")) {
             sword(entity);
         }
 
@@ -132,8 +132,10 @@ public abstract class DamageProjectileSkill implements ISkillFunction, Serializa
                         b.getComponent(PositionComponent.class)
                             .ifPresent(
                                 bpc -> {
-                                    PositionComponent entityComp = (PositionComponent) bpc;
-                                    knockback((PositionComponent) projectile.getComponent(PositionComponent.class).get(), entityComp, 1.5f);
+                                    if (b.getClass().getName() == "ecs.entities.Monster") {
+                                        PositionComponent entityComp = (PositionComponent) bpc;
+                                        knockback((PositionComponent) projectile.getComponent(PositionComponent.class).get(), entityComp, 1.5f);
+                                    }
                                 });
                     }
                 };
@@ -201,8 +203,10 @@ public abstract class DamageProjectileSkill implements ISkillFunction, Serializa
                     b.getComponent(PositionComponent.class)
                         .ifPresent(
                             bpc -> {
-                                PositionComponent entityComp = (PositionComponent) bpc;
-                                knockback((PositionComponent) projectile.getComponent(PositionComponent.class).get(), entityComp, 1.5f);
+                                if (b.getClass().getName() == "ecs.entities.Monster") {
+                                    PositionComponent entityComp = (PositionComponent) bpc;
+                                    knockback((PositionComponent) projectile.getComponent(PositionComponent.class).get(), entityComp, 1.5f);
+                                }
                             });
                 }
             };
@@ -315,8 +319,10 @@ public abstract class DamageProjectileSkill implements ISkillFunction, Serializa
                         b.getComponent(PositionComponent.class)
                             .ifPresent(
                                 bpc -> {
-                                    PositionComponent entityComp = (PositionComponent) bpc;
-                                    knockback((PositionComponent) projectile.getComponent(PositionComponent.class).get(), entityComp, 1.5f);
+                                    if (b.getClass().getName() == "ecs.entities.Monster") {
+                                        PositionComponent entityComp = (PositionComponent) bpc;
+                                        knockback((PositionComponent) projectile.getComponent(PositionComponent.class).get(), entityComp, 1.5f);
+                                    }
                                 });
                     }
                 };
@@ -327,7 +333,7 @@ public abstract class DamageProjectileSkill implements ISkillFunction, Serializa
 
             hero.setCurrentAmmo(hero.getCurrentAmmo() - 1);
 
-            bowWeaponLogger.info(hero.getCurrentAmmo() +"/"+hero.getAmmo()+ " Pfeile uebrig");
+            bowWeaponLogger.info(hero.getCurrentAmmo() + "/" + hero.getAmmo() + " Pfeile uebrig");
 
             try {
                 // start menu soundtrack
@@ -344,25 +350,26 @@ public abstract class DamageProjectileSkill implements ISkillFunction, Serializa
 
     /**
      * This Method handles the sword entity and it's behaviour
+     *
      * @param entity
      */
-    private void sword(Entity entity){
+    private void sword(Entity entity) {
         int dir = SkillTools.getCursorPositionAsRelative4WayDirection();
         Point pointDir;
-        Logger.getAnonymousLogger().log(new LogRecord(Level.INFO,"Sword struck towards Direction " + dir));
+        Logger.getAnonymousLogger().log(new LogRecord(Level.INFO, "Sword struck towards Direction " + dir));
         String pathSuffix = "";
 
-        if(dir == 0){
-            pointDir = new Point(0,1);
+        if (dir == 0) {
+            pointDir = new Point(0, 1);
             pathSuffix += "up";
-        } else if(dir == 1){
-            pointDir = new Point(1,0);
+        } else if (dir == 1) {
+            pointDir = new Point(1, 0);
             pathSuffix += "right";
-        } else if(dir == 2){
-            pointDir = new Point(0,-1);
+        } else if (dir == 2) {
+            pointDir = new Point(0, -1);
             pathSuffix += "down";
-        } else{
-            pointDir = new Point(-1,0);
+        } else {
+            pointDir = new Point(-1, 0);
             pathSuffix += "left";
         }
 
@@ -398,8 +405,10 @@ public abstract class DamageProjectileSkill implements ISkillFunction, Serializa
                     b.getComponent(PositionComponent.class)
                         .ifPresent(
                             bpc -> {
-                                PositionComponent entityComp = (PositionComponent) bpc;
-                                knockback((PositionComponent) projectile.getComponent(PositionComponent.class).get(), entityComp, 1.5f);
+                                if (b.getClass().getName() == "ecs.entities.Monster") {
+                                    PositionComponent entityComp = (PositionComponent) bpc;
+                                    knockback((PositionComponent) projectile.getComponent(PositionComponent.class).get(), entityComp, 1.5f);
+                                }
                             });
                 }
             };
@@ -454,21 +463,22 @@ public abstract class DamageProjectileSkill implements ISkillFunction, Serializa
 
     /**
      * This Method check if the entity can get knock-back and set is
+     *
      * @param projectileComp
      * @param entityComp
      */
     protected void knockback(PositionComponent projectileComp, PositionComponent entityComp, float strength) {
-        Point dir = Point.getUnitDirectionalVector( entityComp.getPosition(), projectileComp.getPosition());
+        Point dir = Point.getUnitDirectionalVector(entityComp.getPosition(), projectileComp.getPosition());
 
         dir.x = dir.x * strength;
         dir.y = dir.y * strength;
 
         Point newPoint = new Point(dir.x + entityComp.getPosition().x, dir.y + entityComp.getPosition().y);
 
-        if(Game.currentLevel.getTileAt(newPoint.toCoordinate()) != null){
+        if (Game.currentLevel.getTileAt(newPoint.toCoordinate()) != null) {
             boolean tileCheck = Game.currentLevel.getTileAt(newPoint.toCoordinate()).isAccessible();
 
-            if(tileCheck){
+            if (tileCheck) {
                 entityComp.setPosition(newPoint);
             }
         }
@@ -476,11 +486,12 @@ public abstract class DamageProjectileSkill implements ISkillFunction, Serializa
 
     /**
      * Check if the boomerang need to throw back
+     *
      * @param entity
      * @param p1
      * @param p2
      */
-    private void checkThrowBack(Entity entity, Point p1, Point p2){
+    private void checkThrowBack(Entity entity, Point p1, Point p2) {
         ScheduledExecutorService executor = Executors.newSingleThreadScheduledExecutor();
 
         // Wartet eine Sekunde bevor der Bumerang zurückkommt
