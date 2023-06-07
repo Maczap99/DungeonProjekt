@@ -36,10 +36,9 @@ public abstract class DamageProjectileSkill implements ISkillFunction, Serializa
     private ITargetSelection selectionFunction;
     private float manaCost;
     private transient Sound sound;
-    private transient Logger fireballSkillLogger;
-    private transient Logger boomerangWeaponLogger;
-    private transient Logger bowWeaponLogger;
-    private transient Logger soundLogger;
+    private transient Logger   fireballSkillLogger = Logger.getLogger(this.getClass().getName());
+    private transient Logger bowWeaponLogger = Logger.getLogger(this.getClass().getName());
+    private transient Logger soundLogger = Logger.getLogger(this.getClass().getName());
     private boolean isCollide = false;
 
     /**
@@ -125,6 +124,12 @@ public abstract class DamageProjectileSkill implements ISkillFunction, Serializa
                                     ((HealthComponent) hc).receiveHit(projectileDamage);
                                     Game.removeEntity(projectile);
                                 });
+                        b.getComponent(PositionComponent.class)
+                            .ifPresent(
+                                bpc -> {
+                                    PositionComponent entityComp = (PositionComponent) bpc;
+                                    knockback((PositionComponent) projectile.getComponent(PositionComponent.class).get(), entityComp, 1.5f);
+                                });
                     }
                 };
 
@@ -133,7 +138,6 @@ public abstract class DamageProjectileSkill implements ISkillFunction, Serializa
 
             // reduce mana
             hero.setCurrentMana(hero.getCurrentMana() - manaCost);
-            fireballSkillLogger = Logger.getLogger(this.getClass().getName());
             fireballSkillLogger.info("Mana: " + (int) hero.getCurrentMana() + " / " + (int) hero.getMana());
 
             try {
@@ -142,11 +146,9 @@ public abstract class DamageProjectileSkill implements ISkillFunction, Serializa
                 sound.play(0.5f);
 
             } catch (Exception e) {
-                soundLogger = Logger.getLogger(this.getClass().getName());
                 soundLogger.info("Sounddatei 'Fireball1.mp3' konnte nicht gefunden werden");
             }
         } else {
-            fireballSkillLogger = Logger.getLogger(this.getClass().getName());
             fireballSkillLogger.info("Nicht genug Mana!");
             fireballSkillLogger.info("Mana: " + (int) hero.getCurrentMana() + " / " + (int) hero.getMana());
 
@@ -190,6 +192,12 @@ public abstract class DamageProjectileSkill implements ISkillFunction, Serializa
                                 ((HealthComponent) hc).receiveHit(projectileDamage);
                                 Game.removeEntity(projectile);
                                 isCollide = true;
+                            });
+                    b.getComponent(PositionComponent.class)
+                        .ifPresent(
+                            bpc -> {
+                                PositionComponent entityComp = (PositionComponent) bpc;
+                                knockback((PositionComponent) projectile.getComponent(PositionComponent.class).get(), entityComp, 1.5f);
                             });
                 }
             };
@@ -235,6 +243,7 @@ public abstract class DamageProjectileSkill implements ISkillFunction, Serializa
                                 ((HealthComponent) hc).receiveHit(projectileDamage);
                                 Game.removeEntity(projectile);
                             });
+
                 }
             };
 
@@ -252,7 +261,6 @@ public abstract class DamageProjectileSkill implements ISkillFunction, Serializa
     private void bow(Entity entity) {
         Hero hero = (Hero) Game.getHero().get();
         float xC = 0;
-        float yC = 0;
 
         if (hero.getCurrentAmmo() > 0) {
 
@@ -299,6 +307,12 @@ public abstract class DamageProjectileSkill implements ISkillFunction, Serializa
                                     ((HealthComponent) hc).receiveHit(projectileDamage);
                                     Game.removeEntity(projectile);
                                 });
+                        b.getComponent(PositionComponent.class)
+                            .ifPresent(
+                                bpc -> {
+                                    PositionComponent entityComp = (PositionComponent) bpc;
+                                    knockback((PositionComponent) projectile.getComponent(PositionComponent.class).get(), entityComp, 1.5f);
+                                });
                     }
                 };
 
@@ -307,8 +321,7 @@ public abstract class DamageProjectileSkill implements ISkillFunction, Serializa
 
 
             hero.setCurrentAmmo(hero.getCurrentAmmo() - 1);
-            
-            bowWeaponLogger = Logger.getLogger(this.getClass().getName());
+
             bowWeaponLogger.info(hero.getCurrentAmmo() +"/"+hero.getAmmo()+ " Pfeile uebrig");
 
             try {
@@ -317,11 +330,9 @@ public abstract class DamageProjectileSkill implements ISkillFunction, Serializa
                 sound.play(0.7f);
 
             } catch (Exception e) {
-                soundLogger = Logger.getLogger(this.getClass().getName());
                 soundLogger.info("Sounddatei 'bow.mp3' konnte nicht gefunden werden");
             }
         } else {
-            bowWeaponLogger = Logger.getLogger(this.getClass().getName());
             bowWeaponLogger.info("Keine Pfeile mehr!");
         }
     }
@@ -340,34 +351,56 @@ public abstract class DamageProjectileSkill implements ISkillFunction, Serializa
 
         float x = epc.getPosition().x - targetDirection.x;
         float y = epc.getPosition().y - targetDirection.y;
-        if (x > 0 && y < 0) { // rechts oberhalb
-            if (Math.abs(x) > Math.abs(y)) { // weiter rechts als oberhalb
+        if (x > 0 && y < 0) {
+            if (Math.abs(x) > Math.abs(y)) {
                 return "Left/";
             } else {
                 return "Up/";
             }
 
-        } else if (x > 0 && y > 0) { // rechts unterhalb
+        } else if (x > 0 && y > 0) {
             if (Math.abs(x) > Math.abs(y)) {
-                return "Left/"; // weiter rechts als unterhalb
+                return "Left/";
             } else {
                 return "Down/";
             }
-        } else if (x < 0 && y < 0) { // links oberhalb
+        } else if (x < 0 && y < 0) {
             if (Math.abs(x) > Math.abs(y)) {
-                return "Right/"; // weiter links als oberhalb
+                return "Right/";
             } else {
                 return "Up/";
             }
 
-        } else if (x < 0 && y > 0) { // links unterhalb
+        } else if (x < 0 && y > 0) {
             if (Math.abs(x) > Math.abs(y)) {
-                return "Right/"; // weiter links als unterhalb
+                return "Right/";
             } else {
                 return "Down/";
             }
         }
         return pathToTexturesOfProjectile;
+    }
+
+    /**
+     * This Method check if the entity can get knock-back and set is
+     * @param projectileComp
+     * @param entityComp
+     */
+    protected void knockback(PositionComponent projectileComp, PositionComponent entityComp, float strength) {
+        Point dir = Point.getUnitDirectionalVector( entityComp.getPosition(), projectileComp.getPosition());
+
+        dir.x = dir.x * strength;
+        dir.y = dir.y * strength;
+
+        Point newPoint = new Point(dir.x + entityComp.getPosition().x, dir.y + entityComp.getPosition().y);
+
+        if(Game.currentLevel.getTileAt(newPoint.toCoordinate()) != null){
+            boolean tileCheck = Game.currentLevel.getTileAt(newPoint.toCoordinate()).isAccessible();
+
+            if(tileCheck){
+                entityComp.setPosition(newPoint);
+            }
+        }
     }
 
     /**
