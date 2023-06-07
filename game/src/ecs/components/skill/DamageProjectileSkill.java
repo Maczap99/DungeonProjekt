@@ -307,6 +307,7 @@ public abstract class DamageProjectileSkill implements ISkillFunction, Serializa
 
 
             hero.setCurrentAmmo(hero.getCurrentAmmo() - 1);
+            
             bowWeaponLogger = Logger.getLogger(this.getClass().getName());
             bowWeaponLogger.info(hero.getCurrentAmmo() +"/"+hero.getAmmo()+ " Pfeile uebrig");
 
