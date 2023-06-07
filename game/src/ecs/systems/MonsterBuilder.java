@@ -100,7 +100,7 @@ public class MonsterBuilder {
     private Monster setupImp(Monster base){
         float xSpeed = 0.15f;
         float ySpeed = 0.15f;
-        int maxHealth = 1;
+        int maxHealth = 5;
 
         Animation moveLeft = AnimationBuilder.buildAnimation(impPaths[0]);
         Animation moveRight = AnimationBuilder.buildAnimation(impPaths[1]);
@@ -141,7 +141,7 @@ public class MonsterBuilder {
     private Monster setupChort(Monster base){
         float xSpeed = 0.1f;
         float ySpeed = 0.1f;
-        int maxHealth = 1;
+        int maxHealth = 10;
 
         Animation moveLeft = AnimationBuilder.buildAnimation(chortPaths[0]);
         Animation moveRight = AnimationBuilder.buildAnimation(chortPaths[1]);
