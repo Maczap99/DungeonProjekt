@@ -20,6 +20,11 @@ import java.util.concurrent.TimeUnit;
 import java.io.Serializable;
 import java.util.logging.Logger;
 
+/***
+ * This Class handle the Projectile for Skills and Weapons
+ *
+ */
+
 public abstract class DamageProjectileSkill implements ISkillFunction, Serializable {
 
     private String skillName;
