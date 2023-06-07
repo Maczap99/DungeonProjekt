@@ -36,10 +36,9 @@ public abstract class DamageProjectileSkill implements ISkillFunction, Serializa
     private ITargetSelection selectionFunction;
     private float manaCost;
     private transient Sound sound;
-    private transient Logger fireballSkillLogger;
-    private transient Logger boomerangWeaponLogger;
-    private transient Logger bowWeaponLogger;
-    private transient Logger soundLogger;
+    private transient Logger   fireballSkillLogger = Logger.getLogger(this.getClass().getName());
+    private transient Logger bowWeaponLogger = Logger.getLogger(this.getClass().getName());
+    private transient Logger soundLogger = Logger.getLogger(this.getClass().getName());
     private boolean isCollide = false;
 
     /**
@@ -133,7 +132,6 @@ public abstract class DamageProjectileSkill implements ISkillFunction, Serializa
 
             // reduce mana
             hero.setCurrentMana(hero.getCurrentMana() - manaCost);
-            fireballSkillLogger = Logger.getLogger(this.getClass().getName());
             fireballSkillLogger.info("Mana: " + (int) hero.getCurrentMana() + " / " + (int) hero.getMana());
 
             try {
@@ -142,11 +140,9 @@ public abstract class DamageProjectileSkill implements ISkillFunction, Serializa
                 sound.play(0.5f);
 
             } catch (Exception e) {
-                soundLogger = Logger.getLogger(this.getClass().getName());
                 soundLogger.info("Sounddatei 'Fireball1.mp3' konnte nicht gefunden werden");
             }
         } else {
-            fireballSkillLogger = Logger.getLogger(this.getClass().getName());
             fireballSkillLogger.info("Nicht genug Mana!");
             fireballSkillLogger.info("Mana: " + (int) hero.getCurrentMana() + " / " + (int) hero.getMana());
 
@@ -190,6 +186,12 @@ public abstract class DamageProjectileSkill implements ISkillFunction, Serializa
                                 ((HealthComponent) hc).receiveHit(projectileDamage);
                                 Game.removeEntity(projectile);
                                 isCollide = true;
+                            });
+                    b.getComponent(PositionComponent.class)
+                        .ifPresent(
+                            bpc -> {
+                                PositionComponent bComp = (PositionComponent) bpc;
+                                knockback(epc, bComp);
                             });
                 }
             };
@@ -307,8 +309,7 @@ public abstract class DamageProjectileSkill implements ISkillFunction, Serializa
 
 
             hero.setCurrentAmmo(hero.getCurrentAmmo() - 1);
-            
-            bowWeaponLogger = Logger.getLogger(this.getClass().getName());
+
             bowWeaponLogger.info(hero.getCurrentAmmo() +"/"+hero.getAmmo()+ " Pfeile uebrig");
 
             try {
@@ -317,11 +318,9 @@ public abstract class DamageProjectileSkill implements ISkillFunction, Serializa
                 sound.play(0.7f);
 
             } catch (Exception e) {
-                soundLogger = Logger.getLogger(this.getClass().getName());
                 soundLogger.info("Sounddatei 'bow.mp3' konnte nicht gefunden werden");
             }
         } else {
-            bowWeaponLogger = Logger.getLogger(this.getClass().getName());
             bowWeaponLogger.info("Keine Pfeile mehr!");
         }
     }
@@ -368,6 +367,73 @@ public abstract class DamageProjectileSkill implements ISkillFunction, Serializa
             }
         }
         return pathToTexturesOfProjectile;
+    }
+
+    /**
+     * This Method check if the entity can get knock-back and set is
+     * @param epc
+     * @param bComp
+     */
+    protected void knockback(PositionComponent epc, PositionComponent bComp) {
+        float xwert = epc.getPosition().x - bComp.getPosition().x;
+        float ywert = epc.getPosition().y - bComp.getPosition().y;
+
+        Point newPoint;
+
+        if (xwert > 0 && ywert < 0) { // rechts oberhalb
+            if (Math.abs(xwert) > Math.abs(ywert)) { // weiter rechts als oberhalb
+                newPoint = new Point(bComp.getPosition().x - 1f, bComp.getPosition().y);
+                if (Game.currentLevel.getTileAt(newPoint.toCoordinate()).isAccessible()) {
+                    bComp.setPosition(newPoint); // knock back nach links
+                }
+            } else {
+                newPoint = new Point(bComp.getPosition().x, bComp.getPosition().y + 1);
+                if (Game.currentLevel.getTileAt(newPoint.toCoordinate()).isAccessible()) {
+                    bComp.setPosition(newPoint);
+                }
+            }
+
+        } else if (xwert > 0 && ywert > 0) { // rechts unterhalb
+            if (Math.abs(xwert) > Math.abs(ywert)) { // weiter rechts als unterhalb
+                newPoint = new Point(bComp.getPosition().x - 1f, bComp.getPosition().y);
+                if (Game.currentLevel.getTileAt(newPoint.toCoordinate()).isAccessible()) {
+                    bComp.setPosition(newPoint);
+                }
+            } else {
+                newPoint = new Point(bComp.getPosition().x, bComp.getPosition().y - 1f);
+                if (Game.currentLevel.getTileAt(newPoint.toCoordinate()).isAccessible()) {
+                    bComp.setPosition(newPoint);
+                }
+            }
+
+        } else if (xwert < 0 && ywert < 0) { // links oberhalb
+            if (Math.abs(xwert) > Math.abs(ywert)) { // weiter links als oberhalb
+                newPoint = new Point(bComp.getPosition().x + 1f, bComp.getPosition().y);
+                if (Game.currentLevel.getTileAt(newPoint.toCoordinate()).isAccessible()) {
+                    bComp.setPosition(newPoint);
+                }
+
+            } else {
+                newPoint = new Point(bComp.getPosition().x, bComp.getPosition().y + 1f);
+                if (Game.currentLevel.getTileAt(newPoint.toCoordinate()).isAccessible()) {
+                    bComp.setPosition(newPoint);
+                }
+            }
+
+        } else if (xwert < 0 && ywert > 0) { // links unterhalb
+            if (Math.abs(xwert) > Math.abs(ywert)) { // weiter links als unterhalb
+                newPoint = new Point(bComp.getPosition().x + 1f, bComp.getPosition().y);
+                if (Game.currentLevel.getTileAt(newPoint.toCoordinate()).isAccessible()) {
+                    bComp.setPosition(newPoint);
+                }
+
+            } else {
+                newPoint = new Point(bComp.getPosition().x, bComp.getPosition().y - 1f);
+                if (Game.currentLevel.getTileAt(newPoint.toCoordinate()).isAccessible()) {
+                    bComp.setPosition(newPoint);
+                }
+            }
+        }
     }
 
     /**
