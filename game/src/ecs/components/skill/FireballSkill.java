@@ -8,7 +8,8 @@ import tools.Point;
 public class FireballSkill extends DamageProjectileSkill {
     public FireballSkill(ITargetSelection targetSelection) {
         super(
-            "skills/fireball/fireBall_Down/",
+            "fireball",
+            "skills/fireball/fireBall_",
             0.5f,
             new Damage(1 + (Game.getLevelStage() / 5), DamageType.FIRE, null),
             new Point(10, 10),

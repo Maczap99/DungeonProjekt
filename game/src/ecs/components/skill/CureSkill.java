@@ -7,6 +7,7 @@ import ecs.entities.Hero;
 import starter.Game;
 
 import java.io.Serializable;
+import java.util.logging.Logger;
 
 
 /**
@@ -17,6 +18,8 @@ public class CureSkill extends BuffSkill implements Serializable {
     private float manaCost = 10f;
 
     private transient Sound sound;
+    private transient Logger cureSkillLogger;
+    private transient Logger soundLogger;
 
 
     public CureSkill() {
@@ -30,12 +33,12 @@ public class CureSkill extends BuffSkill implements Serializable {
         if (hero.getTrapTimer() != null && !hero.getTrapTimer().isFinished()) {
             if (manaCost <= hero.getCurrentMana()) {
 
-                System.out.println("Held wurde gesund");
+                cureSkillLogger = Logger.getLogger("Held wurde gesund");
                 hero.startTrapTimer(0);
 
                 // reduce mana
                 hero.setCurrentMana(hero.getCurrentMana() - manaCost);
-                System.out.println("Mana: "+(int) hero.getCurrentMana() + " / " + (int) hero.getMana());
+                cureSkillLogger = Logger.getLogger("Mana: "+(int) hero.getCurrentMana() + " / " + (int) hero.getMana());
 
                 try {
                     // start menu soundtrack
@@ -43,16 +46,16 @@ public class CureSkill extends BuffSkill implements Serializable {
                     sound.play(0.7f);
 
                 } catch (Exception e) {
-                    System.out.println("Sounddatei 'cure1.mp3' konnte nicht gefunden werden");
+                    soundLogger = Logger.getLogger("Sounddatei 'cure1.mp3' konnte nicht gefunden werden");
                 }
 
 
             } else {
-                System.out.println("Nicht genug Mana!");
-                System.out.println("Mana: "+(int) hero.getCurrentMana() + " / " + (int) hero.getMana());
+                cureSkillLogger = Logger.getLogger("Nicht genug Mana!");
+                cureSkillLogger = Logger.getLogger("Mana: "+(int) hero.getCurrentMana() + " / " + (int) hero.getMana());
             }
         }else{
-            System.out.println("Kein Effekt vorhanden!");
+            cureSkillLogger = Logger.getLogger("Kein Effekt vorhanden!");
         }
     }
 }

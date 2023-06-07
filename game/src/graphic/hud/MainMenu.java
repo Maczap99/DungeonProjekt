@@ -28,6 +28,7 @@ import tools.EntityFileSystem;
 import java.util.Random;
 
 import java.util.HashMap;
+import java.util.logging.Logger;
 
 public class MainMenu<T extends Actor> extends ScreenController<T> {
 
@@ -39,6 +40,8 @@ public class MainMenu<T extends Actor> extends ScreenController<T> {
     private transient Music music;
     private transient Sound sound = Gdx.audio.newSound(Gdx.files.internal("game/sounds/effect/gameOver.mp3"));;
     private Label gameOverLabel;
+    private transient Logger soundLogger;
+    private transient Logger saveLoadLogger;
 
     private static boolean initialState = true;
 
@@ -108,7 +111,7 @@ public class MainMenu<T extends Actor> extends ScreenController<T> {
 
 
         }catch (Exception e){
-            System.out.println("Sounddatei konnte nicht gefunden werden");
+            soundLogger = Logger.getLogger("Sounddatei konnte nicht gefunden werden");
         }
 
         // Create buttons and add listeners
@@ -130,7 +133,7 @@ public class MainMenu<T extends Actor> extends ScreenController<T> {
                         music.play();
 
                     }catch (Exception e){
-                        System.out.println("Sounddatei konnte nicht gefunden werden");
+                        soundLogger = Logger.getLogger("Sounddatei konnte nicht gefunden werden");
                     }
 
                     Game.setHero(new Hero());
@@ -153,7 +156,7 @@ public class MainMenu<T extends Actor> extends ScreenController<T> {
             public void clicked(InputEvent event, float x, float y) {
                 if (!saveButton.isDisabled()) {
                     for (Entity entity : Game.getEntities()) {
-                        System.out.println("Entität gespeichert: " + entity.getClass().getName() + " ID: " + entity.id);
+                        saveLoadLogger = Logger.getLogger("Entität gespeichert: " + entity.getClass().getName() + " ID: " + entity.id);
                     }
 
                     EntityFileSystem.saveEntities(Game.getEntities());
@@ -183,7 +186,7 @@ public class MainMenu<T extends Actor> extends ScreenController<T> {
                         music.play();
 
                     }catch (Exception e){
-                        System.out.println("Sounddatei konnte nicht gefunden werden");
+                        soundLogger = Logger.getLogger("Sounddatei konnte nicht gefunden werden");
                     }
 
                     Game.getEntities().clear();
@@ -195,7 +198,7 @@ public class MainMenu<T extends Actor> extends ScreenController<T> {
                             Game.setHero(entity);
                         }
 
-                        System.out.println("Entität geladen: " + entity.getClass().getName() + " ID: " + entity.id);
+                        saveLoadLogger = Logger.getLogger("Entität geladen: " + entity.getClass().getName() + " ID: " + entity.id);
                     }
 
                     Game.toggleMainMenu();
@@ -288,7 +291,7 @@ public class MainMenu<T extends Actor> extends ScreenController<T> {
                 sound.play(0.3f);
 
             } catch (Exception e) {
-                System.out.println("Sounddatei 'GameOver.mp3' konnte nicht gefunden werden");
+                soundLogger = Logger.getLogger("Sounddatei 'GameOver.mp3' konnte nicht gefunden werden");
             }
 
             refreshUI();
