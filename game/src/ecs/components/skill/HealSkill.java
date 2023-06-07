@@ -24,14 +24,21 @@ public class HealSkill extends BuffSkill {
     private transient Logger healSkillLogger;
     private transient Logger soundLogger;
 
-
+    /**
+     * costructor
+     */
     public HealSkill() {
         super();
     }
 
+    /**
+     * This is the execute Method for the heal Skill
+     * @param entity which uses the skill
+     */
     @Override
     public void execute(Entity entity) {
         Hero hero = (Hero) Game.getHero().get();
+        healSkillLogger = Logger.getLogger(this.getClass().getName());
 
         if (manaCost <= hero.getCurrentMana()) {
 
@@ -44,12 +51,12 @@ public class HealSkill extends BuffSkill {
 
                     // set the curren health on maximal health
                     hc.setCurrentHealthpoints(hc.getMaximalHealthpoints());
-                    healSkillLogger = Logger.getLogger("Leben: " + hc.getCurrentHealthpoints());
+                    healSkillLogger.info("Leben: " + hc.getCurrentHealthpoints());
 
 
                     // reduce mana
                     hero.setCurrentMana(hero.getCurrentMana() - manaCost);
-                    healSkillLogger = Logger.getLogger("Mana: "+(int) hero.getCurrentMana() + " / " + (int) hero.getMana());
+                    healSkillLogger.info("Mana: "+(int) hero.getCurrentMana() + " / " + (int) hero.getMana());
 
                     hero.setCurrentHealth(hero.getHealth());
 
@@ -59,10 +66,11 @@ public class HealSkill extends BuffSkill {
                         sound.play(0.5f);
 
                     } catch (Exception e) {
-                        soundLogger = Logger.getLogger("Sounddatei 'heal1.mp3' konnte nicht gefunden werden");
+                        soundLogger = Logger.getLogger(this.getClass().getName());
+                        soundLogger.info("Sounddatei 'heal1.mp3' konnte nicht gefunden werden");
                     }
                 } else {
-                    healSkillLogger = Logger.getLogger("Leben sind voll!");
+                    healSkillLogger.info("Leben sind voll!");
                     hero.setCurrentMana(100);
                 }
 

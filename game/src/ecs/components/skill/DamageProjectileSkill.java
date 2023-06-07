@@ -12,11 +12,20 @@ import ecs.items.EternalArrows;
 import ecs.items.ItemData;
 import graphic.Animation;
 import starter.Game;
-import tools.Constants;
 import tools.Point;
+
+import java.util.concurrent.Executors;
+import java.util.concurrent.ScheduledExecutorService;
+import java.util.concurrent.ScheduledFuture;
+import java.util.concurrent.TimeUnit;
 
 import java.io.Serializable;
 import java.util.logging.Logger;
+
+/***
+ * This Class handle the Projectile for Skills and Weapons
+ *
+ */
 
 public abstract class DamageProjectileSkill implements ISkillFunction, Serializable {
 
@@ -33,6 +42,7 @@ public abstract class DamageProjectileSkill implements ISkillFunction, Serializa
     private transient Logger boomerangWeaponLogger;
     private transient Logger bowWeaponLogger;
     private transient Logger soundLogger;
+    private boolean isCollide = false;
 
     /**
      * @param skillName
@@ -80,8 +90,7 @@ public abstract class DamageProjectileSkill implements ISkillFunction, Serializa
     }
 
     /**
-     * @param entity
-     * This Method handles the fireball entity
+     * @param entity This Method handles the fireball entity
      */
     private void fireball(Entity entity) {
         Hero hero = (Hero) Game.getHero().get();
@@ -126,7 +135,8 @@ public abstract class DamageProjectileSkill implements ISkillFunction, Serializa
 
             // reduce mana
             hero.setCurrentMana(hero.getCurrentMana() - manaCost);
-            fireballSkillLogger = Logger.getLogger("Mana: " + (int) hero.getCurrentMana() + " / " + (int) hero.getMana());
+            fireballSkillLogger = Logger.getLogger(this.getClass().getName());
+            fireballSkillLogger.info("Mana: " + (int) hero.getCurrentMana() + " / " + (int) hero.getMana());
 
             try {
                 // start menu soundtrack
@@ -134,17 +144,20 @@ public abstract class DamageProjectileSkill implements ISkillFunction, Serializa
                 sound.play(0.5f);
 
             } catch (Exception e) {
-                soundLogger = Logger.getLogger("Sounddatei 'Fireball1.mp3' konnte nicht gefunden werden");
+                soundLogger = Logger.getLogger(this.getClass().getName());
+                soundLogger.info("Sounddatei 'Fireball1.mp3' konnte nicht gefunden werden");
             }
         } else {
-            fireballSkillLogger = Logger.getLogger("Nicht genug Mana!");
-            fireballSkillLogger = Logger.getLogger("Mana: " + (int) hero.getCurrentMana() + " / " + (int) hero.getMana());
+            fireballSkillLogger = Logger.getLogger(this.getClass().getName());
+            fireballSkillLogger.info("Nicht genug Mana!");
+            fireballSkillLogger.info("Mana: " + (int) hero.getCurrentMana() + " / " + (int) hero.getMana());
 
         }
     }
 
     /**
      * This Method handle the Boomerang entity and his behaviour
+     *
      * @param entity
      */
     private void boomerang(Entity entity) {
@@ -154,20 +167,67 @@ public abstract class DamageProjectileSkill implements ISkillFunction, Serializa
                 entity.getComponent(PositionComponent.class)
                     .orElseThrow(
                         () -> new MissingComponentException("PositionComponent"));
-        new PositionComponent(projectile, epc.getPosition());
-
-        Animation animation = AnimationBuilder.buildAnimation(pathToTexturesOfProjectile);
-        new AnimationComponent(projectile, animation);
 
         Point aimedOn = selectionFunction.selectTargetPoint();
         Point targetPoint =
             SkillTools.calculateLastPositionInRange(
                 epc.getPosition(), aimedOn, projectileRange);
+
+        new PositionComponent(projectile, epc.getPosition());
+
+        Animation animation = AnimationBuilder.buildAnimation(pathToTexturesOfProjectile);
+        new AnimationComponent(projectile, animation);
+
         Point velocity =
             SkillTools.calculateVelocity(epc.getPosition(), targetPoint, projectileSpeed);
         VelocityComponent vc =
             new VelocityComponent(projectile, velocity.x, velocity.y, animation, animation);
         new ProjectileComponent(projectile, epc.getPosition(), targetPoint);
+        ICollide collide =
+            (a, b, from) -> {
+                if (b != entity) {
+                    b.getComponent(HealthComponent.class)
+                        .ifPresent(
+                            hc -> {
+                                ((HealthComponent) hc).receiveHit(projectileDamage);
+                                Game.removeEntity(projectile);
+                                isCollide = true;
+                            });
+                }
+            };
+
+        new HitboxComponent(
+            projectile, new Point(0f, 0f), projectileHitboxSize, collide, null);
+
+        checkThrowBack(entity, epc.getPosition(), targetPoint);
+    }
+
+    /**
+     * This Method handles the boomerang throw back
+     *
+     * @param entity
+     * @param targetPoint
+     * @param position
+     */
+    private void throwBack(Entity entity, Point targetPoint, Point position) {
+        Entity projectile = new Entity();
+        PositionComponent epc =
+            (PositionComponent)
+                entity.getComponent(PositionComponent.class)
+                    .orElseThrow(
+                        () -> new MissingComponentException("PositionComponent"));
+
+
+        new PositionComponent(projectile, position);
+
+        Animation animation = AnimationBuilder.buildAnimation(pathToTexturesOfProjectile);
+        new AnimationComponent(projectile, animation);
+
+        Point velocity =
+            SkillTools.calculateVelocity(position, targetPoint, projectileSpeed);
+        VelocityComponent vc =
+            new VelocityComponent(projectile, velocity.x, velocity.y, animation, animation);
+        new ProjectileComponent(projectile, position, targetPoint);
         ICollide collide =
             (a, b, from) -> {
                 if (b != entity) {
@@ -182,10 +242,13 @@ public abstract class DamageProjectileSkill implements ISkillFunction, Serializa
 
         new HitboxComponent(
             projectile, new Point(0.25f, 0.25f), projectileHitboxSize, collide, null);
+
+        isCollide = false;
     }
 
     /**
      * This Method handle the bow entity and the Deviation behaviors for the arrows
+     *
      * @param entity
      */
     private void bow(Entity entity) {
@@ -193,7 +256,7 @@ public abstract class DamageProjectileSkill implements ISkillFunction, Serializa
         float xC = 0;
         float yC = 0;
 
-        if (hero.getAmmo() > 0) {
+        if (hero.getCurrentAmmo() > 0) {
 
             Entity projectile = new Entity();
             PositionComponent epc =
@@ -213,15 +276,12 @@ public abstract class DamageProjectileSkill implements ISkillFunction, Serializa
             new AnimationComponent(projectile, animation);
 
             xC = 2f - getDeviationNumber();
-            yC = 2f - getDeviationNumber();
 
-            if(xC > 0){
-                targetPoint.x = targetPoint.x - (2f- xC);
-                System.out.println("-"+(2f- xC));
-            }else{
+            if (xC > 0) {
+                targetPoint.x = targetPoint.x - (2f - xC);
+            } else {
                 xC = xC * -1;
-                targetPoint.x = targetPoint.x + ( 2f - xC);
-                System.out.println("+"+  ( 2f - xC));
+                targetPoint.x = targetPoint.x + (2f - xC);
             }
 
             targetPoint.y = targetPoint.y - (2f - getDeviationNumber());
@@ -245,10 +305,13 @@ public abstract class DamageProjectileSkill implements ISkillFunction, Serializa
                 };
 
             new HitboxComponent(
-                projectile, new Point(0.1f, 0.1f), projectileHitboxSize, collide, null);
+                projectile, new Point(0.25f, 0.25f), projectileHitboxSize, collide, null);
 
 
-            hero.setAmmo(hero.getAmmo() - 1);
+            hero.setCurrentAmmo(hero.getCurrentAmmo() - 1);
+            
+            bowWeaponLogger = Logger.getLogger(this.getClass().getName());
+            bowWeaponLogger.info(hero.getCurrentAmmo() +"/"+hero.getAmmo()+ " Pfeile uebrig");
 
             for (ItemData itemData: hero.getInventory().getItems()) {
                 if (itemData instanceof EternalArrows) {
@@ -262,18 +325,19 @@ public abstract class DamageProjectileSkill implements ISkillFunction, Serializa
                 sound.play(0.7f);
 
             } catch (Exception e) {
-                soundLogger = Logger.getLogger("Sounddatei 'bow.mp3' konnte nicht gefunden werden");
+                soundLogger = Logger.getLogger(this.getClass().getName());
+                soundLogger.info("Sounddatei 'bow.mp3' konnte nicht gefunden werden");
             }
         } else {
-            bowWeaponLogger = Logger.getLogger("Keine Pfeile mehr!");
+            bowWeaponLogger = Logger.getLogger(this.getClass().getName());
+            bowWeaponLogger.info("Keine Pfeile mehr!");
         }
     }
 
     /**
      * @param targetDirection
      * @param entity
-     * @return
-     * This Method set the direction for the skill assets folder
+     * @return This Method set the direction for the skill assets folder
      */
     protected String animationFix(Point targetDirection, Entity entity) {
         PositionComponent epc =
@@ -285,7 +349,7 @@ public abstract class DamageProjectileSkill implements ISkillFunction, Serializa
         float x = epc.getPosition().x - targetDirection.x;
         float y = epc.getPosition().y - targetDirection.y;
         if (x > 0 && y < 0) { // rechts oberhalb
-            if (Math.abs(y) > Math.abs(y)) { // weiter rechts als oberhalb
+            if (Math.abs(x) > Math.abs(y)) { // weiter rechts als oberhalb
                 return "Left/";
             } else {
                 return "Up/";
@@ -314,8 +378,34 @@ public abstract class DamageProjectileSkill implements ISkillFunction, Serializa
         return pathToTexturesOfProjectile;
     }
 
-    private float getDeviationNumber(){
-        float temp = (float) (Math.random() * 2) +1f;
+    /**
+     * Check if the boomerang need to throw back
+     * @param entity
+     * @param p1
+     * @param p2
+     */
+    private void checkThrowBack(Entity entity, Point p1, Point p2){
+        ScheduledExecutorService executor = Executors.newSingleThreadScheduledExecutor();
+
+        // Wartet eine Sekunde bevor der Bumerang zurückkommt
+        ScheduledFuture<?> future = executor.schedule(new Runnable() {
+            public void run() {
+                if (!isCollide) {
+                    // Code to execute after 1 second
+                    throwBack(entity, p1, p2);
+                }
+            }
+        }, 1, TimeUnit.SECONDS);
+
+        isCollide = false;
+        executor.shutdown();
+    }
+
+    /**
+     * @return a float number 0 - 3
+     */
+    private float getDeviationNumber() {
+        float temp = (float) (Math.random() * 2) + 1f;
 
         return temp;
     }

@@ -108,8 +108,9 @@ public class MainMenu<T extends Actor> extends ScreenController<T> {
                 music.setVolume(0.2f);
                 music.play();
             }
-        } catch (Exception e) {
-            soundLogger = Logger.getLogger("Sounddatei konnte nicht gefunden werden");
+        }catch (Exception e){
+            soundLogger = Logger.getLogger(this.getClass().getName());
+            soundLogger.info("Sounddatei 'menu2.mp3' konnte nicht gefunden werden");
         }
 
         // Create buttons and add listeners
@@ -130,8 +131,9 @@ public class MainMenu<T extends Actor> extends ScreenController<T> {
                         music.setVolume(0.2f);
                         music.play();
 
-                    } catch (Exception e) {
-                        soundLogger = Logger.getLogger("Sounddatei konnte nicht gefunden werden");
+                    }catch (Exception e){
+                        soundLogger = Logger.getLogger(this.getClass().getName());
+                        soundLogger.info("Sounddatei 'dungeonX.wav' konnte nicht gefunden werden");
                     }
 
                     Game.setHero(new Hero());
@@ -153,8 +155,9 @@ public class MainMenu<T extends Actor> extends ScreenController<T> {
             @Override
             public void clicked(InputEvent event, float x, float y) {
                 if (!saveButton.isDisabled()) {
+                    saveLoadLogger = Logger.getLogger(this.getClass().getName());
                     for (Entity entity : Game.getEntities()) {
-                        saveLoadLogger = Logger.getLogger("Entität gespeichert: " + entity.getClass().getName() + " ID: " + entity.id);
+                        saveLoadLogger.info("Entität gespeichert: " + entity.getClass().getName() + " ID: " + entity.id);
                     }
 
                     EntityFileSystem.saveEntities(Game.getEntities());
@@ -183,8 +186,9 @@ public class MainMenu<T extends Actor> extends ScreenController<T> {
                         music.setVolume(0.2f);
                         music.play();
 
-                    } catch (Exception e) {
-                        soundLogger = Logger.getLogger("Sounddatei konnte nicht gefunden werden");
+                    }catch (Exception e){
+                        soundLogger = Logger.getLogger(this.getClass().getName());
+                        soundLogger.info("Sounddatei 'dungeonX.wav' konnte nicht gefunden werden");
                     }
 
                     Game.getEntities().clear();
@@ -292,7 +296,8 @@ public class MainMenu<T extends Actor> extends ScreenController<T> {
                 sound.play(0.3f);
 
             } catch (Exception e) {
-                soundLogger = Logger.getLogger("Sounddatei 'GameOver.mp3' konnte nicht gefunden werden");
+                soundLogger = Logger.getLogger(this.getClass().getName());
+                soundLogger.info("Sounddatei 'GameOver.mp3' konnte nicht gefunden werden");
             }
 
             refreshUI();
