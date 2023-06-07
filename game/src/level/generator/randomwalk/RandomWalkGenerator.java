@@ -111,13 +111,16 @@ public class RandomWalkGenerator implements IGenerator {
         }
 
         Coordinate shieldCoord = getRandomFloor(layout);
-        WorldItemBuilder.buildWorldItem(new EpicPowerfulShield(), new Coordinate(shieldCoord.x, shieldCoord.y).toPoint());
+        WorldItemBuilder.buildWorldItem(new EpicPowerfulShield(),
+            new Coordinate(shieldCoord.x + 2, shieldCoord.y + 2).toPoint());
 
         Coordinate bootsCoord = getRandomFloor(layout);
-        WorldItemBuilder.buildWorldItem(new MagicSpeedBoostBoots(), new Coordinate(bootsCoord.x, bootsCoord.y).toPoint());
+        WorldItemBuilder.buildWorldItem(new MagicSpeedBoostBoots(),
+            new Coordinate(bootsCoord.x + 2, bootsCoord.y + 2).toPoint());
 
         Coordinate quiverCoord = getRandomFloor(layout);
-        WorldItemBuilder.buildWorldItem(new ArrowQuiver(), new Coordinate(quiverCoord.x, quiverCoord.y).toPoint());
+        WorldItemBuilder.buildWorldItem(new ArrowQuiver(),
+            new Coordinate(quiverCoord.x + 2, quiverCoord.y + 2).toPoint());
 
         return layout;
     }
