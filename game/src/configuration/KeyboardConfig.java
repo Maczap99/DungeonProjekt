@@ -6,6 +6,10 @@ import configuration.values.ConfigIntValue;
 @ConfigMap(path = {"keyboard"})
 public class KeyboardConfig {
 
+    /**
+     * Set the Value for the Key input and the action
+     */
+
     public static final ConfigKey<Integer> MOVEMENT_UP =
         new ConfigKey<>(new String[]{"movement", "up"}, new ConfigIntValue(Input.Keys.W));
     public static final ConfigKey<Integer> MOVEMENT_DOWN =

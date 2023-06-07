@@ -5,7 +5,14 @@ import ecs.damage.DamageType;
 import starter.Game;
 import tools.Point;
 
+/***
+ * This ist the Class for the fireball settings
+ */
 public class FireballSkill extends DamageProjectileSkill {
+    /**
+     * This Method set the fireball settings
+     * @param targetSelection
+     */
     public FireballSkill(ITargetSelection targetSelection) {
         super(
             "fireball",
