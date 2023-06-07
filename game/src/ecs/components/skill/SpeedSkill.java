@@ -34,6 +34,7 @@ public class SpeedSkill extends BuffSkill {
     public void execute(Entity entity) {
         Hero hero = (Hero) Game.getHero().get();
 
+        speedSkillLogger = Logger.getLogger(this.getClass().getName());
 
         if (manaCost <= hero.getCurrentMana()) {
 
@@ -58,7 +59,7 @@ public class SpeedSkill extends BuffSkill {
                         time = 15;
                     }
 
-                    speedSkillLogger = Logger.getLogger(time + " Sekunden SpeedUP");
+                    speedSkillLogger.info(time + " Sekunden SpeedUP");
                     hero.startTrapTimer(time * 1000);
 
                     try {
@@ -67,7 +68,8 @@ public class SpeedSkill extends BuffSkill {
                         sound.play(0.3f);
 
                     } catch (Exception e) {
-                        soundLogger = Logger.getLogger("Sounddatei 'speedUp.mp3' konnte nicht gefunden werden");
+                        soundLogger = Logger.getLogger(this.getClass().getName());
+                        soundLogger.info("Sounddatei 'speedUp.mp3' konnte nicht gefunden werden");
                     }
 
 
@@ -75,24 +77,24 @@ public class SpeedSkill extends BuffSkill {
                         time = 15;
                     }
 
-                    speedSkillLogger = Logger.getLogger(time + " Sekunden SpeedUP");
+                    speedSkillLogger.info(time + " Sekunden SpeedUP");
                     hero.startTrapTimer(time * 1000);
 
                     // reduce mana
                     hero.setCurrentMana(hero.getCurrentMana() - manaCost);
-                    speedSkillLogger = Logger.getLogger("Mana: "+(int) hero.getCurrentMana() + " / " + (int) hero.getMana());
+                    speedSkillLogger.info("Mana: "+(int) hero.getCurrentMana() + " / " + (int) hero.getMana());
 
 
                 } else {
-                    speedSkillLogger = Logger.getLogger("SpeedUp nicht nutzbar, da eine Falle aktiviert ist");
+                    speedSkillLogger.info("SpeedUp nicht nutzbar, da eine Falle aktiviert ist");
                     hero.setCurrentMana(hero.getCurrentMana() + 10);
                 }
             } else {
                 throw new MissingComponentException("Player has no HealthComponent!");
             }
         }else{
-            speedSkillLogger = Logger.getLogger("Nicht genug Mana!");
-            speedSkillLogger = Logger.getLogger("Mana: "+(int) hero.getCurrentMana() + " / " + (int) hero.getMana());
+            speedSkillLogger.info("Nicht genug Mana!");
+            speedSkillLogger.info("Mana: "+(int) hero.getCurrentMana() + " / " + (int) hero.getMana());
         }
     }
 }
