@@ -114,6 +114,7 @@ public class MonsterBuilder {
         if(optHC.isPresent()){
             HealthComponent hc = (HealthComponent) optHC.get();
             hc.setMaximalHealthpoints(maxHealth);
+            hc.setCurrentHealthpoints(maxHealth);
         }
         else {
             throw new MissingComponentException("Monster has no HealthComponent!");
@@ -155,6 +156,7 @@ public class MonsterBuilder {
         if(optHC.isPresent()){
             HealthComponent hc = (HealthComponent) optHC.get();
             hc.setMaximalHealthpoints(maxHealth);
+            hc.setCurrentHealthpoints(maxHealth);
         }
         else {
             throw new MissingComponentException("Monster has no HealthComponent!");
@@ -196,6 +198,7 @@ public class MonsterBuilder {
         if(optHC.isPresent()){
             HealthComponent hc = (HealthComponent) optHC.get();
             hc.setMaximalHealthpoints(maxHealth);
+            hc.setCurrentHealthpoints(maxHealth);
         }
         else {
             throw new MissingComponentException("Monster has no HealthComponent!");
