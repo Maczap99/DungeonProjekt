@@ -37,7 +37,7 @@ public class Hero extends Entity implements ILevelUp {
     private int currentHealth = 100;
     private long currentLevel = 1;
     private int ammo = 10;
-    private int currentAmmo = 10;
+    private int currentAmmo = 0;
     private transient TrapTimer trapTimer;
     private transient Skill firstSkill;
     private transient Skill healSkill;

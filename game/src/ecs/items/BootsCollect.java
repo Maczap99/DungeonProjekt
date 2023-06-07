@@ -6,6 +6,12 @@ import ecs.entities.Hero;
 import starter.Game;
 
 public class BootsCollect implements IOnCollect {
+    /**
+     * Handles the collection of a boots item by the player.
+     *
+     * @param worldItem     The entity representing the boots item in the game world.
+     * @param whoCollected  The entity that collected the boots item.
+     */
     @Override
     public void onCollect(Entity worldItem, Entity whoCollected) {
         if (whoCollected.equals(Game.getHero().get())) {

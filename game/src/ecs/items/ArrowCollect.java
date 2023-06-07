@@ -6,6 +6,12 @@ import ecs.entities.Hero;
 import starter.Game;
 
 public class ArrowCollect implements IOnCollect {
+    /**
+     * Handles the collection of an arrow item by the player.
+     *
+     * @param worldItem     The entity representing the arrow item in the game world.
+     * @param whoCollected  The entity that collected the arrow item.
+     */
     @Override
     public void onCollect(Entity worldItem, Entity whoCollected) {
         if (whoCollected.equals(Game.getHero().get())) {
