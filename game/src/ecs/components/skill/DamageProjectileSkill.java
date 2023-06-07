@@ -13,6 +13,11 @@ import starter.Game;
 import tools.Constants;
 import tools.Point;
 
+import java.util.concurrent.Executors;
+import java.util.concurrent.ScheduledExecutorService;
+import java.util.concurrent.ScheduledFuture;
+import java.util.concurrent.TimeUnit;
+
 import java.io.Serializable;
 import java.util.logging.Logger;
 
@@ -31,6 +36,7 @@ public abstract class DamageProjectileSkill implements ISkillFunction, Serializa
     private transient Logger boomerangWeaponLogger;
     private transient Logger bowWeaponLogger;
     private transient Logger soundLogger;
+    private boolean isCollide = false;
 
     /**
      * @param skillName
@@ -176,17 +182,32 @@ public abstract class DamageProjectileSkill implements ISkillFunction, Serializa
                             hc -> {
                                 ((HealthComponent) hc).receiveHit(projectileDamage);
                                 Game.removeEntity(projectile);
+                                isCollide = true;
                             });
                 }
             };
 
         new HitboxComponent(
-            projectile, new Point(0.25f, 0.25f), projectileHitboxSize, collide, null);
+            projectile, new Point(0f, 0f), projectileHitboxSize, collide, null);
 
+        ScheduledExecutorService executor = Executors.newSingleThreadScheduledExecutor();
 
-        Game.removeEntity(projectile);
-        throwBack(entity, epc.getPosition(), targetPoint);
+        // Schedule a task to execute after 1 second
+        ScheduledFuture<?> future = executor.schedule(new Runnable() {
+            public void run() {
+                if (!isCollide) {
+                    // Code to execute after 1 second
+                    throwBack(entity, epc.getPosition(), targetPoint);
+                }
+            }
+        }, 1, TimeUnit.SECONDS);
+
+        isCollide = false;
+
+        executor.shutdown();
+
     }
+
     private void throwBack(Entity entity, Point targetPoint, Point position) {
         Entity projectile = new Entity();
         PositionComponent epc =
@@ -220,6 +241,8 @@ public abstract class DamageProjectileSkill implements ISkillFunction, Serializa
 
         new HitboxComponent(
             projectile, new Point(0.25f, 0.25f), projectileHitboxSize, collide, null);
+
+        isCollide = false;
     }
 
     /**
