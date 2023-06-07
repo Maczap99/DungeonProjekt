@@ -11,8 +11,8 @@ public class FireballSkill extends DamageProjectileSkill {
             "fireball",
             "skills/fireball/fireBall_",
             0.5f,
-            new Damage(1 + (Game.getLevelStage() / 5), DamageType.FIRE, null),
-            new Point(10, 10),
+            new Damage(8 + (Game.getLevelStage() / 5), DamageType.FIRE, null),
+            new Point(3, 3),
             targetSelection,
             5f,
             10f);

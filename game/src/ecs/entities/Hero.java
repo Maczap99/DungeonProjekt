@@ -166,7 +166,7 @@ public class Hero extends Entity implements ILevelUp {
     private void setupRandedCombatBoomerang() {
         rangedCombatBoomerang =
             new Skill(
-                new BoomerangWeapon(SkillTools::getCursorPositionAsPoint), 1, 0);
+                new BoomerangWeapon(SkillTools::getCursorPositionAsPoint), 3, 0);
     }
 
 
