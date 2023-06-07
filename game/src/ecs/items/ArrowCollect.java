@@ -34,7 +34,7 @@ public class ArrowCollect implements IOnCollect {
                 inventory.addItem(eternalArrows);
             }
 
-            hero.setAmmo(hero.getAmmo() + 1);
+            hero.setCurrentAmmo(hero.getCurrentAmmo() + 1);
         }
     }
 }
