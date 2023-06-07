@@ -20,6 +20,8 @@ import java.util.concurrent.ScheduledFuture;
 import java.util.concurrent.TimeUnit;
 
 import java.io.Serializable;
+import java.util.logging.Level;
+import java.util.logging.LogRecord;
 import java.util.logging.Logger;
 
 /***
@@ -38,10 +40,9 @@ public abstract class DamageProjectileSkill implements ISkillFunction, Serializa
     private ITargetSelection selectionFunction;
     private float manaCost;
     private transient Sound sound;
-    private transient Logger fireballSkillLogger;
-    private transient Logger boomerangWeaponLogger;
-    private transient Logger bowWeaponLogger;
-    private transient Logger soundLogger;
+    private transient Logger   fireballSkillLogger = Logger.getLogger(this.getClass().getName());
+    private transient Logger bowWeaponLogger = Logger.getLogger(this.getClass().getName());
+    private transient Logger soundLogger = Logger.getLogger(this.getClass().getName());
     private boolean isCollide = false;
 
     /**
@@ -86,7 +87,10 @@ public abstract class DamageProjectileSkill implements ISkillFunction, Serializa
             boomerang(entity);
         } else if (skillName.equals("bow")) {
             bow(entity);
+        }else if(skillName.equals("sword")){
+            sword(entity);
         }
+
     }
 
     /**
@@ -127,6 +131,12 @@ public abstract class DamageProjectileSkill implements ISkillFunction, Serializa
                                     ((HealthComponent) hc).receiveHit(projectileDamage);
                                     Game.removeEntity(projectile);
                                 });
+                        b.getComponent(PositionComponent.class)
+                            .ifPresent(
+                                bpc -> {
+                                    PositionComponent entityComp = (PositionComponent) bpc;
+                                    knockback((PositionComponent) projectile.getComponent(PositionComponent.class).get(), entityComp, 1.5f);
+                                });
                     }
                 };
 
@@ -135,7 +145,6 @@ public abstract class DamageProjectileSkill implements ISkillFunction, Serializa
 
             // reduce mana
             hero.setCurrentMana(hero.getCurrentMana() - manaCost);
-            fireballSkillLogger = Logger.getLogger(this.getClass().getName());
             fireballSkillLogger.info("Mana: " + (int) hero.getCurrentMana() + " / " + (int) hero.getMana());
 
             try {
@@ -144,11 +153,9 @@ public abstract class DamageProjectileSkill implements ISkillFunction, Serializa
                 sound.play(0.5f);
 
             } catch (Exception e) {
-                soundLogger = Logger.getLogger(this.getClass().getName());
                 soundLogger.info("Sounddatei 'Fireball1.mp3' konnte nicht gefunden werden");
             }
         } else {
-            fireballSkillLogger = Logger.getLogger(this.getClass().getName());
             fireballSkillLogger.info("Nicht genug Mana!");
             fireballSkillLogger.info("Mana: " + (int) hero.getCurrentMana() + " / " + (int) hero.getMana());
 
@@ -192,6 +199,12 @@ public abstract class DamageProjectileSkill implements ISkillFunction, Serializa
                                 ((HealthComponent) hc).receiveHit(projectileDamage);
                                 Game.removeEntity(projectile);
                                 isCollide = true;
+                            });
+                    b.getComponent(PositionComponent.class)
+                        .ifPresent(
+                            bpc -> {
+                                PositionComponent entityComp = (PositionComponent) bpc;
+                                knockback((PositionComponent) projectile.getComponent(PositionComponent.class).get(), entityComp, 1.5f);
                             });
                 }
             };
@@ -237,6 +250,7 @@ public abstract class DamageProjectileSkill implements ISkillFunction, Serializa
                                 ((HealthComponent) hc).receiveHit(projectileDamage);
                                 Game.removeEntity(projectile);
                             });
+
                 }
             };
 
@@ -254,7 +268,6 @@ public abstract class DamageProjectileSkill implements ISkillFunction, Serializa
     private void bow(Entity entity) {
         Hero hero = (Hero) Game.getHero().get();
         float xC = 0;
-        float yC = 0;
 
         if (hero.getCurrentAmmo() > 0) {
 
@@ -301,6 +314,12 @@ public abstract class DamageProjectileSkill implements ISkillFunction, Serializa
                                     ((HealthComponent) hc).receiveHit(projectileDamage);
                                     Game.removeEntity(projectile);
                                 });
+                        b.getComponent(PositionComponent.class)
+                            .ifPresent(
+                                bpc -> {
+                                    PositionComponent entityComp = (PositionComponent) bpc;
+                                    knockback((PositionComponent) projectile.getComponent(PositionComponent.class).get(), entityComp, 1.5f);
+                                });
                     }
                 };
 
@@ -309,8 +328,7 @@ public abstract class DamageProjectileSkill implements ISkillFunction, Serializa
 
 
             hero.setCurrentAmmo(hero.getCurrentAmmo() - 1);
-            
-            bowWeaponLogger = Logger.getLogger(this.getClass().getName());
+
             bowWeaponLogger.info(hero.getCurrentAmmo() +"/"+hero.getAmmo()+ " Pfeile uebrig");
 
             for (ItemData itemData: hero.getInventory().getItems()) {
@@ -325,13 +343,77 @@ public abstract class DamageProjectileSkill implements ISkillFunction, Serializa
                 sound.play(0.7f);
 
             } catch (Exception e) {
-                soundLogger = Logger.getLogger(this.getClass().getName());
                 soundLogger.info("Sounddatei 'bow.mp3' konnte nicht gefunden werden");
             }
         } else {
-            bowWeaponLogger = Logger.getLogger(this.getClass().getName());
             bowWeaponLogger.info("Keine Pfeile mehr!");
         }
+    }
+
+    /**
+     * This Method handles the sword entity and it's behaviour
+     * @param entity
+     */
+    private void sword(Entity entity){
+        int dir = SkillTools.getCursorPositionAsRelative4WayDirection();
+        Point pointDir;
+        Logger.getAnonymousLogger().log(new LogRecord(Level.INFO,"Sword struck towards Direction " + dir));
+        String pathSuffix = "";
+
+        if(dir == 0){
+            pointDir = new Point(0,1);
+            pathSuffix += "up";
+        } else if(dir == 1){
+            pointDir = new Point(1,0);
+            pathSuffix += "right";
+        } else if(dir == 2){
+            pointDir = new Point(0,-1);
+            pathSuffix += "down";
+        } else{
+            pointDir = new Point(-1,0);
+            pathSuffix += "left";
+        }
+
+        Entity projectile = new Entity();
+        PositionComponent epc =
+            (PositionComponent)
+                entity.getComponent(PositionComponent.class)
+                    .orElseThrow(
+                        () -> new MissingComponentException("PositionComponent"));
+        new PositionComponent(projectile, epc.getPosition());
+        Point targetPoint = new Point(epc.getPosition().x + pointDir.x, epc.getPosition().y + pointDir.y);
+
+        Animation animation = AnimationBuilder.buildAnimation(pathToTexturesOfProjectile + pathSuffix);
+        new AnimationComponent(projectile, animation);
+
+
+        Point velocity =
+            SkillTools.calculateVelocity(epc.getPosition(), targetPoint, projectileSpeed);
+        VelocityComponent vc =
+            new VelocityComponent(projectile, velocity.x, velocity.y, animation, animation);
+
+        new ProjectileComponent(projectile, epc.getPosition(), targetPoint);
+
+        ICollide collide =
+            (a, b, from) -> {
+                if (b != entity) {
+                    b.getComponent(HealthComponent.class)
+                        .ifPresent(
+                            hc -> {
+                                ((HealthComponent) hc).receiveHit(projectileDamage);
+                                Game.removeEntity(projectile);
+                            });
+                    b.getComponent(PositionComponent.class)
+                        .ifPresent(
+                            bpc -> {
+                                PositionComponent entityComp = (PositionComponent) bpc;
+                                knockback((PositionComponent) projectile.getComponent(PositionComponent.class).get(), entityComp, 1.5f);
+                            });
+                }
+            };
+
+        new HitboxComponent(
+            projectile, new Point(0f, 0f), projectileHitboxSize, collide, null);
     }
 
     /**
@@ -348,34 +430,56 @@ public abstract class DamageProjectileSkill implements ISkillFunction, Serializa
 
         float x = epc.getPosition().x - targetDirection.x;
         float y = epc.getPosition().y - targetDirection.y;
-        if (x > 0 && y < 0) { // rechts oberhalb
-            if (Math.abs(x) > Math.abs(y)) { // weiter rechts als oberhalb
+        if (x > 0 && y < 0) {
+            if (Math.abs(x) > Math.abs(y)) {
                 return "Left/";
             } else {
                 return "Up/";
             }
 
-        } else if (x > 0 && y > 0) { // rechts unterhalb
+        } else if (x > 0 && y > 0) {
             if (Math.abs(x) > Math.abs(y)) {
-                return "Left/"; // weiter rechts als unterhalb
+                return "Left/";
             } else {
                 return "Down/";
             }
-        } else if (x < 0 && y < 0) { // links oberhalb
+        } else if (x < 0 && y < 0) {
             if (Math.abs(x) > Math.abs(y)) {
-                return "Right/"; // weiter links als oberhalb
+                return "Right/";
             } else {
                 return "Up/";
             }
 
-        } else if (x < 0 && y > 0) { // links unterhalb
+        } else if (x < 0 && y > 0) {
             if (Math.abs(x) > Math.abs(y)) {
-                return "Right/"; // weiter links als unterhalb
+                return "Right/";
             } else {
                 return "Down/";
             }
         }
         return pathToTexturesOfProjectile;
+    }
+
+    /**
+     * This Method check if the entity can get knock-back and set is
+     * @param projectileComp
+     * @param entityComp
+     */
+    protected void knockback(PositionComponent projectileComp, PositionComponent entityComp, float strength) {
+        Point dir = Point.getUnitDirectionalVector( entityComp.getPosition(), projectileComp.getPosition());
+
+        dir.x = dir.x * strength;
+        dir.y = dir.y * strength;
+
+        Point newPoint = new Point(dir.x + entityComp.getPosition().x, dir.y + entityComp.getPosition().y);
+
+        if(Game.currentLevel.getTileAt(newPoint.toCoordinate()) != null){
+            boolean tileCheck = Game.currentLevel.getTileAt(newPoint.toCoordinate()).isAccessible();
+
+            if(tileCheck){
+                entityComp.setPosition(newPoint);
+            }
+        }
     }
 
     /**

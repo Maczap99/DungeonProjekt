@@ -10,9 +10,13 @@ import ecs.components.ai.idle.RadiusWalk;
 import ecs.components.ai.idle.StaticRadiusWalk;
 import ecs.components.ai.transition.RangeTransition;
 import ecs.components.ai.transition.SelfDefendTransition;
+import ecs.components.collision.ICollide;
 import ecs.components.xp.XPComponent;
+import ecs.damage.Damage;
+import ecs.damage.DamageType;
 import ecs.entities.Monster;
 import graphic.Animation;
+import starter.Game;
 
 import java.util.Optional;
 import java.util.concurrent.ThreadLocalRandom;
@@ -101,6 +105,8 @@ public class MonsterBuilder {
         float xSpeed = 0.15f;
         float ySpeed = 0.15f;
         int maxHealth = 5;
+        int damage = 1;
+
 
         Animation moveLeft = AnimationBuilder.buildAnimation(impPaths[0]);
         Animation moveRight = AnimationBuilder.buildAnimation(impPaths[1]);
@@ -129,6 +135,28 @@ public class MonsterBuilder {
             throw new MissingComponentException("This Monster has no XPComponent");
         }
 
+        //Das fühlt sich schmutzig an...
+        Monster finalBase = base;
+        ICollide collide =
+            (a, b, from) -> {
+                if (b != finalBase) {
+                    b.getComponent(HealthComponent.class)
+                        .ifPresent(
+                            hc -> {
+                                ((HealthComponent) hc).receiveHit(new Damage(damage, DamageType.PHYSICAL, finalBase));
+                            });
+                }
+            };
+
+        Optional<Component> optHIT = base.getComponent(HitboxComponent.class);
+        if(optHIT.isPresent()){
+            HitboxComponent hit = (HitboxComponent) optHIT.get();
+            hit.setiCollideEnter(collide);
+        }
+        else{
+            throw new MissingComponentException("This Monster has no HitboxComponent");
+        }
+
         base = applyRandomAI(base);
 
         return base;
@@ -143,6 +171,7 @@ public class MonsterBuilder {
         float xSpeed = 0.1f;
         float ySpeed = 0.1f;
         int maxHealth = 10;
+        int damage = 1;
 
         Animation moveLeft = AnimationBuilder.buildAnimation(chortPaths[0]);
         Animation moveRight = AnimationBuilder.buildAnimation(chortPaths[1]);
@@ -173,6 +202,28 @@ public class MonsterBuilder {
 
         base = applyRandomAI(base);
 
+        //Das fühlt sich schmutzig an...
+        Monster finalBase = base;
+        ICollide collide =
+            (a, b, from) -> {
+                if (b != finalBase) {
+                    b.getComponent(HealthComponent.class)
+                        .ifPresent(
+                            hc -> {
+                                ((HealthComponent) hc).receiveHit(new Damage(damage, DamageType.PHYSICAL, finalBase));
+                            });
+                }
+            };
+
+        Optional<Component> optHIT = base.getComponent(HitboxComponent.class);
+        if(optHIT.isPresent()){
+            HitboxComponent hit = (HitboxComponent) optHIT.get();
+            hit.setiCollideEnter(collide);
+        }
+        else{
+            throw new MissingComponentException("This Monster has no HitboxComponent");
+        }
+
         return base;
     }
 
@@ -185,6 +236,7 @@ public class MonsterBuilder {
         float xSpeed = 0.3f;
         float ySpeed = 0.3f;
         int maxHealth = 1;
+        int damage = 1;
 
         Animation moveLeft = AnimationBuilder.buildAnimation(goblinPaths[0]);
         Animation moveRight = AnimationBuilder.buildAnimation(goblinPaths[1]);
@@ -211,6 +263,28 @@ public class MonsterBuilder {
         }
         else{
             throw new MissingComponentException("This Monster has no XPComponent");
+        }
+
+        //Das fühlt sich schmutzig an...
+        Monster finalBase = base;
+        ICollide collide =
+            (a, b, from) -> {
+                if (b != finalBase) {
+                    b.getComponent(HealthComponent.class)
+                        .ifPresent(
+                            hc -> {
+                                ((HealthComponent) hc).receiveHit(new Damage(damage, DamageType.PHYSICAL, finalBase));
+                            });
+                }
+            };
+
+        Optional<Component> optHIT = base.getComponent(HitboxComponent.class);
+        if(optHIT.isPresent()){
+            HitboxComponent hit = (HitboxComponent) optHIT.get();
+            hit.setiCollideEnter(collide);
+        }
+        else{
+            throw new MissingComponentException("This Monster has no HitboxComponent");
         }
 
         base = applyRandomAI(base);

@@ -2,7 +2,10 @@ package ecs.entities;
 
 import ecs.components.*;
 import ecs.components.ai.AIComponent;
+import ecs.components.collision.ICollide;
 import ecs.components.xp.XPComponent;
+import ecs.damage.Damage;
+import ecs.damage.DamageType;
 
 
 /**
@@ -19,6 +22,19 @@ public class Monster extends Entity {
     private void setup(){
         new PositionComponent(this);
         new HealthComponent(this);
+
+
+        ICollide collide =
+            (a, b, from) -> {
+                if (b != this) {
+                    b.getComponent(HealthComponent.class)
+                        .ifPresent(
+                            hc -> {
+                                ((HealthComponent) hc).receiveHit(new Damage(1, DamageType.PHYSICAL, this));
+                            });
+                }
+            };
+
         new HitboxComponent(this);
         new AIComponent(this);
         new VelocityComponent(this);
