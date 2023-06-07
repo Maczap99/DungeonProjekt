@@ -25,6 +25,10 @@ public class Hero extends Entity implements ILevelUp {
     private final int cureCoolDown = 1;
     private final int speedCoolDown = 5;
     private final int meleeCoolDown = 1;
+    private final String pathToIdleLeft = "knight/idleLeft";
+    private final String pathToIdleRight = "knight/idleRight";
+    private final String pathToRunLeft = "knight/runLeft";
+    private final String pathToRunRight = "knight/runRight";
     private float xSpeed = 0.2f;
     private float ySpeed = 0.2f;
     private float mana = 100f;
