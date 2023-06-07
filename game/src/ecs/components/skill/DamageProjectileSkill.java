@@ -395,6 +395,12 @@ public abstract class DamageProjectileSkill implements ISkillFunction, Serializa
                                 ((HealthComponent) hc).receiveHit(projectileDamage);
                                 Game.removeEntity(projectile);
                             });
+                    b.getComponent(PositionComponent.class)
+                        .ifPresent(
+                            bpc -> {
+                                PositionComponent entityComp = (PositionComponent) bpc;
+                                knockback((PositionComponent) projectile.getComponent(PositionComponent.class).get(), entityComp, 1.5f);
+                            });
                 }
             };
 
