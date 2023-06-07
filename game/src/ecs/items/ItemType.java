@@ -5,7 +5,7 @@ public enum ItemType {
     Active,
     Passive,
     Weapon,
-    Amor,
+    Ammo,
     Effect,
     Bag
 }
