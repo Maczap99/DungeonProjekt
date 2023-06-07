@@ -54,16 +54,18 @@ public class TrapFloor extends Entity implements ICollide {
             Random rand = new Random();
             int time = rand.nextInt(10) + 6;
 
+            trapFloorLogger = Logger.getLogger(this.getClass().getName());
+
             if(hero.getTrapTimer() != null && !hero.getTrapTimer().isFinished()){
                 TrapTimer t = hero.getTrapTimer();
 
                 // wait random seconds
-                trapFloorLogger = Logger.getLogger((time+t.getCurrentTimeInSec()) + " Sekunden verlangsamt");
+                trapFloorLogger.info((time+t.getCurrentTimeInSec()) + " Sekunden verlangsamt");
 
                 hero.startTrapTimer((time+t.getCurrentTimeInSec()) * 1000);
             }else{
                 // wait random seconds
-                trapFloorLogger = Logger.getLogger(time + " Sekunden verlangsamt");
+                trapFloorLogger.info(time + " Sekunden verlangsamt");
 
                 hero.startTrapTimer(time * 1000);
             }
@@ -74,7 +76,8 @@ public class TrapFloor extends Entity implements ICollide {
                 sound.play(0.5f);
 
             }catch (Exception e){
-                soundLogger = Logger.getLogger("Sounddatei 'trapFloor1.mp3' konnte nicht gefunden werden");
+                soundLogger = Logger.getLogger(this.getClass().getName());
+                soundLogger.info("Sounddatei 'trapFloor1.mp3' konnte nicht gefunden werden");
             }
 
             // set new speed

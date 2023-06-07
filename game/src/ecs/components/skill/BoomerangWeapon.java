@@ -5,7 +5,14 @@ import ecs.damage.DamageType;
 import starter.Game;
 import tools.Point;
 
+/***
+ * This ist the Class for the boomerang settings
+ */
 public class BoomerangWeapon extends DamageProjectileSkill {
+    /**
+     * This Method set the boomerang settings
+     * @param targetSelection
+     */
     public BoomerangWeapon(ITargetSelection targetSelection) {
         super(
             "boomerang",
