@@ -5,8 +5,7 @@ import java.util.Random;
 import ecs.entities.Entity;
 import ecs.entities.TrapChest;
 import ecs.entities.TrapFloor;
-import ecs.items.EternalArrows;
-import ecs.items.WorldItemBuilder;
+import ecs.items.*;
 import level.elements.ILevel;
 import level.elements.TileLevel;
 import level.generator.IGenerator;
@@ -110,6 +109,15 @@ public class RandomWalkGenerator implements IGenerator {
             WorldItemBuilder.buildWorldItem(new EternalArrows(),
                 new Coordinate(coord.x + 2, coord.y + 2).toPoint());
         }
+
+        Coordinate shieldCoord = getRandomFloor(layout);
+        WorldItemBuilder.buildWorldItem(new EpicPowerfulShield(), new Coordinate(shieldCoord.x, shieldCoord.y).toPoint());
+
+        Coordinate bootsCoord = getRandomFloor(layout);
+        WorldItemBuilder.buildWorldItem(new MagicSpeedBoostBoots(), new Coordinate(bootsCoord.x, bootsCoord.y).toPoint());
+
+        Coordinate quiverCoord = getRandomFloor(layout);
+        WorldItemBuilder.buildWorldItem(new ArrowQuiver(), new Coordinate(quiverCoord.x, quiverCoord.y).toPoint());
 
         return layout;
     }

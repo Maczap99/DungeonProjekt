@@ -265,12 +265,6 @@ public class Game extends ScreenAdapter implements IOnLevelLoader {
         toggleMainMenu();
     }
 
-    private HashSet createItemSet() {
-        var items = new HashSet<ItemData>();
-        items.add(new EternalArrows());
-        return null;
-    }
-
     /**
      * Called at the beginning of each frame. Before the controllers call <code>update</code>.
      */
@@ -302,11 +296,15 @@ public class Game extends ScreenAdapter implements IOnLevelLoader {
 
         // Print inventory
         if (Gdx.input.isKeyJustPressed(Input.Keys.I)) {
+            System.out.println("Inventory: ");
             for (ItemData itemData : h.getInventory().getItems()) {
                 System.out.println("Item Name: " + itemData.getItemName());
-                if (itemData instanceof EternalArrows) {
-                    System.out.println("Item Amount: " + ((EternalArrows) itemData).getAmount());
-                }
+                System.out.println("Item Description: " + itemData.getDescription() + "\n");
+            }
+            System.out.println("Quiver: ");
+            for (ItemData itemData : h.getQuiver().getItems()) {
+                System.out.println("Item Name: " + itemData.getItemName());
+                System.out.println("Item Amount: " + ((EternalArrows) itemData).getAmount());
                 System.out.println("Item Description: " + itemData.getDescription() + "\n");
             }
         }

@@ -16,31 +16,33 @@ public class ArrowCollect implements IOnCollect {
     public void onCollect(Entity worldItem, Entity whoCollected) {
         if (whoCollected.equals(Game.getHero().get())) {
             var hero = (Hero) whoCollected;
-            var inventory = hero.getInventory();
+            if(hero.getQuiver() != null) {
+                var quiver = hero.getQuiver();
 
-            boolean arrowsArePresent = false;
-            for (ItemData itemData : inventory.getItems()) {
-                if (itemData instanceof EternalArrows) {
-                    arrowsArePresent = true;
-                    if (((EternalArrows) itemData).increaseAmount()) {
+                boolean arrowsArePresent = false;
+                for (ItemData itemData : quiver.getItems()) {
+                    if (itemData instanceof EternalArrows) {
+                        arrowsArePresent = true;
+                        if (((EternalArrows) itemData).increaseAmount()) {
+                            Game.removeEntity(worldItem);
+                        }
+                        break;
+                    }
+                }
+
+                if (!arrowsArePresent) {
+                    var itemComponent = (ItemComponent) worldItem.getComponent(ItemComponent.class).get();
+                    var eternalArrows = (EternalArrows) itemComponent.getItemData();
+
+                    if (eternalArrows.increaseAmount()) {
                         Game.removeEntity(worldItem);
                     }
-                    break;
-                }
-            }
 
-            if (!arrowsArePresent) {
-                var itemComponent = (ItemComponent) worldItem.getComponent(ItemComponent.class).get();
-                var eternalArrows = (EternalArrows) itemComponent.getItemData();
-
-                if (eternalArrows.increaseAmount()) {
-                    Game.removeEntity(worldItem);
+                    quiver.addItem(eternalArrows);
                 }
 
-                inventory.addItem(eternalArrows);
+                hero.setCurrentAmmo(hero.getCurrentAmmo() + 1);
             }
-
-            hero.setCurrentAmmo(hero.getCurrentAmmo() + 1);
         }
     }
 }

@@ -17,7 +17,7 @@ public class EpicPowerfulShield extends ItemData {
             new Animation(List.of("items/shield.png"), 1),
             new Animation(List.of("items/shield.png"), 1),
             "Epic Powerful Shield",
-            "Ein episches, mächtiges Schild, das die maximale Gesundheit des Spielers erhöht.",
+            "An epic powerful shield that increases the player's maximum health.",
             new ShieldCollect(),
             null,
             null,

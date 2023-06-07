@@ -50,6 +50,8 @@ public class Hero extends Entity implements ILevelUp {
     private transient Logger heroCollisionLogger;
     private transient InventoryComponent inventory;
 
+    private transient InventoryComponent quiver;
+
 
     /**
      * Entity with Components
@@ -205,6 +207,14 @@ public class Hero extends Entity implements ILevelUp {
     /**
      * Getter & Setter
      ********************/
+    public InventoryComponent getQuiver() {
+        return quiver;
+    }
+
+    public void setQuiver(InventoryComponent quiver) {
+        this.quiver = quiver;
+    }
+
     public InventoryComponent getInventory() {
         return inventory;
     }

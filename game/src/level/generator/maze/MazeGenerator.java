@@ -3,10 +3,7 @@ package level.generator.maze;
 import ecs.entities.Entity;
 import ecs.entities.TrapChest;
 import ecs.entities.TrapFloor;
-import ecs.items.EpicPowerfulShield;
-import ecs.items.EternalArrows;
-import ecs.items.MagicSpeedBoostBoots;
-import ecs.items.WorldItemBuilder;
+import ecs.items.*;
 import level.elements.ILevel;
 import level.elements.TileLevel;
 import level.generator.IGenerator;
@@ -344,6 +341,9 @@ public class MazeGenerator implements IGenerator {
 
         Coordinate bootsCoord = getRandomFloor(layout);
         WorldItemBuilder.buildWorldItem(new MagicSpeedBoostBoots(), new Coordinate(bootsCoord.x, bootsCoord.y).toPoint());
+
+        Coordinate quiverCoord = getRandomFloor(layout);
+        WorldItemBuilder.buildWorldItem(new ArrowQuiver(), new Coordinate(quiverCoord.x, quiverCoord.y).toPoint());
 
         return layout;
     }
