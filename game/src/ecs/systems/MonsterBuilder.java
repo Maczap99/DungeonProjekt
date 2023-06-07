@@ -107,6 +107,7 @@ public class MonsterBuilder {
         int maxHealth = 5;
         int damage = 1;
 
+
         Animation moveLeft = AnimationBuilder.buildAnimation(impPaths[0]);
         Animation moveRight = AnimationBuilder.buildAnimation(impPaths[1]);
         new VelocityComponent(base, xSpeed, ySpeed, moveLeft, moveRight);

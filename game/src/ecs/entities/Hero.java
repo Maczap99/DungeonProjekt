@@ -34,6 +34,7 @@ public class Hero extends Entity implements ILevelUp {
     private long level = 1;
     private long currentLevel = 1;
     private int ammo = 10;
+    private int currentAmmo = 10;
     private transient TrapTimer trapTimer;
     private final String pathToIdleLeft = "knight/idleLeft";
     private final String pathToIdleRight = "knight/idleRight";
@@ -47,7 +48,6 @@ public class Hero extends Entity implements ILevelUp {
     private transient Skill rangedCombatBow;
     private transient Skill rangedCombatBoomerang;
 
-    private transient boolean rangeWeapon = false;
     private transient Logger heroCollisionLogger;
 
 
@@ -168,15 +168,16 @@ public class Hero extends Entity implements ILevelUp {
     private void setupRandedCombatBoomerang() {
         rangedCombatBoomerang =
             new Skill(
-                new BoomerangWeapon(SkillTools::getCursorPositionAsPoint), 1, 0);
+                new BoomerangWeapon(SkillTools::getCursorPositionAsPoint), 3, 0);
     }
 
 
     private void setupHitboxComponent() {
+        heroCollisionLogger = Logger.getLogger(this.getClass().getName());
         new HitboxComponent(
             this,
-            (you, other, direction) -> heroCollisionLogger = Logger.getLogger("heroCollisionEnter"),
-            (you, other, direction) -> heroCollisionLogger = Logger.getLogger("heroCollisionLeave"));
+            (you, other, direction) -> heroCollisionLogger.info("heroCollisionEnter"),
+            (you, other, direction) -> heroCollisionLogger.info("heroCollisionLeave"));
     }
 
     /**
@@ -267,6 +268,13 @@ public class Hero extends Entity implements ILevelUp {
 
     public void setAmmo(int ammo) {
         this.ammo = ammo;
+    }
+    public int getCurrentAmmo() {
+        return currentAmmo;
+    }
+
+    public void setCurrentAmmo(int currentAmmo) {
+        this.currentAmmo = currentAmmo;
     }
 
     @Override

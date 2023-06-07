@@ -89,8 +89,9 @@ public class TrapChest extends Entity implements IInteraction {
             else{
                 throw new MissingComponentException("Player has no HealthComponent!");
             }
-            trapChestLogger = Logger.getLogger("Held id "+ hero.id + " bekommt " + damage + " Schaden!");
-            trapChestLogger = Logger.getLogger("Leben: " + held.getCurrentHealth() + " von "+held.getHealth());
+            trapChestLogger = Logger.getLogger(this.getClass().getName());
+            trapChestLogger.info("Held id "+ hero.id + " bekommt " + damage + " Schaden!");
+            trapChestLogger.info("Leben: " + held.getCurrentHealth() + " von "+held.getHealth());
 
             if(held.getCurrentHealth() > 0) {
                 try {
@@ -101,7 +102,8 @@ public class TrapChest extends Entity implements IInteraction {
                     sound.play(0.5f);
 
                 } catch (Exception e) {
-                    soundLogger = Logger.getLogger("Sounddatei der TrapChest konnte nicht gefunden werden");
+                    soundLogger = Logger.getLogger(this.getClass().getName());
+                    soundLogger.info("Sounddatei der TrapChest konnte nicht gefunden werden");
                 }
             }
         }

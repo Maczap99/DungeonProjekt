@@ -28,17 +28,19 @@ public class CureSkill extends BuffSkill implements Serializable {
 
     @Override
     public void execute(Entity entity) {
+        cureSkillLogger = Logger.getLogger(this.getClass().getName());
         // set the trap timer on 0
         Hero hero = (Hero) Game.getHero().get();
+
         if (hero.getTrapTimer() != null && !hero.getTrapTimer().isFinished()) {
             if (manaCost <= hero.getCurrentMana()) {
 
-                cureSkillLogger = Logger.getLogger("Held wurde gesund");
+                cureSkillLogger.info("Held wurde gesund");
                 hero.startTrapTimer(0);
 
                 // reduce mana
                 hero.setCurrentMana(hero.getCurrentMana() - manaCost);
-                cureSkillLogger = Logger.getLogger("Mana: "+(int) hero.getCurrentMana() + " / " + (int) hero.getMana());
+                cureSkillLogger.info("Mana: " + (int) hero.getCurrentMana() + " / " + (int) hero.getMana());
 
                 try {
                     // start menu soundtrack
@@ -51,11 +53,11 @@ public class CureSkill extends BuffSkill implements Serializable {
 
 
             } else {
-                cureSkillLogger = Logger.getLogger("Nicht genug Mana!");
-                cureSkillLogger = Logger.getLogger("Mana: "+(int) hero.getCurrentMana() + " / " + (int) hero.getMana());
+                cureSkillLogger.info("Nicht genug Mana!");
+                cureSkillLogger.info("Mana: " + (int) hero.getCurrentMana() + " / " + (int) hero.getMana());
             }
-        }else{
-            cureSkillLogger = Logger.getLogger("Kein Effekt vorhanden!");
+        } else {
+            cureSkillLogger.info("Kein Effekt vorhanden!");
         }
     }
 }
