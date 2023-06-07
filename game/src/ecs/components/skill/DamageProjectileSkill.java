@@ -391,62 +391,7 @@ public abstract class DamageProjectileSkill implements ISkillFunction, Serializa
         float xwert = epc.getPosition().x - bComp.getPosition().x;
         float ywert = epc.getPosition().y - bComp.getPosition().y;
 
-        Point newPoint;
-
-        if (xwert > 0 && ywert < 0) { // rechts oberhalb
-            if (Math.abs(xwert) > Math.abs(ywert)) { // weiter rechts als oberhalb
-                newPoint = new Point(bComp.getPosition().x - 1f, bComp.getPosition().y);
-                if (Game.currentLevel.getTileAt(newPoint.toCoordinate()).isAccessible()) {
-                    bComp.setPosition(newPoint); // knock back nach links
-                }
-            } else {
-                newPoint = new Point(bComp.getPosition().x, bComp.getPosition().y + 1);
-                if (Game.currentLevel.getTileAt(newPoint.toCoordinate()).isAccessible()) {
-                    bComp.setPosition(newPoint);
-                }
-            }
-
-        } else if (xwert > 0 && ywert > 0) { // rechts unterhalb
-            if (Math.abs(xwert) > Math.abs(ywert)) { // weiter rechts als unterhalb
-                newPoint = new Point(bComp.getPosition().x - 1f, bComp.getPosition().y);
-                if (Game.currentLevel.getTileAt(newPoint.toCoordinate()).isAccessible()) {
-                    bComp.setPosition(newPoint);
-                }
-            } else {
-                newPoint = new Point(bComp.getPosition().x, bComp.getPosition().y - 1f);
-                if (Game.currentLevel.getTileAt(newPoint.toCoordinate()).isAccessible()) {
-                    bComp.setPosition(newPoint);
-                }
-            }
-
-        } else if (xwert < 0 && ywert < 0) { // links oberhalb
-            if (Math.abs(xwert) > Math.abs(ywert)) { // weiter links als oberhalb
-                newPoint = new Point(bComp.getPosition().x + 1f, bComp.getPosition().y);
-                if (Game.currentLevel.getTileAt(newPoint.toCoordinate()).isAccessible()) {
-                    bComp.setPosition(newPoint);
-                }
-
-            } else {
-                newPoint = new Point(bComp.getPosition().x, bComp.getPosition().y + 1f);
-                if (Game.currentLevel.getTileAt(newPoint.toCoordinate()).isAccessible()) {
-                    bComp.setPosition(newPoint);
-                }
-            }
-
-        } else if (xwert < 0 && ywert > 0) { // links unterhalb
-            if (Math.abs(xwert) > Math.abs(ywert)) { // weiter links als unterhalb
-                newPoint = new Point(bComp.getPosition().x + 1f, bComp.getPosition().y);
-                if (Game.currentLevel.getTileAt(newPoint.toCoordinate()).isAccessible()) {
-                    bComp.setPosition(newPoint);
-                }
-
-            } else {
-                newPoint = new Point(bComp.getPosition().x, bComp.getPosition().y - 1f);
-                if (Game.currentLevel.getTileAt(newPoint.toCoordinate()).isAccessible()) {
-                    bComp.setPosition(newPoint);
-                }
-            }
-        }
+        
     }
 
     /**
