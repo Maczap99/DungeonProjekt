@@ -124,6 +124,12 @@ public abstract class DamageProjectileSkill implements ISkillFunction, Serializa
                                     ((HealthComponent) hc).receiveHit(projectileDamage);
                                     Game.removeEntity(projectile);
                                 });
+                        b.getComponent(PositionComponent.class)
+                            .ifPresent(
+                                bpc -> {
+                                    PositionComponent bComp = (PositionComponent) bpc;
+                                    knockback(epc, bComp);
+                                });
                     }
                 };
 
@@ -237,6 +243,7 @@ public abstract class DamageProjectileSkill implements ISkillFunction, Serializa
                                 ((HealthComponent) hc).receiveHit(projectileDamage);
                                 Game.removeEntity(projectile);
                             });
+
                 }
             };
 
@@ -301,6 +308,12 @@ public abstract class DamageProjectileSkill implements ISkillFunction, Serializa
                                     ((HealthComponent) hc).receiveHit(projectileDamage);
                                     Game.removeEntity(projectile);
                                 });
+                        b.getComponent(PositionComponent.class)
+                            .ifPresent(
+                                bpc -> {
+                                    PositionComponent bComp = (PositionComponent) bpc;
+                                    knockback(epc, bComp);
+                                });
                     }
                 };
 
@@ -339,29 +352,29 @@ public abstract class DamageProjectileSkill implements ISkillFunction, Serializa
 
         float x = epc.getPosition().x - targetDirection.x;
         float y = epc.getPosition().y - targetDirection.y;
-        if (x > 0 && y < 0) { // rechts oberhalb
-            if (Math.abs(x) > Math.abs(y)) { // weiter rechts als oberhalb
+        if (x > 0 && y < 0) {
+            if (Math.abs(x) > Math.abs(y)) {
                 return "Left/";
             } else {
                 return "Up/";
             }
 
-        } else if (x > 0 && y > 0) { // rechts unterhalb
+        } else if (x > 0 && y > 0) {
             if (Math.abs(x) > Math.abs(y)) {
-                return "Left/"; // weiter rechts als unterhalb
+                return "Left/";
             } else {
                 return "Down/";
             }
-        } else if (x < 0 && y < 0) { // links oberhalb
+        } else if (x < 0 && y < 0) {
             if (Math.abs(x) > Math.abs(y)) {
-                return "Right/"; // weiter links als oberhalb
+                return "Right/";
             } else {
                 return "Up/";
             }
 
-        } else if (x < 0 && y > 0) { // links unterhalb
+        } else if (x < 0 && y > 0) {
             if (Math.abs(x) > Math.abs(y)) {
-                return "Right/"; // weiter links als unterhalb
+                return "Right/";
             } else {
                 return "Down/";
             }
