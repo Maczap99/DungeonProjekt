@@ -129,6 +129,7 @@ public abstract class DamageProjectileSkill implements ISkillFunction, Serializa
                             .ifPresent(
                                 hc -> {
                                     ((HealthComponent) hc).receiveHit(projectileDamage);
+                                    makeSound();
                                     Game.removeEntity(projectile);
                                 });
                         b.getComponent(PositionComponent.class)
@@ -199,6 +200,7 @@ public abstract class DamageProjectileSkill implements ISkillFunction, Serializa
                         .ifPresent(
                             hc -> {
                                 ((HealthComponent) hc).receiveHit(projectileDamage);
+                                makeSound();
                                 Game.removeEntity(projectile);
                                 isCollide = true;
                             });
@@ -252,6 +254,7 @@ public abstract class DamageProjectileSkill implements ISkillFunction, Serializa
                         .ifPresent(
                             hc -> {
                                 ((HealthComponent) hc).receiveHit(projectileDamage);
+                                makeSound();
                                 Game.removeEntity(projectile);
                             });
 
@@ -316,6 +319,7 @@ public abstract class DamageProjectileSkill implements ISkillFunction, Serializa
                             .ifPresent(
                                 hc -> {
                                     ((HealthComponent) hc).receiveHit(projectileDamage);
+                                    makeSound();
                                     Game.removeEntity(projectile);
                                 });
                         b.getComponent(PositionComponent.class)
@@ -408,6 +412,7 @@ public abstract class DamageProjectileSkill implements ISkillFunction, Serializa
                         .ifPresent(
                             hc -> {
                                 ((HealthComponent) hc).receiveHit(projectileDamage);
+                                makeSound();
                                 Game.removeEntity(projectile);
                             });
                     b.getComponent(PositionComponent.class)
@@ -523,5 +528,17 @@ public abstract class DamageProjectileSkill implements ISkillFunction, Serializa
         float temp = (float) (Math.random() * 2) + 1f;
 
         return temp;
+    }
+
+    private void makeSound(){
+        try {
+            // start menu soundtrack
+            sound = Gdx.audio.newSound(Gdx.files.internal("game/sounds/effect/damage2.mp3"));
+            sound.play(0.5f);
+
+        } catch (Exception e) {
+            soundLogger = Logger.getLogger(this.getClass().getName());
+            soundLogger.info("Sounddatei 'damage2.mp3' konnte nicht gefunden werden");
+        }
     }
 }
