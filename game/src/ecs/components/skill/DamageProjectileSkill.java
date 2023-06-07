@@ -18,6 +18,8 @@ import java.util.concurrent.ScheduledFuture;
 import java.util.concurrent.TimeUnit;
 
 import java.io.Serializable;
+import java.util.logging.Level;
+import java.util.logging.LogRecord;
 import java.util.logging.Logger;
 
 /***
@@ -83,7 +85,10 @@ public abstract class DamageProjectileSkill implements ISkillFunction, Serializa
             boomerang(entity);
         } else if (skillName.equals("bow")) {
             bow(entity);
+        }else if(skillName.equals("sword")){
+            sword(entity);
         }
+
     }
 
     /**
@@ -335,6 +340,66 @@ public abstract class DamageProjectileSkill implements ISkillFunction, Serializa
         } else {
             bowWeaponLogger.info("Keine Pfeile mehr!");
         }
+    }
+
+    /**
+     * This Method handles the sword entity and it's behaviour
+     * @param entity
+     */
+    private void sword(Entity entity){
+        int dir = SkillTools.getCursorPositionAsRelative4WayDirection();
+        Point pointDir;
+        Logger.getAnonymousLogger().log(new LogRecord(Level.INFO,"Sword struck towards Direction " + dir));
+        String pathSuffix = "";
+
+        if(dir == 0){
+            pointDir = new Point(0,1);
+            pathSuffix += "up";
+        } else if(dir == 1){
+            pointDir = new Point(1,0);
+            pathSuffix += "right";
+        } else if(dir == 2){
+            pointDir = new Point(0,-1);
+            pathSuffix += "down";
+        } else{
+            pointDir = new Point(-1,0);
+            pathSuffix += "left";
+        }
+
+        Entity projectile = new Entity();
+        PositionComponent epc =
+            (PositionComponent)
+                entity.getComponent(PositionComponent.class)
+                    .orElseThrow(
+                        () -> new MissingComponentException("PositionComponent"));
+        new PositionComponent(projectile, epc.getPosition());
+        Point targetPoint = new Point(epc.getPosition().x + pointDir.x, epc.getPosition().y + pointDir.y);
+
+        Animation animation = AnimationBuilder.buildAnimation(pathToTexturesOfProjectile + pathSuffix);
+        new AnimationComponent(projectile, animation);
+
+
+        Point velocity =
+            SkillTools.calculateVelocity(epc.getPosition(), targetPoint, projectileSpeed);
+        VelocityComponent vc =
+            new VelocityComponent(projectile, velocity.x, velocity.y, animation, animation);
+
+        new ProjectileComponent(projectile, epc.getPosition(), targetPoint);
+
+        ICollide collide =
+            (a, b, from) -> {
+                if (b != entity) {
+                    b.getComponent(HealthComponent.class)
+                        .ifPresent(
+                            hc -> {
+                                ((HealthComponent) hc).receiveHit(projectileDamage);
+                                Game.removeEntity(projectile);
+                            });
+                }
+            };
+
+        new HitboxComponent(
+            projectile, new Point(0f, 0f), projectileHitboxSize, collide, null);
     }
 
     /**

@@ -3,8 +3,14 @@ package ecs.components.skill;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.math.Vector3;
+import ecs.components.Component;
+import ecs.components.MissingComponentException;
+import ecs.components.PositionComponent;
 import starter.Game;
 import tools.Point;
+
+import javax.swing.text.html.Option;
+import java.util.Optional;
 
 public class SkillTools {
 
@@ -58,5 +64,39 @@ public class SkillTools {
         Vector3 mousePosition =
                 Game.camera.unproject(new Vector3(Gdx.input.getX(), Gdx.input.getY(), 0));
         return new Point(mousePosition.x, mousePosition.y);
+    }
+
+
+    /**
+     * Uses the Player and Mouse Position get see
+     * if mouse is placed north, east, south or west from player
+     * @return north(0), east(1), south(2), west(3) dir as int
+     */
+    public static int getCursorPositionAsRelative4WayDirection(){
+        Optional<Component> playerPC_OPT = Game.getHero().get().getComponent(PositionComponent.class);
+        PositionComponent playerPC;
+
+        if(playerPC_OPT.isPresent())
+            playerPC = (PositionComponent) playerPC_OPT.get();
+        else
+            throw new MissingComponentException("The Player has no PositionComponent!");
+
+        Point playerPoint = playerPC.getPosition();
+        Point mousePos = getCursorPositionAsPoint();
+
+        Point dir = Point.getUnitDirectionalVector(mousePos, playerPoint);
+
+        if(Math.abs(dir.x) >= Math.abs(dir.y)){
+            if(dir.x >= 0)
+                return 1;//east
+            else
+                return 3;//west
+        }
+        else{
+            if(dir.y >= 0)
+                return 0;//north
+            else
+                return 2;//south
+        }
     }
 }
