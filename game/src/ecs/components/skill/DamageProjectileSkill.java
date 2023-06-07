@@ -127,8 +127,8 @@ public abstract class DamageProjectileSkill implements ISkillFunction, Serializa
                         b.getComponent(PositionComponent.class)
                             .ifPresent(
                                 bpc -> {
-                                    PositionComponent bComp = (PositionComponent) bpc;
-                                    knockback(epc, bComp);
+                                    PositionComponent entityComp = (PositionComponent) bpc;
+                                    knockback((PositionComponent) projectile.getComponent(PositionComponent.class).get(), entityComp, 1.5f);
                                 });
                     }
                 };
@@ -196,8 +196,8 @@ public abstract class DamageProjectileSkill implements ISkillFunction, Serializa
                     b.getComponent(PositionComponent.class)
                         .ifPresent(
                             bpc -> {
-                                PositionComponent bComp = (PositionComponent) bpc;
-                                knockback(epc, bComp);
+                                PositionComponent entityComp = (PositionComponent) bpc;
+                                knockback((PositionComponent) projectile.getComponent(PositionComponent.class).get(), entityComp, 1.5f);
                             });
                 }
             };
@@ -261,7 +261,6 @@ public abstract class DamageProjectileSkill implements ISkillFunction, Serializa
     private void bow(Entity entity) {
         Hero hero = (Hero) Game.getHero().get();
         float xC = 0;
-        float yC = 0;
 
         if (hero.getCurrentAmmo() > 0) {
 
@@ -311,8 +310,8 @@ public abstract class DamageProjectileSkill implements ISkillFunction, Serializa
                         b.getComponent(PositionComponent.class)
                             .ifPresent(
                                 bpc -> {
-                                    PositionComponent bComp = (PositionComponent) bpc;
-                                    knockback(epc, bComp);
+                                    PositionComponent entityComp = (PositionComponent) bpc;
+                                    knockback((PositionComponent) projectile.getComponent(PositionComponent.class).get(), entityComp, 1.5f);
                                 });
                     }
                 };
@@ -384,14 +383,24 @@ public abstract class DamageProjectileSkill implements ISkillFunction, Serializa
 
     /**
      * This Method check if the entity can get knock-back and set is
-     * @param epc
-     * @param bComp
+     * @param projectileComp
+     * @param entityComp
      */
-    protected void knockback(PositionComponent epc, PositionComponent bComp) {
-        float xwert = epc.getPosition().x - bComp.getPosition().x;
-        float ywert = epc.getPosition().y - bComp.getPosition().y;
+    protected void knockback(PositionComponent projectileComp, PositionComponent entityComp, float strength) {
+        Point dir = Point.getUnitDirectionalVector( entityComp.getPosition(), projectileComp.getPosition());
 
-        
+        dir.x = dir.x * strength;
+        dir.y = dir.y * strength;
+
+        Point newPoint = new Point(dir.x + entityComp.getPosition().x, dir.y + entityComp.getPosition().y);
+
+        if(Game.currentLevel.getTileAt(newPoint.toCoordinate()) != null){
+            boolean tileCheck = Game.currentLevel.getTileAt(newPoint.toCoordinate()).isAccessible();
+
+            if(tileCheck){
+                entityComp.setPosition(newPoint);
+            }
+        }
     }
 
     /**
