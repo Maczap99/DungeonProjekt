@@ -24,20 +24,19 @@ public class Hero extends Entity implements ILevelUp {
     private final int healCoolDown = 5;
     private final int cureCoolDown = 1;
     private final int speedCoolDown = 5;
+    private final String pathToIdleLeft = "knight/idleLeft";
+    private final String pathToIdleRight = "knight/idleRight";
+    private final String pathToRunLeft = "knight/runLeft";
+    private final String pathToRunRight = "knight/runRight";
     private float xSpeed = 0.2f;
     private float ySpeed = 0.2f;
     private float mana = 100f;
     private float currentMana = 100f;
     private int health = 100;
     private int currentHealth = 100;
-    private long level = 1;
     private long currentLevel = 1;
     private int ammo = 10;
     private transient TrapTimer trapTimer;
-    private final String pathToIdleLeft = "knight/idleLeft";
-    private final String pathToIdleRight = "knight/idleRight";
-    private final String pathToRunLeft = "knight/runLeft";
-    private final String pathToRunRight = "knight/runRight";
     private transient Skill firstSkill;
     private transient Skill healSkill;
     private transient Skill cureSkill;
@@ -46,8 +45,9 @@ public class Hero extends Entity implements ILevelUp {
     private transient Skill rangedCombatBow;
     private transient Skill rangedCombatBoomerang;
 
-    private transient boolean rangeWeapon = false;
+    private final transient boolean rangeWeapon = false;
     private transient Logger heroCollisionLogger;
+    private transient InventoryComponent inventory;
 
 
     /**
@@ -98,7 +98,7 @@ public class Hero extends Entity implements ILevelUp {
         /*
          * Inventory
          * */
-        var inventory = new InventoryComponent(this, 3);
+        inventory = new InventoryComponent(this, 4);
     }
 
     private void setupXPComponent() {
@@ -202,6 +202,9 @@ public class Hero extends Entity implements ILevelUp {
     /**
      * Getter & Setter
      ********************/
+    public InventoryComponent getInventory() {
+        return inventory;
+    }
 
     public float getxSpeed() {
         return xSpeed;
