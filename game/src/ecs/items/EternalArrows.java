@@ -16,7 +16,7 @@ public class EternalArrows extends ItemData {
             new Animation(List.of("items/arrow.png"), 1),
             new Animation(List.of("items/arrow.png"), 1),
             "Eternal Arrows",
-            "test description",
+            "Unverzichtbare Munition für Bogenschützen im Dungeon.",
             new ArrowCollect(),
             null,
             null,
@@ -31,8 +31,12 @@ public class EternalArrows extends ItemData {
         return true;
     }
 
-    public void decreaseAmount() {
+    public boolean decreaseAmount() {
+        if (amount - 1 < 0) {
+            return false;
+        }
         amount--;
+        return true;
     }
 
     public int getAmount() {

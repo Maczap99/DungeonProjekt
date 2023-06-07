@@ -8,6 +8,8 @@ import ecs.components.collision.ICollide;
 import ecs.damage.Damage;
 import ecs.entities.Entity;
 import ecs.entities.Hero;
+import ecs.items.EternalArrows;
+import ecs.items.ItemData;
 import graphic.Animation;
 import starter.Game;
 import tools.Constants;
@@ -247,6 +249,12 @@ public abstract class DamageProjectileSkill implements ISkillFunction, Serializa
 
 
             hero.setAmmo(hero.getAmmo() - 1);
+
+            for (ItemData itemData: hero.getInventory().getItems()) {
+                if (itemData instanceof EternalArrows) {
+                    ((EternalArrows) itemData).decreaseAmount();
+                }
+            }
 
             try {
                 // start menu soundtrack

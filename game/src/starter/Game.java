@@ -303,11 +303,14 @@ public class Game extends ScreenAdapter implements IOnLevelLoader {
         // Print inventory
         if (Gdx.input.isKeyJustPressed(Input.Keys.I)) {
             for (ItemData itemData : h.getInventory().getItems()) {
-                System.out.println("Item Name: ");
-                System.out.println(itemData.getItemName() + "\n");
+                System.out.println("Item Name: " + itemData.getItemName() + "\n");
+                System.out.println();
 
-                System.out.println("Item Description: ");
-                System.out.println(itemData.getDescription() + "\n");
+                System.out.println("Item Description: " + itemData.getDescription() + "\n");
+
+                if (itemData instanceof EternalArrows) {
+                    System.out.println("Item Amount: " + ((EternalArrows) itemData).getAmount() + "\n");
+                }
             }
         }
     }
