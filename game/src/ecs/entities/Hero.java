@@ -52,7 +52,6 @@ public class Hero extends Entity implements ILevelUp {
     }
 
     public void setup() {
-
         new PositionComponent(this);
         setupVelocityComponent();
         setupAnimationComponent();

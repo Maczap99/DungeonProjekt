@@ -314,7 +314,6 @@ public class MazeGenerator implements IGenerator {
                  * Places a chest in a dead end.
                  * Start and end of the maze are excluded.
                  * */
-
                 if (!isBacktracking) {
                     if (placeChestInDeadEnds
                         && getBooleanWithPercentage(70)) {
