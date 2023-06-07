@@ -94,14 +94,14 @@ public class RandomWalkGenerator implements IGenerator {
 
         for (int i = 0; i < size; i++) {
             Coordinate trapC = getRandomFloor(layout);
-            //layout[trapC.y][trapC.x] = LevelElement.TRAP;
-            //new TrapFloor(new Coordinate(trapC.x + 2, trapC.y + 2).toPoint());
+            layout[trapC.y][trapC.x] = LevelElement.TRAP;
+            new TrapFloor(new Coordinate(trapC.x + 2, trapC.y + 2).toPoint());
+        }
 
-            /*
-            * Item tests
-            * */
-            var worldItemBuilder = WorldItemBuilder.buildWorldItem(new EternalArrows(),
-                new Coordinate(trapC.x + 2, trapC.y + 2).toPoint());
+        for (int i = 0; i < RANDOM.nextInt(0, 5); i++) {
+            Coordinate coord = getRandomFloor(layout);
+            WorldItemBuilder.buildWorldItem(new EternalArrows(),
+                new Coordinate(coord.x + 2, coord.y + 2).toPoint());
         }
 
         // pick random floor tile as exit
