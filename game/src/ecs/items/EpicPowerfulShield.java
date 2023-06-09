@@ -6,7 +6,7 @@ import graphic.Animation;
 import java.util.List;
 
 public class EpicPowerfulShield extends ItemData {
-    public static final int HEALTH_UP = 120;
+    public static final int HEALTH_UP = 20;
 
     /**
      * Constructs a new EpicPowerfulShield item.
