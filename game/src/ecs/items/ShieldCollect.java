@@ -31,7 +31,7 @@ public class ShieldCollect implements IOnCollect {
 
                 inventory.addItem(epicPowerfulShield);
 
-                hero.setHealth(epicPowerfulShield.HEALTH_UP);
+                hero.setHealth(hero.getHealth() + epicPowerfulShield.HEALTH_UP);
 
                 Game.removeEntity(worldItem);
             }
