@@ -3,6 +3,7 @@ package level.generator.maze;
 import ecs.entities.Entity;
 import ecs.entities.TrapChest;
 import ecs.entities.TrapFloor;
+import ecs.items.*;
 import level.elements.ILevel;
 import level.elements.TileLevel;
 import level.generator.IGenerator;
@@ -314,7 +315,6 @@ public class MazeGenerator implements IGenerator {
                  * Places a chest in a dead end.
                  * Start and end of the maze are excluded.
                  * */
-
                 if (!isBacktracking) {
                     if (placeChestInDeadEnds
                         && getBooleanWithPercentage(70)) {
@@ -327,6 +327,23 @@ public class MazeGenerator implements IGenerator {
                 currentPosition = pathPositions.get(pathPositions.size() - 1);
             }
         }
+
+        /*
+         * Item placement
+         * */
+        for (int i = 0; i < RANDOM.nextInt(0, 6); i++) {
+            Coordinate coord = getRandomFloor(layout);
+            WorldItemBuilder.buildWorldItem(new EternalArrows(), new Coordinate(coord.x, coord.y).toPoint());
+        }
+
+        Coordinate shieldCoord = getRandomFloor(layout);
+        WorldItemBuilder.buildWorldItem(new EpicPowerfulShield(), new Coordinate(shieldCoord.x, shieldCoord.y).toPoint());
+
+        Coordinate bootsCoord = getRandomFloor(layout);
+        WorldItemBuilder.buildWorldItem(new MagicSpeedBoostBoots(), new Coordinate(bootsCoord.x, bootsCoord.y).toPoint());
+
+        Coordinate quiverCoord = getRandomFloor(layout);
+        WorldItemBuilder.buildWorldItem(new ArrowQuiver(), new Coordinate(quiverCoord.x, quiverCoord.y).toPoint());
 
         return layout;
     }

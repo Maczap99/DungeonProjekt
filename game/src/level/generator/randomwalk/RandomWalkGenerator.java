@@ -5,6 +5,7 @@ import java.util.Random;
 import ecs.entities.Entity;
 import ecs.entities.TrapChest;
 import ecs.entities.TrapFloor;
+import ecs.items.*;
 import level.elements.ILevel;
 import level.elements.TileLevel;
 import level.generator.IGenerator;
@@ -15,8 +16,6 @@ import level.tools.LevelSize;
 import starter.Game;
 
 public class RandomWalkGenerator implements IGenerator {
-    private record MinMaxValue(int min, int max) {}
-
     private static final Random RANDOM = new Random();
     private static final int SMALL_MIN_X_SIZE = 10;
     private static final int SMALL_MIN_Y_SIZE = 10;
@@ -47,14 +46,14 @@ public class RandomWalkGenerator implements IGenerator {
     public LevelElement[][] getLayout(LevelSize size) {
         return switch (size) {
             case SMALL -> drunkWalk(
-                    new MinMaxValue(SMALL_MIN_X_SIZE, SMALL_MAX_X_SIZE),
-                    new MinMaxValue(SMALL_MIN_Y_SIZE, SMALL_MAX_Y_SIZE));
+                new MinMaxValue(SMALL_MIN_X_SIZE, SMALL_MAX_X_SIZE),
+                new MinMaxValue(SMALL_MIN_Y_SIZE, SMALL_MAX_Y_SIZE));
             case LARGE -> drunkWalk(
-                    new MinMaxValue(BIG_MIN_X_SIZE, BIG_MAX_X_SIZE),
-                    new MinMaxValue(BIG_MIN_Y_SIZE, BIG_MAX_Y_SIZE));
+                new MinMaxValue(BIG_MIN_X_SIZE, BIG_MAX_X_SIZE),
+                new MinMaxValue(BIG_MIN_Y_SIZE, BIG_MAX_Y_SIZE));
             default -> drunkWalk(
-                    new MinMaxValue(MEDIUM_MIN_X_SIZE, MEDIUM_MAX_X_SIZE),
-                    new MinMaxValue(MEDIUM_MIN_Y_SIZE, MEDIUM_MAX_Y_SIZE));
+                new MinMaxValue(MEDIUM_MIN_X_SIZE, MEDIUM_MAX_X_SIZE),
+                new MinMaxValue(MEDIUM_MIN_Y_SIZE, MEDIUM_MAX_Y_SIZE));
         };
     }
 
@@ -70,8 +69,8 @@ public class RandomWalkGenerator implements IGenerator {
 
         Coordinate position = new Coordinate(RANDOM.nextInt(0, xSize), RANDOM.nextInt(0, ySize));
         int steps =
-                RANDOM.nextInt(
-                        (xSize * ySize) / MIN_STEPS_FACTOR, (xSize * ySize) / MAX_STEPS_FACTOR);
+            RANDOM.nextInt(
+                (xSize * ySize) / MIN_STEPS_FACTOR, (xSize * ySize) / MAX_STEPS_FACTOR);
         for (; steps > 0; steps--) {
             layout[position.y][position.x] = LevelElement.FLOOR;
 
@@ -90,29 +89,53 @@ public class RandomWalkGenerator implements IGenerator {
             }
         }
 
-        int size = (xSize*ySize) / 500;
+        int size = (xSize * ySize) / 500;
 
         for (int i = 0; i < size; i++) {
             Coordinate trapC = getRandomFloor(layout);
             layout[trapC.y][trapC.x] = LevelElement.TRAP;
-            new TrapFloor(new Coordinate(trapC.x+2,trapC.y+2).toPoint());
+            new TrapFloor(new Coordinate(trapC.x + 2, trapC.y + 2).toPoint());
         }
 
         // pick random floor tile as exit
         Coordinate c = getRandomFloor(layout);
         layout[c.y][c.x] = LevelElement.EXIT;
 
+        /*
+         * Item placement
+         * */
+        for (int i = 0; i < RANDOM.nextInt(0, 6); i++) {
+            Coordinate coord = getRandomFloor(layout);
+            WorldItemBuilder.buildWorldItem(new EternalArrows(),
+                new Coordinate(coord.x + 2, coord.y + 2).toPoint());
+        }
+
+        Coordinate shieldCoord = getRandomFloor(layout);
+        WorldItemBuilder.buildWorldItem(new EpicPowerfulShield(),
+            new Coordinate(shieldCoord.x + 2, shieldCoord.y + 2).toPoint());
+
+        Coordinate bootsCoord = getRandomFloor(layout);
+        WorldItemBuilder.buildWorldItem(new MagicSpeedBoostBoots(),
+            new Coordinate(bootsCoord.x + 2, bootsCoord.y + 2).toPoint());
+
+        Coordinate quiverCoord = getRandomFloor(layout);
+        WorldItemBuilder.buildWorldItem(new ArrowQuiver(),
+            new Coordinate(quiverCoord.x + 2, quiverCoord.y + 2).toPoint());
+
         return layout;
     }
 
     private Coordinate getRandomFloor(LevelElement[][] layout) {
         Coordinate coordinate =
-                new Coordinate(RANDOM.nextInt(layout[0].length), RANDOM.nextInt(layout.length));
+            new Coordinate(RANDOM.nextInt(layout[0].length), RANDOM.nextInt(layout.length));
         LevelElement randomTile = layout[coordinate.y][coordinate.x];
         if (randomTile == LevelElement.FLOOR) {
             return coordinate;
         } else {
             return getRandomFloor(layout);
         }
+    }
+
+    private record MinMaxValue(int min, int max) {
     }
 }

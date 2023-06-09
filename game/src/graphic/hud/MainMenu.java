@@ -20,26 +20,30 @@ import com.badlogic.gdx.utils.Align;
 import controller.ScreenController;
 import ecs.entities.Entity;
 import ecs.entities.Hero;
+import graphic.effects.RainbowLayerDrawable;
 import level.LevelAPI;
 import level.tools.LevelSize;
 import starter.Game;
 import tools.EntityFileSystem;
+
 import java.util.Random;
 
 import java.util.HashMap;
+import java.util.logging.Logger;
 
 public class MainMenu<T extends Actor> extends ScreenController<T> {
 
-    private LevelAPI levelAPI;
-    private Table table;
-    private TextButton newButton;
-    private TextButton saveButton;
-    private TextButton loadButton;
-    private transient Music music;
-    private transient Sound sound = Gdx.audio.newSound(Gdx.files.internal("game/sounds/effect/gameOver.mp3"));;
-    private Label gameOverLabel;
-
     private static boolean initialState = true;
+    private final Table table;
+    private final TextButton newButton;
+    private final TextButton saveButton;
+    private final TextButton loadButton;
+    private final transient Sound sound = Gdx.audio.newSound(Gdx.files.internal("game/sounds/effect/gameOver.mp3"));
+    private final Label gameOverLabel;
+    private LevelAPI levelAPI;
+    private transient Music music;
+    private transient Logger soundLogger;
+    private transient Logger saveLoadLogger;
 
     /**
      * Constructs a MainMenu object with a given Game instance and LevelAPI instance.
@@ -77,10 +81,9 @@ public class MainMenu<T extends Actor> extends ScreenController<T> {
         table = new Table();
 
         // try picture else set background to black
-        try{
+        try {
             table.setBackground(new TextureRegionDrawable(new TextureRegion(new Texture("game/assets/menu/start1.jpg"))));
-            //table.setBackground(new TextureRegionDrawable(new TextureRegion(new Texture("game/assets/menu/start2.jpg"))));
-        }catch (Exception e){
+        } catch (Exception e) {
             var backgroundColor = new Color(0f, 0f, 0f, 1f);
             var backgroundDrawable = new ColorBackground(backgroundColor);
             table.setBackground(backgroundDrawable);
@@ -88,27 +91,26 @@ public class MainMenu<T extends Actor> extends ScreenController<T> {
 
         table.setFillParent(true);
 
-        int secretSound = getSoundNumber(0,29);
+        int secretSound = getSoundNumber(0, 29);
 
-        try{
+        try {
             sound.stop();
-            if(secretSound != 7){
+            if (secretSound != 7) {
                 // start menu soundtrack
                 music = Gdx.audio.newMusic(Gdx.files.internal("game/sounds/menu/menu1.mp3"));
                 music.setLooping(true);
                 music.setVolume(0.2f);
                 music.play();
-            }else{
+            } else {
                 // start menu soundtrack
                 music = Gdx.audio.newMusic(Gdx.files.internal("game/sounds/menu/menu2.mp3"));
                 music.setLooping(true);
                 music.setVolume(0.2f);
                 music.play();
             }
-
-
         }catch (Exception e){
-            System.out.println("Sounddatei konnte nicht gefunden werden");
+            soundLogger = Logger.getLogger(this.getClass().getName());
+            soundLogger.info("Sounddatei 'menu2.mp3' konnte nicht gefunden werden");
         }
 
         // Create buttons and add listeners
@@ -121,16 +123,17 @@ public class MainMenu<T extends Actor> extends ScreenController<T> {
 
                     music.stop();
 
-                    try{
+                    try {
                         // start menu soundtrack
                         sound.stop();
-                        music = Gdx.audio.newMusic(Gdx.files.internal("game/sounds/dungeon/dungeon"+ getSoundNumber(0,4)+".wav"));
+                        music = Gdx.audio.newMusic(Gdx.files.internal("game/sounds/dungeon/dungeon" + getSoundNumber(0, 4) + ".wav"));
                         music.setLooping(true);
                         music.setVolume(0.2f);
                         music.play();
 
                     }catch (Exception e){
-                        System.out.println("Sounddatei konnte nicht gefunden werden");
+                        soundLogger = Logger.getLogger(this.getClass().getName());
+                        soundLogger.info("Sounddatei 'dungeonX.wav' konnte nicht gefunden werden");
                     }
 
                     Game.setHero(new Hero());
@@ -152,8 +155,9 @@ public class MainMenu<T extends Actor> extends ScreenController<T> {
             @Override
             public void clicked(InputEvent event, float x, float y) {
                 if (!saveButton.isDisabled()) {
+                    saveLoadLogger = Logger.getLogger(this.getClass().getName());
                     for (Entity entity : Game.getEntities()) {
-                        System.out.println("Entität gespeichert: " + entity.getClass().getName() + " ID: " + entity.id);
+                        saveLoadLogger.info("Entität gespeichert: " + entity.getClass().getName() + " ID: " + entity.id);
                     }
 
                     EntityFileSystem.saveEntities(Game.getEntities());
@@ -174,16 +178,17 @@ public class MainMenu<T extends Actor> extends ScreenController<T> {
 
                     music.stop();
 
-                    try{
+                    try {
                         // start menu soundtrack
                         sound.stop();
-                        music = Gdx.audio.newMusic(Gdx.files.internal("game/sounds/dungeon/dungeon"+ getSoundNumber(0,4)+".wav"));
+                        music = Gdx.audio.newMusic(Gdx.files.internal("game/sounds/dungeon/dungeon" + getSoundNumber(0, 4) + ".wav"));
                         music.setLooping(true);
                         music.setVolume(0.2f);
                         music.play();
 
                     }catch (Exception e){
-                        System.out.println("Sounddatei konnte nicht gefunden werden");
+                        soundLogger = Logger.getLogger(this.getClass().getName());
+                        soundLogger.info("Sounddatei 'dungeonX.wav' konnte nicht gefunden werden");
                     }
 
                     Game.getEntities().clear();
@@ -195,7 +200,7 @@ public class MainMenu<T extends Actor> extends ScreenController<T> {
                             Game.setHero(entity);
                         }
 
-                        System.out.println("Entität geladen: " + entity.getClass().getName() + " ID: " + entity.id);
+                        saveLoadLogger = Logger.getLogger("Entität geladen: " + entity.getClass().getName() + " ID: " + entity.id);
                     }
 
                     Game.toggleMainMenu();
@@ -252,6 +257,13 @@ public class MainMenu<T extends Actor> extends ScreenController<T> {
         hideMenu();
     }
 
+    /*
+     * Getter and Setter
+     * */
+    public static boolean isInitialState() {
+        return initialState;
+    }
+
     /**
      * Refreshes the UI elements of the main menu.
      * Updates the button states and background appearance.
@@ -259,11 +271,7 @@ public class MainMenu<T extends Actor> extends ScreenController<T> {
     private void refreshUI() {
         loadButton.setDisabled(!EntityFileSystem.saveGameExists());
 
-        if (Game.gameOver) {
-            saveButton.setDisabled(true);
-        } else {
-            saveButton.setDisabled(false);
-        }
+        saveButton.setDisabled(Game.gameOver);
 
         gameOverLabel.setVisible(Game.gameOver);
 
@@ -288,7 +296,8 @@ public class MainMenu<T extends Actor> extends ScreenController<T> {
                 sound.play(0.3f);
 
             } catch (Exception e) {
-                System.out.println("Sounddatei 'GameOver.mp3' konnte nicht gefunden werden");
+                soundLogger = Logger.getLogger(this.getClass().getName());
+                soundLogger.info("Sounddatei 'GameOver.mp3' konnte nicht gefunden werden");
             }
 
             refreshUI();
@@ -321,12 +330,5 @@ public class MainMenu<T extends Actor> extends ScreenController<T> {
      */
     public void hideMenu() {
         this.forEach((Actor s) -> s.setVisible(false));
-    }
-
-    /*
-    * Getter ans Setter
-    * */
-    public static boolean isInitialState() {
-        return initialState;
     }
 }

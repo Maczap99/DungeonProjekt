@@ -11,6 +11,7 @@ import tools.Point;
 import tools.TrapTimer;
 
 import java.util.Random;
+import java.util.logging.Logger;
 
 /**
  * This ist a Class for the entity TrapFloor
@@ -19,6 +20,8 @@ import java.util.Random;
  */
 public class TrapFloor extends Entity implements ICollide {
     private transient Sound sound;
+    private transient Logger trapFloorLogger;
+    private transient Logger soundLogger;
 
     public TrapFloor(Point position) {
         super();
@@ -51,16 +54,18 @@ public class TrapFloor extends Entity implements ICollide {
             Random rand = new Random();
             int time = rand.nextInt(10) + 6;
 
+            trapFloorLogger = Logger.getLogger(this.getClass().getName());
+
             if(hero.getTrapTimer() != null && !hero.getTrapTimer().isFinished()){
                 TrapTimer t = hero.getTrapTimer();
 
                 // wait random seconds
-                System.out.println((time+t.getCurrentTimeInSec()) + " Sekunden verlangsamt");
+                trapFloorLogger.info((time+t.getCurrentTimeInSec()) + " Sekunden verlangsamt");
 
                 hero.startTrapTimer((time+t.getCurrentTimeInSec()) * 1000);
             }else{
                 // wait random seconds
-                System.out.println(time + " Sekunden verlangsamt");
+                trapFloorLogger.info(time + " Sekunden verlangsamt");
 
                 hero.startTrapTimer(time * 1000);
             }
@@ -71,7 +76,8 @@ public class TrapFloor extends Entity implements ICollide {
                 sound.play(0.5f);
 
             }catch (Exception e){
-                System.out.println("Sounddatei 'trapFloor1.mp3' konnte nicht gefunden werden");
+                soundLogger = Logger.getLogger(this.getClass().getName());
+                soundLogger.info("Sounddatei 'trapFloor1.mp3' konnte nicht gefunden werden");
             }
 
             // set new speed

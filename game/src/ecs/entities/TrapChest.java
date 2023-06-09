@@ -11,6 +11,7 @@ import tools.Point;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.logging.Logger;
 
 /**
  * This ist a Class for the entity TrapChest
@@ -25,6 +26,8 @@ public class TrapChest extends Entity implements IInteraction {
 
     //Die Standardreichweite, von der aus mit der Chest interagieren kann
     public static final float defaultInteractionRadius = 1f;
+    private transient Logger trapChestLogger;
+    private transient Logger soundLogger;
 
 
     //Benutzt die Standard Chest sprites (sind die Sprites für die TrapChest schon im Projekt oder bin ich blind?
@@ -86,8 +89,9 @@ public class TrapChest extends Entity implements IInteraction {
             else{
                 throw new MissingComponentException("Player has no HealthComponent!");
             }
-            System.out.println("Held id "+ hero.id + " bekommt " + damage + " Schaden!");
-            System.out.println("Leben: " + held.getCurrentHealth() + " von "+held.getHealth());
+            trapChestLogger = Logger.getLogger(this.getClass().getName());
+            trapChestLogger.info("Held id "+ hero.id + " bekommt " + damage + " Schaden!");
+            trapChestLogger.info("Leben: " + held.getCurrentHealth() + " von "+held.getHealth());
 
             if(held.getCurrentHealth() > 0) {
                 try {
@@ -98,7 +102,8 @@ public class TrapChest extends Entity implements IInteraction {
                     sound.play(0.5f);
 
                 } catch (Exception e) {
-                    System.out.println("Sounddatei konnte nicht gefunden werden");
+                    soundLogger = Logger.getLogger(this.getClass().getName());
+                    soundLogger.info("Sounddatei der TrapChest konnte nicht gefunden werden");
                 }
             }
         }
