@@ -17,17 +17,26 @@ import com.badlogic.gdx.utils.Scaling;
 import controller.ScreenController;
 import tools.Constants;
 
+import java.util.Random;
+
 public class LockPicking<T extends Actor> extends ScreenController<T> {
+    private static final Random RANDOM = new Random();
     private static final float MOVEMENT_SPEED = 100f;
     private static final float MAX_MOVEMENT_DISTANCE = 20f;
     private final Image circleImage;
     private final Image squareImage1;
     private final Image squareImage2;
+    private final Image[] bolts;
     private float movementDistance;
     private float movementAngle;
 
+    private boolean solved;
+
     public LockPicking() {
         super(new SpriteBatch());
+
+        // Random
+        System.out.println(RANDOM.nextInt(4, 8));
 
         // Calculates the center position of the window
         float centerX = Constants.WINDOW_WIDTH / 2f;
@@ -74,10 +83,10 @@ public class LockPicking<T extends Actor> extends ScreenController<T> {
         });
 
         // Create a square image
-        squareImage2 = new Image(new TextureRegionDrawable(createSquareTexture(Color.BLUE, 100)));
+        squareImage2 = new Image(new TextureRegionDrawable(createSquareTexture(Color.GREEN, 100)));
 
         // Set position and scaling for the square
-        squareImage2.setPosition(100, 100);
+        squareImage2.setPosition(300, 100);
         squareImage2.setScaling(Scaling.none);
 
         squareImage2.addListener(new InputListener() {
@@ -93,13 +102,103 @@ public class LockPicking<T extends Actor> extends ScreenController<T> {
             }
         });
 
+        int numBolts = RANDOM.nextInt(4, 8);
+
+        bolts = new Image[numBolts];
+
+        float windowWidth = Constants.WINDOW_WIDTH;
+        float windowHeight = Constants.WINDOW_HEIGHT;
+
+        float boltWidth = windowWidth / (numBolts + (numBolts + 1) * 0.2f); // +1 for spacing between bolts
+        float boltHeight = windowHeight * 0.4f;
+
+        float spacing = windowWidth * 0.2f / (numBolts + 1);
+
+        float startY = (windowHeight - boltHeight) / 2f;
+
+        for (int i = 0; i < numBolts; i++) {
+            float startX = (i + 1) * spacing + i * boltWidth;
+            bolts[i] = createBolt(startX, startY, boltWidth, boltHeight);
+            addBoltListener(bolts[i]);
+            add((T) bolts[i]);
+        }
+
         //add((T) circleImage);
 
         //add((T) squareImage1);
 
-        add((T) squareImage2);
+        //add((T) squareImage2);
 
         hide();
+    }
+
+    private Image createBolt(float x, float y, float width, float height) {
+        Image boltImage = new Image(new TextureRegionDrawable(createBoltTexture(Color.GRAY, (int) width, (int) height)));
+        boltImage.setPosition(x, y);
+        boltImage.setScaling(Scaling.none);
+        return boltImage;
+    }
+
+    private Texture createBoltTexture(Color color, int width, int height) {
+        Pixmap pixmap = new Pixmap(width, height, Pixmap.Format.RGBA8888);
+        pixmap.setColor(color);
+        pixmap.fillRectangle(0, 0, width, height);
+        Texture texture = new Texture(pixmap);
+        pixmap.dispose();
+        return texture;
+    }
+
+    private void addBoltListener(Image boltImage) {
+        boltImage.addListener(new InputListener() {
+            private boolean clicked;
+            private float initialY;
+
+            @Override
+            public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
+                if (!clicked) {
+                    clicked = true;
+                    initialY = boltImage.getY();
+                    if (button == 0) // Left mouse button
+                        moveBoltUp(boltImage);
+                    else if (button == 1) // Right mouse button
+                        moveBoltDown(boltImage);
+                }
+                return true;
+            }
+
+            @Override
+            public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
+                if (clicked) {
+                    clicked = false;
+                    resetBoltPosition(boltImage, initialY);
+                }
+            }
+        });
+    }
+
+    private void moveBoltUp(Image boltImage) {
+        float targetY = boltImage.getY() + 50; // Move up by 50 units
+        float duration = 0.5f; // Duration of the animation in seconds
+
+        boltImage.clearActions(); // Clear any ongoing actions
+        boltImage.addAction(Actions.moveTo(boltImage.getX(), targetY, duration));
+    }
+
+    private void moveBoltDown(Image boltImage) {
+        float targetY = boltImage.getY() - 50; // Move down by 50 units
+        float duration = 0.5f; // Duration of the animation in seconds
+
+        boltImage.clearActions(); // Clear any ongoing actions
+        boltImage.addAction(Actions.moveTo(boltImage.getX(), targetY, duration));
+    }
+
+    private void resetBoltPosition(Image boltImage, float initialY) {
+        if (boltImage.getActions().size == 0) { // Check if no other action is ongoing
+            float duration = 0.5f; // Duration of the animation in seconds
+
+            boltImage.clearActions(); // Clear any ongoing actions
+            boltImage.addAction(Actions.moveTo(boltImage.getX(), initialY, duration));
+        }
     }
 
     private static Texture createCircleTexture(Color color, int radius) {
@@ -126,6 +225,10 @@ public class LockPicking<T extends Actor> extends ScreenController<T> {
 
         // Move the circle
         moveCircle();
+
+        if (checkOverlap(squareImage1, squareImage2)) {
+            System.out.println("Does overlap");
+        }
     }
 
     private void moveCircle() {
@@ -158,11 +261,37 @@ public class LockPicking<T extends Actor> extends ScreenController<T> {
         squareImage2.addAction(Actions.moveTo(squareImage2.getX(), targetY, duration));
     }
 
+    private boolean checkOverlap(Image square1, Image square2) {
+        float x1 = square1.getX();
+        float y1 = square1.getY();
+        float width1 = square1.getWidth();
+        float height1 = square1.getHeight();
+
+        float x2 = square2.getX();
+        float y2 = square2.getY();
+        float width2 = square2.getWidth();
+        float height2 = square2.getHeight();
+
+        // Überprüfung auf Überlappung
+        if (x1 < x2 + width2 && x1 + width1 > x2 && y1 < y2 + height2 && y1 + height1 > y2) {
+            // Überlappung gefunden
+            return true;
+        }
+
+        // Keine Überlappung
+        return false;
+    }
+
+
     public void show() {
         this.forEach((Actor s) -> s.setVisible(true));
     }
 
     public void hide() {
         this.forEach((Actor s) -> s.setVisible(false));
+    }
+
+    public boolean isSolved() {
+        return solved;
     }
 }

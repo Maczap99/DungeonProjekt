@@ -162,6 +162,7 @@ public class Game extends ScreenAdapter implements IOnLevelLoader {
         }
         if (lockPicking != null) {
             if (showLockPicking) {
+                lockPicking = new LockPicking<>();
                 Gdx.input.setInputProcessor(lockPicking.getStage());
                 lockPicking.show();
             } else {
