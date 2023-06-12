@@ -22,6 +22,7 @@ import ecs.items.ItemData;
 import ecs.systems.*;
 import graphic.DungeonCamera;
 import graphic.Painter;
+import graphic.hud.LockPicking;
 import graphic.hud.MainMenu;
 import graphic.hud.PauseMenu;
 import level.IOnLevelLoader;
@@ -72,8 +73,10 @@ public class Game extends ScreenAdapter implements IOnLevelLoader {
     public static boolean gameLoaded, gameOver;
     private static boolean showPauseMenu = false;
     private static boolean showMainMenu = false;
+    private static boolean showLockPicking = false;
     private static PauseMenu<Actor> pauseMenu;
     private static MainMenu<Actor> mainMenu;
+    private static LockPicking<Actor> lockPicking;
     private static Entity hero;
     private static int levelStage = 1;
     private final LevelSize LEVELSIZE = LevelSize.MEDIUM;
@@ -139,8 +142,31 @@ public class Game extends ScreenAdapter implements IOnLevelLoader {
             systems.forEach(ECS_System::toggleRun);
         }
         if (mainMenu != null) {
-            if (showMainMenu) mainMenu.showMenu();
-            else mainMenu.hideMenu();
+            if (showMainMenu) {
+                Gdx.input.setInputProcessor(mainMenu.getStage());
+                mainMenu.showMenu();
+            }
+            else {
+                mainMenu.hideMenu();
+            }
+        }
+    }
+
+    /**
+     * Switch between lock picking and game mode
+     */
+    public static void toggleLockPicking() {
+        showLockPicking = !showLockPicking;
+        if (systems != null) {
+            systems.forEach(ECS_System::toggleRun);
+        }
+        if (lockPicking != null) {
+            if (showLockPicking) {
+                Gdx.input.setInputProcessor(lockPicking.getStage());
+                lockPicking.show();
+            } else {
+                lockPicking.hide();
+            }
         }
     }
 
@@ -227,6 +253,11 @@ public class Game extends ScreenAdapter implements IOnLevelLoader {
         levelAPI.update();
         controller.forEach(AbstractController::update);
         camera.update();
+
+        /*
+        * Tests with lock picking
+        * */
+        lockPicking.update();
     }
 
     /**
@@ -249,8 +280,8 @@ public class Game extends ScreenAdapter implements IOnLevelLoader {
 
         controller = new ArrayList<>();
         controller.add(systems);
-        pauseMenu = new PauseMenu<>();
-        controller.add(pauseMenu);
+        lockPicking = new LockPicking<>();
+        controller.add(lockPicking);
         mainMenu = new MainMenu<>(levelAPI);
         controller.add(mainMenu);
 
@@ -290,9 +321,7 @@ public class Game extends ScreenAdapter implements IOnLevelLoader {
             h.setCurrentMana(Math.min(h.getCurrentMana() + (0.5f / Constants.FRAME_RATE), 100));
         }
 
-        //if (Gdx.input.isKeyJustPressed(Input.Keys.P)) togglePauseMenu();
-        if (Gdx.input.isKeyJustPressed(Input.Keys.ESCAPE) && !MainMenu.isInitialState() && !gameOver)
-            toggleMainMenu();
+        if (Gdx.input.isKeyJustPressed(Input.Keys.ESCAPE) && !MainMenu.isInitialState() && !gameOver) toggleMainMenu();
 
         // Print inventory
         if (Gdx.input.isKeyJustPressed(Input.Keys.I)) {
@@ -308,6 +337,11 @@ public class Game extends ScreenAdapter implements IOnLevelLoader {
                 System.out.println("Item Description: " + itemData.getDescription() + "\n");
             }
         }
+
+        /*
+        * Lock picking tests
+        * */
+        if (Gdx.input.isKeyJustPressed(Input.Keys.L)) toggleLockPicking();
     }
 
     @Override

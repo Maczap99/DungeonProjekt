@@ -71,4 +71,8 @@ public class ScreenController<T extends Actor> extends AbstractController<T> {
         e.remove();
         return super.remove(e);
     }
+
+    public Stage getStage() {
+        return stage;
+    }
 }
