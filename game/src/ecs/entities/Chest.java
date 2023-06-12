@@ -11,7 +11,14 @@ import level.tools.LevelElement;
 import starter.Game;
 import tools.Point;
 
-public class Chest extends Entity {
+public class Chest extends Entity implements IInteraction{
+    private transient AnimationComponent ac;
+
+    public Chest(Point position){
+        super();
+
+        setup(position);
+    }
 
     public static final float defaultInteractionRadius = 1f;
     public static final List<String> DEFAULT_CLOSED_ANIMATION_FRAMES =
@@ -119,5 +126,29 @@ public class Chest extends Entity {
                         + Chest.class.getName()
                         + " in Entity "
                         + e.getClass().getName());
+    }
+
+    /**
+     *
+     * @param position
+     */
+    public void setup(Point position) {
+        new PositionComponent(this, position);
+        new InteractionComponent(this, defaultInteractionRadius, false, this::onInteraction);
+        ac =
+            new AnimationComponent(
+                this,
+                new Animation(DEFAULT_CLOSED_ANIMATION_FRAMES, 100, false),
+                new Animation(DEFAULT_OPENING_ANIMATION_FRAMES, 20, false));
+
+    }
+
+    /**
+     * 
+     * @param entity
+     */
+    @Override
+    public void onInteraction(Entity entity) {
+        dropItems(entity);
     }
 }
