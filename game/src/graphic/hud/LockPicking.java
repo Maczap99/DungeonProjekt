@@ -30,7 +30,6 @@ public class LockPicking<T extends Actor> extends ScreenController<T> {
     private final Image squareImage1;
     private final Image squareImage2;
     private final Bolt[] bolts;
-    private final Label[] boltLabels;
     private final Image background;
     private float movementDistance;
     private float movementAngle;
@@ -109,7 +108,6 @@ public class LockPicking<T extends Actor> extends ScreenController<T> {
         difficultyLevelLabel.setPosition(10, Constants.WINDOW_HEIGHT - 20);
 
         bolts = new Bolt[numBolts];
-        boltLabels = new Label[numBolts];
 
         float windowWidth = Constants.WINDOW_WIDTH;
         float windowHeight = Constants.WINDOW_HEIGHT;
@@ -135,9 +133,7 @@ public class LockPicking<T extends Actor> extends ScreenController<T> {
                 startX,
                 startY,
                 boltWidth,
-                boltHeight,
-                i + 1,
-                createBoltLabel(startX, startY, boltWidth, boltHeight, i + 1)
+                boltHeight
             );
             addBoltListener(bolts[i]);
 
@@ -172,15 +168,14 @@ public class LockPicking<T extends Actor> extends ScreenController<T> {
         return texture;
     }
 
-    private Bolt createBolt(float x, float y, float width, float height, int number, Label boltLabel) {
+    private Bolt createBolt(float x, float y, float width, float height) {
         Bolt boltImage = new Bolt(
             new TextureRegionDrawable(createBoltTexture(
                 Color.GRAY,
                 (int) width,
                 (int) height)
             ),
-            number,
-            boltLabel
+            createBoltLabel(x, y, width, height, "not set")
         );
         boltImage.setPosition(x, y);
         boltImage.setScaling(Scaling.none);
@@ -264,11 +259,11 @@ public class LockPicking<T extends Actor> extends ScreenController<T> {
         }
     }
 
-    private Label createBoltLabel(float x, float y, float width, float height, int number) {
+    private Label createBoltLabel(float x, float y, float width, float height, String number) {
         Label.LabelStyle labelStyle = new Label.LabelStyle();
         labelStyle.font = new BitmapFont();
 
-        Label boltLabel = new Label(Integer.toString(number), labelStyle);
+        Label boltLabel = new Label(number, labelStyle);
         boltLabel.setPosition(x + width / 2f, y + height + 10f);
         boltLabel.setAlignment(Align.center);
         boltLabel.setOrigin(Align.center);

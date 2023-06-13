@@ -5,15 +5,20 @@ import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.utils.Drawable;
 
 public class Bolt extends Image {
-    private int orderNumber;
+    private Integer orderNumber;
     private Label label;
     private boolean moved;
 
-    public Bolt(Drawable drawable, int number, Label orderNumberLabel) {
+    public Bolt(Drawable drawable, Label label) {
         super(drawable);
-        this.orderNumber = number;
-        this.label = orderNumberLabel;
-        this.moved = false;
+        this.label = label;
+    }
+
+    public void setOrder(int number) {
+        if (orderNumber != null && label != null) {
+            orderNumber = number;
+            label.setText(Integer.toString(number));
+        }
     }
 
     public int getOrderNumber() {
