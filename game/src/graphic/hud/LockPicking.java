@@ -4,6 +4,7 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Pixmap;
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.scenes.scene2d.Actor;
@@ -11,8 +12,10 @@ import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.InputListener;
 import com.badlogic.gdx.scenes.scene2d.actions.Actions;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
+import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.utils.DragListener;
 import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
+import com.badlogic.gdx.utils.Align;
 import com.badlogic.gdx.utils.Scaling;
 import controller.ScreenController;
 import tools.Constants;
@@ -26,17 +29,15 @@ public class LockPicking<T extends Actor> extends ScreenController<T> {
     private final Image circleImage;
     private final Image squareImage1;
     private final Image squareImage2;
-    private final Image[] bolts;
+    private final Bolt[] bolts;
+    private final Label[] boltLabels;
+    private final Image background;
     private float movementDistance;
     private float movementAngle;
-
     private boolean solved;
 
     public LockPicking() {
         super(new SpriteBatch());
-
-        // Random
-        System.out.println(RANDOM.nextInt(4, 8));
 
         // Calculates the center position of the window
         float centerX = Constants.WINDOW_WIDTH / 2f;
@@ -104,7 +105,12 @@ public class LockPicking<T extends Actor> extends ScreenController<T> {
 
         int numBolts = RANDOM.nextInt(4, 8);
 
-        bolts = new Image[numBolts];
+        String difficultyLabel = getDifficultyLabel(numBolts);
+        Label difficultyLevelLabel = createDifficultyLevelLabel(difficultyLabel);
+        difficultyLevelLabel.setPosition(10, Constants.WINDOW_HEIGHT - 20);
+
+        bolts = new Bolt[numBolts];
+        boltLabels = new Label[numBolts];
 
         float windowWidth = Constants.WINDOW_WIDTH;
         float windowHeight = Constants.WINDOW_HEIGHT;
@@ -116,11 +122,28 @@ public class LockPicking<T extends Actor> extends ScreenController<T> {
 
         float startY = (windowHeight - boltHeight) / 2f;
 
+        // Adds background
+        background = new Image(new Texture("hud/chest_background.png"));
+        background.setBounds(0, 0, windowWidth, windowHeight);
+
+        add((T) background);
+
+        add((T) difficultyLevelLabel);
+
         for (int i = 0; i < numBolts; i++) {
             float startX = (i + 1) * spacing + i * boltWidth;
-            bolts[i] = createBolt(startX, startY, boltWidth, boltHeight);
+            bolts[i] = createBolt(
+                startX,
+                startY,
+                boltWidth,
+                boltHeight,
+                i + 1,
+                createBoltLabel(startX, startY, boltWidth, boltHeight, i + 1)
+            );
             addBoltListener(bolts[i]);
+
             add((T) bolts[i]);
+            add((T) bolts[i].getLabel());
         }
 
         //add((T) circleImage);
@@ -132,8 +155,34 @@ public class LockPicking<T extends Actor> extends ScreenController<T> {
         hide();
     }
 
-    private Image createBolt(float x, float y, float width, float height) {
-        Image boltImage = new Image(new TextureRegionDrawable(createBoltTexture(Color.GRAY, (int) width, (int) height)));
+    private static Texture createCircleTexture(Color color, int radius) {
+        Pixmap pixmap = new Pixmap(radius * 2, radius * 2, Pixmap.Format.RGBA8888);
+        pixmap.setColor(color);
+        pixmap.fillCircle(radius, radius, radius);
+        Texture texture = new Texture(pixmap);
+        pixmap.dispose();
+        return texture;
+    }
+
+    private static Texture createSquareTexture(Color color, int size) {
+        Pixmap pixmap = new Pixmap(size, size, Pixmap.Format.RGBA8888);
+        pixmap.setColor(color);
+        pixmap.fillRectangle(0, 0, size, size);
+        Texture texture = new Texture(pixmap);
+        pixmap.dispose();
+        return texture;
+    }
+
+    private Bolt createBolt(float x, float y, float width, float height, int number, Label boltLabel) {
+        Bolt boltImage = new Bolt(
+            new TextureRegionDrawable(createBoltTexture(
+                Color.GRAY,
+                (int) width,
+                (int) height)
+            ),
+            number,
+            boltLabel
+        );
         boltImage.setPosition(x, y);
         boltImage.setScaling(Scaling.none);
         return boltImage;
@@ -148,7 +197,7 @@ public class LockPicking<T extends Actor> extends ScreenController<T> {
         return texture;
     }
 
-    private void addBoltListener(Image boltImage) {
+    private void addBoltListener(Bolt boltImage) {
         boltImage.addListener(new InputListener() {
             private boolean clicked;
             private float initialY;
@@ -176,20 +225,28 @@ public class LockPicking<T extends Actor> extends ScreenController<T> {
         });
     }
 
-    private void moveBoltUp(Image boltImage) {
-        float targetY = boltImage.getY() + 50; // Move up by 50 units
+    private void moveBoltUp(Bolt bolt) {
+        float targetY = bolt.getY() + 50; // Move up by 50 units
         float duration = 0.5f; // Duration of the animation in seconds
 
-        boltImage.clearActions(); // Clear any ongoing actions
-        boltImage.addAction(Actions.moveTo(boltImage.getX(), targetY, duration));
+        bolt.clearActions(); // Clear any ongoing actions
+        bolt.addAction(Actions.moveTo(bolt.getX(), targetY, duration));
+
+        Label boltLabel = bolt.getLabel();
+        boltLabel.clearActions();
+        boltLabel.addAction(Actions.moveTo(boltLabel.getX(), targetY + bolt.getHeight() + 10f, duration));
     }
 
-    private void moveBoltDown(Image boltImage) {
-        float targetY = boltImage.getY() - 50; // Move down by 50 units
+    private void moveBoltDown(Bolt bolt) {
+        float targetY = bolt.getY() - 50; // Move down by 50 units
         float duration = 0.5f; // Duration of the animation in seconds
 
-        boltImage.clearActions(); // Clear any ongoing actions
-        boltImage.addAction(Actions.moveTo(boltImage.getX(), targetY, duration));
+        bolt.clearActions(); // Clear any ongoing actions
+        bolt.addAction(Actions.moveTo(bolt.getX(), targetY, duration));
+
+        Label boltLabel = bolt.getLabel();
+        boltLabel.clearActions();
+        boltLabel.addAction(Actions.moveTo(boltLabel.getX(), targetY + bolt.getHeight() + 10f, duration));
     }
 
     private void resetBoltPosition(Image boltImage, float initialY) {
@@ -201,22 +258,15 @@ public class LockPicking<T extends Actor> extends ScreenController<T> {
         }
     }
 
-    private static Texture createCircleTexture(Color color, int radius) {
-        Pixmap pixmap = new Pixmap(radius * 2, radius * 2, Pixmap.Format.RGBA8888);
-        pixmap.setColor(color);
-        pixmap.fillCircle(radius, radius, radius);
-        Texture texture = new Texture(pixmap);
-        pixmap.dispose();
-        return texture;
-    }
+    private Label createBoltLabel(float x, float y, float width, float height, int number) {
+        Label.LabelStyle labelStyle = new Label.LabelStyle();
+        labelStyle.font = new BitmapFont();
 
-    private static Texture createSquareTexture(Color color, int size) {
-        Pixmap pixmap = new Pixmap(size, size, Pixmap.Format.RGBA8888);
-        pixmap.setColor(color);
-        pixmap.fillRectangle(0, 0, size, size);
-        Texture texture = new Texture(pixmap);
-        pixmap.dispose();
-        return texture;
+        Label boltLabel = new Label(Integer.toString(number), labelStyle);
+        boltLabel.setPosition(x + width / 2f, y + height + 10f);
+        boltLabel.setAlignment(Align.center);
+        boltLabel.setOrigin(Align.center);
+        return boltLabel;
     }
 
     @Override
@@ -272,16 +322,40 @@ public class LockPicking<T extends Actor> extends ScreenController<T> {
         float width2 = square2.getWidth();
         float height2 = square2.getHeight();
 
-        // Überprüfung auf Überlappung
-        if (x1 < x2 + width2 && x1 + width1 > x2 && y1 < y2 + height2 && y1 + height1 > y2) {
-            // Überlappung gefunden
-            return true;
-        }
-
-        // Keine Überlappung
-        return false;
+        return x1 < x2 + width2 && x1 + width1 > x2 && y1 < y2 + height2 && y1 + height1 > y2;
     }
 
+    private String getDifficultyLabel(int numBolts) {
+        String difficultyLabel;
+        switch (numBolts) {
+            case 4:
+                difficultyLabel = "Schwierigkeitsstufe: einfach";
+                break;
+            case 5:
+                difficultyLabel = "Schwierigkeitsstufe: normal";
+                break;
+            case 6:
+                difficultyLabel = "Schwierigkeitsstufe: schwer";
+                break;
+            case 7:
+                difficultyLabel = "Schwierigkeitsstufe: sehr schwer";
+                break;
+            default:
+                difficultyLabel = "Schwierigkeitsstufe: unbekannt";
+                break;
+        }
+        return difficultyLabel;
+    }
+
+    private Label createDifficultyLevelLabel(String text) {
+        Label.LabelStyle labelStyle = new Label.LabelStyle();
+        labelStyle.font = new BitmapFont();
+        labelStyle.fontColor = Color.RED;
+
+        Label label = new Label(text, labelStyle);
+        label.setAlignment(Align.left);
+        return label;
+    }
 
     public void show() {
         this.forEach((Actor s) -> s.setVisible(true));
