@@ -72,7 +72,6 @@ public class LockPicking<T extends Actor> extends ScreenController<T> {
         // Set position and scaling for the square
         squareImage1.setPosition(100, 100);
         squareImage1.setScaling(Scaling.none);
-        //squareImage.setBounds(squareImage.getX(), squareImage.getY(), squareImage.getWidth(), squareImage.getHeight());
 
         squareImage1.addListener(new DragListener() {
             @Override
@@ -207,10 +206,17 @@ public class LockPicking<T extends Actor> extends ScreenController<T> {
                 if (!clicked) {
                     clicked = true;
                     initialY = boltImage.getY();
-                    if (button == 0) // Left mouse button
-                        moveBoltUp(boltImage);
-                    else if (button == 1) // Right mouse button
-                        moveBoltDown(boltImage);
+                    if (button == 0) { // Left mouse button
+                        if (!boltImage.isMoved()) {
+                            moveBoltUp(boltImage);
+                            boltImage.setMoved(true);
+                        }
+                    } else if (button == 1) { // Right mouse button
+                        if (!boltImage.isMoved()) {
+                            moveBoltDown(boltImage);
+                            boltImage.setMoved(true);
+                        }
+                    }
                 }
                 return true;
             }
@@ -350,7 +356,8 @@ public class LockPicking<T extends Actor> extends ScreenController<T> {
     private Label createDifficultyLevelLabel(String text) {
         Label.LabelStyle labelStyle = new Label.LabelStyle();
         labelStyle.font = new BitmapFont();
-        labelStyle.fontColor = Color.RED;
+        labelStyle.fontColor = Color.WHITE;
+        //labelStyle.font.getData().setScale(1.5f);
 
         Label label = new Label(text, labelStyle);
         label.setAlignment(Align.left);
