@@ -33,6 +33,8 @@ public class LockPicking<T extends Actor> extends ScreenController<T> {
     private final Image squareImage1;
     private final Image squareImage2;
     private final Bolt[] bolts;
+    private int[] orderNumbers;
+    private int currentBoltIndex = 1;
     private final Image background;
     private float movementDistance;
     private float movementAngle;
@@ -131,15 +133,17 @@ public class LockPicking<T extends Actor> extends ScreenController<T> {
         add((T) difficultyLevelLabel);
 
         // Generate random order numbers for the bolts
-        List<Integer> orderNumbers = new ArrayList<>();
-        for (int i = 1; i <= bolts.length; i++) {
-            orderNumbers.add(i);
+        orderNumbers = new int[numBolts];
+        for (int i = 0; i < bolts.length; i++) {
+            orderNumbers[i] = i + 1;
         }
-        Collections.shuffle(orderNumbers);
+
+        // Shuffle the order numbers
+        shuffleArray(orderNumbers);
 
         for (int i = 0; i < bolts.length; i++) {
             float startX = (i + 1) * spacing + i * boltWidth;
-            int orderNumber = orderNumbers.get(i);
+            int orderNumber = orderNumbers[i];
             bolts[i] = createBolt(
                 startX,
                 startY,
@@ -204,8 +208,8 @@ public class LockPicking<T extends Actor> extends ScreenController<T> {
         return texture;
     }
 
-    private void addBoltListener(Bolt boltImage) {
-        boltImage.addListener(new InputListener() {
+    private void addBoltListener(Bolt bolt) {
+        bolt.addListener(new InputListener() {
             private boolean clicked;
             private float initialY;
 
@@ -213,16 +217,27 @@ public class LockPicking<T extends Actor> extends ScreenController<T> {
             public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
                 if (!clicked) {
                     clicked = true;
-                    initialY = boltImage.getY();
+                    initialY = bolt.getY();
                     if (button == 0) { // Left mouse button
-                        if (!boltImage.isMoved()) {
-                            moveBoltUp(boltImage);
-                            boltImage.setMoved(true);
+                        if (!bolt.isMoved()) {
+
+                            if (bolt.getOrderNumber() == currentBoltIndex) {
+                                moveBoltUp(bolt);
+                                bolt.setMoved(true);
+                                bolt.setColor(Color.GREEN);
+                                currentBoltIndex++;
+                            } else{
+                                moveBoltUp(bolt);
+                                bolt.setMoved(true);
+                                bolt.setColor(Color.RED);
+                                currentBoltIndex++;
+                            }
                         }
                     } else if (button == 1) { // Right mouse button
-                        if (!boltImage.isMoved()) {
-                            moveBoltDown(boltImage);
-                            boltImage.setMoved(true);
+                        if (!bolt.isMoved()) {
+                            moveBoltDown(bolt);
+                            bolt.setMoved(true);
+                            currentBoltIndex--;
                         }
                     }
                 }
@@ -233,7 +248,7 @@ public class LockPicking<T extends Actor> extends ScreenController<T> {
             public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
                 if (clicked) {
                     clicked = false;
-                    resetBoltPosition(boltImage, initialY);
+                    resetBoltPosition(bolt, initialY);
                 }
             }
         });
@@ -370,6 +385,16 @@ public class LockPicking<T extends Actor> extends ScreenController<T> {
         Label label = new Label(text, labelStyle);
         label.setAlignment(Align.left);
         return label;
+    }
+
+    // Helper method to shuffle the array
+    private void shuffleArray(int[] array) {
+        for (int i = array.length - 1; i > 0; i--) {
+            int index = RANDOM.nextInt(i + 1);
+            int temp = array[index];
+            array[index] = array[i];
+            array[i] = temp;
+        }
     }
 
     public void show() {
