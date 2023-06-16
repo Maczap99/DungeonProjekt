@@ -20,6 +20,9 @@ import com.badlogic.gdx.utils.Scaling;
 import controller.ScreenController;
 import tools.Constants;
 
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 import java.util.Random;
 
 public class LockPicking<T extends Actor> extends ScreenController<T> {
@@ -127,13 +130,22 @@ public class LockPicking<T extends Actor> extends ScreenController<T> {
 
         add((T) difficultyLevelLabel);
 
-        for (int i = 0; i < numBolts; i++) {
+        // Generate random order numbers for the bolts
+        List<Integer> orderNumbers = new ArrayList<>();
+        for (int i = 1; i <= bolts.length; i++) {
+            orderNumbers.add(i);
+        }
+        Collections.shuffle(orderNumbers);
+
+        for (int i = 0; i < bolts.length; i++) {
             float startX = (i + 1) * spacing + i * boltWidth;
+            int orderNumber = orderNumbers.get(i);
             bolts[i] = createBolt(
                 startX,
                 startY,
                 boltWidth,
-                boltHeight
+                boltHeight,
+                orderNumber
             );
             addBoltListener(bolts[i]);
 
@@ -168,17 +180,18 @@ public class LockPicking<T extends Actor> extends ScreenController<T> {
         return texture;
     }
 
-    private Bolt createBolt(float x, float y, float width, float height) {
+    private Bolt createBolt(float x, float y, float width, float height, int orderNumber) {
         Bolt boltImage = new Bolt(
             new TextureRegionDrawable(createBoltTexture(
                 Color.GRAY,
                 (int) width,
                 (int) height)
             ),
-            createBoltLabel(x, y, width, height, "not set")
+            createBoltLabel(x, y, width, height, Integer.toString(orderNumber))
         );
         boltImage.setPosition(x, y);
         boltImage.setScaling(Scaling.none);
+        boltImage.setOrder(orderNumber);
         return boltImage;
     }
 
