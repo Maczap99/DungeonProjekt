@@ -20,13 +20,11 @@ import com.badlogic.gdx.utils.Scaling;
 import controller.ScreenController;
 import tools.Constants;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
 import java.util.Random;
 
 public class LockPicking<T extends Actor> extends ScreenController<T> {
     private static final Random RANDOM = new Random();
+    private Label statusLabel;
     private static final float MOVEMENT_SPEED = 100f;
     private static final float MAX_MOVEMENT_DISTANCE = 20f;
     private final Image circleImage;
@@ -36,6 +34,7 @@ public class LockPicking<T extends Actor> extends ScreenController<T> {
     private int[] orderNumbers;
     private int currentBoltIndex = 1;
     private final Image background;
+    private boolean actionsLocked;
     private float movementDistance;
     private float movementAngle;
     private boolean solved;
@@ -106,6 +105,14 @@ public class LockPicking<T extends Actor> extends ScreenController<T> {
             }
         });
 
+        // Create status label
+        Label.LabelStyle statusLabelStyle = new Label.LabelStyle();
+        statusLabelStyle.font = new BitmapFont();
+        statusLabelStyle.font.getData().setScale(4f);
+        statusLabelStyle.fontColor = Color.RED;
+        statusLabel = new Label("locked!", statusLabelStyle);
+        statusLabel.setPosition(Constants.WINDOW_WIDTH / 2f, Constants.WINDOW_HEIGHT - 50f, Align.center);
+
         int numBolts = RANDOM.nextInt(4, 8);
 
         String difficultyLabel = getDifficultyLabel(numBolts);
@@ -129,6 +136,8 @@ public class LockPicking<T extends Actor> extends ScreenController<T> {
         background.setBounds(0, 0, windowWidth, windowHeight);
 
         add((T) background);
+
+        add((T) statusLabel);
 
         add((T) difficultyLevelLabel);
 
@@ -154,7 +163,7 @@ public class LockPicking<T extends Actor> extends ScreenController<T> {
             addBoltListener(bolts[i]);
 
             add((T) bolts[i]);
-            add((T) bolts[i].getLabel());
+            //add((T) bolts[i].getLabel());
         }
 
         //add((T) circleImage);
@@ -185,71 +194,43 @@ public class LockPicking<T extends Actor> extends ScreenController<T> {
     }
 
     private Bolt createBolt(float x, float y, float width, float height, int orderNumber) {
-        Bolt boltImage = new Bolt(
-            new TextureRegionDrawable(createBoltTexture(
-                Color.GRAY,
-                (int) width,
-                (int) height)
-            ),
-            createBoltLabel(x, y, width, height, Integer.toString(orderNumber))
+        Bolt bolt = new Bolt(createBoltTexture((int) width, (int) height),
+            createBoltLabel(x, y, width, height, Integer.toString(orderNumber)),
+            y
         );
-        boltImage.setPosition(x, y);
-        boltImage.setScaling(Scaling.none);
-        boltImage.setOrder(orderNumber);
-        return boltImage;
+        bolt.setPosition(x, y);
+        bolt.setScaling(Scaling.none);
+        bolt.setOrder(orderNumber);
+        bolt.setColor(Color.GRAY);
+        return bolt;
     }
 
-    private Texture createBoltTexture(Color color, int width, int height) {
+    private TextureRegionDrawable createBoltTexture(int width, int height) {
         Pixmap pixmap = new Pixmap(width, height, Pixmap.Format.RGBA8888);
-        pixmap.setColor(color);
+        pixmap.setColor(Color.GRAY);
         pixmap.fillRectangle(0, 0, width, height);
         Texture texture = new Texture(pixmap);
         pixmap.dispose();
-        return texture;
+        return new TextureRegionDrawable(texture);
     }
 
     private void addBoltListener(Bolt bolt) {
         bolt.addListener(new InputListener() {
-            private boolean clicked;
-            private float initialY;
-
             @Override
             public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
-                if (!clicked) {
-                    clicked = true;
-                    initialY = bolt.getY();
+                if (!bolt.isMoved() && !actionsLocked) {
                     if (button == 0) { // Left mouse button
                         if (!bolt.isMoved()) {
-
-                            if (bolt.getOrderNumber() == currentBoltIndex) {
-                                moveBoltUp(bolt);
-                                bolt.setMoved(true);
-                                bolt.setColor(Color.GREEN);
-                                currentBoltIndex++;
-                            } else{
-                                moveBoltUp(bolt);
-                                bolt.setMoved(true);
-                                bolt.setColor(Color.RED);
-                                currentBoltIndex++;
-                            }
+                            moveBoltUp(bolt);
                         }
                     } else if (button == 1) { // Right mouse button
                         if (!bolt.isMoved()) {
-                            moveBoltDown(bolt);
                             bolt.setMoved(true);
                             currentBoltIndex--;
                         }
                     }
                 }
                 return true;
-            }
-
-            @Override
-            public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
-                if (clicked) {
-                    clicked = false;
-                    resetBoltPosition(bolt, initialY);
-                }
             }
         });
     }
@@ -259,32 +240,74 @@ public class LockPicking<T extends Actor> extends ScreenController<T> {
         float duration = 0.5f; // Duration of the animation in seconds
 
         bolt.clearActions(); // Clear any ongoing actions
-        bolt.addAction(Actions.moveTo(bolt.getX(), targetY, duration));
+        bolt.addAction(Actions.sequence(
+            Actions.moveTo(bolt.getX(), targetY, duration),
+            Actions.run(new Runnable() {
+                @Override
+                public void run() {
+                    onBoltReachedUpperPosition(bolt);
+                }
+            })
+        ));
 
         Label boltLabel = bolt.getLabel();
         boltLabel.clearActions();
-        boltLabel.addAction(Actions.moveTo(boltLabel.getX(), targetY + bolt.getHeight() + 10f, duration));
+        boltLabel.addAction(Actions.moveTo(boltLabel.getX(), targetY + bolt.getHeight() + 10, duration));
+
+        bolt.setMoved(true);
     }
 
-    private void moveBoltDown(Bolt bolt) {
-        float targetY = bolt.getY() - 50; // Move down by 50 units
-        float duration = 0.5f; // Duration of the animation in seconds
-
-        bolt.clearActions(); // Clear any ongoing actions
-        bolt.addAction(Actions.moveTo(bolt.getX(), targetY, duration));
-
-        Label boltLabel = bolt.getLabel();
-        boltLabel.clearActions();
-        boltLabel.addAction(Actions.moveTo(boltLabel.getX(), targetY + bolt.getHeight() + 10f, duration));
-    }
-
-    private void resetBoltPosition(Image boltImage, float initialY) {
-        if (boltImage.getActions().size == 0) { // Check if no other action is ongoing
-            float duration = 0.5f; // Duration of the animation in seconds
-
-            boltImage.clearActions(); // Clear any ongoing actions
-            boltImage.addAction(Actions.moveTo(boltImage.getX(), initialY, duration));
+    private void onBoltReachedUpperPosition(Bolt bolt) {
+        if (bolt.getOrderNumber() == currentBoltIndex) {
+            bolt.setColor(Color.GREEN);
+            if (currentBoltIndex == bolts.length) {
+                solved = true;
+            }
+            currentBoltIndex++;
+        } else{
+            bolt.setColor(Color.RED);
+            resetBoltPosition();
         }
+        bolt.setMoved(true);
+
+        updateStatusLabel();
+    }
+
+    private void resetBoltPosition() {
+        actionsLocked = true;
+
+        for (Bolt bolt: bolts) {
+            if (bolt.isMoved()) {
+                float duration = .5f; // Duration of the animation in seconds
+
+                bolt.clearActions(); // Clear any ongoing actions
+                bolt.addAction(Actions.sequence(
+                    Actions.moveTo(bolt.getX(), bolt.getOriginY(), duration),
+                    Actions.run(new Runnable() {
+                        @Override
+                        public void run() {
+                            onBoltReachedLowerPosition();
+                        }
+                    })
+                ));
+
+                Label boltLabel = bolt.getLabel();
+                boltLabel.clearActions();
+                boltLabel.addAction(Actions.moveTo(boltLabel.getX(), bolt.getOriginY() + bolt.getHeight() + 10, duration));
+            }
+        }
+    }
+
+    private void onBoltReachedLowerPosition() {
+        for (Bolt bolt : bolts) {
+            if (bolt.isMoved()) {
+                bolt.setColor(Color.GRAY);
+                currentBoltIndex = 1;
+                bolt.setMoved(false);
+            }
+        }
+
+        actionsLocked = false;
     }
 
     private Label createBoltLabel(float x, float y, float width, float height, String number) {
@@ -385,6 +408,13 @@ public class LockPicking<T extends Actor> extends ScreenController<T> {
         Label label = new Label(text, labelStyle);
         label.setAlignment(Align.left);
         return label;
+    }
+
+    private void updateStatusLabel() {
+        if (solved) {
+            statusLabel.setText("unlocked!");
+            statusLabel.getStyle().fontColor = Color.GREEN;
+        }
     }
 
     // Helper method to shuffle the array

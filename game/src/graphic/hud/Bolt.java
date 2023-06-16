@@ -8,10 +8,12 @@ public class Bolt extends Image {
     private int orderNumber;
     private Label label;
     private boolean moved;
+    private float originY;
 
-    public Bolt(Drawable drawable, Label label) {
+    public Bolt(Drawable drawable, Label label, float originY) {
         super(drawable);
         this.label = label;
+        this.originY = originY;
     }
 
     public void setOrder(int number) {
@@ -35,5 +37,10 @@ public class Bolt extends Image {
 
     public void setMoved(boolean moved) {
         this.moved = moved;
+    }
+
+    @Override
+    public float getOriginY() {
+        return originY;
     }
 }
