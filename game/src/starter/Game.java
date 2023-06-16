@@ -17,6 +17,7 @@ import ecs.components.xp.XPComponent;
 import ecs.entities.Entity;
 import ecs.entities.Hero;
 import ecs.entities.Monster;
+import ecs.entities.Chest;
 import ecs.items.EternalArrows;
 import ecs.items.ItemData;
 import ecs.systems.*;
@@ -323,7 +324,7 @@ public class Game extends ScreenAdapter implements IOnLevelLoader {
             PositionComponent pc = (PositionComponent) monster.getComponent(PositionComponent.class).get();
             pc.setPosition(currentLevel.getRandomTile(LevelElement.FLOOR).getCoordinateAsPoint());
         }
-
+        Chest.createNewChest();
     }
 
     private void manageEntitiesSets() {

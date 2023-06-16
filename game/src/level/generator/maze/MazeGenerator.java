@@ -14,6 +14,7 @@ import tools.Point;
 
 import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Random;
 
 /**
@@ -317,6 +318,9 @@ public class MazeGenerator implements IGenerator {
                  * Start and end of the maze are excluded.
                  * */
                 if (!isBacktracking) {
+                    //new Chest(List.of(new EternalArrows()), calculateCellCenter(currentPosition));
+                    //new Chest(calculateCellCenter(currentPosition));
+                    /**
                     if (placeChestInDeadEnds && getBooleanWithPercentage(50)) {
                         int temp = getRandomNumber(10);
                         if (temp < 4) {
@@ -324,10 +328,11 @@ public class MazeGenerator implements IGenerator {
                         } else if (temp >= 4 && temp < 7) {
                             new TrapChest(calculateCellCenter(currentPosition));
                         } else if (temp >= 7) {
-                            new Chest(calculateCellCenter(currentPosition));
+                            new Chest(List.of(new EternalArrows()), calculateCellCenter(currentPosition));
                         }
 
                     }
+                     **/
                     isBacktracking = true;
                 }
 
