@@ -219,14 +219,9 @@ public class LockPicking<T extends Actor> extends ScreenController<T> {
             @Override
             public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
                 if (!bolt.isMoved() && !actionsLocked) {
-                    if (button == 0) { // Left mouse button
+                    if (button == 0) {
                         if (!bolt.isMoved()) {
                             moveBoltUp(bolt);
-                        }
-                    } else if (button == 1) { // Right mouse button
-                        if (!bolt.isMoved()) {
-                            bolt.setMoved(true);
-                            currentBoltIndex--;
                         }
                     }
                 }
