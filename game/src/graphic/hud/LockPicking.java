@@ -207,7 +207,7 @@ public class LockPicking<T extends Actor> extends ScreenController<T> {
 
     private TextureRegionDrawable createBoltTexture(int width, int height) {
         Pixmap pixmap = new Pixmap(width, height, Pixmap.Format.RGBA8888);
-        pixmap.setColor(Color.GRAY);
+        pixmap.setColor(Color.WHITE);
         pixmap.fillRectangle(0, 0, width, height);
         Texture texture = new Texture(pixmap);
         pixmap.dispose();
