@@ -24,16 +24,16 @@ import java.util.Random;
 
 public class LockPicking<T extends Actor> extends ScreenController<T> {
     private static final Random RANDOM = new Random();
-    private Label statusLabel;
     private static final float MOVEMENT_SPEED = 100f;
     private static final float MAX_MOVEMENT_DISTANCE = 20f;
     private final Image circleImage;
     private final Image squareImage1;
     private final Image squareImage2;
     private final Bolt[] bolts;
-    private int[] orderNumbers;
-    private int currentBoltIndex = 1;
     private final Image background;
+    private final Label statusLabel;
+    private final int[] orderNumbers;
+    private int currentBoltIndex = 1;
     private boolean actionsLocked;
     private float movementDistance;
     private float movementAngle;
@@ -111,7 +111,7 @@ public class LockPicking<T extends Actor> extends ScreenController<T> {
         statusLabelStyle.font.getData().setScale(4f);
         statusLabelStyle.fontColor = Color.RED;
         statusLabel = new Label("locked!", statusLabelStyle);
-        statusLabel.setPosition(Constants.WINDOW_WIDTH / 2f, Constants.WINDOW_HEIGHT - 50f, Align.center);
+        statusLabel.setPosition(Constants.WINDOW_WIDTH / 2f - 10f, Constants.WINDOW_HEIGHT - 50f, Align.center);
 
         int numBolts = RANDOM.nextInt(4, 8);
 
@@ -124,12 +124,11 @@ public class LockPicking<T extends Actor> extends ScreenController<T> {
         float windowWidth = Constants.WINDOW_WIDTH;
         float windowHeight = Constants.WINDOW_HEIGHT;
 
-        float boltWidth = windowWidth / (numBolts + (numBolts + 1) * 0.2f); // +1 for spacing between bolts
-        float boltHeight = windowHeight * 0.4f;
+        float spacing = windowWidth * 0.7f / (numBolts + 1);
+        float boltWidth = (windowWidth - spacing * (numBolts + 1)) / numBolts;
+        float boltHeight = windowHeight * 0.2f;
 
-        float spacing = windowWidth * 0.2f / (numBolts + 1);
-
-        float startY = (windowHeight - boltHeight) / 2f;
+        float startY = (windowHeight - boltHeight) / 2f - 50f;
 
         // Adds background
         background = new Image(new Texture("hud/chest_background2.png"));
@@ -146,13 +145,12 @@ public class LockPicking<T extends Actor> extends ScreenController<T> {
         for (int i = 0; i < bolts.length; i++) {
             orderNumbers[i] = i + 1;
         }
-
         // Shuffle the order numbers
         shuffleArray(orderNumbers);
 
         for (int i = 0; i < bolts.length; i++) {
-            float startX = (i + 1) * spacing + i * boltWidth;
             int orderNumber = orderNumbers[i];
+            float startX = spacing * (i + 1) + boltWidth * i;
             bolts[i] = createBolt(
                 startX,
                 startY,
@@ -160,6 +158,7 @@ public class LockPicking<T extends Actor> extends ScreenController<T> {
                 boltHeight,
                 orderNumber
             );
+
             addBoltListener(bolts[i]);
 
             add((T) bolts[i]);
@@ -259,7 +258,7 @@ public class LockPicking<T extends Actor> extends ScreenController<T> {
                 solved = true;
             }
             currentBoltIndex++;
-        } else{
+        } else {
             bolt.setColor(Color.RED);
             resetBoltPosition();
         }
@@ -271,7 +270,7 @@ public class LockPicking<T extends Actor> extends ScreenController<T> {
     private void resetBoltPosition() {
         actionsLocked = true;
 
-        for (Bolt bolt: bolts) {
+        for (Bolt bolt : bolts) {
             if (bolt.isMoved()) {
                 float duration = .5f; // Duration of the animation in seconds
 
