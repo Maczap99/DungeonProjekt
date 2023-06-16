@@ -132,7 +132,7 @@ public class LockPicking<T extends Actor> extends ScreenController<T> {
         float startY = (windowHeight - boltHeight) / 2f;
 
         // Adds background
-        background = new Image(new Texture("hud/chest_background.png"));
+        background = new Image(new Texture("hud/chest_background2.png"));
         background.setBounds(0, 0, windowWidth, windowHeight);
 
         add((T) background);
