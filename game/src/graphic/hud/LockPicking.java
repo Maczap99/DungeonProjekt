@@ -167,7 +167,7 @@ public class LockPicking<T extends Actor> extends ScreenController<T> {
             if (currentBoltIndex == bolts.length) {
                 solved = true;
 
-                // Schedule a timer to hide the screen after a few seconds
+                // Schedules a timer to hide the screen after a few seconds
                 Timer.schedule(new Timer.Task() {
                     @Override
                     public void run() {

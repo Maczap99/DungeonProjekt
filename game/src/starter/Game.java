@@ -24,7 +24,6 @@ import graphic.DungeonCamera;
 import graphic.Painter;
 import graphic.hud.LockPicking;
 import graphic.hud.MainMenu;
-import graphic.hud.PauseMenu;
 import level.IOnLevelLoader;
 import level.LevelAPI;
 import level.elements.ILevel;
@@ -74,7 +73,6 @@ public class Game extends ScreenAdapter implements IOnLevelLoader {
     private static boolean showPauseMenu = false;
     private static boolean showMainMenu = false;
     private static boolean showLockPicking = false;
-    private static PauseMenu<Actor> pauseMenu;
     private static MainMenu<Actor> mainMenu;
     private static LockPicking<Actor> lockPicking;
     private static Entity hero;
@@ -117,20 +115,6 @@ public class Game extends ScreenAdapter implements IOnLevelLoader {
             throw new RuntimeException(e);
         }
         DesktopLauncher.run(new Game());
-    }
-
-    /**
-     * Toggle between pause and run
-     */
-    public static void togglePauseMenu() {
-        showPauseMenu = !showPauseMenu;
-        if (systems != null) {
-            systems.forEach(ECS_System::toggleRun);
-        }
-        if (pauseMenu != null) {
-            if (showPauseMenu) pauseMenu.showMenu();
-            else pauseMenu.hideMenu();
-        }
     }
 
     /**
@@ -331,18 +315,15 @@ public class Game extends ScreenAdapter implements IOnLevelLoader {
                 System.out.println("Item Name: " + itemData.getItemName());
                 System.out.println("Item Description: " + itemData.getDescription() + "\n");
             }
-            System.out.println("Quiver: ");
-            for (ItemData itemData : h.getQuiver().getItems()) {
-                System.out.println("Item Name: " + itemData.getItemName());
-                System.out.println("Item Amount: " + ((EternalArrows) itemData).getAmount());
-                System.out.println("Item Description: " + itemData.getDescription() + "\n");
+            if (h.getQuiver() != null) {
+                System.out.println("Quiver: ");
+                for (ItemData itemData : h.getQuiver().getItems()) {
+                    System.out.println("Item Name: " + itemData.getItemName());
+                    System.out.println("Item Amount: " + ((EternalArrows) itemData).getAmount());
+                    System.out.println("Item Description: " + itemData.getDescription() + "\n");
+                }
             }
         }
-
-        /*
-        * Lock picking tests
-        * */
-        if (Gdx.input.isKeyJustPressed(Input.Keys.L)) toggleLockPicking();
     }
 
     @Override
