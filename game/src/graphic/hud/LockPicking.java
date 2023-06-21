@@ -20,6 +20,10 @@ import tools.Constants;
 
 import java.util.Random;
 
+/**
+ * The LockPicking class represents a screen controller for a lock picking game.
+ * @param <T> The type of actor used in the screen controller.
+ */
 public class LockPicking<T extends Actor> extends ScreenController<T> {
     private static final Random RANDOM = new Random();
     private final Image squareImage1;
@@ -31,6 +35,9 @@ public class LockPicking<T extends Actor> extends ScreenController<T> {
     private boolean actionsLocked;
     private boolean solved;
 
+    /**
+     * Constructs a new LockPicking screen controller.
+     */
     public LockPicking() {
         super(new SpriteBatch());
 
@@ -168,12 +175,7 @@ public class LockPicking<T extends Actor> extends ScreenController<T> {
         bolt.clearActions(); // Clear any ongoing actions
         bolt.addAction(Actions.sequence(
             Actions.moveTo(bolt.getX(), targetY, duration),
-            Actions.run(new Runnable() {
-                @Override
-                public void run() {
-                    onBoltReachedUpperPosition(bolt);
-                }
-            })
+            Actions.run(() -> onBoltReachedUpperPosition(bolt))
         ));
 
         Label boltLabel = bolt.getLabel();
@@ -204,17 +206,14 @@ public class LockPicking<T extends Actor> extends ScreenController<T> {
 
         for (Bolt bolt : bolts) {
             if (bolt.isMoved()) {
-                float duration = .5f; // Duration of the animation in seconds
+                // Duration of the animation in seconds
+                float duration = .5f;
 
-                bolt.clearActions(); // Clear any ongoing actions
+                // Clear any ongoing actions
+                bolt.clearActions();
                 bolt.addAction(Actions.sequence(
                     Actions.moveTo(bolt.getX(), bolt.getOriginY(), duration),
-                    Actions.run(new Runnable() {
-                        @Override
-                        public void run() {
-                            onBoltReachedLowerPosition();
-                        }
-                    })
+                    Actions.run(() -> onBoltReachedLowerPosition())
                 ));
 
                 Label boltLabel = bolt.getLabel();
@@ -260,19 +259,19 @@ public class LockPicking<T extends Actor> extends ScreenController<T> {
         String difficultyLabel;
         switch (numBolts) {
             case 4:
-                difficultyLabel = "Schwierigkeitsstufe: einfach";
+                difficultyLabel = "Difficulty Level: Easy";
                 break;
             case 5:
-                difficultyLabel = "Schwierigkeitsstufe: normal";
+                difficultyLabel = "Difficulty Level: Normal";
                 break;
             case 6:
-                difficultyLabel = "Schwierigkeitsstufe: schwer";
+                difficultyLabel = "Difficulty Level: Hard";
                 break;
             case 7:
-                difficultyLabel = "Schwierigkeitsstufe: sehr schwer";
+                difficultyLabel = "Difficulty Level: Very Hard";
                 break;
             default:
-                difficultyLabel = "Schwierigkeitsstufe: unbekannt";
+                difficultyLabel = "Difficulty Level: Unknown";
                 break;
         }
         return difficultyLabel;
@@ -282,7 +281,6 @@ public class LockPicking<T extends Actor> extends ScreenController<T> {
         Label.LabelStyle labelStyle = new Label.LabelStyle();
         labelStyle.font = new BitmapFont();
         labelStyle.fontColor = Color.WHITE;
-        //labelStyle.font.getData().setScale(1.5f);
 
         Label label = new Label(text, labelStyle);
         label.setAlignment(Align.left);
@@ -291,12 +289,11 @@ public class LockPicking<T extends Actor> extends ScreenController<T> {
 
     private void updateStatusLabel() {
         if (solved) {
-            statusLabel.setText("unlocked!");
+            statusLabel.setText("Unlocked!");
             statusLabel.getStyle().fontColor = Color.GREEN;
         }
     }
 
-    // Helper method to shuffle the array
     private void shuffleArray(int[] array) {
         for (int i = array.length - 1; i > 0; i--) {
             int index = RANDOM.nextInt(i + 1);
@@ -306,14 +303,25 @@ public class LockPicking<T extends Actor> extends ScreenController<T> {
         }
     }
 
+    /**
+     * Makes all the actors in the LockPicking screen controller visible.
+     */
     public void show() {
         this.forEach((Actor s) -> s.setVisible(true));
     }
 
+    /**
+     * Makes all the actors in the LockPicking screen controller invisible.
+     */
     public void hide() {
         this.forEach((Actor s) -> s.setVisible(false));
     }
 
+    /**
+     * Checks if the lock picking game has been solved.
+     *
+     * @return True if the game is solved, false otherwise.
+     */
     public boolean isSolved() {
         return solved;
     }
