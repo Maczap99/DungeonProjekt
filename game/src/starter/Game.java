@@ -15,6 +15,7 @@ import ecs.components.MissingComponentException;
 import ecs.components.PositionComponent;
 import ecs.components.xp.XPComponent;
 import ecs.entities.Entity;
+import ecs.entities.Ghost;
 import ecs.entities.Hero;
 import ecs.entities.Monster;
 import ecs.entities.Chest;
@@ -108,6 +109,8 @@ public class Game extends ScreenAdapter implements IOnLevelLoader {
      * Used for creating Monsters
      */
     private MonsterBuilder monsterBuilder;
+
+    private static boolean ghostReward = false;
 
     public static void main(String[] args) {
         // start the game
@@ -326,6 +329,11 @@ public class Game extends ScreenAdapter implements IOnLevelLoader {
                 }
             }
         }
+        for (Entity e: entities) {
+            if(e.getClass() == Ghost.class){
+                ((Ghost) e).despawnBehaviour();
+            }
+        }
     }
 
     /**
@@ -339,11 +347,17 @@ public class Game extends ScreenAdapter implements IOnLevelLoader {
 
         int monsterAmount = ThreadLocalRandom.current().nextInt(5, 11);
         monsterBuilder = new MonsterBuilder();
+        
         for (int i = 0; i < monsterAmount; i++) {
             Monster monster = monsterBuilder.createRandomMonster();
             PositionComponent pc = (PositionComponent) monster.getComponent(PositionComponent.class).get();
             pc.setPosition(currentLevel.getRandomTile(LevelElement.FLOOR).getCoordinateAsPoint());
         }
+        monsterBuilder.setupGhostAndGravestone(
+            currentLevel.getRandomTile(LevelElement.FLOOR).getCoordinateAsPoint(),
+            currentLevel.getRandomTile(LevelElement.FLOOR).getCoordinateAsPoint());
+        }
+  
         if(levelStage % 2 == 0){
             if(getBooleanWithPercentage(20)){
                 Chest.createNewChest();
@@ -385,6 +399,7 @@ public class Game extends ScreenAdapter implements IOnLevelLoader {
             levelStage++;
             skillUpLogger = Logger.getLogger(this.getClass().getName());
             skillUpLogger.info("Ebene: "+levelStage);
+            ghostReward = false;
 
             try {
                 // start menu soundtrack
@@ -430,7 +445,11 @@ public class Game extends ScreenAdapter implements IOnLevelLoader {
                     .orElseThrow(
                         () -> new MissingComponentException("PositionComponent"));
         Tile currentTile = currentLevel.getTileAt(pc.getPosition().toCoordinate());
-        return currentTile.equals(currentLevel.getEndTile());
+        return currentTile.equals(currentLevel.getEndTile()) || ghostReward == true;
+    }
+
+    public static void giveGhostReward(){
+        ghostReward = true;
     }
 
     private void placeOnLevelStart(Entity hero) {
