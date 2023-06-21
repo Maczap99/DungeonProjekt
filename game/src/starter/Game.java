@@ -17,6 +17,7 @@ import ecs.components.xp.XPComponent;
 import ecs.entities.Entity;
 import ecs.entities.Hero;
 import ecs.entities.Monster;
+import ecs.entities.Chest;
 import ecs.items.EternalArrows;
 import ecs.items.ItemData;
 import ecs.systems.*;
@@ -44,6 +45,7 @@ import java.util.concurrent.ThreadLocalRandom;
 import java.util.logging.Logger;
 
 import static com.badlogic.gdx.graphics.GL20.GL_COLOR_BUFFER_BIT;
+import static level.elements.ITileable.RANDOM;
 import static logging.LoggerConfig.initBaseLogger;
 
 /**
@@ -326,6 +328,9 @@ public class Game extends ScreenAdapter implements IOnLevelLoader {
         }
     }
 
+    /**
+     * Spawn monster and chests when the level load
+     */
     @Override
     public void onLevelLoad() {
         currentLevel = levelAPI.getCurrentLevel();
@@ -338,6 +343,11 @@ public class Game extends ScreenAdapter implements IOnLevelLoader {
             Monster monster = monsterBuilder.createRandomMonster();
             PositionComponent pc = (PositionComponent) monster.getComponent(PositionComponent.class).get();
             pc.setPosition(currentLevel.getRandomTile(LevelElement.FLOOR).getCoordinateAsPoint());
+        }
+        if(levelStage % 2 == 0){
+            if(getBooleanWithPercentage(20)){
+                Chest.createNewChest();
+            }
         }
 
     }
@@ -432,6 +442,14 @@ public class Game extends ScreenAdapter implements IOnLevelLoader {
                     .orElseThrow(
                         () -> new MissingComponentException("PositionComponent"));
         pc.setPosition(currentLevel.getStartTile().getCoordinate().toPoint());
+    }
+
+    private static boolean getBooleanWithPercentage(int percentage) {
+        if (percentage < 0 || percentage > 100) {
+            throw new IllegalArgumentException("Percentage must be between 0 and 100");
+        }
+        int randomNumber = RANDOM.nextInt(100) + 1;
+        return randomNumber <= percentage;
     }
 
     public void setSpriteBatch(SpriteBatch batch) {
