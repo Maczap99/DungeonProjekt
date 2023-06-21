@@ -1,12 +1,10 @@
 package graphic.hud;
 
-import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Pixmap;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.InputListener;
@@ -22,52 +20,26 @@ import tools.Constants;
 
 import java.util.Random;
 
+/**
+ * The LockPicking class represents a screen controller for a lock picking game.
+ * @param <T> The type of actor used in the screen controller.
+ */
 public class LockPicking<T extends Actor> extends ScreenController<T> {
     private static final Random RANDOM = new Random();
-    private static final float MOVEMENT_SPEED = 100f;
-    private static final float MAX_MOVEMENT_DISTANCE = 20f;
-    private final Image circleImage;
     private final Image squareImage1;
-    private final Image squareImage2;
     private final Bolt[] bolts;
     private final Image background;
     private final Label statusLabel;
     private final int[] orderNumbers;
     private int currentBoltIndex = 1;
     private boolean actionsLocked;
-    private float movementDistance;
-    private float movementAngle;
     private boolean solved;
 
+    /**
+     * Constructs a new LockPicking screen controller.
+     */
     public LockPicking() {
         super(new SpriteBatch());
-
-        // Calculates the center position of the window
-        float centerX = Constants.WINDOW_WIDTH / 2f;
-        float centerY = Constants.WINDOW_HEIGHT / 2f;
-
-        // Defines the radius of the circle based on the window size
-        float circleRadius = Math.min(Constants.WINDOW_WIDTH, Constants.WINDOW_HEIGHT) * 0.2f;
-
-        // Calculates the position for the circle's top-left corner to center it
-        float circleX = centerX - circleRadius;
-        float circleY = centerY - circleRadius;
-
-        // Creates a circle image
-        circleImage = new Image(new TextureRegionDrawable(createCircleTexture(Color.RED, (int) circleRadius)));
-
-        // Sets position and scaling for the circle
-        circleImage.setPosition(circleX, circleY);
-        circleImage.setScaling(Scaling.none);
-
-        // Adds click listener to the circle
-        circleImage.addListener(new InputListener() {
-            @Override
-            public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
-                System.out.println("Circle clicked!");
-                return true;
-            }
-        });
 
         // Create a square image
         squareImage1 = new Image(new TextureRegionDrawable(createSquareTexture(Color.BLUE, 100)));
@@ -82,26 +54,6 @@ public class LockPicking<T extends Actor> extends ScreenController<T> {
                 float newX = squareImage1.getX() + x - squareImage1.getWidth() / 2f;
                 float newY = squareImage1.getY() + y - squareImage1.getHeight() / 2f;
                 squareImage1.setPosition(newX, newY);
-            }
-        });
-
-        // Create a square image
-        squareImage2 = new Image(new TextureRegionDrawable(createSquareTexture(Color.GREEN, 100)));
-
-        // Set position and scaling for the square
-        squareImage2.setPosition(300, 100);
-        squareImage2.setScaling(Scaling.none);
-
-        squareImage2.addListener(new InputListener() {
-            private boolean clicked;
-
-            @Override
-            public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
-                if (!clicked) {
-                    clicked = true;
-                    moveSquareUp();
-                }
-                return true;
             }
         });
 
@@ -165,22 +117,9 @@ public class LockPicking<T extends Actor> extends ScreenController<T> {
             //add((T) bolts[i].getLabel());
         }
 
-        //add((T) circleImage);
-
         //add((T) squareImage1);
 
-        //add((T) squareImage2);
-
         hide();
-    }
-
-    private static Texture createCircleTexture(Color color, int radius) {
-        Pixmap pixmap = new Pixmap(radius * 2, radius * 2, Pixmap.Format.RGBA8888);
-        pixmap.setColor(color);
-        pixmap.fillCircle(radius, radius, radius);
-        Texture texture = new Texture(pixmap);
-        pixmap.dispose();
-        return texture;
     }
 
     private static Texture createSquareTexture(Color color, int size) {
@@ -236,12 +175,7 @@ public class LockPicking<T extends Actor> extends ScreenController<T> {
         bolt.clearActions(); // Clear any ongoing actions
         bolt.addAction(Actions.sequence(
             Actions.moveTo(bolt.getX(), targetY, duration),
-            Actions.run(new Runnable() {
-                @Override
-                public void run() {
-                    onBoltReachedUpperPosition(bolt);
-                }
-            })
+            Actions.run(() -> onBoltReachedUpperPosition(bolt))
         ));
 
         Label boltLabel = bolt.getLabel();
@@ -272,17 +206,14 @@ public class LockPicking<T extends Actor> extends ScreenController<T> {
 
         for (Bolt bolt : bolts) {
             if (bolt.isMoved()) {
-                float duration = .5f; // Duration of the animation in seconds
+                // Duration of the animation in seconds
+                float duration = .5f;
 
-                bolt.clearActions(); // Clear any ongoing actions
+                // Clear any ongoing actions
+                bolt.clearActions();
                 bolt.addAction(Actions.sequence(
                     Actions.moveTo(bolt.getX(), bolt.getOriginY(), duration),
-                    Actions.run(new Runnable() {
-                        @Override
-                        public void run() {
-                            onBoltReachedLowerPosition();
-                        }
-                    })
+                    Actions.run(() -> onBoltReachedLowerPosition())
                 ));
 
                 Label boltLabel = bolt.getLabel();
@@ -319,75 +250,28 @@ public class LockPicking<T extends Actor> extends ScreenController<T> {
     public void update() {
         super.update();
 
-        // Move the circle
-        moveCircle();
-
-        if (checkOverlap(squareImage1, squareImage2)) {
-            System.out.println("Does overlap");
-        }
-    }
-
-    private void moveCircle() {
-        if (movementDistance <= 0) {
-            // Generate new movement parameters
-            movementDistance = MathUtils.random(10f, MAX_MOVEMENT_DISTANCE);
-            movementAngle = MathUtils.random(0f, MathUtils.PI2);
-        }
-
-        // Calculate the movement delta
-        float delta = Math.min(movementDistance, MOVEMENT_SPEED * Gdx.graphics.getDeltaTime());
-
-        // Calculate the new position
-        float deltaX = delta * MathUtils.cos(movementAngle);
-        float deltaY = delta * MathUtils.sin(movementAngle);
-        float newX = circleImage.getX() + deltaX;
-        float newY = circleImage.getY() + deltaY;
-
-        // Update the position of the circle
-        circleImage.setPosition(newX, newY);
-
-        // Update the movement distance
-        movementDistance -= delta;
-    }
-
-    private void moveSquareUp() {
-        float targetY = squareImage2.getY() + 100; // Move up by 50 units
-        float duration = 1.0f; // Duration of the animation in seconds
-
-        squareImage2.addAction(Actions.moveTo(squareImage2.getX(), targetY, duration));
-    }
-
-    private boolean checkOverlap(Image square1, Image square2) {
-        float x1 = square1.getX();
-        float y1 = square1.getY();
-        float width1 = square1.getWidth();
-        float height1 = square1.getHeight();
-
-        float x2 = square2.getX();
-        float y2 = square2.getY();
-        float width2 = square2.getWidth();
-        float height2 = square2.getHeight();
-
-        return x1 < x2 + width2 && x1 + width1 > x2 && y1 < y2 + height2 && y1 + height1 > y2;
+        //if (checkOverlap(squareImage1, squareImage2)) {
+        //    System.out.println("Does overlap");
+        //}
     }
 
     private String getDifficultyLabel(int numBolts) {
         String difficultyLabel;
         switch (numBolts) {
             case 4:
-                difficultyLabel = "Schwierigkeitsstufe: einfach";
+                difficultyLabel = "Difficulty Level: Easy";
                 break;
             case 5:
-                difficultyLabel = "Schwierigkeitsstufe: normal";
+                difficultyLabel = "Difficulty Level: Normal";
                 break;
             case 6:
-                difficultyLabel = "Schwierigkeitsstufe: schwer";
+                difficultyLabel = "Difficulty Level: Hard";
                 break;
             case 7:
-                difficultyLabel = "Schwierigkeitsstufe: sehr schwer";
+                difficultyLabel = "Difficulty Level: Very Hard";
                 break;
             default:
-                difficultyLabel = "Schwierigkeitsstufe: unbekannt";
+                difficultyLabel = "Difficulty Level: Unknown";
                 break;
         }
         return difficultyLabel;
@@ -397,7 +281,6 @@ public class LockPicking<T extends Actor> extends ScreenController<T> {
         Label.LabelStyle labelStyle = new Label.LabelStyle();
         labelStyle.font = new BitmapFont();
         labelStyle.fontColor = Color.WHITE;
-        //labelStyle.font.getData().setScale(1.5f);
 
         Label label = new Label(text, labelStyle);
         label.setAlignment(Align.left);
@@ -406,12 +289,11 @@ public class LockPicking<T extends Actor> extends ScreenController<T> {
 
     private void updateStatusLabel() {
         if (solved) {
-            statusLabel.setText("unlocked!");
+            statusLabel.setText("Unlocked!");
             statusLabel.getStyle().fontColor = Color.GREEN;
         }
     }
 
-    // Helper method to shuffle the array
     private void shuffleArray(int[] array) {
         for (int i = array.length - 1; i > 0; i--) {
             int index = RANDOM.nextInt(i + 1);
@@ -421,14 +303,25 @@ public class LockPicking<T extends Actor> extends ScreenController<T> {
         }
     }
 
+    /**
+     * Makes all the actors in the LockPicking screen controller visible.
+     */
     public void show() {
         this.forEach((Actor s) -> s.setVisible(true));
     }
 
+    /**
+     * Makes all the actors in the LockPicking screen controller invisible.
+     */
     public void hide() {
         this.forEach((Actor s) -> s.setVisible(false));
     }
 
+    /**
+     * Checks if the lock picking game has been solved.
+     *
+     * @return True if the game is solved, false otherwise.
+     */
     public boolean isSolved() {
         return solved;
     }
