@@ -8,11 +8,12 @@ import java.util.List;
 import java.util.Random;
 import java.util.stream.IntStream;
 
+import graphic.hud.LockPicking;
 import level.tools.LevelElement;
 import starter.Game;
 import tools.Point;
 
-public class Chest extends Entity {
+public class Chest extends Entity implements IInteraction{
     private transient AnimationComponent ac;
 
     public Chest(Point position) {
@@ -30,6 +31,27 @@ public class Chest extends Entity {
             "objects/treasurechest/chest_full_open_anim_f1.png",
             "objects/treasurechest/chest_full_open_anim_f2.png",
             "objects/treasurechest/chest_empty_open_anim_f2.png");
+
+    /**
+     * handle the interaction from the Chest
+     * with a 30% chance the Chest start a mini Game for unlock
+     * @param entity
+     */
+    @Override
+    public void onInteraction(Entity entity) {
+
+        int r = (int) (Math.random() * 10);
+        Game.toggleLockPicking();
+
+        dropItems(this);
+
+        if(r <= 3){
+
+        }else{
+            dropItems(this);
+        }
+    }
+
 
     /**
      * small Generator which uses the Item#ITEM_REGISTER
@@ -59,7 +81,7 @@ public class Chest extends Entity {
         new PositionComponent(this, position);
         InventoryComponent ic = new InventoryComponent(this, itemData.size());
         itemData.forEach(ic::addItem);
-        new InteractionComponent(this, defaultInteractionRadius, false, this::dropItems);
+        new InteractionComponent(this, defaultInteractionRadius, false, this::onInteraction);
         AnimationComponent ac =
             new AnimationComponent(
                 this,
@@ -139,7 +161,7 @@ public class Chest extends Entity {
         InventoryComponent ic = new InventoryComponent(this, 1);
         ic.addItem(new EternalArrows());
         ic.addItem(new MagicSpeedBoostBoots());
-        new InteractionComponent(this, defaultInteractionRadius, false, this::dropItems);
+        new InteractionComponent(this, defaultInteractionRadius, false, this::onInteraction);
         ac =
             new AnimationComponent(
                 this,
