@@ -11,6 +11,7 @@ import ecs.components.ai.idle.NoWalk;
 import ecs.components.ai.transition.RangeTransition;
 import graphic.Animation;
 import starter.Game;
+import tools.Point;
 
 import java.util.Random;
 import java.util.logging.Level;
@@ -20,19 +21,20 @@ import java.util.logging.Logger;
 public class Ghost extends Entity {
 
     private float secondsTillDespawnCheck;
-    private final float despawnCheckFrequency = 0.5f;
+    private final float despawnCheckFrequency = 5f;
 
 
-    public Ghost(){
+    public Ghost(Point spawnpoint){
         super();
-        setup();
+        setup(spawnpoint);
     }
 
-    private void setup(){
+    private void setup(Point spawnpoint){
         float xSpeed = 0.1f;
         float ySpeed = 0.1f;
 
-        new PositionComponent(this);
+        new PositionComponent(this)
+            .setPosition(spawnpoint);
 
         Animation moveLeft = AnimationBuilder.buildAnimation("monster/ghost/idle");
         Animation moveRight = AnimationBuilder.buildAnimation("monster/ghost/idle");
@@ -56,7 +58,7 @@ public class Ghost extends Entity {
         if(secondsTillDespawnCheck <= 0f){
             Random random = new Random();
             int luck = random.nextInt(0, 100);
-            if (luck <= 10) {
+            if (luck == 0) {
                 Game.removeEntity(this);
                 Logger.getAnonymousLogger().log(new LogRecord(Level.INFO, "Ghost despawned due to random chance."));
             }

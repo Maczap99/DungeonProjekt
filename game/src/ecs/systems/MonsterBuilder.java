@@ -339,14 +339,14 @@ public class MonsterBuilder {
     }
 
     public void setupGhostAndGravestone(Point ghostSpawn, Point stoneSpawn){
-        Ghost ghost = new Ghost();
+        Ghost ghost = new Ghost(ghostSpawn);
         Entity graveStone = new Entity();
 
         new PositionComponent(graveStone)
             .setPosition(stoneSpawn);
 
-        Animation idleLeft = AnimationBuilder.buildAnimation("monster/goblin/idleLeft");
-        Animation idleRight = AnimationBuilder.buildAnimation("monster/goblin/idleRight");
+        Animation idleLeft = AnimationBuilder.buildAnimation("dungeon/default/gravestone");
+        Animation idleRight = AnimationBuilder.buildAnimation("dungeon/default/gravestone");
         new AnimationComponent(graveStone, idleLeft, idleRight);
 
 
