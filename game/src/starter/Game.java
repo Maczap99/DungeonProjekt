@@ -324,6 +324,11 @@ public class Game extends ScreenAdapter implements IOnLevelLoader {
                 }
             }
         }
+
+        /*
+         * Lock picking tests
+         * */
+        if (Gdx.input.isKeyJustPressed(Input.Keys.L)) toggleLockPicking();
     }
 
     @Override
