@@ -318,7 +318,7 @@ public class MazeGenerator implements IGenerator {
                  * Start and end of the maze are excluded.
                  * */
                 if (!isBacktracking) {
-                    //new Chest(List.of(new EternalArrows()), calculateCellCenter(currentPosition));
+                    new Chest(List.of(new EternalArrows()), calculateCellCenter(currentPosition));
                     //new Chest(calculateCellCenter(currentPosition));
                     /**
                     if (placeChestInDeadEnds && getBooleanWithPercentage(50)) {

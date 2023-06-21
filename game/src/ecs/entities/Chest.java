@@ -1,10 +1,7 @@
 package ecs.entities;
 
 import ecs.components.*;
-import ecs.items.EpicPowerfulShield;
-import ecs.items.EternalArrows;
-import ecs.items.ItemData;
-import ecs.items.ItemDataGenerator;
+import ecs.items.*;
 import graphic.Animation;
 
 import java.util.List;
@@ -137,8 +134,11 @@ public class Chest extends Entity {
      */
     public void setup(Point position) {
         new PositionComponent(this, position);
+
+
         InventoryComponent ic = new InventoryComponent(this, 1);
         ic.addItem(new EternalArrows());
+        ic.addItem(new MagicSpeedBoostBoots());
         new InteractionComponent(this, defaultInteractionRadius, false, this::dropItems);
         ac =
             new AnimationComponent(

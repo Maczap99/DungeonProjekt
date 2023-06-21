@@ -114,7 +114,11 @@ public class ItemData {
      * @param position the location of the drop
      */
     public void triggerDrop(Entity e, Point position) {
-        if (getOnDrop() != null) getOnDrop().onDrop(e, this, position);
+        if (getOnDrop() != null){
+            getOnDrop().onDrop(e, this, position);
+        }else{
+            System.out.println("LOL");
+        }
     }
 
     /**
