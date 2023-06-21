@@ -20,6 +20,7 @@ import starter.Game;
 import tools.Constants;
 
 import java.util.Random;
+import java.util.logging.Logger;
 
 /**
  * The LockPicking class represents a screen controller for a lock picking game.
@@ -35,11 +36,16 @@ public class LockPicking<T extends Actor> extends ScreenController<T> {
     private boolean actionsLocked;
     private static boolean solved;
 
+    private transient final Logger logger;
+
     /**
      * Constructs a new LockPicking screen controller.
      */
     public LockPicking() {
         super(new SpriteBatch());
+
+        logger = Logger.getLogger(this.getClass().getName());
+        logger.info("The mini game " + this.getClass().getSimpleName() + " was started.");
 
         // Create status label
         Label.LabelStyle statusLabelStyle = new Label.LabelStyle();
@@ -166,6 +172,8 @@ public class LockPicking<T extends Actor> extends ScreenController<T> {
             bolt.setColor(Color.GREEN);
             if (currentBoltIndex == bolts.length) {
                 solved = true;
+
+                logger.info("The mini game " + this.getClass().getSimpleName() + " was solved.");
 
                 // Schedules a timer to hide the screen after a few seconds
                 Timer.schedule(new Timer.Task() {
