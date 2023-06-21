@@ -34,12 +34,12 @@ public class Ghost extends Entity {
 
         new PositionComponent(this);
 
-        Animation moveLeft = AnimationBuilder.buildAnimation("monster/chort/runLeft");
-        Animation moveRight = AnimationBuilder.buildAnimation("monster/chort/runRight");
+        Animation moveLeft = AnimationBuilder.buildAnimation("monster/ghost/idle");
+        Animation moveRight = AnimationBuilder.buildAnimation("monster/ghost/idle");
         new VelocityComponent(this, xSpeed, ySpeed, moveLeft, moveRight);
 
-        Animation idleLeft = AnimationBuilder.buildAnimation("monster/chort/idleLeft");
-        Animation idleRight = AnimationBuilder.buildAnimation("monster/chort/idleRight");
+        Animation idleLeft = AnimationBuilder.buildAnimation("monster/ghost/idle");
+        Animation idleRight = AnimationBuilder.buildAnimation("monster/ghost/idle");
         new AnimationComponent(this, idleLeft, idleRight);
 
         new HitboxComponent(this);
