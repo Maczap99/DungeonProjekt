@@ -33,7 +33,7 @@ public class LockPicking<T extends Actor> extends ScreenController<T> {
     private final int[] orderNumbers;
     private int currentBoltIndex = 1;
     private boolean actionsLocked;
-    private boolean solved;
+    private static boolean solved;
 
     /**
      * Constructs a new LockPicking screen controller.
@@ -322,7 +322,7 @@ public class LockPicking<T extends Actor> extends ScreenController<T> {
      *
      * @return True if the game is solved, false otherwise.
      */
-    public boolean isSolved() {
+    public static boolean isSolved() {
         return solved;
     }
 }

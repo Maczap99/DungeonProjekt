@@ -42,14 +42,16 @@ public class Chest extends Entity implements IInteraction{
 
         int r = (int) (Math.random() * 10);
         Game.toggleLockPicking();
+        dropItems(entity);
 
-        dropItems(this);
 
+        /**
         if(r <= 3){
 
         }else{
             dropItems(this);
         }
+         **/
     }
 
 
