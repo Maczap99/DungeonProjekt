@@ -11,11 +11,12 @@ import com.badlogic.gdx.scenes.scene2d.InputListener;
 import com.badlogic.gdx.scenes.scene2d.actions.Actions;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
-import com.badlogic.gdx.scenes.scene2d.utils.DragListener;
 import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
 import com.badlogic.gdx.utils.Align;
 import com.badlogic.gdx.utils.Scaling;
+import com.badlogic.gdx.utils.Timer;
 import controller.ScreenController;
+import starter.Game;
 import tools.Constants;
 
 import java.util.Random;
@@ -26,7 +27,6 @@ import java.util.Random;
  */
 public class LockPicking<T extends Actor> extends ScreenController<T> {
     private static final Random RANDOM = new Random();
-    private final Image squareImage1;
     private final Bolt[] bolts;
     private final Image background;
     private final Label statusLabel;
@@ -40,22 +40,6 @@ public class LockPicking<T extends Actor> extends ScreenController<T> {
      */
     public LockPicking() {
         super(new SpriteBatch());
-
-        // Create a square image
-        squareImage1 = new Image(new TextureRegionDrawable(createSquareTexture(Color.BLUE, 100)));
-
-        // Set position and scaling for the square
-        squareImage1.setPosition(100, 100);
-        squareImage1.setScaling(Scaling.none);
-
-        squareImage1.addListener(new DragListener() {
-            @Override
-            public void drag(InputEvent event, float x, float y, int pointer) {
-                float newX = squareImage1.getX() + x - squareImage1.getWidth() / 2f;
-                float newY = squareImage1.getY() + y - squareImage1.getHeight() / 2f;
-                squareImage1.setPosition(newX, newY);
-            }
-        });
 
         // Create status label
         Label.LabelStyle statusLabelStyle = new Label.LabelStyle();
@@ -117,18 +101,7 @@ public class LockPicking<T extends Actor> extends ScreenController<T> {
             //add((T) bolts[i].getLabel());
         }
 
-        //add((T) squareImage1);
-
         hide();
-    }
-
-    private static Texture createSquareTexture(Color color, int size) {
-        Pixmap pixmap = new Pixmap(size, size, Pixmap.Format.RGBA8888);
-        pixmap.setColor(color);
-        pixmap.fillRectangle(0, 0, size, size);
-        Texture texture = new Texture(pixmap);
-        pixmap.dispose();
-        return texture;
     }
 
     private Bolt createBolt(float x, float y, float width, float height, int orderNumber) {
@@ -169,10 +142,13 @@ public class LockPicking<T extends Actor> extends ScreenController<T> {
     }
 
     private void moveBoltUp(Bolt bolt) {
-        float targetY = bolt.getY() + 50; // Move up by 50 units
-        float duration = 0.5f; // Duration of the animation in seconds
+        // Move up by 50 units
+        float targetY = bolt.getY() + 50;
+        // Duration of the animation in seconds
+        float duration = 0.5f;
 
-        bolt.clearActions(); // Clear any ongoing actions
+        // Clear any ongoing actions
+        bolt.clearActions();
         bolt.addAction(Actions.sequence(
             Actions.moveTo(bolt.getX(), targetY, duration),
             Actions.run(() -> onBoltReachedUpperPosition(bolt))
@@ -190,6 +166,14 @@ public class LockPicking<T extends Actor> extends ScreenController<T> {
             bolt.setColor(Color.GREEN);
             if (currentBoltIndex == bolts.length) {
                 solved = true;
+
+                // Schedule a timer to hide the screen after a few seconds
+                Timer.schedule(new Timer.Task() {
+                    @Override
+                    public void run() {
+                        Game.toggleLockPicking();
+                    }
+                }, 1f);
             }
             currentBoltIndex++;
         } else {
@@ -244,15 +228,6 @@ public class LockPicking<T extends Actor> extends ScreenController<T> {
         boltLabel.setAlignment(Align.center);
         boltLabel.setOrigin(Align.center);
         return boltLabel;
-    }
-
-    @Override
-    public void update() {
-        super.update();
-
-        //if (checkOverlap(squareImage1, squareImage2)) {
-        //    System.out.println("Does overlap");
-        //}
     }
 
     private String getDifficultyLabel(int numBolts) {
