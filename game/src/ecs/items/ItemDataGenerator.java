@@ -14,9 +14,7 @@ public class ItemDataGenerator {
 
     private List<ItemData> templates =
         List.of(
-            new EternalArrows(),
-            new MagicSpeedBoostBoots(),
-            new ArrowQuiver()
+            new EternalArrows(1)
         );
     private Random rand = new Random();
 

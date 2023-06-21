@@ -318,9 +318,6 @@ public class MazeGenerator implements IGenerator {
                  * Start and end of the maze are excluded.
                  * */
                 if (!isBacktracking) {
-                    new Chest(List.of(new EternalArrows()), calculateCellCenter(currentPosition));
-                    //new Chest(calculateCellCenter(currentPosition));
-                    /**
                     if (placeChestInDeadEnds && getBooleanWithPercentage(50)) {
                         int temp = getRandomNumber(10);
                         if (temp < 4) {
@@ -328,11 +325,11 @@ public class MazeGenerator implements IGenerator {
                         } else if (temp >= 4 && temp < 7) {
                             new TrapChest(calculateCellCenter(currentPosition));
                         } else if (temp >= 7) {
-                            new Chest(List.of(new EternalArrows()), calculateCellCenter(currentPosition));
+                            new Chest(List.of(new EternalArrows(1)), calculateCellCenter(currentPosition));
                         }
 
                     }
-                     **/
+
                     isBacktracking = true;
                 }
 

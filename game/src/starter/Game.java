@@ -46,6 +46,7 @@ import java.util.concurrent.ThreadLocalRandom;
 import java.util.logging.Logger;
 
 import static com.badlogic.gdx.graphics.GL20.GL_COLOR_BUFFER_BIT;
+import static level.elements.ITileable.RANDOM;
 import static logging.LoggerConfig.initBaseLogger;
 
 /**
@@ -346,6 +347,9 @@ public class Game extends ScreenAdapter implements IOnLevelLoader {
         if (Gdx.input.isKeyJustPressed(Input.Keys.L)) toggleLockPicking();
     }
 
+    /**
+     * Spawn monster and chests when the level load
+     */
     @Override
     public void onLevelLoad() {
         currentLevel = levelAPI.getCurrentLevel();
@@ -359,7 +363,12 @@ public class Game extends ScreenAdapter implements IOnLevelLoader {
             PositionComponent pc = (PositionComponent) monster.getComponent(PositionComponent.class).get();
             pc.setPosition(currentLevel.getRandomTile(LevelElement.FLOOR).getCoordinateAsPoint());
         }
-        Chest.createNewChest();
+        if(levelStage % 2 == 0){
+            if(getBooleanWithPercentage(25)){
+                Chest.createNewChest();
+            }
+        }
+
     }
 
     private void manageEntitiesSets() {
@@ -452,6 +461,14 @@ public class Game extends ScreenAdapter implements IOnLevelLoader {
                     .orElseThrow(
                         () -> new MissingComponentException("PositionComponent"));
         pc.setPosition(currentLevel.getStartTile().getCoordinate().toPoint());
+    }
+
+    private static boolean getBooleanWithPercentage(int percentage) {
+        if (percentage < 0 || percentage > 100) {
+            throw new IllegalArgumentException("Percentage must be between 0 and 100");
+        }
+        int randomNumber = RANDOM.nextInt(100) + 1;
+        return randomNumber <= percentage;
     }
 
     public void setSpriteBatch(SpriteBatch batch) {

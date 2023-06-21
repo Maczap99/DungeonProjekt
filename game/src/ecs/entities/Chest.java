@@ -8,12 +8,11 @@ import java.util.List;
 import java.util.Random;
 import java.util.stream.IntStream;
 
-import graphic.hud.LockPicking;
 import level.tools.LevelElement;
 import starter.Game;
 import tools.Point;
 
-public class Chest extends Entity implements IInteraction{
+public class Chest extends Entity implements IInteraction {
     private transient AnimationComponent ac;
 
     public Chest(Point position) {
@@ -35,23 +34,20 @@ public class Chest extends Entity implements IInteraction{
     /**
      * handle the interaction from the Chest
      * with a 30% chance the Chest start a mini Game for unlock
+     *
      * @param entity
      */
     @Override
     public void onInteraction(Entity entity) {
 
         int r = (int) (Math.random() * 10);
-        Game.toggleLockPicking();
-        dropItems(entity);
-
-
-        /**
-        if(r <= 3){
-
-        }else{
-            dropItems(this);
+        if (r <= 4) {
+            Game.toggleLockPicking();
+            dropItems(entity);
+        } else {
+            dropItems(entity);
         }
-         **/
+
     }
 
 
@@ -154,6 +150,8 @@ public class Chest extends Entity implements IInteraction{
     }
 
     /**
+     * setup for the chest
+     * set items and animation
      * @param position
      */
     public void setup(Point position) {
@@ -161,8 +159,7 @@ public class Chest extends Entity implements IInteraction{
 
 
         InventoryComponent ic = new InventoryComponent(this, 1);
-        ic.addItem(new EternalArrows());
-        ic.addItem(new MagicSpeedBoostBoots());
+        ic.addItem(new EternalArrows(1));
         new InteractionComponent(this, defaultInteractionRadius, false, this::onInteraction);
         ac =
             new AnimationComponent(
