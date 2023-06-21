@@ -14,11 +14,15 @@ import ecs.components.collision.ICollide;
 import ecs.components.xp.XPComponent;
 import ecs.damage.Damage;
 import ecs.damage.DamageType;
+import ecs.entities.Entity;
+import ecs.entities.Ghost;
 import ecs.entities.Monster;
 import graphic.Animation;
 import starter.Game;
+import tools.Point;
 
 import java.util.Optional;
+import java.util.Random;
 import java.util.concurrent.ThreadLocalRandom;
 
 
@@ -332,5 +336,49 @@ public class MonsterBuilder {
             aiComponent.setTransitionAI(new RangeTransition(7f));
 
         return base;
+    }
+
+    /**
+     * Creates both the Ghost and Gravestone.
+     * Gives the Gravestone its component aswell the collision interaction between it and the Ghost.
+     * There is a 10% change for a Player to recieve damage
+     * A 90% chance to skip the floor
+     *
+     * @param ghostSpawn where the Ghost should be places
+     * @param stoneSpawn where the Gravestone should be placed
+     */
+    public void setupGhostAndGravestone(Point ghostSpawn, Point stoneSpawn){
+        Ghost ghost = new Ghost(ghostSpawn);
+        Entity graveStone = new Entity();
+
+        new PositionComponent(graveStone)
+            .setPosition(stoneSpawn);
+
+        Animation idleLeft = AnimationBuilder.buildAnimation("dungeon/default/gravestone");
+        Animation idleRight = AnimationBuilder.buildAnimation("dungeon/default/gravestone");
+        new AnimationComponent(graveStone, idleLeft, idleRight);
+
+
+
+        ICollide collide =
+            (a, b, from) -> {
+                if(b.getClass() == Ghost.class){
+                    Random random = new Random();
+                    int luck = random.nextInt(0,10);
+                    if(luck == 0){
+                        HealthComponent hc = (HealthComponent) Game.getHero().get()
+                            .getComponent(HealthComponent.class)
+                            .get();
+                        hc.receiveHit(new Damage(10, DamageType.PHYSICAL, b));
+                    }
+                    else{
+                        Game.giveGhostReward();
+                    }
+                    Game.removeEntity(a);
+                    Game.removeEntity(b);
+                }
+            };
+        new HitboxComponent(graveStone)
+            .setiCollideEnter(collide);
     }
 }

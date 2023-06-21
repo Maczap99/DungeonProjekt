@@ -29,6 +29,20 @@ public class EternalArrows extends ItemData {
             new DamageModifier());
     }
 
+    public EternalArrows(int amount) {
+        super(
+            ItemType.Ammo,
+            new Animation(List.of("items/arrow.png"), 1),
+            new Animation(List.of("items/arrow.png"), 1),
+            "Eternal Arrows",
+            "Essential ammunition for archers in the dungeon.",
+            new ArrowCollect(),
+            null,
+            null,
+            new DamageModifier());
+        this.amount = amount;
+    }
+
     /**
      * Increases the amount of Eternal Arrows by 1.
      *

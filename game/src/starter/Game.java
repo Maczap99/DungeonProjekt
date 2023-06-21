@@ -15,8 +15,10 @@ import ecs.components.MissingComponentException;
 import ecs.components.PositionComponent;
 import ecs.components.xp.XPComponent;
 import ecs.entities.Entity;
+import ecs.entities.Ghost;
 import ecs.entities.Hero;
 import ecs.entities.Monster;
+import ecs.entities.Chest;
 import ecs.items.EternalArrows;
 import ecs.items.ItemData;
 import ecs.systems.*;
@@ -44,6 +46,7 @@ import java.util.concurrent.ThreadLocalRandom;
 import java.util.logging.Logger;
 
 import static com.badlogic.gdx.graphics.GL20.GL_COLOR_BUFFER_BIT;
+import static level.elements.ITileable.RANDOM;
 import static logging.LoggerConfig.initBaseLogger;
 
 /**
@@ -106,6 +109,8 @@ public class Game extends ScreenAdapter implements IOnLevelLoader {
      * Used for creating Monsters
      */
     private MonsterBuilder monsterBuilder;
+
+    private static boolean ghostReward = false;
 
     public static void main(String[] args) {
         // start the game
@@ -324,13 +329,22 @@ public class Game extends ScreenAdapter implements IOnLevelLoader {
                 }
             }
         }
-
+        
+        for (Entity e: entities) {
+            if(e.getClass() == Ghost.class){
+                ((Ghost) e).despawnBehaviour();
+            }
+        }
+        
         /*
          * Lock picking tests
          * */
         if (Gdx.input.isKeyJustPressed(Input.Keys.L)) toggleLockPicking();
     }
 
+    /**
+     * Spawn monster and chests when the level load
+     */
     @Override
     public void onLevelLoad() {
         currentLevel = levelAPI.getCurrentLevel();
@@ -339,12 +353,22 @@ public class Game extends ScreenAdapter implements IOnLevelLoader {
 
         int monsterAmount = ThreadLocalRandom.current().nextInt(5, 11);
         monsterBuilder = new MonsterBuilder();
+        
         for (int i = 0; i < monsterAmount; i++) {
             Monster monster = monsterBuilder.createRandomMonster();
             PositionComponent pc = (PositionComponent) monster.getComponent(PositionComponent.class).get();
             pc.setPosition(currentLevel.getRandomTile(LevelElement.FLOOR).getCoordinateAsPoint());
         }
-
+        monsterBuilder.setupGhostAndGravestone(
+            currentLevel.getRandomTile(LevelElement.FLOOR).getCoordinateAsPoint(),
+            currentLevel.getRandomTile(LevelElement.FLOOR).getCoordinateAsPoint());
+        }
+  
+        if(levelStage % 2 == 0){
+            if(getBooleanWithPercentage(20)){
+                Chest.createNewChest();
+            }
+        }
     }
 
     private void manageEntitiesSets() {
@@ -381,6 +405,7 @@ public class Game extends ScreenAdapter implements IOnLevelLoader {
             levelStage++;
             skillUpLogger = Logger.getLogger(this.getClass().getName());
             skillUpLogger.info("Ebene: "+levelStage);
+            ghostReward = false;
 
             try {
                 // start menu soundtrack
@@ -426,7 +451,11 @@ public class Game extends ScreenAdapter implements IOnLevelLoader {
                     .orElseThrow(
                         () -> new MissingComponentException("PositionComponent"));
         Tile currentTile = currentLevel.getTileAt(pc.getPosition().toCoordinate());
-        return currentTile.equals(currentLevel.getEndTile());
+        return currentTile.equals(currentLevel.getEndTile()) || ghostReward == true;
+    }
+
+    public static void giveGhostReward(){
+        ghostReward = true;
     }
 
     private void placeOnLevelStart(Entity hero) {
@@ -437,6 +466,14 @@ public class Game extends ScreenAdapter implements IOnLevelLoader {
                     .orElseThrow(
                         () -> new MissingComponentException("PositionComponent"));
         pc.setPosition(currentLevel.getStartTile().getCoordinate().toPoint());
+    }
+
+    private static boolean getBooleanWithPercentage(int percentage) {
+        if (percentage < 0 || percentage > 100) {
+            throw new IllegalArgumentException("Percentage must be between 0 and 100");
+        }
+        int randomNumber = RANDOM.nextInt(100) + 1;
+        return randomNumber <= percentage;
     }
 
     public void setSpriteBatch(SpriteBatch batch) {
