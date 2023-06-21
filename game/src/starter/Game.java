@@ -364,7 +364,7 @@ public class Game extends ScreenAdapter implements IOnLevelLoader {
             pc.setPosition(currentLevel.getRandomTile(LevelElement.FLOOR).getCoordinateAsPoint());
         }
         if(levelStage % 2 == 0){
-            if(getBooleanWithPercentage(25)){
+            if(getBooleanWithPercentage(20)){
                 Chest.createNewChest();
             }
         }

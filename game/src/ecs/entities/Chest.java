@@ -12,9 +12,17 @@ import level.tools.LevelElement;
 import starter.Game;
 import tools.Point;
 
+/**
+ * This Class set the Chest and the properties from it
+ */
 public class Chest extends Entity implements IInteraction {
     private transient AnimationComponent ac;
 
+    /**
+     * Constructor (never used)
+     * open the setup
+     * @param position
+     */
     public Chest(Point position) {
         super();
 
@@ -88,6 +96,12 @@ public class Chest extends Entity implements IInteraction {
 
     }
 
+    /**
+     * this function drop the item from a chest
+     * it looks for the inventory component and drop it nearby
+     *
+     * @param entity
+     */
     private void dropItems(Entity entity) {
         InventoryComponent inventoryComponent =
             entity.getComponent(InventoryComponent.class)
@@ -152,6 +166,7 @@ public class Chest extends Entity implements IInteraction {
     /**
      * setup for the chest
      * set items and animation
+     *
      * @param position
      */
     public void setup(Point position) {
