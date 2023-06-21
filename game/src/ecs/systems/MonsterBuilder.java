@@ -338,6 +338,15 @@ public class MonsterBuilder {
         return base;
     }
 
+    /**
+     * Creates both the Ghost and Gravestone.
+     * Gives the Gravestone its component aswell the collision interaction between it and the Ghost.
+     * There is a 10% change for a Player to recieve damage
+     * A 90% chance to skip the floor
+     *
+     * @param ghostSpawn where the Ghost should be places
+     * @param stoneSpawn where the Gravestone should be placed
+     */
     public void setupGhostAndGravestone(Point ghostSpawn, Point stoneSpawn){
         Ghost ghost = new Ghost(ghostSpawn);
         Entity graveStone = new Entity();

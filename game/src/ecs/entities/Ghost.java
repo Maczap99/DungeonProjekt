@@ -24,6 +24,11 @@ public class Ghost extends Entity {
     private final float despawnCheckFrequency = 5f;
 
 
+    /**
+     * Creates a Ghost at the given Position.
+     * Components are initialized inside setup()
+     * @param spawnpoint where the Ghost should be spawned
+     */
     public Ghost(Point spawnpoint){
         super();
         setup(spawnpoint);
@@ -48,12 +53,18 @@ public class Ghost extends Entity {
 
         AIComponent ai = new AIComponent(this);
         ai.setIdleAI(new NoWalk());
-        ai.setTransitionAI(new RangeTransition(5f));
+        ai.setTransitionAI(new RangeTransition(8f));
         ai.setFightAI(new CollideAI(0f));
 
         secondsTillDespawnCheck = despawnCheckFrequency;
     }
 
+    /**
+     * Gets called every frame by {@link Game}.
+     * Decreases a timer by 1/30 of a second.
+     * If the timer runs out there is a 1% chance for the Ghost to despawn.
+     * Timer is reset Otherwise
+     */
     public void despawnBehaviour(){
         if(secondsTillDespawnCheck <= 0f){
             Random random = new Random();
