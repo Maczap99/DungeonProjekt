@@ -349,7 +349,6 @@ public class Game extends ScreenAdapter implements IOnLevelLoader {
                 Chest.createNewChest();
             }
         }
-
     }
 
     private void manageEntitiesSets() {
