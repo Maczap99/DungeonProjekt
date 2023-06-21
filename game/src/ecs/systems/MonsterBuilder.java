@@ -14,11 +14,15 @@ import ecs.components.collision.ICollide;
 import ecs.components.xp.XPComponent;
 import ecs.damage.Damage;
 import ecs.damage.DamageType;
+import ecs.entities.Entity;
+import ecs.entities.Ghost;
 import ecs.entities.Monster;
 import graphic.Animation;
 import starter.Game;
+import tools.Point;
 
 import java.util.Optional;
+import java.util.Random;
 import java.util.concurrent.ThreadLocalRandom;
 
 
@@ -332,5 +336,40 @@ public class MonsterBuilder {
             aiComponent.setTransitionAI(new RangeTransition(7f));
 
         return base;
+    }
+
+    public void setupGhostAndGravestone(Point ghostSpawn, Point stoneSpawn){
+        Ghost ghost = new Ghost();
+        Entity graveStone = new Entity();
+
+        new PositionComponent(graveStone)
+            .setPosition(stoneSpawn);
+
+        Animation idleLeft = AnimationBuilder.buildAnimation("monster/goblin/idleLeft");
+        Animation idleRight = AnimationBuilder.buildAnimation("monster/goblin/idleRight");
+        new AnimationComponent(graveStone, idleLeft, idleRight);
+
+
+
+        ICollide collide =
+            (a, b, from) -> {
+                if(b.getClass() == Ghost.class){
+                    Random random = new Random();
+                    int luck = random.nextInt(0,10);
+                    if(luck == 0){
+                        HealthComponent hc = (HealthComponent) Game.getHero().get()
+                            .getComponent(HealthComponent.class)
+                            .get();
+                        hc.receiveHit(new Damage(10, DamageType.PHYSICAL, b));
+                    }
+                    else{
+                        Game.giveGhostReward();
+                    }
+                    Game.removeEntity(a);
+                    Game.removeEntity(b);
+                }
+            };
+        new HitboxComponent(graveStone)
+            .setiCollideEnter(collide);
     }
 }
