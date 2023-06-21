@@ -15,15 +15,17 @@ import ecs.components.MissingComponentException;
 import ecs.components.PositionComponent;
 import ecs.components.xp.XPComponent;
 import ecs.entities.Entity;
+import ecs.entities.Ghost;
 import ecs.entities.Hero;
 import ecs.entities.Monster;
+import ecs.entities.Chest;
 import ecs.items.EternalArrows;
 import ecs.items.ItemData;
 import ecs.systems.*;
 import graphic.DungeonCamera;
 import graphic.Painter;
+import graphic.hud.LockPicking;
 import graphic.hud.MainMenu;
-import graphic.hud.PauseMenu;
 import level.IOnLevelLoader;
 import level.LevelAPI;
 import level.elements.ILevel;
@@ -44,6 +46,7 @@ import java.util.concurrent.ThreadLocalRandom;
 import java.util.logging.Logger;
 
 import static com.badlogic.gdx.graphics.GL20.GL_COLOR_BUFFER_BIT;
+import static level.elements.ITileable.RANDOM;
 import static logging.LoggerConfig.initBaseLogger;
 
 /**
@@ -72,8 +75,9 @@ public class Game extends ScreenAdapter implements IOnLevelLoader {
     public static boolean gameLoaded, gameOver;
     private static boolean showPauseMenu = false;
     private static boolean showMainMenu = false;
-    private static PauseMenu<Actor> pauseMenu;
+    private static boolean showLockPicking = false;
     private static MainMenu<Actor> mainMenu;
+    private static LockPicking<Actor> lockPicking;
     private static Entity hero;
     private static int levelStage = 1;
     private final LevelSize LEVELSIZE = LevelSize.MEDIUM;
@@ -106,6 +110,8 @@ public class Game extends ScreenAdapter implements IOnLevelLoader {
      */
     private MonsterBuilder monsterBuilder;
 
+    private static boolean ghostReward = false;
+
     public static void main(String[] args) {
         // start the game
         try {
@@ -117,20 +123,6 @@ public class Game extends ScreenAdapter implements IOnLevelLoader {
     }
 
     /**
-     * Toggle between pause and run
-     */
-    public static void togglePauseMenu() {
-        showPauseMenu = !showPauseMenu;
-        if (systems != null) {
-            systems.forEach(ECS_System::toggleRun);
-        }
-        if (pauseMenu != null) {
-            if (showPauseMenu) pauseMenu.showMenu();
-            else pauseMenu.hideMenu();
-        }
-    }
-
-    /**
      * Switch between main menu and game mode
      */
     public static void toggleMainMenu() {
@@ -139,8 +131,32 @@ public class Game extends ScreenAdapter implements IOnLevelLoader {
             systems.forEach(ECS_System::toggleRun);
         }
         if (mainMenu != null) {
-            if (showMainMenu) mainMenu.showMenu();
-            else mainMenu.hideMenu();
+            if (showMainMenu) {
+                Gdx.input.setInputProcessor(mainMenu.getStage());
+                mainMenu.showMenu();
+            }
+            else {
+                mainMenu.hideMenu();
+            }
+        }
+    }
+
+    /**
+     * Switch between lock picking and game mode
+     */
+    public static void toggleLockPicking() {
+        showLockPicking = !showLockPicking;
+        if (systems != null) {
+            systems.forEach(ECS_System::toggleRun);
+        }
+        if (lockPicking != null) {
+            if (showLockPicking) {
+                lockPicking = new LockPicking<>();
+                Gdx.input.setInputProcessor(lockPicking.getStage());
+                lockPicking.show();
+            } else {
+                lockPicking.hide();
+            }
         }
     }
 
@@ -227,6 +243,11 @@ public class Game extends ScreenAdapter implements IOnLevelLoader {
         levelAPI.update();
         controller.forEach(AbstractController::update);
         camera.update();
+
+        /*
+        * Tests with lock picking
+        * */
+        lockPicking.update();
     }
 
     /**
@@ -249,8 +270,8 @@ public class Game extends ScreenAdapter implements IOnLevelLoader {
 
         controller = new ArrayList<>();
         controller.add(systems);
-        pauseMenu = new PauseMenu<>();
-        controller.add(pauseMenu);
+        lockPicking = new LockPicking<>();
+        controller.add(lockPicking);
         mainMenu = new MainMenu<>(levelAPI);
         controller.add(mainMenu);
 
@@ -290,9 +311,7 @@ public class Game extends ScreenAdapter implements IOnLevelLoader {
             h.setCurrentMana(Math.min(h.getCurrentMana() + (0.5f / Constants.FRAME_RATE), 100));
         }
 
-        //if (Gdx.input.isKeyJustPressed(Input.Keys.P)) togglePauseMenu();
-        if (Gdx.input.isKeyJustPressed(Input.Keys.ESCAPE) && !MainMenu.isInitialState() && !gameOver)
-            toggleMainMenu();
+        if (Gdx.input.isKeyJustPressed(Input.Keys.ESCAPE) && !MainMenu.isInitialState() && !gameOver) toggleMainMenu();
 
         // Print inventory
         if (Gdx.input.isKeyJustPressed(Input.Keys.I)) {
@@ -301,15 +320,31 @@ public class Game extends ScreenAdapter implements IOnLevelLoader {
                 System.out.println("Item Name: " + itemData.getItemName());
                 System.out.println("Item Description: " + itemData.getDescription() + "\n");
             }
-            System.out.println("Quiver: ");
-            for (ItemData itemData : h.getQuiver().getItems()) {
-                System.out.println("Item Name: " + itemData.getItemName());
-                System.out.println("Item Amount: " + ((EternalArrows) itemData).getAmount());
-                System.out.println("Item Description: " + itemData.getDescription() + "\n");
+            if (h.getQuiver() != null) {
+                System.out.println("Quiver: ");
+                for (ItemData itemData : h.getQuiver().getItems()) {
+                    System.out.println("Item Name: " + itemData.getItemName());
+                    System.out.println("Item Amount: " + ((EternalArrows) itemData).getAmount());
+                    System.out.println("Item Description: " + itemData.getDescription() + "\n");
+                }
             }
         }
+        
+        for (Entity e: entities) {
+            if(e.getClass() == Ghost.class){
+                ((Ghost) e).despawnBehaviour();
+            }
+        }
+        
+        /*
+         * Lock picking tests
+         * */
+        if (Gdx.input.isKeyJustPressed(Input.Keys.L)) toggleLockPicking();
     }
 
+    /**
+     * Spawn monster and chests when the level load
+     */
     @Override
     public void onLevelLoad() {
         currentLevel = levelAPI.getCurrentLevel();
@@ -318,12 +353,21 @@ public class Game extends ScreenAdapter implements IOnLevelLoader {
 
         int monsterAmount = ThreadLocalRandom.current().nextInt(5, 11);
         monsterBuilder = new MonsterBuilder();
+
         for (int i = 0; i < monsterAmount; i++) {
             Monster monster = monsterBuilder.createRandomMonster();
             PositionComponent pc = (PositionComponent) monster.getComponent(PositionComponent.class).get();
             pc.setPosition(currentLevel.getRandomTile(LevelElement.FLOOR).getCoordinateAsPoint());
         }
+        monsterBuilder.setupGhostAndGravestone(
+            currentLevel.getRandomTile(LevelElement.FLOOR).getCoordinateAsPoint(),
+            currentLevel.getRandomTile(LevelElement.FLOOR).getCoordinateAsPoint());
 
+        if(levelStage % 2 == 0){
+            if(getBooleanWithPercentage(20)){
+                Chest.createNewChest();
+            }
+        }
     }
 
     private void manageEntitiesSets() {
@@ -360,6 +404,7 @@ public class Game extends ScreenAdapter implements IOnLevelLoader {
             levelStage++;
             skillUpLogger = Logger.getLogger(this.getClass().getName());
             skillUpLogger.info("Ebene: "+levelStage);
+            ghostReward = false;
 
             try {
                 // start menu soundtrack
@@ -405,7 +450,11 @@ public class Game extends ScreenAdapter implements IOnLevelLoader {
                     .orElseThrow(
                         () -> new MissingComponentException("PositionComponent"));
         Tile currentTile = currentLevel.getTileAt(pc.getPosition().toCoordinate());
-        return currentTile.equals(currentLevel.getEndTile());
+        return currentTile.equals(currentLevel.getEndTile()) || ghostReward == true;
+    }
+
+    public static void giveGhostReward(){
+        ghostReward = true;
     }
 
     private void placeOnLevelStart(Entity hero) {
@@ -416,6 +465,14 @@ public class Game extends ScreenAdapter implements IOnLevelLoader {
                     .orElseThrow(
                         () -> new MissingComponentException("PositionComponent"));
         pc.setPosition(currentLevel.getStartTile().getCoordinate().toPoint());
+    }
+
+    private static boolean getBooleanWithPercentage(int percentage) {
+        if (percentage < 0 || percentage > 100) {
+            throw new IllegalArgumentException("Percentage must be between 0 and 100");
+        }
+        int randomNumber = RANDOM.nextInt(100) + 1;
+        return randomNumber <= percentage;
     }
 
     public void setSpriteBatch(SpriteBatch batch) {

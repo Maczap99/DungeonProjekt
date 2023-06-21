@@ -57,10 +57,12 @@ public class ItemData {
         this.itemName = itemName;
         this.description = description;
         this.setOnCollect(onCollect);
-        this.setOnDrop(onDrop);
+        this.setOnDrop(ItemData::defaultDrop);
         this.setOnUse(onUse);
         this.damageModifier = damageModifier;
     }
+
+
 
     /**
      * creates a new item data object. With a basic handling of collecting and dropping
@@ -71,6 +73,8 @@ public class ItemData {
      * @param itemName
      * @param description
      */
+
+
     public ItemData(
             ItemType itemType,
             Animation inventoryTexture,
@@ -114,7 +118,11 @@ public class ItemData {
      * @param position the location of the drop
      */
     public void triggerDrop(Entity e, Point position) {
-        if (getOnDrop() != null) getOnDrop().onDrop(e, this, position);
+        if (getOnDrop() != null){
+            getOnDrop().onDrop(e, this, position);
+        }else{
+            System.out.println("LOL");
+        }
     }
 
     /**
