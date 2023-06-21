@@ -347,7 +347,7 @@ public class Game extends ScreenAdapter implements IOnLevelLoader {
 
         int monsterAmount = ThreadLocalRandom.current().nextInt(5, 11);
         monsterBuilder = new MonsterBuilder();
-        
+
         for (int i = 0; i < monsterAmount; i++) {
             Monster monster = monsterBuilder.createRandomMonster();
             PositionComponent pc = (PositionComponent) monster.getComponent(PositionComponent.class).get();
@@ -356,8 +356,7 @@ public class Game extends ScreenAdapter implements IOnLevelLoader {
         monsterBuilder.setupGhostAndGravestone(
             currentLevel.getRandomTile(LevelElement.FLOOR).getCoordinateAsPoint(),
             currentLevel.getRandomTile(LevelElement.FLOOR).getCoordinateAsPoint());
-        }
-  
+
         if(levelStage % 2 == 0){
             if(getBooleanWithPercentage(20)){
                 Chest.createNewChest();
